@@ -9,7 +9,7 @@ namespace ECM.Examples
     ///
     /// This example shows how to create a custom first person controller, this extends the BaseFirstPerson controller
     /// and adds Headbob animation. To do this, we animate the cameraPivot transform, this way we can tailor fit the camera
-    /// headbob animation to match our game needs, aditionally, we can use Animation events to trigger sound effects like footsteps, etc.
+    /// headbob animation to match our game needs, additionally, we can use Animation events to trigger sound effects like footsteps, etc.
     /// </summary>
 
     public class FPS_CustomController : BaseFirstPersonController
