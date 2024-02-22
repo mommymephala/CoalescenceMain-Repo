@@ -97,7 +97,7 @@ namespace HorrorEngine
 
         public void Rotate(float dir, float speed)
         {
-            m_Rigidbody.MoveRotation(m_Rigidbody.rotation * Quaternion.Euler(Vector3.up * dir * Time.deltaTime * speed));
+            m_Rigidbody.MoveRotation(m_Rigidbody.rotation * Quaternion.Euler(Vector3.up * (dir * Time.deltaTime * speed)));
         }
 
         // --------------------------------------------------------------------

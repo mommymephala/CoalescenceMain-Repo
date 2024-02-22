@@ -138,7 +138,6 @@ namespace HorrorEngine
             return m_Turn180P.IsDown();
         }
 
-
         public bool IsChangeAimTargetDown()
         {
             return m_ChangeAimTargetP.IsDown();

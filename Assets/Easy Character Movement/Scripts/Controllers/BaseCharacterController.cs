@@ -1,5 +1,6 @@
 ﻿using ECM.Components;
 using ECM.Helpers;
+using HorrorEngine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,7 @@ namespace ECM.Controllers
         [SerializeField] private float _jumpPostGroundedToleranceTime = 0.15f;
 
         //Private fields
+        protected IPlayerInput _input;
         private Vector3 _moveDirection;
         protected bool _canJump = true;
         protected bool _jump;
@@ -160,6 +162,7 @@ namespace ECM.Controllers
 
         public virtual void Awake()
         {
+            _input = GetComponent<IPlayerInput>();
             movement = GetComponent<CharacterMovement>();
             movement.platformUpdatesRotation = true;
             animator = GetComponentInChildren<Animator>();
@@ -271,10 +274,6 @@ namespace ECM.Controllers
             RotateTowardsMoveDirection();
         }
 
-        protected virtual void HandleInput()
-        {
-            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
-            _jump = Input.GetButtonDown("Jump");
-        }
+        protected virtual void HandleInput() { }
     }
 }

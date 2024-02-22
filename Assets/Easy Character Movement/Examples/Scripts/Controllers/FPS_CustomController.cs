@@ -55,18 +55,7 @@ namespace ECM.Examples
 
         protected override void HandleInput()
         {
-            // Add your game custom input code here
-
-            moveDirection = new Vector3
-            {
-                x = Input.GetAxisRaw("Horizontal"),
-                y = 0.0f,
-                z = Input.GetAxisRaw("Vertical")
-            };
-
-            run = Input.GetButton("Run");
-
-            jump = Input.GetButton("Jump");
+            base.HandleInput();
         }
 
         /// <summary>
@@ -75,7 +64,7 @@ namespace ECM.Examples
 
         public override void Awake()
         {
-            // Initalize BaseFirstPersonController
+            // Initialize BaseFirstPersonController
 
             base.Awake();
 

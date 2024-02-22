@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Input = UnityEngine.Windows.Input;
 
 namespace ECM.Controllers
 {
@@ -178,24 +179,22 @@ namespace ECM.Controllers
 
         protected override void HandleInput()
         {
-            // Toggle pause / resume.
-            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
-
-            if (Input.GetKeyDown(KeyCode.P))
-                pause = !pause;
-
-            // Player input
-
-            moveDirection = new Vector3
+            if (_input != null)
             {
-                x = Input.GetAxisRaw("Horizontal"),
-                y = 0.0f,
-                z = Input.GetAxisRaw("Vertical")
-            };
+                // Handle Movement
+                Vector2 inputAxis = _input.GetPrimaryAxis();
+                moveDirection = new Vector3(inputAxis.x, 0.0f, inputAxis.y);
 
-            run = Input.GetButton("Run");
+                // Handle Jump (NEEDS FIX)
+                if (_input.IsInteractingDown())
+                {
+                    _jump = true;
+                }
 
-            jump = Input.GetButton("Jump");
+                // Handle Sprint (Run)
+                // Check if the run action is being held down to modify the character's speed
+                run = _input.IsRunHeld();
+            }
         }
 
         #endregion

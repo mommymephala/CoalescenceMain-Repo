@@ -11,11 +11,8 @@ namespace HorrorEngine
         bool IsAttackUp();
         bool IsInteractingDown();
         bool IsReloadDown();
-
         bool IsTurn180Down();
-
         bool IsChangeAimTargetDown();
-
         void Flush();
     }
 }
