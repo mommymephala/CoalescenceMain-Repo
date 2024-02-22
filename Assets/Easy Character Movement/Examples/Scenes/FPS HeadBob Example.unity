@@ -6342,33 +6342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795a2593dd749af49b6767d0126d527e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ceaef777-765e-4999-b522-3e41ef3bfcfd
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  jumpAction:
-    m_Name: Jump
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ce73fce9-93f1-4e7b-8f59-569e3bb26717
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  sprintAction:
-    m_Name: Sprint
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2238b7cd-c376-429a-acba-1ddfcbd86b3f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   _speed: 5
   _angularSpeed: 540
   _acceleration: 50
@@ -6378,17 +6351,9 @@ MonoBehaviour:
   _brakingFriction: 8
   _airFriction: 0
   _airControl: 0.2
-  _canCrouch: 0
-  _standingHeight: 2
-  _crouchingHeight: 1
-  _baseJumpHeight: 1.5
-  _extraJumpTime: 0.5
-  _extraJumpPower: 25
+  _baseJumpHeight: 10
   _jumpPreGroundedToleranceTime: 0.15
   _jumpPostGroundedToleranceTime: 0.15
-  _maxMidAirJumps: 1
-  _useRootMotion: 0
-  _rootMotionRotation: 0
   _forwardSpeed: 5
   _backwardSpeed: 3
   _strafeSpeed: 4

@@ -4,21 +4,12 @@ using UnityEngine;
 
 namespace ECM.Examples
 {
-    /// <summary>
-    /// Headbob animation example:
-    ///
-    /// This example shows how to create a custom first person controller, this extends the BaseFirstPerson controller
-    /// and adds Headbob animation. To do this, we animate the cameraPivot transform, this way we can tailor fit the camera
-    /// headbob animation to match our game needs, additionally, we can use Animation events to trigger sound effects like footsteps, etc.
-    /// </summary>
-
     public class FPS_CustomController : BaseFirstPersonController
     {
         #region EDITOR EXPOSED FIELDS
 
         [Header("Headbob")]
         public Animator cameraAnimator;
-
         public float cameraAnimSpeed = 1.0f;
 
         #endregion
@@ -38,8 +29,6 @@ namespace ECM.Examples
 
         private void AnimateCamera()
         {
-            //var normalizedSpeed = Mathf.InverseLerp(0.0f, forwardSpeed, movement.velocity.onlyXZ().magnitude);
-            
             var lateralVelocity = Vector3.ProjectOnPlane(movement.velocity, transform.up);
             var normalizedSpeed = Mathf.InverseLerp(0.0f, forwardSpeed, lateralVelocity.magnitude);
 
@@ -75,7 +64,7 @@ namespace ECM.Examples
                 z = Input.GetAxisRaw("Vertical")
             };
 
-            run = Input.GetButton("Fire3");
+            run = Input.GetButton("Run");
 
             jump = Input.GetButton("Jump");
         }

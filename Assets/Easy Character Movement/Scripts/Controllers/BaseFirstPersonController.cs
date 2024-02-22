@@ -105,22 +105,6 @@ namespace ECM.Controllers
         #region METHODS
 
         /// <summary>
-        /// Use this method to animate camera.
-        /// The default implementation use this to animate camera's when crouching.
-        /// Called on LateUpdate.
-        /// </summary>
-
-        protected virtual void AnimateView()
-        {
-            // Scale camera pivot to simulate crouching
-
-            var yScale = isCrouching ? Mathf.Clamp01(crouchingHeight / standingHeight) : 1.0f;
-
-            cameraPivotTransform.localScale = Vector3.MoveTowards(cameraPivotTransform.localScale,
-                new Vector3(1.0f, yScale, 1.0f), 5.0f * Time.deltaTime);
-        }
-
-        /// <summary>
         /// Perform 'Look' rotation.
         /// This rotate the character along its y-axis (yaw) and a child camera along its local x-axis (pitch).
         /// </summary>
@@ -209,11 +193,9 @@ namespace ECM.Controllers
                 z = Input.GetAxisRaw("Vertical")
             };
 
-            run = Input.GetButton("Fire3");
+            run = Input.GetButton("Run");
 
             jump = Input.GetButton("Jump");
-
-            crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
@@ -280,13 +262,6 @@ namespace ECM.Controllers
                 cameraTransform = cam.transform;
                 mouseLook.Init(transform, cameraTransform);
             }
-        }
-
-        public virtual void LateUpdate()
-        {
-            // Perform camera's (view) animation
-
-            AnimateView();
         }
 
         #endregion

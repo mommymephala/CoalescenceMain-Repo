@@ -194,7 +194,7 @@ namespace ECM.Components
                 if (movement.platformUpdatesRotation && movement.isOnPlatform && movement.platformAngularVelocity != Vector3.zero)
                 {
                     characterTargetRotation *=
-                        Quaternion.Euler(movement.platformAngularVelocity * Mathf.Rad2Deg * Time.deltaTime);
+                        Quaternion.Euler(movement.platformAngularVelocity * (Mathf.Rad2Deg * Time.deltaTime));
                 }
 
                 movement.rotation = Quaternion.Slerp(movement.rotation, characterTargetRotation,
