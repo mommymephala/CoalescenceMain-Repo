@@ -1,21 +1,32 @@
 ﻿using ECM.Common;
 using ECM.Controllers;
+using HorrorEngine;
 using UnityEngine;
 
 namespace ECM.Examples
 {
+    /// <summary>
+    /// Headbob animation example:
+    ///
+    /// This example shows how to create a custom first person controller, this extends the BaseFirstPerson controller
+    /// and adds Headbob animation. To do this, we animate the cameraPivot transform, this way we can tailor fit the camera
+    /// headbob animation to match our game needs, additionally, we can use Animation events to trigger sound effects like footsteps, etc.
+    /// </summary>
+
     public class FPS_CustomController : BaseFirstPersonController
     {
         #region EDITOR EXPOSED FIELDS
 
         [Header("Headbob")]
         public Animator cameraAnimator;
+
         public float cameraAnimSpeed = 1.0f;
 
         #endregion
 
         #region FIELDS
 
+        private IPlayerInput _input;
         private int _verticalParamId;
         private int _horizontalParamId;
 
@@ -55,7 +66,20 @@ namespace ECM.Examples
 
         protected override void HandleInput()
         {
-            base.HandleInput();
+            // Use GetPrimaryAxis for movement direction
+            var inputAxis = _input.GetPrimaryAxis();
+            moveDirection = new Vector3
+            {
+                x = inputAxis.x,
+                y = 0.0f,
+                z = inputAxis.y
+            };
+
+            // Check if run is held
+            run = _input.IsRunHeld();
+
+            // Check if jump is held
+            jump = _input.IsJumpHeld();
         }
 
         /// <summary>
@@ -68,8 +92,8 @@ namespace ECM.Examples
 
             base.Awake();
 
-            // Cache animator parameter and state ids
-
+            // Cache animator parameter, state ids and input component
+            _input = GetComponent<IPlayerInput>();
             _verticalParamId = Animator.StringToHash("vertical");
             _horizontalParamId = Animator.StringToHash("horizontal");
         }

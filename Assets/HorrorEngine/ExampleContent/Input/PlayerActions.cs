@@ -75,6 +75,15 @@ namespace HorrorEngine
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""14ee7fe8-f82f-4650-983d-33ca4d8782cd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""6f891c5c-d12e-44c8-9c4a-29eb2d27e01b"",
@@ -333,6 +342,17 @@ namespace HorrorEngine
                     ""action"": ""ChangeAimTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3540e459-5303-4d18-b29c-a35b9041d0dd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -346,6 +366,7 @@ namespace HorrorEngine
             m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
             m_Gameplay_Run = m_Gameplay.FindAction("Run", throwIfNotFound: true);
+            m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
             m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
             m_Gameplay_Turn180 = m_Gameplay.FindAction("Turn180", throwIfNotFound: true);
             m_Gameplay_ChangeAimTarget = m_Gameplay.FindAction("ChangeAimTarget", throwIfNotFound: true);
@@ -415,6 +436,7 @@ namespace HorrorEngine
         private readonly InputAction m_Gameplay_Attack;
         private readonly InputAction m_Gameplay_Interact;
         private readonly InputAction m_Gameplay_Run;
+        private readonly InputAction m_Gameplay_Jump;
         private readonly InputAction m_Gameplay_Reload;
         private readonly InputAction m_Gameplay_Turn180;
         private readonly InputAction m_Gameplay_ChangeAimTarget;
@@ -427,6 +449,7 @@ namespace HorrorEngine
             public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
             public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             public InputAction @Run => m_Wrapper.m_Gameplay_Run;
+            public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
             public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
             public InputAction @Turn180 => m_Wrapper.m_Gameplay_Turn180;
             public InputAction @ChangeAimTarget => m_Wrapper.m_Gameplay_ChangeAimTarget;
@@ -454,6 +477,9 @@ namespace HorrorEngine
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
@@ -482,6 +508,9 @@ namespace HorrorEngine
                 @Run.started -= instance.OnRun;
                 @Run.performed -= instance.OnRun;
                 @Run.canceled -= instance.OnRun;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
                 @Reload.started -= instance.OnReload;
                 @Reload.performed -= instance.OnReload;
                 @Reload.canceled -= instance.OnReload;
@@ -515,6 +544,7 @@ namespace HorrorEngine
             void OnAttack(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
             void OnReload(InputAction.CallbackContext context);
             void OnTurn180(InputAction.CallbackContext context);
             void OnChangeAimTarget(InputAction.CallbackContext context);

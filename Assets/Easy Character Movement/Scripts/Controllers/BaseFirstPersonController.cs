@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Input = UnityEngine.Windows.Input;
 
 namespace ECM.Controllers
 {
@@ -106,6 +105,22 @@ namespace ECM.Controllers
         #region METHODS
 
         /// <summary>
+        /// Use this method to animate camera.
+        /// The default implementation use this to animate camera's when crouching.
+        /// Called on LateUpdate.
+        /// </summary>
+
+        protected virtual void AnimateView()
+        {
+            // Scale camera pivot to simulate crouching
+
+            var yScale = isCrouching ? Mathf.Clamp01(crouchingHeight / standingHeight) : 1.0f;
+
+            cameraPivotTransform.localScale = Vector3.MoveTowards(cameraPivotTransform.localScale,
+                new Vector3(1.0f, yScale, 1.0f), 5.0f * Time.deltaTime);
+        }
+
+        /// <summary>
         /// Perform 'Look' rotation.
         /// This rotate the character along its y-axis (yaw) and a child camera along its local x-axis (pitch).
         /// </summary>
@@ -179,22 +194,26 @@ namespace ECM.Controllers
 
         protected override void HandleInput()
         {
-            if (_input != null)
+            // Toggle pause / resume.
+            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
+
+            if (Input.GetKeyDown(KeyCode.P))
+                pause = !pause;
+
+            // Player input
+
+            moveDirection = new Vector3
             {
-                // Handle Movement
-                Vector2 inputAxis = _input.GetPrimaryAxis();
-                moveDirection = new Vector3(inputAxis.x, 0.0f, inputAxis.y);
+                x = Input.GetAxisRaw("Horizontal"),
+                y = 0.0f,
+                z = Input.GetAxisRaw("Vertical")
+            };
 
-                // Handle Jump (NEEDS FIX)
-                if (_input.IsInteractingDown())
-                {
-                    _jump = true;
-                }
+            run = Input.GetButton("Run");
 
-                // Handle Sprint (Run)
-                // Check if the run action is being held down to modify the character's speed
-                run = _input.IsRunHeld();
-            }
+            jump = Input.GetButton("Jump");
+
+            crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
@@ -261,6 +280,13 @@ namespace ECM.Controllers
                 cameraTransform = cam.transform;
                 mouseLook.Init(transform, cameraTransform);
             }
+        }
+
+        public virtual void LateUpdate()
+        {
+            // Perform camera's (view) animation
+
+            AnimateView();
         }
 
         #endregion

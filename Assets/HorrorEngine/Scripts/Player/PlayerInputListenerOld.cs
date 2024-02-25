@@ -12,6 +12,7 @@ namespace HorrorEngine
         [SerializeField] string m_Attack;
         [SerializeField] string m_Interact;
         [SerializeField] string m_Run;
+        [SerializeField] private string m_Jump;
         [SerializeField] string m_Reload;
         [SerializeField] string m_Turn180;
         [SerializeField] string m_ChangeAimTarget;
@@ -31,6 +32,11 @@ namespace HorrorEngine
             return new Vector2(Input.GetAxis(m_XPrimaryAxis), Input.GetAxis(m_YPrimaryAxis));
         }
 
+        public bool IsJumpHeld()
+        {
+            return Input.GetButtonDown(m_Jump);
+        }
+
         public bool IsAimingHeld()
         {
             return Input.GetAxis(m_Aiming) > k_AxisActionThreshold || Input.GetButton(m_Aiming);
@@ -45,7 +51,6 @@ namespace HorrorEngine
         {
             return Input.GetButtonUp(m_Attack);
         }
-
 
         public bool IsInteractingDown()
         {

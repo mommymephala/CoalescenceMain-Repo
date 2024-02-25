@@ -6,6 +6,7 @@ namespace HorrorEngine
     {
         Vector2 GetPrimaryAxis();
         bool IsRunHeld();
+        bool IsJumpHeld();
         bool IsAimingHeld();
         bool IsAttackDown();
         bool IsAttackUp();

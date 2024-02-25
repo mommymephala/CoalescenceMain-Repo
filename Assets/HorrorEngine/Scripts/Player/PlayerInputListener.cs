@@ -43,6 +43,7 @@ namespace HorrorEngine
         private InputActionProcessor m_AttackP = new InputActionProcessor();
         private InputActionProcessor m_InteractP = new InputActionProcessor();
         private InputActionProcessor m_RunP = new InputActionProcessor();
+        private InputActionProcessor m_JumpP = new InputActionProcessor();
         private InputActionProcessor m_ReloadP = new InputActionProcessor();
         private InputActionProcessor m_Turn180P = new InputActionProcessor();
         private InputActionProcessor m_ChangeAimTargetP = new InputActionProcessor();
@@ -81,6 +82,12 @@ namespace HorrorEngine
         {
             m_RunP.Process(value);
         }
+        
+        public void OnJump(InputValue value)
+        {
+            m_JumpP.Process(value);
+        }
+
         public void OnReload(InputValue value)
         {
             m_ReloadP.Process(value);
@@ -128,6 +135,11 @@ namespace HorrorEngine
             return m_RunP.IsHeld();
         }
 
+        public bool IsJumpHeld()
+        {
+            return m_JumpP.IsHeld();
+        }
+
         public bool IsReloadDown()
         {
             return m_ReloadP.IsDown();
@@ -149,6 +161,7 @@ namespace HorrorEngine
             m_AttackP.Clear();
             m_InteractP.Clear();
             m_RunP.Clear();
+            m_JumpP.Clear();
             m_ReloadP.Clear();
             m_Turn180P.Clear();
             m_ChangeAimTargetP.Clear();
