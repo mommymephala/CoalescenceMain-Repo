@@ -97,6 +97,21 @@ namespace HorrorEngine
             if (IsDead)
                 OnDeath?.Invoke(this);
         }
+        
+        // --------------------------------------------------------------------
+        
+        public void DamageReceived(float amount)
+        {
+            // LastDamageableHit = damageable;
+
+            if (Invulnerable)
+                return;
+
+            if (Infinite)
+                Value += amount;
+
+            SetHealth(Value - amount);
+        }
 
         // --------------------------------------------------------------------
         // ISavable implementation
