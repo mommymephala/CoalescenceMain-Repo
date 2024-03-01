@@ -304,7 +304,7 @@ namespace HorrorEngine
             
             if (item.Flags.HasFlag(ItemFlags.CreatePickupOnDrop))
             {
-                gameMgr.Player.GetComponentInChildren<PickupDropper>().Drop(m_SelectedSlot.InventoryEntry);
+                // gameMgr.Player.GetComponentInChildren<PickupDropper>().Drop(m_SelectedSlot.InventoryEntry);
             }
 
             gameMgr.Inventory.Remove(m_SelectedSlot.InventoryEntry, m_SelectedSlot.InventoryEntry.Count); 
@@ -322,12 +322,11 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        public void OnMapCategory()
-        {
-            Hide();
-            UIManager.Get<UIMap>().Show();
-        }
-
+        // public void OnMapCategory()
+        // {
+        //     Hide();
+        //     UIManager.Get<UIMap>().Show();
+        // }
 
         // --------------------------------------------------------------------
 

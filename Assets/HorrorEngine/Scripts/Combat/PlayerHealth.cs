@@ -1,5 +1,5 @@
+using Audio;
 using Interfaces;
-using Unity.VisualScripting;
 
 namespace HorrorEngine
 {
@@ -9,14 +9,14 @@ namespace HorrorEngine
         {
             AudioManager.Instance.PlayPlayerTakeDamage();
             DamageReceived(damage);
-        }
-       /* public void ResetPlayerHealth()
+        } 
+        public void ResetPlayerHealth()
         {
             // Reset health to max and reset any other player-specific states
            
                 Destroy(gameObject); // This will destroy the player object
             
             // Add any additional reset logic specific to PlayerHealth here
-        }*/
+        }
     }
 }

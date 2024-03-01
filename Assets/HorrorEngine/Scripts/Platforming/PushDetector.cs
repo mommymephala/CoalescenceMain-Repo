@@ -5,7 +5,7 @@ namespace HorrorEngine
 {
     public class PushDetector : MonoBehaviour
     {
-        public PlayerMovement m_PlayerMovement;
+        // public PlayerMovement m_PlayerMovement;
         [SerializeField] private float m_PushTimeThreshold = 1f;
         [SerializeField] private float m_PushIntentDotThreshold = 0.5f;
 
@@ -78,7 +78,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        private void Update()
+        /*private void Update()
         {
             Vector3 dirToObj = m_Pushable.transform.position - transform.position;
             dirToObj.y = 0;
@@ -111,7 +111,7 @@ namespace HorrorEngine
             {
                 m_PushTime = 0f;
             }
-        }
+        }*/
 
         // --------------------------------------------------------------------
 

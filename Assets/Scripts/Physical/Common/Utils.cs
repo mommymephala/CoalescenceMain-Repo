@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ECM.Examples.Common
+namespace Physical.Common
 {
     public static class Utils
     {

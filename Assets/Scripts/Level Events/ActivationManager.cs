@@ -14,25 +14,6 @@ namespace Level_Events
     {
         public enum ObjectIdentifier
         {
-            LabHallway,
-            LabTpTriggerObject,
-            BotanicTpTriggerObject,
-            DarkHallway,
-            SaveRoom,
-            BotanicHallway,
-            Containment,
-            CoreActivation,
-            SecondFloor,
-            SecondFloorWalls,
-            SecondFloorPath,
-            ContainmentWall,
-            PowerCoreWall,
-            PowerCorePath,
-            DownstairWalls,
-            PowerCoreShortcut,
-            PathBehindStatue,
-            UpstairBlock,
-            SpawnAfterCoreActivation,
             
         }
         

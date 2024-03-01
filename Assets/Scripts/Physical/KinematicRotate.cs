@@ -1,7 +1,7 @@
-﻿using ECM.Examples.Common;
+﻿using Physical.Common;
 using UnityEngine;
 
-namespace ECM.Examples.Components
+namespace Physical
 {
     [RequireComponent(typeof(Rigidbody))]
     public class KinematicRotate : MonoBehaviour

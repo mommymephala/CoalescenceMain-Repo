@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace HorrorEngine
 {
-
-
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(AudioSource))]
     public class Pushable : MonoBehaviour, ISavableObjectStateExtra
@@ -16,7 +14,7 @@ namespace HorrorEngine
         public Vector3[] PushAxis;
         public bool LocalSpaceAxis = true;
 
-        [SerializeField] SoundCue[] m_PushSounds;
+        // [SerializeField] SoundCue[] m_PushSounds;
         [SerializeField] float m_SnapSpeed = 1f;
 
         private AudioSource m_AudioSource;
@@ -82,13 +80,13 @@ namespace HorrorEngine
             this.InvokeAction(() =>
             {
                 float dist = Vector3.Distance(transform.position, prevPos);
-                if (dist > k_SoundDisplacementThreshold)
-                {
-                    SoundCue cue = m_PushSounds[UnityEngine.Random.Range(0, m_PushSounds.Length)];
-                    AudioClip clip = cue.GetClip(out float volume, out float pitch);
-                    m_AudioSource.pitch = pitch;
-                    m_AudioSource.PlayOneShot(clip, volume);
-                }
+                // if (dist > k_SoundDisplacementThreshold)
+                // {
+                //     SoundCue cue = m_PushSounds[UnityEngine.Random.Range(0, m_PushSounds.Length)];
+                //     AudioClip clip = cue.GetClip(out float volume, out float pitch);
+                //     m_AudioSource.pitch = pitch;
+                //     m_AudioSource.PlayOneShot(clip, volume);
+                // }
             }, Time.fixedDeltaTime);
         }
 

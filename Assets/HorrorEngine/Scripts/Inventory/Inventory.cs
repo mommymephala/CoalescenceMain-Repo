@@ -19,10 +19,6 @@ namespace HorrorEngine
     {
         public ItemData Item;
     }
-    public class InventoryMapAddedMessage : BaseMessage
-    {
-        public MapData Map;
-    }
 
     public enum EquipmentSlot
     {
@@ -109,7 +105,6 @@ namespace HorrorEngine
 
         [HideInInspector] public InventoryEntry[] Items;
         [HideInInspector] public HashSet<DocumentData> Documents = new HashSet<DocumentData>();
-        [HideInInspector] public HashSet<MapData> Maps = new HashSet<MapData>();
 
         [SerializeField] private int m_MaxItems = 8;
         [Tooltip("Activating this will bulk added items with existing ones in the inventory (Only works for bulkable items)")]
@@ -145,11 +140,6 @@ namespace HorrorEngine
             foreach (var doc in gameMgr.InitialDocuments)
             {
                 Documents.Add(doc);
-            }
-
-            foreach (var map in gameMgr.InitialMaps)
-            {
-                Maps.Add(map);
             }
 
         }
@@ -643,10 +633,7 @@ namespace HorrorEngine
 
             // Save maps
             saveData.Maps = new List<string>();
-            foreach (var map in Maps)
-            {
-                saveData.Maps.Add(map.UniqueId);
-            }
+            
             saveData.MaxItems = m_MaxItems;
 
             return saveData;
@@ -718,13 +705,6 @@ namespace HorrorEngine
             foreach (var docId in savedData.Documents)
             {
                 Documents.Add(GameManager.Instance.DocumentDatabase.GetRegister(docId));
-            }
-
-            // Load Documents
-            Maps.Clear();
-            foreach (var mapId in savedData.Maps)
-            {
-                Maps.Add(GameManager.Instance.MapDatabase.GetRegister(mapId));
             }
 
             foreach(var e in equipped)

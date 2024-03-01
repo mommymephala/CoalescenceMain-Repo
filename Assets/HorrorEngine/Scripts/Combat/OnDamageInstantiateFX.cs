@@ -16,16 +16,16 @@ namespace HorrorEngine
 
         private Health m_Health;
 
-        private void Awake()
-        {
-            m_Health = GetComponentInParent<Health>();
-            GetComponent<Damageable>().OnDamage.AddListener(OnDamage);
-        }
-
-        private void OnDestroy()
-        {
-            GetComponent<Damageable>().OnDamage.RemoveListener(OnDamage);
-        }
+        // private void Awake()
+        // {
+        //     m_Health = GetComponentInParent<Health>();
+        //     GetComponent<IDamageable>().OnDamage.AddListener(OnDamage);
+        // }
+        //
+        // private void OnDestroy()
+        // {
+        //     GetComponent<IDamageable>().OnDamage.RemoveListener(OnDamage);
+        // }
 
         void OnDamage(Vector3 impactPoint, Vector3 impactDir)
         {

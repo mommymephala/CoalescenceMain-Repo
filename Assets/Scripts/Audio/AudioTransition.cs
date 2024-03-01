@@ -1,41 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using FMODUnity;
-public class AudioTransition : MonoBehaviour
-{
-    [System.Serializable]
-    public class AudioSettings
-    {
-        [HideInInspector]
-        public StudioEventEmitter emitter;
-        public string tag = "";
-        public string parameter = "";
-        public float targetValue;
-    }
+using UnityEngine;
 
-    public AudioSettings[] audioSettings;
-    
-    private void OnTriggerEnter()
+namespace Audio
+{
+    public class AudioTransition : MonoBehaviour
     {
-        if (audioSettings != null)
+        [System.Serializable]
+        public class AudioSettings
         {
-            foreach (AudioSettings i in audioSettings)
+            [HideInInspector]
+            public StudioEventEmitter emitter;
+            public string tag = "";
+            public string parameter = "";
+            public float targetValue;
+        }
+
+        public AudioSettings[] audioSettings;
+    
+        private void OnTriggerEnter()
+        {
+            if (audioSettings != null)
             {
-                if (i.tag == "" || i.parameter == "")
+                foreach (AudioSettings i in audioSettings)
                 {
-                    Debug.Log("You have empty fields in an AudioTransition.");
+                    if (i.tag == "" || i.parameter == "")
+                    {
+                        Debug.Log("You have empty fields in an AudioTransition.");
                     
-                }
-                else
-                {
-                    i.emitter = GameObject.FindGameObjectWithTag(i.tag).GetComponent<StudioEventEmitter>();
-                    i.emitter.SetParameter(i.parameter, i.targetValue);
-                    Debug.Log("AudioSettings done");
+                    }
+                    else
+                    {
+                        i.emitter = GameObject.FindGameObjectWithTag(i.tag).GetComponent<StudioEventEmitter>();
+                        i.emitter.SetParameter(i.parameter, i.targetValue);
+                        Debug.Log("AudioSettings done");
+                    }
                 }
             }
+            else
+                Debug.Log("AudioSettings was NULL");
         }
-        else
-            Debug.Log("AudioSettings was NULL");
     }
 }

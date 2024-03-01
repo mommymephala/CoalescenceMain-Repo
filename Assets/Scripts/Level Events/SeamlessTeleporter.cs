@@ -1,24 +1,26 @@
-/*using ECM.Components;
-using ECM.Examples;
-using Level_Events;
+using Character_Movement.Components;
+using Character_Movement.Controllers;
 using UnityEngine;
 
-public class SeamlessTeleporter : MonoBehaviour
+namespace Level_Events
 {
-    public Transform teleportTarget;
-
-    private void OnTriggerEnter(Collider other)
+    public class SeamlessTeleporter : MonoBehaviour
     {
-        if (other.CompareTag("Player"))
-        {
-            var playerRb = other.GetComponent<Rigidbody>();
-            var playerMovement = other.GetComponent<NewPlayerController>();
-            var playerController = other.GetComponent<CharacterMovement>();
+        public Transform teleportTarget;
 
-            if (playerRb != null && playerMovement != null)
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
             {
-                TeleportationManager.TeleportPlayer(other.transform, teleportTarget, playerRb, playerMovement, playerController);
+                var playerRb = other.GetComponent<Rigidbody>();
+                var playerMovement = other.GetComponent<CustomFirstPersonController>();
+                var playerController = other.GetComponent<CharacterMovement>();
+
+                if (playerRb != null && playerMovement != null)
+                {
+                    TeleportationManager.TeleportPlayer(other.transform, teleportTarget, playerRb, playerMovement, playerController);
+                }
             }
         }
     }
-}*/
+}

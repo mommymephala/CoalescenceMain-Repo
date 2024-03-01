@@ -1,12 +1,12 @@
-/*using ECM.Components;
-using ECM.Examples;
+using Character_Movement.Components;
+using Character_Movement.Controllers;
 using UnityEngine;
 
 namespace Level_Events
 {
     public class TeleportationManager : MonoBehaviour
     {
-        public static TeleportationManager Instance { get; private set; }
+        private static TeleportationManager Instance { get; set; }
 
         private void Awake()
         {
@@ -21,7 +21,7 @@ namespace Level_Events
             }
         }
         
-        public static void TeleportPlayer(Transform playerTransform, Transform targetTransform, Rigidbody playerRb, NewPlayerController playerMovement, CharacterMovement playerController)
+        public static void TeleportPlayer(Transform playerTransform, Transform targetTransform, Rigidbody playerRb, CustomFirstPersonController playerMovement, CharacterMovement playerController)
         {
             playerController.enabled = false;
             playerMovement.enabled = false;
@@ -46,4 +46,4 @@ namespace Level_Events
             playerMovement.enabled = true;
         }
     }
-}*/
+}

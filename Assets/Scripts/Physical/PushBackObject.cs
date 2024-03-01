@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class PushBackObject : MonoBehaviour
+namespace Physical
 {
-    public float pushForce;
-
-    private void OnCollisionEnter(Collision collision)
+    public class PushBackObject : MonoBehaviour
     {
-        var otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+        public float pushForce;
 
-        if (otherRigidbody == null) return;
+        private void OnCollisionEnter(Collision collision)
+        {
+            var otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
 
-        Vector3 pushDirection = (collision.transform.position - transform.position).normalized;
-        pushDirection.y = 0f;
+            if (otherRigidbody == null) return;
 
-        otherRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+            Vector3 pushDirection = (collision.transform.position - transform.position).normalized;
+            pushDirection.y = 0f;
+
+            otherRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+        }
     }
 }

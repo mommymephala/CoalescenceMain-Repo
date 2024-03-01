@@ -32,13 +32,11 @@ namespace HorrorEngine
         [Header("Databases")]
         public ItemDatabase ItemDatabase;
         public DocumentDatabase DocumentDatabase;
-        public MapDatabase MapDatabase;
         public SpawnableSavableDatabase SpawnableDatabase;
 
         [Header("Initial Game State")]
         public InventoryEntry[] InitialInventory;
         public DocumentData[] InitialDocuments;
-        public MapData[] InitialMaps;
         public EquipableItemData[] InitialEquipment;
 
         [HideInInspector]
@@ -137,7 +135,6 @@ namespace HorrorEngine
         {
             ItemDatabase.HashRegisters();
             DocumentDatabase.HashRegisters();
-            MapDatabase.HashRegisters();
         }
 
         // --------------------------------------------------------------------

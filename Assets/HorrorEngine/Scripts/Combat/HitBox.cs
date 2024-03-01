@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
 namespace HorrorEngine
@@ -12,8 +13,8 @@ namespace HorrorEngine
         private Collider[] m_OverlapResults = new Collider[10];
 
         // --------------------------------------------------------------------
-
-        public void GetOverlappingDamageables(List<Damageable> damageables)
+        // TODO: TEMPORARY FIX!!! (IDamageable)
+        public void GetOverlappingDamageables(List<IDamageable> damageables)
         {
             damageables.Clear();
             
@@ -25,7 +26,7 @@ namespace HorrorEngine
             
             for (int i = 0; i < count; ++i)
             {
-                if (m_OverlapResults[i].TryGetComponent(out Damageable d))
+                if (m_OverlapResults[i].TryGetComponent(out IDamageable d))
                     damageables.Add(d);
             }
         }

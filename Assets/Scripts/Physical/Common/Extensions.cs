@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ECM.Common
+namespace Physical.Common
 {
     public static class Extensions
     {

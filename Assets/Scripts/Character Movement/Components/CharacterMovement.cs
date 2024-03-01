@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Character_Movement.Components.GroundDetection;
-using ECM.Common;
+using Physical.Common;
 using UnityEngine;
 
 namespace Character_Movement.Components

@@ -273,11 +273,11 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        public void OnMapCategory()
-        {
-            Hide();
-            m_Input.Flush();
-            UIManager.Get<UIMap>().Show();
-        }
+        // public void OnMapCategory()
+        // {
+        //     Hide();
+        //     m_Input.Flush();
+        //     UIManager.Get<UIMap>().Show();
+        // }
     }
 }

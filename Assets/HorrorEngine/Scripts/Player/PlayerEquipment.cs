@@ -14,13 +14,11 @@ namespace HorrorEngine
         // --------------------------------------------------------------------
 
         private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
-        private SocketController m_SocketController;
 
         // --------------------------------------------------------------------
 
         private void Awake()
         {
-            m_SocketController = GetComponentInChildren<SocketController>();
             MessageBuffer<EquippedItemChangedMessage>.Subscribe(OnEquippedItemChanged);
         }
 
@@ -78,9 +76,7 @@ namespace HorrorEngine
                 Instance = instance,
                 Data = equipable
             });
-
-            m_SocketController.Attach(instance, equipable.CharacterAttachment);
-
+            
             return instance;
         }
 

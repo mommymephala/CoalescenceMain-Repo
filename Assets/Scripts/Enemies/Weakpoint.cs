@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class Weakpoint : MonoBehaviour
+namespace Enemies
 {
+    public class Weakpoint : MonoBehaviour
+    {
+    }
 }

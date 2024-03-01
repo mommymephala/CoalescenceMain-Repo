@@ -1,6 +1,7 @@
+using HorrorEngine;
 using UnityEngine;
 
-namespace HorrorEngine
+namespace Enemies
 {
     public class EnemyHitBox : MonoBehaviour
     {
@@ -14,10 +15,6 @@ namespace HorrorEngine
                 Debug.Log("Damage applied to player: " + damageAmount);
 
                 gameObject.SetActive(false);
-            }
-            else
-            {
-                // Debug.Log($"Collider {other.name} is not a PlayerHealth.");
             }
         }
     }

@@ -1,43 +1,51 @@
-public class SpawnableEnemyAI : BaseEnemyAI
+using UnityEngine;
+
+namespace Enemies
 {
-    protected override void SpawnBehavior()
+    public class SpawnableEnemyAI : BaseEnemyAI
     {
-        if (isSpawn)
+        private static readonly int SpawnTrigger = Animator.StringToHash("SpawnTrigger");
+        private static readonly int IsSpawn = Animator.StringToHash("IsSpawn");
+
+        protected override void SpawnBehavior()
         {
-            _animator.SetTrigger("SpawnTrigger");
-            currentState = State.InitialSpawn;
+            if (isSpawn)
+            {
+                _animator.SetTrigger(SpawnTrigger);
+                currentState = State.InitialSpawn;
+            }
+            else
+            {
+                currentState = State.Idling;
+            }
         }
-        else
+        protected override void Start()
         {
-            currentState = State.Idling;
-        }
-    }
-    protected override void Start()
-    {
-        base.Start();
-        if (isSpawn)
-        {
-            currentState = State.SpawnStall;
-        }
+            base.Start();
+            if (isSpawn)
+            {
+                currentState = State.SpawnStall;
+            }
         
-        else
-        {
-            currentState = State.Idling;
+            else
+            {
+                currentState = State.Idling;
+            }
         }
-    }
 
-    protected override void Update()
-    {
-        base.Update();
+        protected override void Update()
+        {
+            base.Update();
 
-        _animator.SetBool("IsSpawn", isSpawn);
-    }
-    private void EndSpawnAnimation()
-    {
-        isSpawn = false;
-        _animator.SetBool("IsSpawn", isSpawn);
-        currentState = State.Idling;
-        _agent.isStopped = false;
-        _collider.enabled = true;
+            _animator.SetBool(IsSpawn, isSpawn);
+        }
+        private void EndSpawnAnimation()
+        {
+            isSpawn = false;
+            _animator.SetBool(IsSpawn, isSpawn);
+            currentState = State.Idling;
+            _agent.isStopped = false;
+            _collider.enabled = true;
+        }
     }
 }

@@ -1,104 +1,107 @@
 using System.Collections;
-using UnityEngine;
 using FMODUnity;
+using UnityEngine;
 
-public class AudioTriggerEnter : MonoBehaviour
+namespace Audio
 {
-    public bool destroyAfterUse = true;
-
-    public enum Action
+    public class AudioTriggerEnter : MonoBehaviour
     {
-        None,
-        Play,
-        Stop,
-        Pause,
-        SetParameter
-    }
+        public bool destroyAfterUse = true;
 
-    [System.Serializable]
-    public class AudioTriggerSettings
-    {
-        public StudioEventEmitter emitter;
-        public string tag = "";
-        public Action action = Action.None;
-        public string parameter = "";
-        public float targetValue;
-
-        public float fadeInDuration = 1f; // Default to 1 second for fade in
-        public float fadeOutDuration = 1f; 
-        // public bool shouldPauseInsteadOfStop = false;
-    }
-
-    public AudioTriggerSettings[] audioTriggerSettings;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        public enum Action
         {
-            foreach (var settings in audioTriggerSettings)
-            {
-                settings.emitter = GameObject.FindGameObjectWithTag(settings.tag).GetComponent<StudioEventEmitter>();
+            None,
+            Play,
+            Stop,
+            Pause,
+            SetParameter
+        }
 
-                switch (settings.action)
+        [System.Serializable]
+        public class AudioTriggerSettings
+        {
+            public StudioEventEmitter emitter;
+            public string tag = "";
+            public Action action = Action.None;
+            public string parameter = "";
+            public float targetValue;
+
+            public float fadeInDuration = 1f; // Default to 1 second for fade in
+            public float fadeOutDuration = 1f; 
+            // public bool shouldPauseInsteadOfStop = false;
+        }
+
+        public AudioTriggerSettings[] audioTriggerSettings;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                foreach (var settings in audioTriggerSettings)
                 {
-                    case Action.None:
-                        break;
-                    case Action.Play:
-                        StartCoroutine(FadeIn(settings.emitter, 1f, settings.fadeInDuration)); // Fade in over 1 second
-                        break;
-                    case Action.Stop:
+                    settings.emitter = GameObject.FindGameObjectWithTag(settings.tag).GetComponent<StudioEventEmitter>();
+
+                    switch (settings.action)
+                    {
+                        case Action.None:
+                            break;
+                        case Action.Play:
+                            StartCoroutine(FadeIn(settings.emitter, 1f, settings.fadeInDuration)); // Fade in over 1 second
+                            break;
+                        case Action.Stop:
                             StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration, false)); // Fade out and stop
-                        break;
-                    case Action.Pause:
-                        StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration, true)); // Fade out and pause
-                        break;
-                    case Action.SetParameter:
-                        settings.emitter.SetParameter(settings.parameter, settings.targetValue);
-                        break;
+                            break;
+                        case Action.Pause:
+                            StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration, true)); // Fade out and pause
+                            break;
+                        case Action.SetParameter:
+                            settings.emitter.SetParameter(settings.parameter, settings.targetValue);
+                            break;
+                    }
+                }
+
+                if (destroyAfterUse)
+                {
+                    Destroy(gameObject);
                 }
             }
+        }
 
-            if (destroyAfterUse)
+        private IEnumerator FadeIn(StudioEventEmitter emitter, float finalVolume, float duration)
+        {
+            emitter.Play();
+            emitter.EventInstance.setVolume(0); // Start at volume 0
+            float currentTime = 0;
+            while (currentTime < duration)
             {
-                Destroy(gameObject);
+                currentTime += Time.deltaTime;
+                float newVolume = Mathf.Lerp(0, finalVolume, currentTime / duration);
+                emitter.EventInstance.setVolume(newVolume);
+                yield return null;
             }
+            emitter.EventInstance.setVolume(finalVolume);
         }
-    }
 
-    private IEnumerator FadeIn(StudioEventEmitter emitter, float finalVolume, float duration)
-    {
-        emitter.Play();
-        emitter.EventInstance.setVolume(0); // Start at volume 0
-        float currentTime = 0;
-        while (currentTime < duration)
+        private IEnumerator FadeOut(StudioEventEmitter emitter, float duration, bool shouldPause)
         {
-            currentTime += Time.deltaTime;
-            float newVolume = Mathf.Lerp(0, finalVolume, currentTime / duration);
-            emitter.EventInstance.setVolume(newVolume);
-            yield return null;
-        }
-        emitter.EventInstance.setVolume(finalVolume);
-    }
-
-    private IEnumerator FadeOut(StudioEventEmitter emitter, float duration, bool shouldPause)
-    {
-        emitter.EventInstance.getVolume(out float startVolume);
-        float currentTime = 0;
-        while (currentTime < duration)
-        {
-            currentTime += Time.deltaTime;
-            float newVolume = Mathf.Lerp(startVolume, 0, currentTime / duration);
-            emitter.EventInstance.setVolume(newVolume);
-            yield return null;
-        }
-        emitter.EventInstance.setVolume(0);
-        if (shouldPause)
-        {
-            emitter.EventInstance.setPaused(true);
-        }
-        else
-        {
-            emitter.Stop();
+            emitter.EventInstance.getVolume(out float startVolume);
+            float currentTime = 0;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                float newVolume = Mathf.Lerp(startVolume, 0, currentTime / duration);
+                emitter.EventInstance.setVolume(newVolume);
+                yield return null;
+            }
+            emitter.EventInstance.setVolume(0);
+            if (shouldPause)
+            {
+                emitter.EventInstance.setPaused(true);
+            }
+            else
+            {
+                emitter.Stop();
+            }
         }
     }
 }

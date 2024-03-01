@@ -1,10 +1,11 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SafeRoomAmbientTrigger : MonoBehaviour
 {
-  /*  private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // Make sure to check the tag
         {
@@ -18,5 +19,6 @@ public class SafeRoomAmbientTrigger : MonoBehaviour
         {
             AudioManager.Instance.ExitSafeRoom();
         }
-    }*/
+    }
 }
+*/

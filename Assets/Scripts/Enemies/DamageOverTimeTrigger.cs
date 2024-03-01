@@ -1,34 +1,36 @@
-using UnityEngine;
 using HorrorEngine;
+using UnityEngine;
 
-public class DamageOverTimeTrigger : MonoBehaviour
+namespace Enemies
 {
-    public float damagePerSecond = 10f;
-    private PlayerHealth _playerHealth;
-
-    private void OnTriggerStay(Collider other)
+    public class DamageOverTimeTrigger : MonoBehaviour
     {
-        //ADD CAMERA EFFECTS AND SOUND
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (_playerHealth == null)
-            {
-                _playerHealth = other.gameObject.GetComponent<PlayerHealth>();
-            }
+        public float damagePerSecond = 10f;
+        private PlayerHealth _playerHealth;
 
-            if (_playerHealth != null)
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
             {
-                var damageAmount = damagePerSecond * Time.deltaTime;
-                _playerHealth.TakeDamage(damageAmount, false, false);
+                if (_playerHealth == null)
+                {
+                    _playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+                }
+
+                if (_playerHealth != null)
+                {
+                    var damageAmount = damagePerSecond * Time.deltaTime;
+                    _playerHealth.TakeDamage(damageAmount, false, false);
+                }
             }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        private void OnTriggerExit(Collider other)
         {
-            _playerHealth = null;
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _playerHealth = null;
+            }
         }
     }
 }
