@@ -1,5 +1,4 @@
 ﻿using ECM.Components;
-using ECM.Helpers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -149,12 +148,6 @@ namespace ECM.Controllers
         /// </summary>
 
         public Animator animator { get; set; }
-
-        /// <summary>
-        /// Cached root motion controller component (if any).
-        /// </summary>
-
-        public RootMotionController rootMotionController { get; set; }
 
         /// <summary>
         /// Allow movement along y-axis and disable gravity force.
@@ -751,14 +744,6 @@ namespace ECM.Controllers
 
         protected virtual Vector3 CalcDesiredVelocity()
         {
-            // If using root motion and root motion is being applied (eg: grounded),
-            // use animation velocity as animation takes full control
-
-            if (useRootMotion && applyRootMotion)
-                return rootMotionController.animVelocity;
-
-            // else, convert input (moveDirection) to velocity vector
-
             return moveDirection * speed;
         }
 
@@ -908,8 +893,6 @@ namespace ECM.Controllers
             movement.platformUpdatesRotation = true;
 
             animator = GetComponentInChildren<Animator>();
-
-            rootMotionController = GetComponentInChildren<RootMotionController>();
         }
 
         public virtual void FixedUpdate()
