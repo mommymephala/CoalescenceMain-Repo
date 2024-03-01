@@ -1,3 +1,4 @@
+using HEScripts.Combat;
 using HorrorEngine;
 using UnityEngine;
 

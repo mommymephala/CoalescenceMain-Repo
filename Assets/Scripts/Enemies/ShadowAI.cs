@@ -1,4 +1,5 @@
 using System.Collections;
+using HEScripts.Combat;
 using HorrorEngine;
 using Interfaces;
 using UnityEngine;

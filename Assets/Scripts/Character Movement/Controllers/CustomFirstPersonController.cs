@@ -1,4 +1,5 @@
-﻿using HorrorEngine;
+﻿using HEScripts.Player;
+using HorrorEngine;
 using UnityEngine;
 
 namespace Character_Movement.Controllers
