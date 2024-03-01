@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Character_Movement.Components;
+using UnityEngine;
 
-namespace ECM.Controllers
+namespace Character_Movement.Controllers
 {
     /// <summary>
     /// Base First Person Controller.
@@ -52,7 +53,7 @@ namespace ECM.Controllers
         /// Cached MouseLook component.
         /// </summary>
 
-        public Components.MouseLook mouseLook { get; private set; }
+        public MouseLook mouseLook { get; private set; }
 
         /// <summary>
         /// Speed when moving forward.
@@ -251,7 +252,7 @@ namespace ECM.Controllers
 
             // Cache and initialize this components
 
-            mouseLook = GetComponent<Components.MouseLook>();
+            mouseLook = GetComponent<MouseLook>();
             if (mouseLook == null)
             {
                 Debug.LogError(

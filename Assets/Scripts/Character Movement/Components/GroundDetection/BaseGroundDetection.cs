@@ -1,9 +1,7 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
-#endif
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace ECM.Components
+namespace Character_Movement.Components.GroundDetection
 {
     /// <summary>
     /// Base class used to perform 'ground' detection.
@@ -15,7 +13,7 @@ namespace ECM.Components
     {
         #region EDITOR EXPOSED FIELDS
 
-        [Tooltip("Layers to be considered as 'ground' (walkables).")]
+        [Tooltip("Layers to be considered as 'ground' (walkable).")]
         [SerializeField]
         private LayerMask _groundMask = 1;
 

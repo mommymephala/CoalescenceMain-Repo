@@ -1,8 +1,8 @@
-﻿using ECM.Components;
+﻿using Character_Movement.Components;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace ECM.Controllers
+namespace Character_Movement.Controllers
 {
     /// <summary>
     /// Base Character Controller.

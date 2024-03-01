@@ -1,9 +1,7 @@
-﻿using ECM.Common;
-using ECM.Controllers;
-using HorrorEngine;
+﻿using HorrorEngine;
 using UnityEngine;
 
-namespace ECM.Examples
+namespace Character_Movement.Controllers
 {
     /// <summary>
     /// Headbob animation example:

@@ -1,9 +1,7 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
-#endif
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace ECM.Components
+namespace Character_Movement.Components.GroundDetection
 {
     /// <summary>
     /// Ground detection default implementation.

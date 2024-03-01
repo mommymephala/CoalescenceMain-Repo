@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ECM.Components
+namespace Character_Movement.Components
 {
     /// <summary>
     /// MouseLook.
@@ -11,7 +11,7 @@ namespace ECM.Components
     /// This must be attached to the game object with 'CharacterMovement' component.
     /// </summary>
 
-    public class MouseLook : MonoBehaviour
+    public sealed class MouseLook : MonoBehaviour
     {
         #region EDITOR EXPOSED FIELDS
 
@@ -56,10 +56,10 @@ namespace ECM.Components
 
         #region FIELDS
 
-        protected bool _isCursorLocked = true;
+        private bool _isCursorLocked = true;
 
-        protected Quaternion characterTargetRotation;
-        protected Quaternion cameraTargetRotation;
+        private Quaternion characterTargetRotation;
+        private Quaternion cameraTargetRotation;
 
         #endregion
 
@@ -160,7 +160,7 @@ namespace ECM.Components
 
         #region METHODS
 
-        public virtual void Init(Transform characterTransform, Transform cameraTransform)
+        public void Init(Transform characterTransform, Transform cameraTransform)
         {
             characterTargetRotation = characterTransform.localRotation;
             cameraTargetRotation = cameraTransform.localRotation;
@@ -173,7 +173,7 @@ namespace ECM.Components
         /// <param name="movement">The character movement component.</param>
         /// <param name="cameraTransform">The camera transform.</param>
 
-        public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
+        public void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;
             var pitch = Input.GetAxis("Mouse Y") * verticalSensitivity;
@@ -194,7 +194,7 @@ namespace ECM.Components
                 if (movement.platformUpdatesRotation && movement.isOnPlatform && movement.platformAngularVelocity != Vector3.zero)
                 {
                     characterTargetRotation *=
-                        Quaternion.Euler(movement.platformAngularVelocity * Mathf.Rad2Deg * Time.deltaTime);
+                        Quaternion.Euler(movement.platformAngularVelocity * (Mathf.Rad2Deg * Time.deltaTime));
                 }
 
                 movement.rotation = Quaternion.Slerp(movement.rotation, characterTargetRotation,
@@ -215,7 +215,7 @@ namespace ECM.Components
             UpdateCursorLock();
         }
 
-        public virtual void SetCursorLock(bool value)
+        public void SetCursorLock(bool value)
         {
             lockCursor = value;
             if (lockCursor)
@@ -227,15 +227,15 @@ namespace ECM.Components
             Cursor.visible = true;
         }
 
-        public virtual void UpdateCursorLock()
+        public void UpdateCursorLock()
         {
-            // If the user set "lockCursor" we check & properly lock the cursos
+            // If the user set "lockCursor" we check & properly lock the cursor
 
             if (lockCursor)
                 InternalLockUpdate();
         }
 
-        protected virtual void InternalLockUpdate()
+        private void InternalLockUpdate()
         {
             if (Input.GetKeyUp(unlockCursorKey))
                 _isCursorLocked = false;
@@ -254,7 +254,7 @@ namespace ECM.Components
             }
         }
 
-        protected Quaternion ClampPitch(Quaternion q)
+        private Quaternion ClampPitch(Quaternion q)
         {
             q.x /= q.w;
             q.y /= q.w;
@@ -281,7 +281,7 @@ namespace ECM.Components
         /// eg: base.OnValidate, in the derived class method implementation, in order to fully validate the class.  
         /// </summary>
 
-        public virtual void OnValidate()
+        public void OnValidate()
         {
             lateralSensitivity = _lateralSensitivity;
             verticalSensitivity = _verticalSensitivity;
