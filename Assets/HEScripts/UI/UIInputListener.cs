@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using HEScripts.Systems;
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.UI
@@ -11,9 +9,7 @@ namespace HEScripts.UI
 
         private UIInventory m_Inventory;
         // private UIMap m_Map;
-
-        private HashSet<Object> m_BlockingContext = new HashSet<Object>();
-
+        
         private void Update()
         {
             if (GameManager.Instance.IsPlaying)
@@ -40,25 +36,6 @@ namespace HEScripts.UI
                     // }
                 }
             }
-        }
-
-        // --------------------------------------------------------------------
-
-        public void AddBlockingContext(Object context)
-        {
-            m_BlockingContext.Add(context);
-
-            enabled = false;
-        }
-
-        // --------------------------------------------------------------------
-
-        public void RemoveBlockingContext(Object context)
-        {
-            m_BlockingContext.Remove(context);
-
-            if (m_BlockingContext.Count == 0)
-                enabled = true;
         }
     }
 }

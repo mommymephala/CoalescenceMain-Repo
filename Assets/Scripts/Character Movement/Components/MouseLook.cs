@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HEScripts.Systems;
+using UnityEngine;
 
 namespace Character_Movement.Components
 {
@@ -15,13 +16,13 @@ namespace Character_Movement.Components
     {
         #region EDITOR EXPOSED FIELDS
 
-        [Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
-        [SerializeField]
-        private bool _lockCursor = true;
-
-        [Tooltip("The keyboard key to unlock the mouse cursor.")]
-        [SerializeField]
-        private KeyCode _unlockCursorKey = KeyCode.Escape;
+        // [Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
+        // [SerializeField]
+        // private bool _lockCursor = true;
+        //
+        // [Tooltip("The keyboard key to unlock the mouse cursor.")]
+        // [SerializeField]
+        // private KeyCode _unlockCursorKey = KeyCode.Escape;
 
         [Tooltip("How fast the cursor moves in response to mouse lateral (x-axis) movement.")]
         [SerializeField]
@@ -56,7 +57,7 @@ namespace Character_Movement.Components
 
         #region FIELDS
 
-        private bool _isCursorLocked = true;
+        // private bool _isCursorLocked = true;
 
         private Quaternion characterTargetRotation;
         private Quaternion cameraTargetRotation;
@@ -65,7 +66,7 @@ namespace Character_Movement.Components
 
         #region PROPERTIES
 
-        /// <summary>
+        /*/// <summary>
         /// Should the mouse cursor be locked (eg: hidden)?
         /// </summary>
 
@@ -83,7 +84,7 @@ namespace Character_Movement.Components
         {
             get { return _unlockCursorKey; }
             set { _unlockCursorKey = value; }
-        }
+        }*/
 
         /// <summary>
         /// How fast the cursor moves in response to mouse lateral (x-axis) movement.
@@ -175,6 +176,9 @@ namespace Character_Movement.Components
 
         public void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
+            if (PauseController.Instance.IsPaused)
+                return;
+            
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;
             var pitch = Input.GetAxis("Mouse Y") * verticalSensitivity;
 
@@ -212,10 +216,10 @@ namespace Character_Movement.Components
                     cameraTransform.localRotation = ClampPitch(cameraTransform.localRotation);
             }
 
-            UpdateCursorLock();
+            // UpdateCursorLock();
         }
 
-        public void SetCursorLock(bool value)
+        /*public void SetCursorLock(bool value)
         {
             lockCursor = value;
             if (lockCursor)
@@ -252,7 +256,7 @@ namespace Character_Movement.Components
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-        }
+        }*/
 
         private Quaternion ClampPitch(Quaternion q)
         {

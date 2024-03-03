@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba749fd02f86e24caa2a9813d462ffe, type: 3}
-  m_Name: SpawnableSavableDB
+  m_Script: {fileID: 11500000, guid: c538c6bb51028054893a5518cb912247, type: 3}
+  m_Name: TMP_ItemDb
   m_EditorClassIdentifier: 
-  Entries:
-  - {fileID: 1188626840311945541, guid: 66c71efbe1f8b3e4ab3d736da3d6ca60, type: 3}
+  Prototype: {fileID: 0}
+  Registers: []

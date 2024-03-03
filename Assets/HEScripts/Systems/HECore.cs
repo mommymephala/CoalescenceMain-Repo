@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using HorrorEngine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -9,11 +8,11 @@ namespace HEScripts.Systems
     public class HECore : MonoBehaviour
     {
         [SerializeField] private HECorePrefabs CorePrefabs;
-        [SerializeField] private SceneReference[] DestroyInScenes;
+        // [SerializeField] private SceneReference[] DestroyInScenes;
 
         // --------------------------------------------------------------------
 
-        void Awake()
+        private void Awake()
         {
             Debug.Assert(transform.parent == null, "HECore has to be placed at the top level of the hierarchy (without a parent)");
 
@@ -27,7 +26,7 @@ namespace HEScripts.Systems
 
             DontDestroyOnLoad(gameObject);
 
-            SceneManager.activeSceneChanged += OnSceneChange;
+            // SceneManager.activeSceneChanged += OnSceneChange;
         }
 
         // --------------------------------------------------------------------
@@ -51,18 +50,18 @@ namespace HEScripts.Systems
             var mapped = CorePrefabs.GetMappedPrefabs();
             foreach(var mapEntry in mapped)
             {
-                string path = mapEntry.Key;
-                List<GameObject> objects = mapEntry.Value;
+                var path = mapEntry.Key;
+                var objects = mapEntry.Value;
 
                 Transform parent = string.IsNullOrEmpty(path) ? transform : transform.Find(path);
                 if (!parent)
                 {
-                    GameObject parentGO = new GameObject(path);
-                    parent = parentGO.transform;
+                    var parentGo = new GameObject(path);
+                    parent = parentGo.transform;
                     parent.SetParent(transform);
                 }
 
-                foreach(var go in objects)
+                foreach(GameObject go in objects)
                 {
                     if (!go)
                         continue;
@@ -74,7 +73,7 @@ namespace HEScripts.Systems
 
         // --------------------------------------------------------------------
 
-        void OnSceneChange(Scene oldScene, Scene newScene)
+        /*private void OnSceneChange(Scene oldScene, Scene newScene)
         {
             var oldEventSystem = EventSystem.current;
             var selected = oldEventSystem?.currentSelectedGameObject;
@@ -100,6 +99,6 @@ namespace HEScripts.Systems
                 if (selected)
                     newEventSystem.SetSelectedGameObject(selected);
             }
-        }
+        }*/
     }
 }

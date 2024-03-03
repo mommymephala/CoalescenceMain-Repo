@@ -62,7 +62,7 @@ namespace HEScripts.SaveSystem
         public void CheckIds()
         {
             Dictionary<string, SpawnableSavable> objs = new Dictionary<string, SpawnableSavable>();
-            foreach (var savable in Entries)
+            foreach (SpawnableSavable savable in Entries)
             {
                 var uniqueId = savable.GetComponent<ObjectUniqueId>();
                 string id = uniqueId.Id;

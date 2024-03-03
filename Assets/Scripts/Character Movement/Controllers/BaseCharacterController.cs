@@ -131,7 +131,7 @@ namespace Character_Movement.Controllers
 
         private bool _allowVerticalMovement;
         
-        private bool _restoreVelocityOnResume = true;
+        // private bool _restoreVelocityOnResume = true;
 
         #endregion
 
@@ -461,7 +461,7 @@ namespace Character_Movement.Controllers
             set { _moveDirection = Vector3.ClampMagnitude(value, 1.0f); }
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Toggle pause / resume.
         /// </summary>
 
@@ -494,13 +494,13 @@ namespace Character_Movement.Controllers
         /// Is the character crouching?
         /// </summary>
 
-        public bool isCrouching { get; protected set; }
+        public bool isCrouching { get; protected set; }*/
 
         #endregion
 
         #region METHODS
 
-        /// <summary>
+        /*/// <summary>
         /// Pause Rigidbody physical interaction, will restore current velocities (linear, angular) if desired (restoreVelocityOnResume == true).
         /// While paused, will turn the Rigidbody into kinematic, preventing any physical interaction.
         /// </summary>
@@ -521,7 +521,7 @@ namespace Character_Movement.Controllers
                 movement.Pause(false, restoreVelocityOnResume);
                 isPaused = false;
             }
-        }
+        }*/
 
         /// <summary>
         /// Rotate the character towards a given direction vector.
@@ -690,7 +690,7 @@ namespace Character_Movement.Controllers
         /// Handle character's Crouch / UnCrouch.
         /// </summary>
         
-        protected virtual void Crouch()
+        /*protected virtual void Crouch()
         {
             // If crouching behaviour is disabled, return
 
@@ -734,7 +734,7 @@ namespace Character_Movement.Controllers
 
                 isCrouching = false;
             }
-        }
+        }*/
 
         /// <summary>
         /// Calculate the desired movement velocity.
@@ -821,11 +821,11 @@ namespace Character_Movement.Controllers
 
         protected virtual void HandleInput()
         {
-            // Toggle pause / resume.
-            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
-
-            if (Input.GetKeyDown(KeyCode.P))
-                pause = !pause;
+            // // Toggle pause / resume.
+            // // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
+            //
+            // if (Input.GetKeyDown(KeyCode.P))
+            //     pause = !pause;
 
             // Handle user input
 
@@ -838,7 +838,7 @@ namespace Character_Movement.Controllers
 
             jump = Input.GetButton("Jump");
 
-            crouch = Input.GetKey(KeyCode.C);
+            // crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
@@ -899,12 +899,12 @@ namespace Character_Movement.Controllers
         {
             // Pause / resume character
 
-            Pause();
+            // Pause();
 
             // If paused, return
 
-            if (isPaused)
-                return;
+            // if (isPaused)
+            //     return;
 
             // Perform character movement
 
@@ -912,7 +912,7 @@ namespace Character_Movement.Controllers
 
             // Handle crouch
 
-            Crouch();
+            // Crouch();
         }
 
         public virtual void Update()
@@ -923,8 +923,8 @@ namespace Character_Movement.Controllers
 
             // If paused, return
 
-            if (isPaused)
-                return;
+            // if (isPaused)
+            //     return;
 
             // Update character rotation (if not paused)
 

@@ -9,7 +9,7 @@ namespace HEScripts.Platforming
     {
         // public PlayerMovement m_PlayerMovement;
         [SerializeField] private float m_PushTimeThreshold = 1f;
-        [SerializeField] private float m_PushIntentDotThreshold = 0.5f;
+        // [SerializeField] private float m_PushIntentDotThreshold = 0.5f;
 
         private float m_PushTime;
         private Action<OnDisableNotifier> m_OnPushableDisabled;

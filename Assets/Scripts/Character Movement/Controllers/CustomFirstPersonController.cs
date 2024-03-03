@@ -1,5 +1,4 @@
 ﻿using HEScripts.Player;
-using HorrorEngine;
 using UnityEngine;
 
 namespace Character_Movement.Controllers
@@ -64,8 +63,14 @@ namespace Character_Movement.Controllers
 
         protected override void HandleInput()
         {
+            // Toggle pause / resume.
+            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
+
+            // if (Input.GetKeyDown(KeyCode.P))
+            //     pause = !pause;
+            
             // Use GetPrimaryAxis for movement direction
-            var inputAxis = _input.GetPrimaryAxis();
+            Vector2 inputAxis = _input.GetPrimaryAxis();
             moveDirection = new Vector3
             {
                 x = inputAxis.x,

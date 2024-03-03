@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 5379111683642358938}
   - component: {fileID: 8633626557548862847}
   - component: {fileID: 1719402297243295236}
-  - component: {fileID: 1796683482813654283}
-  - component: {fileID: 8529145453714533099}
   m_Layer: 0
   m_Name: PickupItem
   m_TagString: Untagged
@@ -28,6 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027679269891604231}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,7 +34,6 @@ Transform:
   m_Children:
   - {fileID: 1905786596599384586}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5379111683642358938
 MonoBehaviour:
@@ -72,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9291977c9f2a14a5099c6a295b1a2eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Id: 
+  m_Id: e7e19bc4-a3c7-470d-9d92-37c5a3766f74
   IsUniqueInstance: 0
 --- !u!114 &1719402297243295236
 MonoBehaviour:
@@ -87,35 +85,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ApplySavedTransform: 1
---- !u!114 &1796683482813654283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027679269891604231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de894a0b53583b46a7ba87e16fa0dc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8529145453714533099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027679269891604231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e9a0e9e6c059943afbfaf15010b484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2027679271899568830
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2027679269891604227}
     m_Modifications:
     - target: {fileID: 455273963870671028, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
@@ -211,6 +186,9 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
 --- !u!4 &1905786596599384586 stripped
 Transform:

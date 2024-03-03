@@ -106,22 +106,6 @@ namespace Character_Movement.Controllers
         #region METHODS
 
         /// <summary>
-        /// Use this method to animate camera.
-        /// The default implementation use this to animate camera's when crouching.
-        /// Called on LateUpdate.
-        /// </summary>
-
-        protected virtual void AnimateView()
-        {
-            // Scale camera pivot to simulate crouching
-
-            var yScale = isCrouching ? Mathf.Clamp01(crouchingHeight / standingHeight) : 1.0f;
-
-            cameraPivotTransform.localScale = Vector3.MoveTowards(cameraPivotTransform.localScale,
-                new Vector3(1.0f, yScale, 1.0f), 5.0f * Time.deltaTime);
-        }
-
-        /// <summary>
         /// Perform 'Look' rotation.
         /// This rotate the character along its y-axis (yaw) and a child camera along its local x-axis (pitch).
         /// </summary>
@@ -153,7 +137,7 @@ namespace Character_Movement.Controllers
 
             // Strafe
 
-            if (moveDirection.x > 0.0f || moveDirection.x < 0.0f)
+            if (moveDirection.x is > 0.0f or < 0.0f)
                 targetSpeed = strafeSpeed;
 
             // Backwards
@@ -198,8 +182,8 @@ namespace Character_Movement.Controllers
             // Toggle pause / resume.
             // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
 
-            if (Input.GetKeyDown(KeyCode.P))
-                pause = !pause;
+            // if (Input.GetKeyDown(KeyCode.P))
+            //     pause = !pause;
 
             // Player input
 
@@ -214,7 +198,7 @@ namespace Character_Movement.Controllers
 
             jump = Input.GetButton("Jump");
 
-            crouch = Input.GetKey(KeyCode.C);
+            // crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
@@ -264,30 +248,21 @@ namespace Character_Movement.Controllers
             cameraPivotTransform = transform.Find("Camera_Pivot");
             if (cameraPivotTransform == null)
             {
-                Debug.LogError(string.Format(
-                    "BaseFPSController: No 'Camera_Pivot' found. Please parent a transform gameobject to '{0}' game object.",
-                    name));
+                Debug.LogError(
+                    $"BaseFPSController: No 'Camera_Pivot' found. Please parent a transform game object to '{name}' game object.");
             }
 
             var cam = GetComponentInChildren<Camera>();
             if (cam == null)
             {
                 Debug.LogError(
-                    string.Format(
-                        "BaseFPSController: No 'Camera' found. Please parent a camera to '{0}' game object.", name));
+                    $"BaseFPSController: No 'Camera' found. Please parent a camera to '{name}' game object.");
             }
             else
             {
                 cameraTransform = cam.transform;
                 mouseLook.Init(transform, cameraTransform);
             }
-        }
-
-        public virtual void LateUpdate()
-        {
-            // Perform camera's (view) animation
-
-            AnimateView();
         }
 
         #endregion

@@ -7,7 +7,6 @@ namespace HEScripts.Systems
     public class HECorePrefabs : ScriptableObject
     {
         [SerializeField] private HECorePrefabs m_Prototype;
-
         [SerializeField] private GameObject m_GameManager;
         [SerializeField] private GameObject m_Character;
         
@@ -23,8 +22,8 @@ namespace HEScripts.Systems
         [SerializeField] private GameObject m_ExamineItem;
         [SerializeField] private GameObject m_ExamineItemRenderer;
         [SerializeField] private GameObject m_Pause;
-        [SerializeField] private GameObject m_Map;
-        [SerializeField] private GameObject m_MapRenderer;
+        // [SerializeField] private GameObject m_Map;
+        // [SerializeField] private GameObject m_MapRenderer;
         [SerializeField] private GameObject m_GameOver;
         [SerializeField] private GameObject m_CinematicPlayer;
         [SerializeField] private GameObject m_InteractionPrompt;
@@ -58,8 +57,8 @@ namespace HEScripts.Systems
             Add(uiGO, m_ExamineItemRenderer, m_Prototype?.m_ExamineItemRenderer); // This need to be instantiated before the ExamineItem
             Add(uiGO, m_ExamineItem, m_Prototype?.m_ExamineItem);
             Add(uiGO, m_Pause, m_Prototype?.m_Pause);
-            Add(uiGO, m_Map, m_Prototype?.m_Map);
-            Add(uiGO, m_MapRenderer, m_Prototype?.m_MapRenderer);
+            // Add(uiGO, m_Map, m_Prototype?.m_Map);
+            // Add(uiGO, m_MapRenderer, m_Prototype?.m_MapRenderer);
             Add(uiGO, m_GameOver, m_Prototype?.m_GameOver);
             Add(uiGO, m_CinematicPlayer, m_Prototype?.m_CinematicPlayer);
             Add(uiGO, m_InteractionPrompt, m_Prototype?.m_InteractionPrompt);

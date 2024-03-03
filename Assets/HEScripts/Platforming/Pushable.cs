@@ -12,7 +12,7 @@ namespace HEScripts.Platforming
     {
         private static readonly float k_SnapThreshold = 0.01f;
         private static readonly float k_MinPushableDotValue = 0.4f;
-        private static readonly float k_SoundDisplacementThreshold = 0.005f;
+        // private static readonly float k_SoundDisplacementThreshold = 0.005f;
 
         public Vector3[] PushAxis;
         public bool LocalSpaceAxis = true;

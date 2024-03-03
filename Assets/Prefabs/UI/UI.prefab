@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5139371765033782120}
   - component: {fileID: 5139371765033782103}
   - component: {fileID: 7620977758137210264}
+  - component: {fileID: 2498270450774753281}
+  - component: {fileID: 6328332945458640143}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -70,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: ae78ad78efeb47642bad7536ec0c0488, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: ec2aadddefd3b924aa9e36abb2fc588b, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -85,9 +87,33 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2498270450774753281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5139371765033782121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf87d16ed9d9cbc419776cdb0189f758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6328332945458640143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5139371765033782121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e187685f88c55a4080904376d903e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5139371766568858963
 GameObject:
   m_ObjectHideFlags: 0
