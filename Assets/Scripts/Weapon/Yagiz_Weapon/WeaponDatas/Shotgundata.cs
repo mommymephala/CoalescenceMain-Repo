@@ -5,15 +5,4 @@ using UnityEngine;
 public class Shotgundata : RangedWeaponData
 {
     public float spread;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
