@@ -31,7 +31,7 @@ namespace HEScripts.Pickups
         {
             ItemData item = entry.Item;
 
-            GameObject prefab = item.DropPrefab ? item.DropPrefab.gameObject : m_DefaultDropPrefab;
+            GameObject prefab = item.dropPrefab ? item.dropPrefab.gameObject : m_DefaultDropPrefab;
             GameObject instance = m_Instantiator.Instatiate(prefab);
 
             instance.transform.SetParent(null);

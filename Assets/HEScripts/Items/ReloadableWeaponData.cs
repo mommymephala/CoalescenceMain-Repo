@@ -1,3 +1,4 @@
+using FMODUnity;
 using HorrorEngine;
 using UnityEngine;
 
@@ -8,8 +9,9 @@ namespace HEScripts.Items
     {
         public ItemData AmmoItem;
         public int MaxAmmo;
-        public AudioClip ShotSound;
-        public AudioClip ReloadSound;
-        public AudioClip NoAmmoSound;
+        public float ReloadDuration;
+        public EventReference ShotSound;
+        public EventReference ReloadSound;
+        public EventReference NoAmmoSound;
     }
 }

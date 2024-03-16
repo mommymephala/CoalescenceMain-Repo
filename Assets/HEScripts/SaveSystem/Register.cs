@@ -5,7 +5,7 @@ namespace HEScripts.SaveSystem
 {
     public class Register : ScriptableObject
     {
-        public string UniqueId;
+        public string uniqueId;
 
         private void OnValidate()
         {
@@ -14,8 +14,8 @@ namespace HEScripts.SaveSystem
 
         public void GenerateId()
         {
-            if (string.IsNullOrEmpty(UniqueId))
-                UniqueId = IdUtils.GenerateId();
+            if (string.IsNullOrEmpty(uniqueId))
+                uniqueId = IdUtils.GenerateId();
         }
     }
 }

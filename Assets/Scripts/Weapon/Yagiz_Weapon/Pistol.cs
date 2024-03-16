@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Pistol : RangedWeapon
 {
-    public override void Attack() {
+    public override void Attack() 
+    {
         base.Attack();
     }
 }

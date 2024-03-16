@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RangedWeapon : MonoBehaviour, IWeapons
 {
-    public RangedWeaponData weaponData;
+    // public RangedWeaponData weaponData;
 
     public virtual void Attack()
     {

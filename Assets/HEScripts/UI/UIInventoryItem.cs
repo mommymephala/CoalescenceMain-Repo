@@ -34,7 +34,7 @@ namespace HEScripts.UI
             int amount = 0;
             if (entry != null && entry.Item)
             {
-                amount = entry.Item.Flags.HasFlag(ItemFlags.Bulkable) ? entry.Count : entry.SecondaryCount;
+                amount = entry.Item.flags.HasFlag(ItemFlags.Bulkable) ? entry.Count : entry.SecondaryCount;
             }
 
             FillItem(entry != null ? entry.Item : null, amount, entry != null ? entry.Status : 0f);
@@ -47,15 +47,15 @@ namespace HEScripts.UI
         {
             if (data)
             {
-                m_Icon.sprite = data.Image;
+                m_Icon.sprite = data.image;
                 m_Icon.gameObject.SetActive(true);
 
                 m_Count.text = amount.ToString();
                 bool isReloadable = data as ReloadableWeaponData;
-                m_Count.gameObject.SetActive(data.Flags.HasFlag(ItemFlags.Bulkable) || amount > 0 || isReloadable);
+                m_Count.gameObject.SetActive(data.flags.HasFlag(ItemFlags.Bulkable) || amount > 0 || isReloadable);
                 m_Count.color = amount == 0 ? m_EmptyAmountColor : m_NormalAmountColor;
 
-                m_Status.gameObject.SetActive(data.Flags.HasFlag(ItemFlags.Depletable));
+                m_Status.gameObject.SetActive(data.flags.HasFlag(ItemFlags.Depletable));
                 m_StatusFill.fillAmount = status;
                 m_StatusFill.color = m_StatusFillColorOverValue.Evaluate(status);
 

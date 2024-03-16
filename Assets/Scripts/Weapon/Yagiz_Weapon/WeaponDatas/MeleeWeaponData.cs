@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using HEScripts.Items;
 using UnityEngine;
 
-public class MeleeWeaponData : WeaponDataNew
+[CreateAssetMenu(fileName = "New Melee Weapon", menuName = "Weapons/Melee Weapon")]
+public class MeleeWeaponData : WeaponData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

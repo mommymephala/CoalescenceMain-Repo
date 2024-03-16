@@ -166,7 +166,7 @@ namespace HEScripts.Inventory
 
             m_ItemAddedMsg.Item = item;
 
-            if (item.Flags.HasFlag(ItemFlags.Bulkable)) // Put all added items together
+            if (item.flags.HasFlag(ItemFlags.Bulkable)) // Put all added items together
             {
                 if (m_AutoBulk) // Put all added items with already existing ones
                 {
@@ -307,7 +307,7 @@ namespace HEScripts.Inventory
             }
 
             // Auto combine bulkable items
-            if (entry1.Item == entry2.Item && entry1.Item.Flags.HasFlag(ItemFlags.Bulkable) && entry1 != entry2)
+            if (entry1.Item == entry2.Item && entry1.Item.flags.HasFlag(ItemFlags.Bulkable) && entry1 != entry2)
             {
                 entry1.Count = entry1.Count + entry2.Count;
                 Remove(entry2, entry2.Count);
@@ -365,14 +365,14 @@ namespace HEScripts.Inventory
 
         public bool Use(InventoryEntry entry)
         {
-            if (entry.Item.InventoryAction == InventoryMainAction.None)
+            if (entry.Item.inventoryAction == InventoryMainAction.None)
                 return false;
 
             entry.Item.OnUse(entry);
 
             if (entry.Item)
             {
-                if (entry.Item.Flags.HasFlag(ItemFlags.UseOnInteractive))
+                if (entry.Item.flags.HasFlag(ItemFlags.UseOnInteractive))
                 {
                     InteractionColliderDetector interactionDetect = GameManager.Instance.Player.GetComponentInChildren<InteractionColliderDetector>();
                     if (interactionDetect.FocusedInteractive)
@@ -396,7 +396,7 @@ namespace HEScripts.Inventory
                     }
                 }
 
-                if (entry.Item.Flags.HasFlag(ItemFlags.ConsumeOnUse))
+                if (entry.Item.flags.HasFlag(ItemFlags.ConsumeOnUse))
                     Remove(entry, 1);
             }
 
@@ -581,7 +581,7 @@ namespace HEScripts.Inventory
                 {
                     saveData.Items.Add( new InventoryEntrySaveData()
                     {
-                        ItemId = entry.Item.UniqueId,
+                        ItemId = entry.Item.uniqueId,
                         Count = entry.Count,
                         SecondaryCount = entry.SecondaryCount,
                         Status = entry.Status
@@ -604,7 +604,7 @@ namespace HEScripts.Inventory
                     InventoryIndex = invIndex,
                     OptionalData = new InventoryEntrySaveData() // This info is useless for invIndex > -1
                     {
-                        ItemId = entry.Item.UniqueId,
+                        ItemId = entry.Item.uniqueId,
                         Count = entry.Count,
                         SecondaryCount = entry.SecondaryCount,
                         Status = entry.Status
@@ -634,7 +634,7 @@ namespace HEScripts.Inventory
             saveData.Documents = new List<string>();
             foreach (var doc in Documents)
             {
-                saveData.Documents.Add(doc.UniqueId);
+                saveData.Documents.Add(doc.uniqueId);
             }
 
             // Save maps

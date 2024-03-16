@@ -21,7 +21,7 @@ namespace HEScripts.Puzzles
 
         public void Add(ItemData item)
         {
-            m_UsedItems.Add(item.UniqueId);
+            m_UsedItems.Add(item.uniqueId);
             if (CheckSolution())
                 Solve();
         }
@@ -36,7 +36,7 @@ namespace HEScripts.Puzzles
                 int solutionIndex = 0;
                 for (int i = m_UsedItems.Count - m_Solution.Count; i < m_UsedItems.Count; ++i)
                 {
-                    if (m_UsedItems[i] != m_Solution[solutionIndex].UniqueId)
+                    if (m_UsedItems[i] != m_Solution[solutionIndex].uniqueId)
                         return false;
 
                     ++solutionIndex;
@@ -47,7 +47,7 @@ namespace HEScripts.Puzzles
                 List<string> solutionIDs = new List<string>();
                 for (int i = 0; i < m_Solution.Count; ++i)
                 {
-                    solutionIDs.Add(m_Solution[i].UniqueId);
+                    solutionIDs.Add(m_Solution[i].uniqueId);
                 }
 
                 foreach(var itemId in m_UsedItems)

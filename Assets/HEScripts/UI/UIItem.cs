@@ -83,7 +83,7 @@ namespace HEScripts.UI
             }
             else
             {
-                m_Image.sprite = item.Image;
+                m_Image.sprite = item.image;
                 m_Text.text = item.Name;
             }
 

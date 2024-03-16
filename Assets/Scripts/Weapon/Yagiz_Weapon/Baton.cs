@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Baton : MeleeWeapon
 {
-    public override void Attack() {
-        base.Attack();
-        // Shotgun attack logic
-        Debug.Log("Shotgun-specific attack logic");
+    public override void Attack() 
+    {
+        
     }
 }

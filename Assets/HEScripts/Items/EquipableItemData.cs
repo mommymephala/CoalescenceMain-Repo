@@ -18,7 +18,7 @@ namespace HEScripts.Items
 
         public void Equip(InventoryEntry entry)
         {
-            PlayerEquipment equipment = GameManager.Instance.Player.GetComponent<PlayerEquipment>();
+            var equipment = GameManager.Instance.Player.GetComponent<PlayerEquipment>();
             Inventory.Inventory inventory = GameManager.Instance.Inventory;
             if (entry != null)
             {

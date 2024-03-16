@@ -44,7 +44,7 @@ namespace HEScripts.Container
                 {
                     saveData.Items.Add(new InventoryEntrySaveData()
                     {
-                        ItemId = item.Item.UniqueId,
+                        ItemId = item.Item.uniqueId,
                         Count = item.Count,
                         SecondaryCount = item.SecondaryCount
                     });

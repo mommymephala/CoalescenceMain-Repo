@@ -56,8 +56,8 @@ namespace HEScripts.UI
 
             ClearPreviousModel();
 
-            PooledGameObject newPooled = item.ExamineModel.GetComponent<PooledGameObject>();
-            GameObject newModel = newPooled ? GameObjectPool.Instance.GetFromPool(item.ExamineModel).gameObject : Instantiate(item.ExamineModel);
+            PooledGameObject newPooled = item.examineModel.GetComponent<PooledGameObject>();
+            GameObject newModel = newPooled ? GameObjectPool.Instance.GetFromPool(item.examineModel).gameObject : Instantiate(item.examineModel);
             newModel.transform.SetParent(m_Renderer.PreviewObject);
             newModel.transform.localPosition = Vector3.zero;
             newModel.transform.localRotation = Quaternion.identity;

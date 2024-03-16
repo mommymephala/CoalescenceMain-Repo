@@ -77,7 +77,7 @@ namespace HEScripts.UI
             if (slot.InventoryEntry != null && slot.InventoryEntry.Item)
             {
                 m_ItemName.text = slot.InventoryEntry.Item.Name;
-                m_ItemDesc.text = slot.InventoryEntry.Item.Description;
+                m_ItemDesc.text = slot.InventoryEntry.Item.description;
                 UIManager.Get<UIAudio>().Play(m_NavigateClip);
             }
             else
@@ -231,7 +231,7 @@ namespace HEScripts.UI
                 UIManager.Get<UIAudio>().Play(m_UseClip);
 
                 ItemData item = m_SelectedSlot.InventoryEntry.Item;
-                if (item && item.Flags.HasFlag(ItemFlags.UseOnInteractive))
+                if (item && item.flags.HasFlag(ItemFlags.UseOnInteractive))
                 {
                     Hide();
                 }
@@ -308,7 +308,7 @@ namespace HEScripts.UI
 
             var gameMgr = GameManager.Instance;
             
-            if (item.Flags.HasFlag(ItemFlags.CreatePickupOnDrop))
+            if (item.flags.HasFlag(ItemFlags.CreatePickupOnDrop))
             {
                 gameMgr.Player.GetComponentInChildren<PickupDropper>().Drop(m_SelectedSlot.InventoryEntry);
             }

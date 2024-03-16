@@ -6,12 +6,14 @@ public class WeaponController : MonoBehaviour
 {
     private IWeapons currentWeapon;
 
-    public void SwitchWeapon(IWeapons newWeapon) {
+    public void SwitchWeapon(IWeapons newWeapon) 
+    {
         currentWeapon = newWeapon;
         newWeapon.Equip();
     }
 
-    public void PerformAttack() {
+    public void PerformAttack() 
+    {
         if (currentWeapon != null) {
             currentWeapon.Attack();
 

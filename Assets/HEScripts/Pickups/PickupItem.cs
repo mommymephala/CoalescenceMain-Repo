@@ -95,7 +95,7 @@ namespace HEScripts.Pickups
         {
             InventoryEntrySaveData savable = new InventoryEntrySaveData()
             {
-                ItemId = Entry.Item ? Entry.Item.UniqueId : "",
+                ItemId = Entry.Item ? Entry.Item.uniqueId : "",
                 Count = Entry.Count,
                 SecondaryCount = Entry.SecondaryCount,
                 Status = Entry.Status

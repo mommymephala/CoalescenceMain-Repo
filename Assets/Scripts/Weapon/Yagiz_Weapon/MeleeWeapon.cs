@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour, IWeapons
 {
-    public RangedWeaponData weaponData;
-    // Start is called before the first frame update
+    // public RangedWeaponData weaponData;
+    
     public virtual void Attack()
     {
         // Generic ranged weapon attack logic

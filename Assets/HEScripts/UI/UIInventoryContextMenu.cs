@@ -74,13 +74,13 @@ namespace HEScripts.UI
             CombineButton.gameObject.SetActive(false);
             DropButton.gameObject.SetActive(false);
 
-            if (item.InventoryAction.HasFlag(InventoryMainAction.Use))
+            if (item.inventoryAction.HasFlag(InventoryMainAction.Use))
             {
                 UseButton.gameObject.SetActive(true);
                 m_DefaultButton = UseButton;
             }
             
-            if(item.InventoryAction.HasFlag(InventoryMainAction.Equip))
+            if(item.inventoryAction.HasFlag(InventoryMainAction.Equip))
             {
                 var equipable = item as EquipableItemData;
                 if (equipable.Slot != EquipmentSlot.None)
@@ -90,19 +90,19 @@ namespace HEScripts.UI
                 }
             }
 
-            if (item.Flags.HasFlag(ItemFlags.Combinable))
+            if (item.flags.HasFlag(ItemFlags.Combinable))
             {
                 CombineButton.gameObject.SetActive(true);
                 if (!m_DefaultButton) m_DefaultButton = CombineButton;
             }
 
-            if (item.Flags.HasFlag(ItemFlags.Examinable))
+            if (item.flags.HasFlag(ItemFlags.Examinable))
             {
                 ExamineButton.gameObject.SetActive(true);
                 if (!m_DefaultButton) m_DefaultButton = ExamineButton;
             }
 
-            if (item.Flags.HasFlag(ItemFlags.Droppable))
+            if (item.flags.HasFlag(ItemFlags.Droppable))
             {
                 DropButton.gameObject.SetActive(true);
                 if (!m_DefaultButton) m_DefaultButton = DropButton;

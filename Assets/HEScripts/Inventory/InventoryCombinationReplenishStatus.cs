@@ -14,8 +14,8 @@ namespace HEScripts.Inventory
 
         public override InventoryEntry OnCombine(InventoryEntry entry1, InventoryEntry entry2)
         {
-            bool depletable1 = entry1.Item.Flags.HasFlag(ItemFlags.Depletable);
-            bool depletable2 = entry2.Item.Flags.HasFlag(ItemFlags.Depletable);
+            bool depletable1 = entry1.Item.flags.HasFlag(ItemFlags.Depletable);
+            bool depletable2 = entry2.Item.flags.HasFlag(ItemFlags.Depletable);
             if (depletable1 || depletable2)
             {
                 InventoryEntry depletable = depletable1 ? entry1 : entry2;

@@ -65,7 +65,7 @@ namespace HEScripts.UI
             if (slot.InventoryEntry != null && slot.InventoryEntry.Item)
             {
                 m_ItemName.text = slot.InventoryEntry.Item.Name;
-                m_ItemDesc.text = slot.InventoryEntry.Item.Description;
+                m_ItemDesc.text = slot.InventoryEntry.Item.description;
                 if (m_NavigateClip)
                     UIManager.Get<UIAudio>().Play(m_NavigateClip);
             }

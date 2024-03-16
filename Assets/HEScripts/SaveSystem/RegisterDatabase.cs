@@ -30,13 +30,13 @@ namespace HEScripts.SaveSystem
             {
                 foreach (T reg in Prototype.Registers)
                 {
-                    m_HashedRegisters[reg.UniqueId] = reg;
+                    m_HashedRegisters[reg.uniqueId] = reg;
                 }
             }
 
             foreach (T reg in Registers)
             {
-                m_HashedRegisters[reg.UniqueId] = reg;
+                m_HashedRegisters[reg.uniqueId] = reg;
             }
         }
 
@@ -77,11 +77,11 @@ namespace HEScripts.SaveSystem
             Dictionary<string, T> objs = new Dictionary<string, T>();
             foreach (var r in Registers)
             {
-                if (!objs.ContainsKey(r.UniqueId))
-                    objs[r.UniqueId] = r;
+                if (!objs.ContainsKey(r.uniqueId))
+                    objs[r.uniqueId] = r;
                 else
                 {
-                    Debug.LogError("DataRegister : Id is already in use " + r.UniqueId + " by : " + objs[r.UniqueId].name + ", duplicated by:" + r.name);
+                    Debug.LogError("DataRegister : Id is already in use " + r.uniqueId + " by : " + objs[r.uniqueId].name + ", duplicated by:" + r.name);
                 }
             }
         }

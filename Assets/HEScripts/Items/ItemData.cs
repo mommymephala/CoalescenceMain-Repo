@@ -1,7 +1,6 @@
 ﻿using System;
 using HEScripts.Inventory;
 using HEScripts.SaveSystem;
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.Items
@@ -30,13 +29,13 @@ namespace HEScripts.Items
     [CreateAssetMenu(menuName = "Horror Engine/Items/Item")]
     public class ItemData : Register
     {
-        public Sprite Image;
-        public GameObject ExamineModel;
+        public Sprite image;
+        public GameObject examineModel;
         public string Name;
-        public string Description;
-        public InventoryMainAction InventoryAction = InventoryMainAction.Use;
-        public ItemFlags Flags;
-        public SpawnableSavable DropPrefab;
+        public string description;
+        public InventoryMainAction inventoryAction = InventoryMainAction.Use;
+        public ItemFlags flags;
+        public SpawnableSavable dropPrefab;
 
         public virtual void OnUse(InventoryEntry entry) { }
     }
