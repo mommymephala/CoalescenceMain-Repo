@@ -75,7 +75,6 @@ namespace HEScripts.Inventory
         public WeaponData Weapon;
     }
 
-
     [System.Serializable]
     public struct InventoryEntrySaveData
     {
@@ -119,6 +118,14 @@ namespace HEScripts.Inventory
         [SerializeField] private DialogData m_OnFullDialog;
 
         public EquipmentSlot WeaponSlot = EquipmentSlot.Primary;
+        // // New field to reference inventory slot prefabs and parent in the UI
+        // [SerializeField] private GameObject inventorySlotPrefab;
+        // [SerializeField] private Transform inventorySlotParent;
+        //
+        // // New fields for the flexible equipment system
+        // [SerializeField] private GameObject equipmentSlotPrefab;
+        // [SerializeField] private Transform equipmentSlotParent;
+        // private InventoryEntry[] equipmentSlots; // Represents the flexible equipment slots
         public bool Expanded;
         public int PreExpansionSize;
 

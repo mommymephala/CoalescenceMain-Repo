@@ -1,21 +1,22 @@
 /*using System.Collections;
-using ECM.Components;
-using ECM.Controllers;
-using ECM.Examples;
-using FMODUnity;
-using HorrorEngine;
-using UnityEngine;
-using UnityEngine.UI;
+using Character_Movement.Components;
+using Character_Movement.Controllers;
+using Enemies;
+using HEScripts.Inventory;
+using HEScripts.Items;
+using HEScripts.Systems;
+using HEScripts.UI;
 using Interfaces;
+using UnityEngine;
 
-namespace WeaponRelated
+namespace Weapon
 {
     public class Weapon : MonoBehaviour
     {
         public WeaponData weaponData;
 
         [Header("References")]
-        private NewPlayerController _newPlayerController;
+        private CustomFirstPersonController _newPlayerController;
         private MouseLook _mouseLook;
         private Camera _playerCamera;
         private Camera _weaponCamera;
@@ -67,7 +68,7 @@ namespace WeaponRelated
 
         private void Awake()
         {
-            _newPlayerController = GetComponentInParent<NewPlayerController>();
+            _newPlayerController = GetComponentInParent<CustomFirstPersonController>();
             _mouseLook = GetComponentInParent<MouseLook>();
             _playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
             _weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
@@ -164,7 +165,7 @@ namespace WeaponRelated
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
                     // PlaySurfaceHitSFX(weaponData.);
-                    PlaySurfaceHitSFX("Wall");
+                    // PlaySurfaceHitSFX("Wall");
                 }
 
                 var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
@@ -180,17 +181,17 @@ namespace WeaponRelated
                 {
                     SpawnBloodParticle(hitInfo.point);
                     Debug.Log("tar ses");
-                    PlaySurfaceHitSFX("Tar_Spawn");
+                    // PlaySurfaceHitSFX("Tar_Spawn");
                    // PlaySurfaceHitSFX(weaponData.targetHitSFX);
                 }
                 else if (hitInfo.transform.CompareTag("Chip"))
                 {
                     Debug.Log("chip ses");
-                    PlaySurfaceHitSFX("Chip");
+                    // PlaySurfaceHitSFX("Chip");
                 } else if (isWeakpoint || hitInfo.transform.CompareTag("Weakpoint"))
                 {
                     Debug.Log("weakpint ses");
-                    PlaySurfaceHitSFX("Weakpoint");
+                    // PlaySurfaceHitSFX("Weakpoint");
                 }
             }
 
@@ -390,8 +391,7 @@ namespace WeaponRelated
                 UpdateAiming(Input.GetKey(aimDownSightKey));
             }
         }
-
-
+        
         private void ResetFOV()
         {
             _playerCamera.fieldOfView = weaponData.originalPlayerFOV;
@@ -439,14 +439,14 @@ namespace WeaponRelated
                 muzzleFlash.transform.localPosition = new Vector3(0f, 0f, 0.1f);
                 muzzleFlash.transform.localScale = Vector3.one * 0.5f;
             }
-            Debug.Log(" heryerim");
-            PlaySurfaceHitSFX("heryer");
+            
+            // PlaySurfaceHitSFX("heryer");
             
             Destroy(muzzleFlash, 0.1f);
-            PlayGunShotSFX();
+            // PlayGunShotSFX();
         }
         
-        private void PlayGunShotSFX()
+        /*private void PlayGunShotSFX()
         {
             if (weaponData.gunShotSFX.IsNull)
             {
@@ -479,7 +479,7 @@ namespace WeaponRelated
             
             Debug.Log("out of ammo");
             RuntimeManager.PlayOneShot(weaponData.OutOfAmmo, transform.position);
-        }
+        }#1#
         
         //Separate UI logic!!!
         
@@ -490,7 +490,7 @@ namespace WeaponRelated
                 _crosshairInstance.SetActive(!aimingDownSight);
             }
         }
-        private void PlaySurfaceHitSFX(string surfaceHitSfx)
+        /*private void PlaySurfaceHitSFX(string surfaceHitSfx)
         {
 
             weaponData.gunshotInstance = RuntimeManager.CreateInstance(weaponData.gunSurfaceEffect);
@@ -518,11 +518,12 @@ namespace WeaponRelated
             {
                 Debug.LogWarning("Fmod event not found for surface hit");
                 return;
-            }#1#
+            }#2#
          //RuntimeManager.PlayOneShot(surfaceHitSfx, transform.position);
          weaponData.gunshotInstance.start();
          weaponData.gunshotInstance.release();
-        }
+        }#1#
+        
         /*private void UpdateCrosshair()
         {
             // Determine crosshair size based on the player's state and weapon's characteristics

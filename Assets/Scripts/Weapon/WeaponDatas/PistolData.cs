@@ -6,5 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Pistol", menuName = "Weapons/Pistol Data")]
 public class PistolData : ReloadableWeaponData
 {
-    public float accuracy;
+    
 }
