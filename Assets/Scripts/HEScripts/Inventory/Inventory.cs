@@ -572,6 +572,13 @@ namespace HEScripts.Inventory
             PreExpansionSize = prevSize;
             Expanded = true;
         }
+        
+        // --------------------------------------------------------------------
+        
+        public void SwapItems(int index1, int index2)
+        {
+            (Items[index1], Items[index2]) = (Items[index2], Items[index1]);
+        }
 
         //----------------------------------------------
         // ISavable implementation

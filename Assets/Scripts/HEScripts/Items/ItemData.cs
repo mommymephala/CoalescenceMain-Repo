@@ -12,14 +12,6 @@ namespace HEScripts.Items
         Use,
         Equip
     }
-    
-    public enum ItemType {
-        KeyItem,
-        Treasure,
-        Weapon,
-        Ammo,
-        // Add more as needed
-    }
 
     [Flags]
     public enum ItemFlags
@@ -32,12 +24,12 @@ namespace HEScripts.Items
         CreatePickupOnDrop  = 1 << 6,
         UseOnInteractive    = 1 << 7,
         Depletable          = 1 << 8,
+        Movable            = 1 << 9,
     }
 
     [CreateAssetMenu(menuName = "Horror Engine/Items/Item")]
     public class ItemData : Register
     {
-        public ItemType itemType;
         public Sprite image;
         public GameObject examineModel;
         public string Name;

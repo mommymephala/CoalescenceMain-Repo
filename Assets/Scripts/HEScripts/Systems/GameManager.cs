@@ -170,7 +170,7 @@ namespace HEScripts.Systems
         void OnPlayerDeath(Health health)
         {
             MessageBuffer<GameOverMessage>.Dispatch();
-            IsPlaying = false;   
+            IsPlaying = false;
         }
 
         //------------------------------------------------------

@@ -98,7 +98,19 @@ MonoBehaviour:
   ItemDatabase: {fileID: 11400000, guid: 8d8cc9c5eda19e349837969193490622, type: 2}
   DocumentDatabase: {fileID: 11400000, guid: 6e1299f3a9679ec46936071a815c55b5, type: 2}
   SpawnableDatabase: {fileID: 11400000, guid: 6f7013af2c53b4d4593d998121c04a6f, type: 2}
-  InitialInventory: []
+  InitialInventory:
+  - Item: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
+    Count: 3
+    SecondaryCount: 0
+    Status: 0
+  - Item: {fileID: 11400000, guid: bdd432aa04ef00a4795851cbe6abf451, type: 2}
+    Count: 5
+    SecondaryCount: 0
+    Status: 0
+  - Item: {fileID: 11400000, guid: ae0b53bd804cfbe42840ed3dbde74f37, type: 2}
+    Count: 2
+    SecondaryCount: 0
+    Status: 0
   InitialDocuments: []
   InitialEquipment: []
   OnPlayerRegistered:

@@ -1,9 +1,9 @@
+using System;
 using HEScripts.Extensions;
 using HEScripts.Inventory;
 using HEScripts.Items;
 using HEScripts.Pickups;
 using HEScripts.Systems;
-using HorrorEngine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,6 +18,7 @@ namespace HEScripts.UI
         [SerializeField] private TMPro.TextMeshProUGUI m_ItemDesc;
         [SerializeField] private UIInventoryItem m_Equipped;
         [SerializeField] private UIInventoryItem m_EquippedSecondary;
+        [SerializeField] private UIInventoryItem m_FirstItemForSwap;
         [SerializeField] private float m_ExpandingInteractionDelay = 1f;
 
         [Header("Audio")]
@@ -52,14 +53,13 @@ namespace HEScripts.UI
             m_ContextMenu.CombineButton.onClick.AddListener(OnCombine);
             m_ContextMenu.ExamineButton.onClick.AddListener(OnExamine);
             m_ContextMenu.DropButton.onClick.AddListener(OnDrop);
-            m_ContextMenu.OnClose.AddListener(()=>{
-                SelectDefault();
-            });
+            m_ContextMenu.MoveButton.onClick.AddListener(OnSwap);
+            m_ContextMenu.OnClose.AddListener(SelectDefault);
         }
 
         // --------------------------------------------------------------------
 
-        void RegisterItemCallbacks(UIInventoryItem slot)
+        private void RegisterItemCallbacks(UIInventoryItem slot)
         {
             UISelectableCallbacks selectable = slot.GetComponent<UISelectableCallbacks>();
             selectable.OnSelected.AddListener(OnSlotSelected);
@@ -70,7 +70,7 @@ namespace HEScripts.UI
 
         // --------------------------------------------------------------------
 
-        void OnSlotSelected(GameObject obj)
+        private void OnSlotSelected(GameObject obj)
         {
             UIInventoryItem slot = obj.GetComponent<UIInventoryItem>();
             m_SelectedSlot = slot;
@@ -89,14 +89,14 @@ namespace HEScripts.UI
 
         // --------------------------------------------------------------------
 
-        void Start()
+        private void Start()
         {
             gameObject.SetActive(false);
         }
 
         // --------------------------------------------------------------------
 
-        void Update()
+        private void Update()
         {
             if (m_Expanding)
                 return;
@@ -148,7 +148,7 @@ namespace HEScripts.UI
 
         // --------------------------------------------------------------------
 
-        void EndExpansion()
+        private void EndExpansion()
         {
             m_Expanding = false;
         }
@@ -299,7 +299,6 @@ namespace HEScripts.UI
 
         // --------------------------------------------------------------------
 
-
         private void OnDrop()
         {
             ItemData item = m_SelectedSlot.InventoryEntry.Item;
@@ -317,6 +316,39 @@ namespace HEScripts.UI
 
             Hide();
         }
+        
+        // --------------------------------------------------------------------
+        
+        private void OnSwap()
+        {
+            if (m_FirstItemForSwap == null)
+            {
+                // First item selected for swap
+                m_FirstItemForSwap = m_SelectedSlot;
+                // TODO: Add visual feedback
+            }
+            else
+            {
+                // Second item selected, perform the swap
+                int index1 = Array.IndexOf(m_ItemSlots, m_FirstItemForSwap);
+                int index2 = Array.IndexOf(m_ItemSlots, m_SelectedSlot);
+                GameManager.Instance.Inventory.SwapItems(index1, index2);
+
+                // Reset and refresh UI
+                m_FirstItemForSwap = null;
+                Fill();
+                FillEquipped();
+                SelectDefault();
+            }
+
+            m_ContextMenu.gameObject.SetActive(false);
+        }
+        
+        // private void ResetSwapSelection()
+        // {
+        //     m_FirstItemForSwap = null;
+        //     // Optionally, remove any visual indication that an item was selected for swapping
+        // }
 
         // --------------------------------------------------------------------
 

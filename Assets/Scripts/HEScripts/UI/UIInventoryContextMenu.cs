@@ -14,6 +14,7 @@ namespace HEScripts.UI
         public Button ExamineButton;
         public Button CombineButton;
         public Button DropButton;
+        public Button MoveButton;
 
         public UnityEvent OnClose;
 
@@ -29,6 +30,7 @@ namespace HEScripts.UI
             ExamineButton.onClick.AddListener(OnOptionSelected);
             CombineButton.onClick.AddListener(OnOptionSelected);
             DropButton.onClick.AddListener(OnOptionSelected);
+            MoveButton.onClick.AddListener(OnOptionSelected);
         }
 
         // --------------------------------------------------------------------
@@ -73,6 +75,7 @@ namespace HEScripts.UI
             ExamineButton.gameObject.SetActive(false);
             CombineButton.gameObject.SetActive(false);
             DropButton.gameObject.SetActive(false);
+            MoveButton.gameObject.SetActive(false);
 
             if (item.inventoryAction.HasFlag(InventoryMainAction.Use))
             {
@@ -107,6 +110,13 @@ namespace HEScripts.UI
                 DropButton.gameObject.SetActive(true);
                 if (!m_DefaultButton) m_DefaultButton = DropButton;
             }
+            
+            if (item.flags.HasFlag(ItemFlags.Movable))
+            {
+                MoveButton.gameObject.SetActive(true);
+                if (!m_DefaultButton) m_DefaultButton = MoveButton;
+            }
+
 
             FixNavigation();
         }
