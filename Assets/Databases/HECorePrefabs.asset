@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Prototype: {fileID: 0}
   m_GameManager: {fileID: 1654157888941685904, guid: fe413e664c5b58449a138841724b4ef8, type: 3}
-  m_Character: {fileID: 6855049204320965907, guid: 60cf8dcab79d6c64f8ca2e9203507f0b, type: 3}
+  m_Character: {fileID: 6855049204320965907, guid: 1e82047fdd407c04cabdcb845f395b39, type: 3}
   m_Inventory: {fileID: 7215310692255748130, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
   m_Document: {fileID: 5189606333825347259, guid: a6674c002d021c1409e763241803e3b3, type: 3}
   m_DocumentList: {fileID: 2508541329136679117, guid: d20c0263b113ee64987722ec9b7f8a72, type: 3}

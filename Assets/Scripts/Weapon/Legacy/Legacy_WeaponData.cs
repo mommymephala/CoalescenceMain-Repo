@@ -3,11 +3,13 @@ using HorrorEngine;
 using UnityEngine;
 //using FMODUnity;
 using FMOD.Studio;
+using HEScripts.Items;
+
 namespace WeaponRelated
 {
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
     
-    public class WeaponData : ReloadableHEWeaponData
+    public class WeaponData : ReloadableWeaponData
     {
         [Header("Audio")] 
         public EventReference gunShotSFX;

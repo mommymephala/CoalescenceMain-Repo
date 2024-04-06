@@ -125,7 +125,7 @@ namespace HEScripts.UI
 
         private void FixNavigation() 
         {
-            Navigation navigation = new Navigation();
+            var navigation = new Navigation();
             navigation.mode = Navigation.Mode.Explicit;
 
             Button[] buttons = GetComponentsInChildren<Button>();

@@ -128,8 +128,7 @@ namespace Character_Movement.Controllers
         /// Get target speed, relative to input moveDirection,
         /// eg: forward, backward or strafe.
         /// </summary>
-
-        protected virtual float GetTargetSpeed()
+        public virtual float GetTargetSpeed()
         {
             // Defaults to forward speed
 

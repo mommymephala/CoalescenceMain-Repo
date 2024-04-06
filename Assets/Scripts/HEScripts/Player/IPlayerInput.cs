@@ -9,9 +9,12 @@ namespace HEScripts.Player
         bool IsJumpHeld();
         bool IsAimingHeld();
         bool IsAttackDown();
+        bool IsAttackHeld();
         bool IsAttackUp();
         bool IsInteractingDown();
         bool IsReloadDown();
+        bool IsOpenSystemMenuDown();
+        bool IsOpenInventoryMenuDown();
         void Flush();
     }
 }

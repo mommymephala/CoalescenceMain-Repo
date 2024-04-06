@@ -197,7 +197,7 @@ namespace HEScripts.UI
         private void OnSubmit()
         {
             m_SelectedSlot = EventSystem.current.currentSelectedGameObject.GetComponent<UIInventoryItem>();
-            if (!m_SelectedSlot) // Selected obj is not an item
+            if (!m_SelectedSlot)
             {
                 if (m_CombiningSlot)
                     CancelCombine();
@@ -246,21 +246,21 @@ namespace HEScripts.UI
                 UIManager.Get<UIAudio>().Play(m_CantUseClip);
             }
 
-            m_Input.Flush(); // Flush so an object is not immediately selected after this
+            m_Input.Flush();
         }
 
         // --------------------------------------------------------------------
 
         private void OnEquip()
         {
-            EquipableItemData item = m_SelectedSlot.InventoryEntry.Item as EquipableItemData;
-            item.Equip(m_SelectedSlot.InventoryEntry);
+            var item = m_SelectedSlot.InventoryEntry.Item as EquipableItemData;
+            if (item != null) item.Equip(m_SelectedSlot.InventoryEntry);
             UIManager.Get<UIAudio>().Play(m_UseClip);
 
             Fill();
             FillEquipped();
 
-            m_Input.Flush(); // Flush so an object is not immediately selected after this
+            m_Input.Flush();
         }
 
         // --------------------------------------------------------------------
@@ -305,7 +305,7 @@ namespace HEScripts.UI
             if (item == null)
                 return;
 
-            var gameMgr = GameManager.Instance;
+            GameManager gameMgr = GameManager.Instance;
             
             if (item.flags.HasFlag(ItemFlags.CreatePickupOnDrop))
             {
@@ -323,15 +323,14 @@ namespace HEScripts.UI
         {
             if (m_FirstItemForSwap == null)
             {
-                // First item selected for swap
                 m_FirstItemForSwap = m_SelectedSlot;
                 // TODO: Add visual feedback
             }
             else
             {
                 // Second item selected, perform the swap
-                int index1 = Array.IndexOf(m_ItemSlots, m_FirstItemForSwap);
-                int index2 = Array.IndexOf(m_ItemSlots, m_SelectedSlot);
+                var index1 = Array.IndexOf(m_ItemSlots, m_FirstItemForSwap);
+                var index2 = Array.IndexOf(m_ItemSlots, m_SelectedSlot);
                 GameManager.Instance.Inventory.SwapItems(index1, index2);
 
                 // Reset and refresh UI
@@ -377,7 +376,7 @@ namespace HEScripts.UI
 
             if (highlightedEntry != null)
             {
-                for (int i = 0; i < m_ItemSlots.Length; ++i)
+                for (var i = 0; i < m_ItemSlots.Length; ++i)
                 {
                     if (m_ItemSlots[i].InventoryEntry == highlightedEntry)
                     {
@@ -397,14 +396,14 @@ namespace HEScripts.UI
 
         private void Fill()
         {
-            var inventory = GameManager.Instance.Inventory;
+            Inventory.Inventory inventory = GameManager.Instance.Inventory;
             var items = inventory.Items;
-            int itemsCount = items.Length;
+            var itemsCount = items.Length;
 
             m_Expanding = inventory.Expanded;
             inventory.Expanded = false;
 
-            for (int i = 0; i < items.Length; ++i)
+            for (var i = 0; i < items.Length; ++i)
             {
                 m_ItemSlots[i].gameObject.SetActive(i < itemsCount);
 
@@ -416,7 +415,7 @@ namespace HEScripts.UI
                 m_ItemSlots[i].Fill(items[i]);
             }
 
-            for (int i = items.Length; i < m_ItemSlots.Length; ++i)
+            for (var i = items.Length; i < m_ItemSlots.Length; ++i)
             {
                 m_ItemSlots[i].gameObject.SetActive(false);
             }

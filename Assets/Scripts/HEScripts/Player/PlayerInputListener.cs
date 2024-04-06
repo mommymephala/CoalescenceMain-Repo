@@ -46,15 +46,15 @@ namespace HEScripts.Player
         private InputActionProcessor m_RunP = new InputActionProcessor();
         private InputActionProcessor m_JumpP = new InputActionProcessor();
         private InputActionProcessor m_ReloadP = new InputActionProcessor();
-        private InputActionProcessor m_Turn180P = new InputActionProcessor();
-        private InputActionProcessor m_ChangeAimTargetP = new InputActionProcessor();
+        private InputActionProcessor m_OpenSystemMenuP = new InputActionProcessor();
+        private InputActionProcessor m_OpenInventoryMenuP = new InputActionProcessor();
 
         private void Awake()
         {
             MessageBuffer<GameUnpausedMessage>.Subscribe(OnGameUnpaused);
         }
 
-        void OnGameUnpaused(GameUnpausedMessage msg)
+        private void OnGameUnpaused(GameUnpausedMessage msg)
         {
             Flush();
         }
@@ -94,14 +94,14 @@ namespace HEScripts.Player
             m_ReloadP.Process(value);
         }
 
-        public void OnTurn180(InputValue value)
+        public void OnOpenSystemMenu(InputValue value)
         {
-            m_Turn180P.Process(value);
+            m_OpenSystemMenuP.Process(value);
         }
 
-        public void OnChangeAimTarget(InputValue value)
+        public void OnOpenInventoryMenu(InputValue value)
         {
-            m_ChangeAimTargetP.Process(value);
+            m_OpenInventoryMenuP.Process(value);
         }
 
         // ------------------------------------ IPlayerInput implementation
@@ -119,6 +119,11 @@ namespace HEScripts.Player
         public bool IsAttackDown()
         {
             return m_AttackP.IsDown();
+        }
+
+        public bool IsAttackHeld()
+        {
+            return m_AttackP.IsHeld();
         }
 
         public bool IsAttackUp()
@@ -145,6 +150,16 @@ namespace HEScripts.Player
         {
             return m_ReloadP.IsDown();
         }
+        
+        public bool IsOpenSystemMenuDown()
+        {
+            return m_OpenSystemMenuP.IsDown();
+        }
+
+        public bool IsOpenInventoryMenuDown()
+        {
+            return m_OpenInventoryMenuP.IsDown();
+        }
 
         public void Flush()
         {
@@ -154,12 +169,11 @@ namespace HEScripts.Player
             m_RunP.Clear();
             m_JumpP.Clear();
             m_ReloadP.Clear();
-            m_Turn180P.Clear();
-            m_ChangeAimTargetP.Clear();
+            m_OpenSystemMenuP.Clear();
+            m_OpenInventoryMenuP.Clear();
         }
     }
 #else
     public class PlayerInputNew : MonoBehaviour { }
 #endif
 }
-

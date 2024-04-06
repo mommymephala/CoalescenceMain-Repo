@@ -93,7 +93,7 @@ namespace HorrorEngine
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Turn180"",
+                    ""name"": ""OpenSystemMenu"",
                     ""type"": ""Button"",
                     ""id"": ""ba528feb-46d9-4074-b36e-de03a749112e"",
                     ""expectedControlType"": ""Button"",
@@ -102,7 +102,7 @@ namespace HorrorEngine
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChangeAimTarget"",
+                    ""name"": ""OpenInventoryMenu"",
                     ""type"": ""Button"",
                     ""id"": ""c329c4e0-5300-42b0-a917-83af72cd01b4"",
                     ""expectedControlType"": ""Button"",
@@ -112,17 +112,6 @@ namespace HorrorEngine
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""60e49a61-8ad9-4897-9e3c-cdb06ef27e28"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PrimaryAxis"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""ac5ac73c-3031-46f8-9b17-e116011f9909"",
@@ -180,23 +169,12 @@ namespace HorrorEngine
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b62ae2f8-1e2f-4609-9683-b664764c5aef"",
-                    ""path"": ""<Gamepad>/dpad"",
+                    ""id"": ""60e49a61-8ad9-4897-9e3c-cdb06ef27e28"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PrimaryAxis"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aa201482-6b2d-4ace-82d5-9ed92d5685db"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -213,12 +191,12 @@ namespace HorrorEngine
                 },
                 {
                     ""name"": """",
-                    ""id"": ""409b287c-e4fc-4a97-ac36-75001049b626"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""aa201482-6b2d-4ace-82d5-9ed92d5685db"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -235,8 +213,19 @@ namespace HorrorEngine
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0be28395-045f-4749-9397-62b3aa2826f0"",
+                    ""id"": ""409b287c-e4fc-4a97-ac36-75001049b626"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ee441cc-afd6-4768-8bc9-71dec90cbcfa"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -246,8 +235,8 @@ namespace HorrorEngine
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9ee441cc-afd6-4768-8bc9-71dec90cbcfa"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""0be28395-045f-4749-9397-62b3aa2826f0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -301,23 +290,23 @@ namespace HorrorEngine
                 },
                 {
                     ""name"": """",
-                    ""id"": ""24036118-36b9-46a2-a561-749d05fe03e9"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""id"": ""567c7f39-24d0-41d0-90fb-19bf4bcc4142"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Turn180"",
+                    ""action"": ""OpenSystemMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""567c7f39-24d0-41d0-90fb-19bf4bcc4142"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""id"": ""24036118-36b9-46a2-a561-749d05fe03e9"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Turn180"",
+                    ""action"": ""OpenSystemMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -328,18 +317,18 @@ namespace HorrorEngine
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeAimTarget"",
+                    ""action"": ""OpenInventoryMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""3accccb2-e546-465c-ac76-29bc21e28e0e"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeAimTarget"",
+                    ""action"": ""OpenInventoryMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -347,6 +336,17 @@ namespace HorrorEngine
                     ""name"": """",
                     ""id"": ""3540e459-5303-4d18-b29c-a35b9041d0dd"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2307860-7cf0-4fc9-9bff-cd3a68b4607a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
@@ -368,8 +368,8 @@ namespace HorrorEngine
             m_Gameplay_Run = m_Gameplay.FindAction("Run", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
             m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
-            m_Gameplay_Turn180 = m_Gameplay.FindAction("Turn180", throwIfNotFound: true);
-            m_Gameplay_ChangeAimTarget = m_Gameplay.FindAction("ChangeAimTarget", throwIfNotFound: true);
+            m_Gameplay_OpenSystemMenu = m_Gameplay.FindAction("OpenSystemMenu", throwIfNotFound: true);
+            m_Gameplay_OpenInventoryMenu = m_Gameplay.FindAction("OpenInventoryMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -438,8 +438,8 @@ namespace HorrorEngine
         private readonly InputAction m_Gameplay_Run;
         private readonly InputAction m_Gameplay_Jump;
         private readonly InputAction m_Gameplay_Reload;
-        private readonly InputAction m_Gameplay_Turn180;
-        private readonly InputAction m_Gameplay_ChangeAimTarget;
+        private readonly InputAction m_Gameplay_OpenSystemMenu;
+        private readonly InputAction m_Gameplay_OpenInventoryMenu;
         public struct GameplayActions
         {
             private @PlayerActions m_Wrapper;
@@ -451,8 +451,8 @@ namespace HorrorEngine
             public InputAction @Run => m_Wrapper.m_Gameplay_Run;
             public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
             public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
-            public InputAction @Turn180 => m_Wrapper.m_Gameplay_Turn180;
-            public InputAction @ChangeAimTarget => m_Wrapper.m_Gameplay_ChangeAimTarget;
+            public InputAction @OpenSystemMenu => m_Wrapper.m_Gameplay_OpenSystemMenu;
+            public InputAction @OpenInventoryMenu => m_Wrapper.m_Gameplay_OpenInventoryMenu;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -483,12 +483,12 @@ namespace HorrorEngine
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
-                @Turn180.started += instance.OnTurn180;
-                @Turn180.performed += instance.OnTurn180;
-                @Turn180.canceled += instance.OnTurn180;
-                @ChangeAimTarget.started += instance.OnChangeAimTarget;
-                @ChangeAimTarget.performed += instance.OnChangeAimTarget;
-                @ChangeAimTarget.canceled += instance.OnChangeAimTarget;
+                @OpenSystemMenu.started += instance.OnOpenSystemMenu;
+                @OpenSystemMenu.performed += instance.OnOpenSystemMenu;
+                @OpenSystemMenu.canceled += instance.OnOpenSystemMenu;
+                @OpenInventoryMenu.started += instance.OnOpenInventoryMenu;
+                @OpenInventoryMenu.performed += instance.OnOpenInventoryMenu;
+                @OpenInventoryMenu.canceled += instance.OnOpenInventoryMenu;
             }
 
             private void UnregisterCallbacks(IGameplayActions instance)
@@ -514,12 +514,12 @@ namespace HorrorEngine
                 @Reload.started -= instance.OnReload;
                 @Reload.performed -= instance.OnReload;
                 @Reload.canceled -= instance.OnReload;
-                @Turn180.started -= instance.OnTurn180;
-                @Turn180.performed -= instance.OnTurn180;
-                @Turn180.canceled -= instance.OnTurn180;
-                @ChangeAimTarget.started -= instance.OnChangeAimTarget;
-                @ChangeAimTarget.performed -= instance.OnChangeAimTarget;
-                @ChangeAimTarget.canceled -= instance.OnChangeAimTarget;
+                @OpenSystemMenu.started -= instance.OnOpenSystemMenu;
+                @OpenSystemMenu.performed -= instance.OnOpenSystemMenu;
+                @OpenSystemMenu.canceled -= instance.OnOpenSystemMenu;
+                @OpenInventoryMenu.started -= instance.OnOpenInventoryMenu;
+                @OpenInventoryMenu.performed -= instance.OnOpenInventoryMenu;
+                @OpenInventoryMenu.canceled -= instance.OnOpenInventoryMenu;
             }
 
             public void RemoveCallbacks(IGameplayActions instance)
@@ -546,8 +546,8 @@ namespace HorrorEngine
             void OnRun(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
             void OnReload(InputAction.CallbackContext context);
-            void OnTurn180(InputAction.CallbackContext context);
-            void OnChangeAimTarget(InputAction.CallbackContext context);
+            void OnOpenSystemMenu(InputAction.CallbackContext context);
+            void OnOpenInventoryMenu(InputAction.CallbackContext context);
         }
     }
 }

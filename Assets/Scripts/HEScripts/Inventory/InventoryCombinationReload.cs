@@ -19,7 +19,7 @@ namespace HEScripts.Inventory
                 InventoryEntry ammoEntry = reloadable1 ? entry2 : entry1;
 
                 ReloadableWeaponData reloadable = reloadableEntry.Item as ReloadableWeaponData;
-                if (reloadable.AmmoItem == ammoEntry.Item)
+                if (reloadable.ammoItem == ammoEntry.Item)
                 {
                     return GameManager.Instance.Inventory.ReloadWeapon(reloadableEntry, ammoEntry);
                 }

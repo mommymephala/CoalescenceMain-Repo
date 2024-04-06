@@ -1,13 +1,13 @@
-/*using System;
-using ECM.Components;
-using ECM.Controllers;
-using ECM.Examples;
+using Character_Movement.Components;
+using Character_Movement.Controllers;
 using UnityEngine;
 
 namespace PlayerActions
 {
     public class Bobbing : MonoBehaviour
     {
+        //TODO: REPAIR, its broken.
+        
         [Header("Bob")]
         [SerializeField] private bool toggleBob = true;
         [SerializeField] private Transform joint;
@@ -15,19 +15,19 @@ namespace PlayerActions
         [SerializeField] private Vector3 bobAmount = new Vector3(.15f, .05f, 0f);
         
         // Bobbing values when aiming
-        [SerializeField] private float aimingBobSpeed = 5f;
-        [SerializeField] private Vector3 aimingBobAmount = new Vector3(.05f, .02f, 0f);
+        // [SerializeField] private float aimingBobSpeed = 5f;
+        // [SerializeField] private Vector3 aimingBobAmount = new Vector3(.05f, .02f, 0f);
         
         // References
         private float _bobTimer;
         private Vector3 _jointOriginalPos;
-        private NewPlayerController _newPlayerController;
-        private MouseLook _mouseLook;
+        private CustomFirstPersonController _playerController;
+        // private MouseLook _mouseLook;
 
         private void Awake()
         {
-            _newPlayerController = FindObjectOfType<NewPlayerController>();
-            _mouseLook = GetComponentInParent<MouseLook>();
+            _playerController = FindObjectOfType<CustomFirstPersonController>();
+            // _mouseLook = GetComponentInParent<MouseLook>();
         }
 
         private void Update()
@@ -40,19 +40,19 @@ namespace PlayerActions
             if (!toggleBob) return;
 
             // Check if the player is aiming
-            bool isAiming = _mouseLook.aimingDownSight;
+            // bool isAiming = _mouseLook.aimingDownSight;
 
-            float currentBobSpeed = bobSpeed;
+            var currentBobSpeed = bobSpeed;
             Vector3 currentBobAmount = bobAmount;
 
-            if (isAiming)
+            // if (isAiming)
+            // {
+            //     currentBobSpeed = aimingBobSpeed;
+            //     currentBobAmount = aimingBobAmount;
+            // }
+            if (_playerController.GetTargetSpeed() > 0)
             {
-                currentBobSpeed = aimingBobSpeed;
-                currentBobAmount = aimingBobAmount;
-            }
-            else if (_newPlayerController.GetTargetSpeed() > 0)
-            {
-                currentBobSpeed = _newPlayerController.run ? bobSpeed + _newPlayerController.runSpeedMultiplier * _newPlayerController.GetTargetSpeed() * 0.5f : bobSpeed;
+                currentBobSpeed = _playerController.run ? bobSpeed + _playerController.runSpeedMultiplier * _playerController.GetTargetSpeed() * 0.5f : bobSpeed;
             }
             else
             {
@@ -70,4 +70,4 @@ namespace PlayerActions
             );
         }
     }
-}*/
+}

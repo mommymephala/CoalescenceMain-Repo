@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
 using Enemies;
@@ -13,7 +13,7 @@ namespace Weapon
 {
     public class Weapon : MonoBehaviour
     {
-        public WeaponData weaponData;
+        public ReloadableWeaponData weaponData;
 
         [Header("References")]
         private CustomFirstPersonController _newPlayerController;
@@ -87,11 +87,11 @@ namespace Weapon
         
         private void Start()
         {
-            if (weaponData.crosshairPrefab != null)
-            {
-                _crosshairInstance = Instantiate(weaponData.crosshairPrefab, transform);
-                _crosshairInstance.SetActive(false);
-            }
+            // if (weaponData.crosshairPrefab != null)
+            // {
+            //     _crosshairInstance = Instantiate(weaponData.crosshairPrefab, transform);
+            //     _crosshairInstance.SetActive(false);
+            // }
             
             UpdateAiming(false);
         }
@@ -209,7 +209,7 @@ namespace Weapon
             Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (_newPlayerController.IsWalking)
+            if (_newPlayerController.isMoving)
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }
@@ -268,12 +268,11 @@ namespace Weapon
             if (_reloading || !gameObject.activeSelf) return;
 
             _weaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
-            weaponData = _weaponEntry.Item as WeaponData;
+            weaponData = _weaponEntry.Item as ReloadableWeaponData;
             
-            if (_weaponEntry.SecondaryCount < weaponData.MaxAmmo)
+            if (weaponData != null && _weaponEntry.SecondaryCount < weaponData.maxAmmo)
             {
                 ReloadFromInventory();
-                
             }
         }
 
@@ -281,16 +280,16 @@ namespace Weapon
         {
             _reloading = true;
             aimingDownSight = false;
-            UIManager.Get<UIInputListener>().AddBlockingContext(this); 
+            // UIManager.Get<UIInputListener>().AddBlockingContext(this); 
             
             weaponAnimator.SetTrigger("ReloadTrigger");
 
-            yield return new WaitForSeconds(weaponData.reloadTime);
+            yield return new WaitForSeconds(weaponData.reloadDuration);
 
-            int actualAmmoLoaded = Mathf.Min(ammoToReload, ammoEntry.Count);
+            var actualAmmoLoaded = Mathf.Min(ammoToReload, ammoEntry.Count);
             _weaponEntry.SecondaryCount += actualAmmoLoaded;
             GameManager.Instance.Inventory.Remove(ammoEntry, actualAmmoLoaded);
-            _weaponEntry.SecondaryCount = Mathf.Min(_weaponEntry.SecondaryCount, weaponData.MaxAmmo);
+            _weaponEntry.SecondaryCount = Mathf.Min(_weaponEntry.SecondaryCount, weaponData.maxAmmo);
 
             EndReload();
         }
@@ -298,9 +297,9 @@ namespace Weapon
         private void ReloadFromInventory()
         {
             Inventory inventory = GameManager.Instance.Inventory;
-            if (weaponData.AmmoItem != null && inventory.TryGet(weaponData.AmmoItem, out InventoryEntry ammoEntry))
+            if (weaponData.ammoItem != null && inventory.TryGet(weaponData.ammoItem, out InventoryEntry ammoEntry))
             {
-                int ammoNeeded = weaponData.MaxAmmo - _weaponEntry.SecondaryCount;
+                int ammoNeeded = weaponData.maxAmmo - _weaponEntry.SecondaryCount;
                 int ammoAvailable = Mathf.Min(ammoEntry.Count, ammoNeeded);
 
                 if (ammoAvailable > 0)
@@ -310,24 +309,24 @@ namespace Weapon
                         StopCoroutine(_reloadCoroutine);
                     }
             
-                    PlayReloadSFX(); // Add this line to play the reload sound effect
+                    // PlayReloadSFX(); // Add this line to play the reload sound effect
                     _reloadCoroutine = StartCoroutine(Reload(ammoAvailable, ammoEntry));
                 }
                 else
                 {
-                    PlayOutOfAmmo(); // This handles the scenario where player has some ammo, but not enough to reload
+                    // PlayOutOfAmmo(); // This handles the scenario where player has some ammo, but not enough to reload
                 }
             }
             else
             {
-                PlayOutOfAmmo(); // This handles the scenario where player has no ammo at all
+                // PlayOutOfAmmo(); // This handles the scenario where player has no ammo at all
             }
         }
 
         private void EndReload()
         {
             _reloading = false;
-            UIManager.Get<UIInputListener>().RemoveBlockingContext(this);
+            // UIManager.Get<UIInputListener>().RemoveBlockingContext(this);
             _reloadCoroutine = null;
         }
 
@@ -479,7 +478,7 @@ namespace Weapon
             
             Debug.Log("out of ammo");
             RuntimeManager.PlayOneShot(weaponData.OutOfAmmo, transform.position);
-        }#1#
+        }*/
         
         //Separate UI logic!!!
         
@@ -518,11 +517,11 @@ namespace Weapon
             {
                 Debug.LogWarning("Fmod event not found for surface hit");
                 return;
-            }#2#
+            }#1#
          //RuntimeManager.PlayOneShot(surfaceHitSfx, transform.position);
          weaponData.gunshotInstance.start();
          weaponData.gunshotInstance.release();
-        }#1#
+        }*/
         
         /*private void UpdateCrosshair()
         {
@@ -553,7 +552,7 @@ namespace Weapon
             // bottomCrosshair.sizeDelta = new Vector2(bottomCrosshair.sizeDelta.x, weaponData.restingSize + sizeDelta);
             // leftCrosshair.sizeDelta = new Vector2(leftCrosshair.sizeDelta.y, weaponData.restingSize + sizeDelta);
             // rightCrosshair.sizeDelta = new Vector2(rightCrosshair.sizeDelta.y, weaponData.restingSize + sizeDelta);
-        }#1#
+        }*/
         
         // private void UpdateAmmoUI()
         // {
@@ -567,4 +566,4 @@ namespace Weapon
         //     }
         // }
     }
-}*/
+}

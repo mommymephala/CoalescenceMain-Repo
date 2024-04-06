@@ -331,7 +331,7 @@ namespace HEScripts.Inventory
                 InventoryEntry ammoEntry = reloadable1 ? entry2 : entry1;
                 
                 ReloadableWeaponData reloadable = reloadableEntry.Item as ReloadableWeaponData;
-                if (reloadable.AmmoItem == ammoEntry.Item)
+                if (reloadable.ammoItem == ammoEntry.Item)
                 {
                     return ReloadWeapon(reloadableEntry, ammoEntry);
                 }
@@ -348,7 +348,7 @@ namespace HEScripts.Inventory
             ReloadableWeaponData weapon = weaponEntry.Item as ReloadableWeaponData;
             
             int prevAmmo = weaponEntry.SecondaryCount;
-            int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, weapon.MaxAmmo);
+            int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, weapon.maxAmmo);
             weaponEntry.SecondaryCount = newAmmo;
             int dif = newAmmo - prevAmmo;
 
@@ -515,8 +515,8 @@ namespace HEScripts.Inventory
             if (reloadableWeapon)
             {
                 Inventory inventory = GameManager.Instance.Inventory;
-                return weaponEntry.SecondaryCount < reloadableWeapon.MaxAmmo &&
-                    inventory.TryGet(reloadableWeapon.AmmoItem, out InventoryEntry ammoEntry);
+                return weaponEntry.SecondaryCount < reloadableWeapon.maxAmmo &&
+                    inventory.TryGet(reloadableWeapon.ammoItem, out InventoryEntry ammoEntry);
             }
 
             return false;
@@ -583,6 +583,7 @@ namespace HEScripts.Inventory
         //----------------------------------------------
         // ISavable implementation
         //----------------------------------------------
+        
         public InventorySaveData GetSavableData()
         {
             InventorySaveData saveData = new InventorySaveData();

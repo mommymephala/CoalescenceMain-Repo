@@ -460,6 +460,16 @@ namespace Character_Movement.Controllers
             get { return _moveDirection; }
             set { _moveDirection = Vector3.ClampMagnitude(value, 1.0f); }
         }
+        
+        /// <summary>
+        /// Indicates whether the character is currently moving based on the movement input.
+        /// </summary>
+        
+        public bool isMoving
+        {
+            get { return _moveDirection.sqrMagnitude > 0.0001f; }
+        }
+
 
         /*/// <summary>
         /// Toggle pause / resume.

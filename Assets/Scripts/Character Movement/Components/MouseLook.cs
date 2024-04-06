@@ -52,6 +52,12 @@ namespace Character_Movement.Components
         [Tooltip("The maximum pitch angle (in degrees).")]
         [SerializeField]
         private float _maxPitchAngle = 90.0f;
+        
+        [Tooltip("Is aiming down?")]
+        private bool aimingDownSight;
+        
+        [Tooltip("How fast the cursor moves when in ADS mode.")]
+        private float _adsSensitivity = 1.0f;
 
         #endregion
 
@@ -155,6 +161,23 @@ namespace Character_Movement.Components
         {
             get { return _maxPitchAngle; }
             set { _maxPitchAngle = Mathf.Clamp(value, -180.0f, 180.0f); }
+        }
+        
+        /// <summary>
+        /// How fast the cursor moves when in ADS mode.
+        /// </summary>
+        public float adsSensitivity
+        {
+            get { return _adsSensitivity; }
+            set { _adsSensitivity = Mathf.Max(0.0f, value); }
+        }
+        
+        /// <summary>
+        /// Is aiming down sight?
+        /// </summary>
+        public void SetAimingDownSight(bool aiming)
+        {
+            aimingDownSight = aiming;
         }
 
         #endregion
