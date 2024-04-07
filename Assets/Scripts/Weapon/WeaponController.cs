@@ -6,7 +6,9 @@ namespace Weapon
 {
     public class WeaponController : MonoBehaviour
     {
-        [SerializeField] private ReloadableWeaponData weaponData;
+        public event System.Action OnStartReload;
+        
+        public ReloadableWeaponData weaponData;
         private IPlayerInput _input;
         private int _currentAmmo;
         private bool _isReloading;
@@ -64,9 +66,15 @@ namespace Weapon
 
         private void StartReload()
         {
+            if (_isReloading || _currentAmmo == weaponData.maxAmmo)
+                return;
+
             _isReloading = true;
             Debug.Log("Reloading...");
-            Invoke(nameof(FinishReload), weaponData.reloadDuration); // Assuming reloadDuration is a float indicating seconds
+
+            // Invoke the event.
+            OnStartReload?.Invoke();
+            Invoke(nameof(FinishReload), weaponData.reloadDuration);
         }
 
         private void FinishReload()

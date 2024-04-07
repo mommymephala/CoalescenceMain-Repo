@@ -8,19 +8,20 @@ namespace Weapon
     {
         public event System.Action OnShootAttempt;
         public event System.Action OnShootSuccess;
-
-        [Header("Weapon Data")]
-        [SerializeField] private ReloadableWeaponData weaponData;
+        
+        private IPlayerInput _input;
+        private WeaponController _controller;
 
         [Header("Shooting Components")]
         [SerializeField] private Transform muzzleTransform;
         private Transform _weaponHolderTransform;
+        
         private float _timeSinceLastShot;
-        private IPlayerInput _input;
 
         private void Awake()
         {
             _input = GetComponentInParent<IPlayerInput>();
+            _controller = GetComponent<WeaponController>();
             _weaponHolderTransform = GameObject.Find("WeaponHolder").transform;
         }
 
@@ -28,18 +29,18 @@ namespace Weapon
         {
             _timeSinceLastShot += Time.deltaTime;
 
-            if ((weaponData.allowAutoFire && _input.IsAttackHeld() || !weaponData.allowAutoFire && _input.IsAttackDown()) && CanShoot())
+            if ((_controller.weaponData.allowAutoFire && _input.IsAttackHeld() || !_controller.weaponData.allowAutoFire && _input.IsAttackDown()) && CanShoot())
             {
-                OnShootAttempt?.Invoke(); // Notify of the attempt to shoot
+                OnShootAttempt?.Invoke();
                 
                 Shoot();
-                OnShootSuccess?.Invoke(); // Notify of successful shot
+                OnShootSuccess?.Invoke();
             }
         }
 
         private bool CanShoot()
         {
-            return _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f);
+            return _timeSinceLastShot >= 1f / (_controller.weaponData.fireRate / 60f);
         }
 
         private void Shoot()
@@ -48,14 +49,14 @@ namespace Weapon
             Vector3 shootDirection = CalculateSpread(_weaponHolderTransform.forward);
             
             // Implement the actual shooting logic here
-            Debug.DrawRay(muzzleTransform.position, shootDirection * weaponData.maxDistance, Color.red, 2f);
+            Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
             
             // Trigger visual and audio effects for shooting here
         }
 
         private Vector3 CalculateSpread(Vector3 baseDirection)
         {
-            return baseDirection + Random.insideUnitSphere * weaponData.spread;
+            return baseDirection + Random.insideUnitSphere * _controller.weaponData.spread;
         }
     }
 }

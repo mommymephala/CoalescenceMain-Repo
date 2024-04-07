@@ -7,6 +7,10 @@ namespace Weapon
     public class WeaponAiming : MonoBehaviour
     {
         private IPlayerInput _playerInput;
+        private MouseLook _mouseLook;
+        private WeaponController _controller;
+        private Camera _playerCamera;
+        private Camera _weaponCamera;
 
         [SerializeField] private Transform adsTransform;
         [SerializeField] private float aimDownSightSpeed = 5f;
@@ -16,16 +20,20 @@ namespace Weapon
         private float _originalFOV;
         private bool _isAiming;
         private Vector3 _originalAdsPosition;
-        private Camera _playerCamera;
-        private Camera _weaponCamera;
-        private MouseLook _mouseLook;
 
         private void Awake()
         {
             _playerInput = GetComponentInParent<IPlayerInput>();
             _mouseLook = GetComponentInParent<MouseLook>();
+            _controller = GetComponent<WeaponController>();
+            if (_controller != null)
+            {
+                _controller.OnStartReload += ExitAimDownSight;
+            }
+            
             _playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
             _weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
+            
             _originalFOV = _playerCamera.fieldOfView;
             _originalAdsPosition = adsTransform.localPosition;
         }
@@ -83,6 +91,20 @@ namespace Weapon
         {
             _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, targetFOV, Time.deltaTime * aimDownSightSpeed);
             _weaponCamera.fieldOfView = Mathf.Lerp(_weaponCamera.fieldOfView, targetFOV, Time.deltaTime * aimDownSightSpeed);
+        }
+
+        private void ExitAimDownSight()
+        {
+            _isAiming = false;
+            ResetAiming();
+        }
+
+        private void OnDestroy()
+        {
+            if (_controller != null)
+            {
+                _controller.OnStartReload -= ExitAimDownSight;
+            }
         }
     }
 }
