@@ -15,18 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aiming",
+                    "name": "Attack",
                     "type": "Button",
-                    "id": "0de53bd7-a553-4809-bbe5-f04e1539377d",
+                    "id": "53776148-10fe-4da8-8a0c-ac038a91ae96",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Aiming",
                     "type": "Button",
-                    "id": "53776148-10fe-4da8-8a0c-ac038a91ae96",
+                    "id": "0de53bd7-a553-4809-bbe5-f04e1539377d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -151,28 +151,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "PrimaryAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "20b9b819-bef0-491b-abbc-fd9ecaab7040",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aiming",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aa201482-6b2d-4ace-82d5-9ed92d5685db",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "Press(behavior=2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aiming",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -327,6 +305,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20b9b819-bef0-491b-abbc-fd9ecaab7040",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa201482-6b2d-4ace-82d5-9ed92d5685db",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

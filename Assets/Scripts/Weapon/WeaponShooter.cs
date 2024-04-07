@@ -1,59 +1,56 @@
 using HEScripts.Items;
-using HEScripts.Player;
 using UnityEngine;
+using HEScripts.Player;
 
 namespace Weapon
 {
     public class WeaponShooter : MonoBehaviour
     {
-        private IPlayerInput _input;
+        public event System.Action OnShootAttempt;
+        public event System.Action OnShootSuccess;
 
         [Header("Weapon Data")]
-        public ReloadableWeaponData weaponData;
+        [SerializeField] private ReloadableWeaponData weaponData;
 
         [Header("Shooting Components")]
         [SerializeField] private Transform muzzleTransform;
         private Transform _weaponHolderTransform;
         private float _timeSinceLastShot;
+        private IPlayerInput _input;
 
         private void Awake()
         {
             _input = GetComponentInParent<IPlayerInput>();
-            _weaponHolderTransform = GameObject.Find("WeaponHolder").transform; // Ensure this finds the correct Transform
+            _weaponHolderTransform = GameObject.Find("WeaponHolder").transform;
         }
 
         private void Update()
         {
-            // Ensure we update the time since last shot every frame
             _timeSinceLastShot += Time.deltaTime;
 
-            switch (weaponData.allowAutoFire)
+            if ((weaponData.allowAutoFire && _input.IsAttackHeld() || !weaponData.allowAutoFire && _input.IsAttackDown()) && CanShoot())
             {
-                // For automatic weapons, we check if the attack button is being held
-                case true when _input.IsAttackHeld() && CanShoot():
-                // For non-automatic weapons, we check if the attack button was just pressed
-                case false when _input.IsAttackDown() && CanShoot():
-                    Shoot();
-                    break;
+                OnShootAttempt?.Invoke(); // Notify of the attempt to shoot
+                
+                Shoot();
+                OnShootSuccess?.Invoke(); // Notify of successful shot
             }
         }
 
         private bool CanShoot()
         {
-            // Ensure the weapon fires according to its fire rate
             return _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f);
         }
 
         private void Shoot()
         {
-            Debug.Log("Shooting.");
-            _timeSinceLastShot = 0f; // Reset the timer immediately after a shot
-
+            _timeSinceLastShot = 0f;
             Vector3 shootDirection = CalculateSpread(_weaponHolderTransform.forward);
+            
             // Implement the actual shooting logic here
-            Debug.DrawRay(_weaponHolderTransform.position, shootDirection * weaponData.maxDistance, Color.red, 2f);
-
-            // TODO: Trigger visual and audio effects for shooting
+            Debug.DrawRay(muzzleTransform.position, shootDirection * weaponData.maxDistance, Color.red, 2f);
+            
+            // Trigger visual and audio effects for shooting here
         }
 
         private Vector3 CalculateSpread(Vector3 baseDirection)

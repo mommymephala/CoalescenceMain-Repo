@@ -39,18 +39,18 @@ namespace HorrorEngine
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Aiming"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""0de53bd7-a553-4809-bbe5-f04e1539377d"",
+                    ""id"": ""53776148-10fe-4da8-8a0c-ac038a91ae96"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Aiming"",
                     ""type"": ""Button"",
-                    ""id"": ""53776148-10fe-4da8-8a0c-ac038a91ae96"",
+                    ""id"": ""0de53bd7-a553-4809-bbe5-f04e1539377d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -175,28 +175,6 @@ namespace HorrorEngine
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PrimaryAxis"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""20b9b819-bef0-491b-abbc-fd9ecaab7040"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aa201482-6b2d-4ace-82d5-9ed92d5685db"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -353,6 +331,28 @@ namespace HorrorEngine
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20b9b819-bef0-491b-abbc-fd9ecaab7040"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa201482-6b2d-4ace-82d5-9ed92d5685db"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -362,8 +362,8 @@ namespace HorrorEngine
             // Gameplay
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_PrimaryAxis = m_Gameplay.FindAction("PrimaryAxis", throwIfNotFound: true);
-            m_Gameplay_Aiming = m_Gameplay.FindAction("Aiming", throwIfNotFound: true);
             m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+            m_Gameplay_Aiming = m_Gameplay.FindAction("Aiming", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
             m_Gameplay_Run = m_Gameplay.FindAction("Run", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
@@ -432,8 +432,8 @@ namespace HorrorEngine
         private readonly InputActionMap m_Gameplay;
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_PrimaryAxis;
-        private readonly InputAction m_Gameplay_Aiming;
         private readonly InputAction m_Gameplay_Attack;
+        private readonly InputAction m_Gameplay_Aiming;
         private readonly InputAction m_Gameplay_Interact;
         private readonly InputAction m_Gameplay_Run;
         private readonly InputAction m_Gameplay_Jump;
@@ -445,8 +445,8 @@ namespace HorrorEngine
             private @PlayerActions m_Wrapper;
             public GameplayActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @PrimaryAxis => m_Wrapper.m_Gameplay_PrimaryAxis;
-            public InputAction @Aiming => m_Wrapper.m_Gameplay_Aiming;
             public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+            public InputAction @Aiming => m_Wrapper.m_Gameplay_Aiming;
             public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             public InputAction @Run => m_Wrapper.m_Gameplay_Run;
             public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
@@ -465,12 +465,12 @@ namespace HorrorEngine
                 @PrimaryAxis.started += instance.OnPrimaryAxis;
                 @PrimaryAxis.performed += instance.OnPrimaryAxis;
                 @PrimaryAxis.canceled += instance.OnPrimaryAxis;
-                @Aiming.started += instance.OnAiming;
-                @Aiming.performed += instance.OnAiming;
-                @Aiming.canceled += instance.OnAiming;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Aiming.started += instance.OnAiming;
+                @Aiming.performed += instance.OnAiming;
+                @Aiming.canceled += instance.OnAiming;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -496,12 +496,12 @@ namespace HorrorEngine
                 @PrimaryAxis.started -= instance.OnPrimaryAxis;
                 @PrimaryAxis.performed -= instance.OnPrimaryAxis;
                 @PrimaryAxis.canceled -= instance.OnPrimaryAxis;
-                @Aiming.started -= instance.OnAiming;
-                @Aiming.performed -= instance.OnAiming;
-                @Aiming.canceled -= instance.OnAiming;
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
+                @Aiming.started -= instance.OnAiming;
+                @Aiming.performed -= instance.OnAiming;
+                @Aiming.canceled -= instance.OnAiming;
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
@@ -540,8 +540,8 @@ namespace HorrorEngine
         public interface IGameplayActions
         {
             void OnPrimaryAxis(InputAction.CallbackContext context);
-            void OnAiming(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
+            void OnAiming(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);

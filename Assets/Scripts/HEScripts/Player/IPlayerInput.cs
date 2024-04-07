@@ -8,6 +8,7 @@ namespace HEScripts.Player
         bool IsRunHeld();
         bool IsJumpHeld();
         bool IsAimingHeld();
+        bool IsAimingDown();
         bool IsAttackDown();
         bool IsAttackHeld();
         bool IsAttackUp();

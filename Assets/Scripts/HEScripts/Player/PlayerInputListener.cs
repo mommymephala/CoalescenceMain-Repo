@@ -115,6 +115,11 @@ namespace HEScripts.Player
         {
             return m_AimingP.IsHeld();
         }
+        
+        public bool IsAimingDown()
+        {
+            return m_AimingP.IsDown();
+        }
 
         public bool IsAttackDown()
         {
