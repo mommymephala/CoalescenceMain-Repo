@@ -2,7 +2,6 @@
 using HEScripts.Pooling;
 using HEScripts.SaveSystem;
 using HorrorEngine;
-using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,9 +36,7 @@ namespace HEScripts.Combat
         public HealthDepletedEvent OnDeath = new HealthDepletedEvent();
         public UnityEvent OnLoadedDead;
 
-        //public Damageable LastDamageableHit { get; private set; }
-        // TODO: TEMPORARY FIX!!! (IDamageable)
-        public IDamageable LastDamageableHit { get; private set; }
+        public Damageable LastDamageableHit { get; private set; }
         public UnityEngine.Object LastInstigator { get; private set; }
         public float Normalized { get { return Value / Max; } }
         public bool IsDead { get { return Value <= 0; } }
@@ -60,7 +57,7 @@ namespace HEScripts.Combat
 
         // --------------------------------------------------------------------
 
-        public void TakeDamage(float amount, IDamageable damageable = null)
+        public void TakeDamage(float amount, Damageable damageable = null)
         {
             LastDamageableHit = damageable;
 
@@ -103,21 +100,6 @@ namespace HEScripts.Combat
             if (IsDead)
                 OnDeath?.Invoke(this);
         }
-        
-        // --------------------------------------------------------------------
-        
-        public void DamageReceived(float amount)
-        {
-            // LastDamageableHit = damageable;
-
-            if (Invulnerable)
-                return;
-
-            if (Infinite)
-                Value += amount;
-
-            SetHealth(Value - amount);
-        }
 
         // --------------------------------------------------------------------
         // ISavable implementation
@@ -136,10 +118,5 @@ namespace HEScripts.Combat
                 OnLoadedDead?.Invoke();
             }
         }
-
-
-        // --------------------------------------------------------------------
-
-
     }
 }

@@ -1,3 +1,4 @@
+/*
 using Audio;
 using HEScripts.Combat;
 using HorrorEngine;
@@ -423,3 +424,4 @@ namespace Enemies
         }
     }
 }
+*/

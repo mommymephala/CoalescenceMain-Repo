@@ -1,8 +1,8 @@
-using UnityEngine;
-
-namespace Enemies
-{
-    public class Weakpoint : MonoBehaviour
-    {
-    }
-}
+// using UnityEngine;
+//
+// namespace Enemies
+// {
+//     public class Weakpoint : MonoBehaviour
+//     {
+//     }
+// }

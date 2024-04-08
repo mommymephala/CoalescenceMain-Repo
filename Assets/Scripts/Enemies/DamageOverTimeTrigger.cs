@@ -1,4 +1,4 @@
-using HEScripts.Combat;
+/*using HEScripts.Combat;
 using HorrorEngine;
 using UnityEngine;
 
@@ -34,4 +34,4 @@ namespace Enemies
             }
         }
     }
-}
+}*/

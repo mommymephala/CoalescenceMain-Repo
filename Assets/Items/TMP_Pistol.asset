@@ -20,7 +20,7 @@ MonoBehaviour:
   inventoryAction: 2
   flags: 616
   dropPrefab: {fileID: 0}
-  EquipPrefab: {fileID: 1347901682671290, guid: b017a00e018b1bc4f9ef2a84e5644a92, type: 3}
+  EquipPrefab: {fileID: 9117134561805105503, guid: 95a119e34e92f16468760de1fe3530d7, type: 3}
   Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1

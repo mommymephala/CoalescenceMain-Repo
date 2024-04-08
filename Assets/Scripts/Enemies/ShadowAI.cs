@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using HEScripts.Combat;
 using HorrorEngine;
 using Interfaces;
@@ -74,4 +74,4 @@ namespace Enemies
             gameObject.SetActive(false);
         }
     }
-}
+}*/

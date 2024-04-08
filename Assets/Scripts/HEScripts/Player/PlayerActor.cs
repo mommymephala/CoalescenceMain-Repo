@@ -1,6 +1,5 @@
 using HEScripts.States;
 using HEScripts.Systems;
-using HorrorEngine;
 
 namespace HEScripts.Player
 {
@@ -14,7 +13,7 @@ namespace HEScripts.Player
 
         public void SetVisible(bool visible)
         {
-            MainAnimator.gameObject.SetActive(visible);
+            // MainAnimator.gameObject.SetActive(visible);
         }
     }
 

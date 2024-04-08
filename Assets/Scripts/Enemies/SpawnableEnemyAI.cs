@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 namespace Enemies
@@ -49,3 +50,4 @@ namespace Enemies
         }
     }
 }
+*/

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: TMP_ItemDb
   m_EditorClassIdentifier: 
   Prototype: {fileID: 0}
-  Registers: []
+  Registers:
+  - {fileID: 11400000, guid: ba96d8d3fa4b277438ed45c986d0c145, type: 2}

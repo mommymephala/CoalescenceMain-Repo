@@ -79,7 +79,7 @@ namespace HEScripts.States
                 {
                     if (specific.FromState == (ActorState)fromState)
                     {
-                        Actor.MainAnimator.CrossFadeInFixedTime(specific.AnimationState.Hash, specific.AnimationBlendTime);
+                        // Actor.MainAnimator.CrossFadeInFixedTime(specific.AnimationState.Hash, specific.AnimationBlendTime);
                         foundStateTransition = true;
                         m_TransitionTime = specific.AnimationBlendTime;
                         break;
@@ -91,7 +91,7 @@ namespace HEScripts.States
             {
                 if (m_AnimationState)
                 {
-                    Actor.MainAnimator.CrossFadeInFixedTime(m_AnimationState.Hash, m_AnimationBlendTime);
+                    // Actor.MainAnimator.CrossFadeInFixedTime(m_AnimationState.Hash, m_AnimationBlendTime);
                     m_TransitionTime = m_AnimationBlendTime;
                 }
             }
@@ -127,7 +127,7 @@ namespace HEScripts.States
 
             if (m_ExitAnimationState && m_ExitAnimationDuration > 0f)
             {
-                Actor.MainAnimator.CrossFadeInFixedTime(m_ExitAnimationState.Hash, m_ExitAnimationBlendTime);
+                // Actor.MainAnimator.CrossFadeInFixedTime(m_ExitAnimationState.Hash, m_ExitAnimationBlendTime);
             }
 
             OnStateExit?.Invoke();

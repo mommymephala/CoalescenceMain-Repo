@@ -59,7 +59,8 @@ namespace HEScripts.Systems
 
         // --------------------------------------------------------------------
 
-        public bool IsPlaying { 
+        public bool IsPlaying 
+        { 
             get
             {
                 return !PauseController.Instance.IsPaused && m_IsPlaying;

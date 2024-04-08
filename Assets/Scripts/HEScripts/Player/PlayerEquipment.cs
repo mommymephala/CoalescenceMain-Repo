@@ -4,14 +4,13 @@ using HEScripts.Items;
 using HEScripts.Messages;
 using HEScripts.Pooling;
 using HEScripts.Systems;
-using HorrorEngine;
 using UnityEngine;
 
-namespace HEScripts.Player
+namespace HorrorEngine
 {
     public class PlayerEquipment : MonoBehaviour, IResetable
     {
-        public struct EquipmentEntry
+        private struct EquipmentEntry
         {
             public GameObject Instance;
             public ItemData Data;
@@ -20,6 +19,11 @@ namespace HEScripts.Player
         // --------------------------------------------------------------------
 
         private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
+        
+        // [Header("Key Codes")]
+        // [SerializeField] private KeyCode holsterKey = KeyCode.H; // Key to holster the weapon
+
+        [SerializeField] private GameObject weaponHolder;
 
         // --------------------------------------------------------------------
 
@@ -34,14 +38,37 @@ namespace HEScripts.Player
         {
             SetupCurrentEquipment();
         }
-
+        private void Update()
+        {
+            /*if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                TryActivateEquipment(EquipmentSlot.Primary);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                TryActivateEquipment(EquipmentSlot.Secondary);
+            }
+            else if (Input.GetKeyDown(holsterKey))
+            {
+                HolsterEquipment();
+            }*/
+        }
+        
+        private void TryActivateEquipment(EquipmentSlot slot)
+        {
+            if (IsEquipmentSlotFilled(slot))
+            {
+                ActivateEquipment(slot);
+            }
+        }
+        
         private void SetupCurrentEquipment()
         {
             Dictionary<EquipmentSlot, InventoryEntry> equipped = GameManager.Instance.Inventory.Equipped;
             foreach (var e in equipped)
             {
                 var equipable = e.Value.Item as EquipableItemData;
-                if (equipable != null && equipable.AttachOnEquipped)
+                if (equipable.AttachOnEquipped)
                     Equip(equipable, equipable.Slot);
             }
         }
@@ -59,8 +86,8 @@ namespace HEScripts.Player
         {
             if (msg.InventoryEntry != null)
             {
-                var equipable = msg.InventoryEntry.Item as EquipableItemData;
-                if (equipable != null && equipable.AttachOnEquipped)
+                EquipableItemData equipable = msg.InventoryEntry.Item as EquipableItemData;
+                if (equipable.AttachOnEquipped)
                     Equip(equipable, equipable.Slot);
             }
             else
@@ -71,24 +98,55 @@ namespace HEScripts.Player
 
         // --------------------------------------------------------------------
 
-        public GameObject Equip(EquipableItemData equipable, EquipmentSlot slot)
+        public void Equip(EquipableItemData equipable, EquipmentSlot slot)
         {
             if (m_CurrentEquipment.ContainsKey(slot))
                 Unequip(slot);
 
-            var instance = Instantiate(equipable.EquipPrefab);
+            GameObject instance = Instantiate(equipable.EquipPrefab, weaponHolder.transform);
+            
             m_CurrentEquipment.Add(slot, new EquipmentEntry()
             {
                 Instance = instance,
                 Data = equipable
             });
-            
-            return instance;
-        }
 
+            // Activate only if it's the primary weapon
+            if (slot == EquipmentSlot.Primary)
+            {
+                instance.SetActive(true);
+                DeactivateOtherWeapons(EquipmentSlot.Secondary);
+            }
+            else
+            {
+                instance.SetActive(false);
+            }
+        }
+        
+        private void DeactivateOtherWeapons(EquipmentSlot slotToDeactivate)
+        {
+            if (m_CurrentEquipment.TryGetValue(slotToDeactivate, out EquipmentEntry entry))
+            {
+                entry.Instance.SetActive(false);
+            }
+        }
+        
+        private bool IsEquipmentSlotFilled(EquipmentSlot slot)
+        {
+            return m_CurrentEquipment.ContainsKey(slot) && m_CurrentEquipment[slot].Instance != null;
+        }
+        
+        private void ActivateEquipment(EquipmentSlot slot)
+        {
+            foreach (var equipment in m_CurrentEquipment)
+            {
+                equipment.Value.Instance.SetActive(equipment.Key == slot);
+            }
+        }
+    
         // --------------------------------------------------------------------
 
-        public void Unequip(EquipmentSlot type, bool destroy = true)
+        private void Unequip(EquipmentSlot type, bool destroy = true)
         {
             if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
             {
@@ -98,10 +156,18 @@ namespace HEScripts.Player
                 m_CurrentEquipment.Remove(type);
             }
         }
+        
+        private void HolsterEquipment()
+        {
+            foreach (var equipment in m_CurrentEquipment)
+            {
+                equipment.Value.Instance.SetActive(false);
+            }
+        }
 
         // --------------------------------------------------------------------
 
-        public bool GetEquipped(EquipmentSlot type, out ItemData item, out GameObject instance)
+        /*public bool GetEquipped(EquipmentSlot type, out ItemData item, out GameObject instance)
         {
             item = null;
             instance = null;
@@ -114,19 +180,19 @@ namespace HEScripts.Player
             }
 
             return false;
-        }
+        }*/
 
         // --------------------------------------------------------------------
 
-        public GameObject GetWeaponInstance(EquipmentSlot type)
-        {
-            if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
-            {
-                if (entry.Data as WeaponData)
-                    return entry.Instance;
-            }
-            return null;
-        }
+        // public GameObject GetWeaponInstance(EquipmentSlot type)
+        // {
+        //     if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
+        //     {
+        //         if (entry.Data as WeaponData)
+        //             return entry.Instance;
+        //     }
+        //     return null;
+        // }
 
         // --------------------------------------------------------------------
 
@@ -138,7 +204,7 @@ namespace HEScripts.Player
 
         // --------------------------------------------------------------------
 
-        void RemoveAllEquipment()
+        private void RemoveAllEquipment()
         {
             foreach (var e in m_CurrentEquipment)
             {

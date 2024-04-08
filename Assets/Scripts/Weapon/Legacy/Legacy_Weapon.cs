@@ -1,7 +1,6 @@
 using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
-using Enemies;
 using HEScripts.Inventory;
 using HEScripts.Items;
 using HEScripts.Systems;
@@ -171,11 +170,11 @@ namespace Weapon
                 var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
                 if (damageable == null) continue;
 
-                bool isWeakpoint = hitInfo.collider.GetComponent<Weakpoint>() != null;
+                // bool isWeakpoint = hitInfo.collider.GetComponent<Weakpoint>() != null;
 
-                float damageAmount = isWeakpoint ? weaponData.damage + 10 : weaponData.damage;
+                // float damageAmount = isWeakpoint ? weaponData.damage + 10 : weaponData.damage;
 
-                damageable.TakeDamage(damageAmount, false, isWeakpoint);
+                // damageable.TakeDamage(damageAmount, false, isWeakpoint);
                 
                 if (hitInfo.transform.CompareTag("Tar"))
                 {
@@ -188,11 +187,11 @@ namespace Weapon
                 {
                     Debug.Log("chip ses");
                     // PlaySurfaceHitSFX("Chip");
-                } else if (isWeakpoint || hitInfo.transform.CompareTag("Weakpoint"))
+                } /*else if (isWeakpoint || hitInfo.transform.CompareTag("Weakpoint"))
                 {
                     Debug.Log("weakpint ses");
                     // PlaySurfaceHitSFX("Weakpoint");
-                }
+                }*/
             }
 
             if (_weaponEntry.SecondaryCount > 0)

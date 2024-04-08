@@ -30,14 +30,14 @@ namespace Weapon
 
         private void Start()
         {
-            _currentAmmo = weaponData.maxAmmo;
+            // _currentAmmo = weaponData.maxAmmo;
         }
 
         private void Update()
         {
             if (_input.IsReloadDown() && !_isReloading && _currentAmmo < weaponData.maxAmmo)
             {
-                StartReload();
+                // StartReload();
             }
         }
 
@@ -45,8 +45,8 @@ namespace Weapon
         {
             if (_currentAmmo <= 0 && !_isReloading)
             {
-                Debug.Log("Out of ammo. Reloading...");
-                StartReload();
+                // Debug.Log("Out of ammo. Reloading...");
+                // StartReload();
             }
         }
 
@@ -54,17 +54,17 @@ namespace Weapon
         {
             if (_currentAmmo > 0)
             {
-                DecreaseAmmo();
+                // DecreaseAmmo();
             }
         }
 
-        private void DecreaseAmmo()
-        {
-            _currentAmmo--;
-            Debug.Log($"Shot fired. Remaining ammo: {_currentAmmo}");
-        }
+        // private void DecreaseAmmo()
+        // {
+        //     _currentAmmo--;
+        //     Debug.Log($"Shot fired. Remaining ammo: {_currentAmmo}");
+        // }
 
-        private void StartReload()
+        /*private void StartReload()
         {
             if (_isReloading || _currentAmmo == weaponData.maxAmmo)
                 return;
@@ -82,7 +82,7 @@ namespace Weapon
             _currentAmmo = weaponData.maxAmmo;
             _isReloading = false;
             Debug.Log("Reload complete.");
-        }
+        }*/
 
         private void OnDestroy()
         {
