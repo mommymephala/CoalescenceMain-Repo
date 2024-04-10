@@ -1,4 +1,3 @@
-using HEScripts.Items;
 using UnityEngine;
 using HEScripts.Player;
 
@@ -29,13 +28,12 @@ namespace Weapon
         {
             _timeSinceLastShot += Time.deltaTime;
 
-            if ((_controller.weaponData.allowAutoFire && _input.IsAttackHeld() || !_controller.weaponData.allowAutoFire && _input.IsAttackDown()) && CanShoot())
-            {
-                OnShootAttempt?.Invoke();
+            if (((!_controller.weaponData.allowAutoFire || !_input.IsAttackHeld()) &&
+                 (_controller.weaponData.allowAutoFire || !_input.IsAttackDown())) || !CanShoot()) return;
+            OnShootAttempt?.Invoke();
                 
-                Shoot();
-                OnShootSuccess?.Invoke();
-            }
+            Shoot();
+            OnShootSuccess?.Invoke();
         }
 
         private bool CanShoot()

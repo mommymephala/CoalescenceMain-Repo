@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HEScripts.Systems;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace HEScripts.UI
         private IUIInput m_Input;
 
         private UIInventory m_Inventory;
+        private HashSet<Object> m_BlockingContext = new HashSet<Object>();
         // private UIMap m_Map;
         
         private void Update()
@@ -36,6 +38,23 @@ namespace HEScripts.UI
                     // }
                 }
             }
+        }
+        
+        // --------------------------------------------------------------------
+        
+        public void AddBlockingContext(Object context)
+        {
+            m_BlockingContext.Add(context);
+
+            enabled = false;
+        }
+        
+        public void RemoveBlockingContext(Object context)
+        {
+            m_BlockingContext.Remove(context);
+
+            if (m_BlockingContext.Count == 0)
+                enabled = true;
         }
     }
 }

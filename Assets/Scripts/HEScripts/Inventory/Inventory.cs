@@ -33,7 +33,7 @@ namespace HEScripts.Inventory
         Secondary
     }
 
-    [System.Serializable]
+    [Serializable]
     public class InventoryEntry
     {
         public ItemData Item;
@@ -68,14 +68,14 @@ namespace HEScripts.Inventory
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class AmmoEntry // Entry used for the ammo that's inside the weapons
     {
         public int Amount;
         public WeaponData Weapon;
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct InventoryEntrySaveData
     {
         public string ItemId;
@@ -84,7 +84,7 @@ namespace HEScripts.Inventory
         public float Status;
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct InventoryEquippedEntrySaveData
     {
         public int InventoryIndex;
@@ -92,7 +92,7 @@ namespace HEScripts.Inventory
         public EquipmentSlot Slot;
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct InventorySaveData
     {
         public List<InventoryEntrySaveData> Items;
@@ -103,7 +103,7 @@ namespace HEScripts.Inventory
         public int MaxItems;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Inventory : ISavable<InventorySaveData>
     {
         public static int k_DefaultSize = 8;
@@ -118,14 +118,7 @@ namespace HEScripts.Inventory
         [SerializeField] private DialogData m_OnFullDialog;
 
         public EquipmentSlot WeaponSlot = EquipmentSlot.Primary;
-        // // New field to reference inventory slot prefabs and parent in the UI
-        // [SerializeField] private GameObject inventorySlotPrefab;
-        // [SerializeField] private Transform inventorySlotParent;
-        //
-        // // New fields for the flexible equipment system
-        // [SerializeField] private GameObject equipmentSlotPrefab;
-        // [SerializeField] private Transform equipmentSlotParent;
-        // private InventoryEntry[] equipmentSlots; // Represents the flexible equipment slots
+        public event Action OnEquippedWeaponChanged;
         public bool Expanded;
         public int PreExpansionSize;
 
@@ -141,16 +134,16 @@ namespace HEScripts.Inventory
         public void Init()
         {
             Items = new InventoryEntry[m_MaxItems];
-            for (int i = 0; i < Items.Length; ++i)
+            for (var i = 0; i < Items.Length; ++i)
                 Items[i] = new InventoryEntry();
 
-            var gameMgr = GameManager.Instance;
-            foreach (var item in gameMgr.InitialInventory)
+            GameManager gameMgr = GameManager.Instance;
+            foreach (InventoryEntry item in gameMgr.InitialInventory)
             {
                 Add(item);
             }
 
-            foreach (var doc in gameMgr.InitialDocuments)
+            foreach (DocumentData doc in gameMgr.InitialDocuments)
             {
                 Documents.Add(doc);
             }
@@ -429,6 +422,7 @@ namespace HEScripts.Inventory
                     Item = entry.Item
                 };
                 Remove(entry.Item, 1, false);
+                OnEquippedWeaponChanged?.Invoke();
             }
 
             Unequip(equipable.Slot); // Needs to happen after the new item is removed from inventory
@@ -458,9 +452,11 @@ namespace HEScripts.Inventory
                     else
                     {
                         Add(entry);
+                        OnEquippedWeaponChanged?.Invoke();
                     }
                 }
             }
+            OnEquippedWeaponChanged?.Invoke();
 
             ClearEquipped(type);
         }

@@ -26,6 +26,7 @@ namespace Weapon
             _playerInput = GetComponentInParent<IPlayerInput>();
             _mouseLook = GetComponentInParent<MouseLook>();
             _controller = GetComponent<WeaponController>();
+            
             if (_controller != null)
             {
                 _controller.OnStartReload += ExitAimDownSight;
@@ -99,7 +100,7 @@ namespace Weapon
             ResetAiming();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_controller != null)
             {

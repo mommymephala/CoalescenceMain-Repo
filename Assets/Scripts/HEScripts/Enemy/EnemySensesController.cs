@@ -16,7 +16,6 @@ namespace HEScripts.Enemy
         public UnityEvent OnPlayerUnreachable;
         
         [SerializeField] bool m_ShowDebug;
-
         
         public Transform PlayerTransform { get; private set; }
         public bool IsPlayerDetected { get; private set; }
