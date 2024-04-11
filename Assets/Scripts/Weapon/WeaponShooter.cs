@@ -1,12 +1,12 @@
-using UnityEngine;
+using System;
 using HEScripts.Player;
+using UnityEngine;
 
 namespace Weapon
 {
     public class WeaponShooter : MonoBehaviour
     {
-        public event System.Action OnShootAttempt;
-        public event System.Action OnShootSuccess;
+        public event Action OnShootSuccess;
         
         private IPlayerInput _input;
         private WeaponController _controller;
@@ -28,10 +28,11 @@ namespace Weapon
         {
             _timeSinceLastShot += Time.deltaTime;
 
+            if (_controller.IsReloading || _controller.CurrentWeaponEntry.SecondaryCount <= 0) return;
+
             if (((!_controller.weaponData.allowAutoFire || !_input.IsAttackHeld()) &&
                  (_controller.weaponData.allowAutoFire || !_input.IsAttackDown())) || !CanShoot()) return;
-            OnShootAttempt?.Invoke();
-                
+            
             Shoot();
             OnShootSuccess?.Invoke();
         }
@@ -48,13 +49,14 @@ namespace Weapon
             
             // Implement the actual shooting logic here
             Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
+            Debug.Log("Shooting.");
             
             // Trigger visual and audio effects for shooting here
         }
 
         private Vector3 CalculateSpread(Vector3 baseDirection)
         {
-            return baseDirection + Random.insideUnitSphere * _controller.weaponData.spread;
+            return baseDirection + UnityEngine.Random.insideUnitSphere * _controller.weaponData.spread;
         }
     }
 }

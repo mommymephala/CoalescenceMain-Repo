@@ -31,8 +31,8 @@ MonoBehaviour:
   spread: 0
   bulletsPerShot: 1
   ammoItem: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
-  maxAmmo: 10
-  reloadDuration: 1.5
+  maxAmmo: 12
+  reloadDuration: 3
   originalPlayerFOV: 60
   originalWeaponFOV: 60
   aimDownSightFOV: 40

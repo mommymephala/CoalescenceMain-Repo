@@ -14,11 +14,13 @@ namespace Weapon
         public event Action OnStartReload;
 
         public ReloadableWeaponData weaponData;
-        
-        private InventoryEntry _currentWeaponEntry;
+
         private IPlayerInput _input;
-        private bool _isReloading;
         private Coroutine _reloadCoroutine;
+        
+        public bool IsReloading { get; private set; }
+
+        public InventoryEntry CurrentWeaponEntry { get; private set; }
 
         private void Awake()
         {
@@ -31,7 +33,6 @@ namespace Weapon
             var weaponShooter = GetComponent<WeaponShooter>();
             if (weaponShooter != null)
             {
-                weaponShooter.OnShootAttempt += HandleShootAttempt;
                 weaponShooter.OnShootSuccess += HandleShootSuccess;
             }
             
@@ -40,9 +41,9 @@ namespace Weapon
         
         private void UpdateCurrentWeaponEntry()
         {
-            _currentWeaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
+            CurrentWeaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
 
-            if (_currentWeaponEntry is { Item: ReloadableWeaponData reloadableWeaponData })
+            if (CurrentWeaponEntry is { Item: ReloadableWeaponData reloadableWeaponData })
             {
                 weaponData = reloadableWeaponData;
             }
@@ -54,34 +55,44 @@ namespace Weapon
 
         private void Update()
         {
-            if (_input.IsReloadDown() && !_isReloading && _currentWeaponEntry.SecondaryCount < weaponData.maxAmmo)
+            if (_input.IsReloadDown() && !IsReloading)
             {
-                StartReloadProcess(_currentWeaponEntry);
-            }
-        }
-
-        private void HandleShootAttempt()
-        {
-            if (_currentWeaponEntry == null) return;
-
-            if (_currentWeaponEntry.SecondaryCount <= 0 && !_isReloading)
-            {
-                StartReloadProcess(_currentWeaponEntry);
+                StartReloadProcess(CurrentWeaponEntry);
             }
         }
 
         private void HandleShootSuccess()
         {
-            if (_currentWeaponEntry == null) return;
+            if (CurrentWeaponEntry == null) return;
+            
+            if (CurrentWeaponEntry.SecondaryCount > 0)
+            {
+                CurrentWeaponEntry.SecondaryCount--;
+                Debug.Log($"Shot fired. Remaining ammo: {CurrentWeaponEntry.SecondaryCount}");
+            }
+            
+            if (IsReloading)
+            {
+                Debug.Log("Cannot shoot: Currently reloading.");
+                return;
+            }
 
-            if (_currentWeaponEntry.SecondaryCount <= 0) return;
-            _currentWeaponEntry.SecondaryCount--;
-            Debug.Log($"Shot fired. Remaining ammo: {_currentWeaponEntry.SecondaryCount}");
+            if (CurrentWeaponEntry.SecondaryCount > 0) return;
+            
+            if (GameManager.Instance.Inventory.Contains(weaponData.ammoItem))
+            {
+                Debug.Log("Out of ammo, attempting to reload...");
+                StartReloadProcess(CurrentWeaponEntry);
+            }
+            else
+            {
+                Debug.Log("Cannot shoot: Out of ammo and no ammo available in inventory.");
+            }
         }
 
         private void StartReloadProcess(InventoryEntry weaponEntry)
         {
-            if (_isReloading || !gameObject.activeSelf) return;
+            if (IsReloading || weaponEntry.SecondaryCount >= weaponData.maxAmmo) return;
 
             OnStartReload?.Invoke();
             _reloadCoroutine = StartCoroutine(ReloadSequence(weaponEntry));
@@ -89,7 +100,7 @@ namespace Weapon
 
         private IEnumerator ReloadSequence(InventoryEntry weaponEntry)
         {
-            _isReloading = true;
+            IsReloading = true;
             UIManager.Get<UIInputListener>().AddBlockingContext(this);
             
             Inventory inventory = GameManager.Instance.Inventory;
@@ -116,7 +127,7 @@ namespace Weapon
                 Debug.Log("No ammo available to reload.");
             }
 
-            _isReloading = false;
+            IsReloading = false;
             UIManager.Get<UIInputListener>().RemoveBlockingContext(this);
             _reloadCoroutine = null;
         }
@@ -132,13 +143,12 @@ namespace Weapon
             var weaponShooter = GetComponent<WeaponShooter>();
             if (weaponShooter != null)
             {
-                weaponShooter.OnShootAttempt -= HandleShootAttempt;
                 weaponShooter.OnShootSuccess -= HandleShootSuccess;
             }
             
-            _isReloading = false;
+            IsReloading = false;
             
-            if (GameManager.Instance != null && GameManager.Instance.Inventory != null)
+            if (GameManager.Instance.Inventory != null)
             {
                 GameManager.Instance.Inventory.OnEquippedWeaponChanged -= UpdateCurrentWeaponEntry;
             }
