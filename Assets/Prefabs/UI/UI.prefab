@@ -3807,6 +3807,26 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7325779442325317646, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325779442325317646, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325779442325317646, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325779442325317646, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325779442325317646, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7447510985663935039, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
       propertyPath: m_Layer
       value: 5

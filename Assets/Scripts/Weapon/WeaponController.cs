@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Character_Movement.Components;
+using Character_Movement.Controllers;
 using HEScripts.Inventory;
 using HEScripts.Items;
 using HEScripts.Player;
@@ -15,7 +17,12 @@ namespace Weapon
 
         public ReloadableWeaponData weaponData;
 
-        private IPlayerInput _input;
+        [HideInInspector] public IPlayerInput Input;
+        [HideInInspector] public CustomFirstPersonController playerController;
+        [HideInInspector] public MouseLook mouseLook;
+        [HideInInspector] public Camera playerCamera;
+        [HideInInspector] public Camera weaponCamera;
+        
         private Coroutine _reloadCoroutine;
         
         public bool IsReloading { get; private set; }
@@ -24,7 +31,11 @@ namespace Weapon
 
         private void Awake()
         {
-            _input = GetComponentInParent<IPlayerInput>();
+            Input = GetComponentInParent<IPlayerInput>();
+            playerController = GetComponentInParent<CustomFirstPersonController>();
+            mouseLook = GetComponentInParent<MouseLook>();
+            playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
+            weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
         }
 
         private void OnEnable()
@@ -55,7 +66,7 @@ namespace Weapon
 
         private void Update()
         {
-            if (_input.IsReloadDown() && !IsReloading)
+            if (Input.IsReloadDown() && !IsReloading)
             {
                 StartReloadProcess(CurrentWeaponEntry);
             }

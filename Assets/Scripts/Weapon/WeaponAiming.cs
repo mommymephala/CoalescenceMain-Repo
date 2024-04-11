@@ -1,16 +1,12 @@
-using Character_Movement.Components;
+using System;
 using UnityEngine;
-using HEScripts.Player;
 
 namespace Weapon
 {
     public class WeaponAiming : MonoBehaviour
     {
-        private IPlayerInput _playerInput;
-        private MouseLook _mouseLook;
+        
         private WeaponController _controller;
-        private Camera _playerCamera;
-        private Camera _weaponCamera;
 
         [SerializeField] private Transform adsTransform;
         [SerializeField] private float aimDownSightSpeed = 5f;
@@ -18,13 +14,12 @@ namespace Weapon
         [SerializeField] private bool toggleAim = true;
 
         private float _originalFOV;
-        private bool _isAiming;
         private Vector3 _originalAdsPosition;
+        
+        public static bool IsAiming { get; private set; }
 
         private void Awake()
         {
-            _playerInput = GetComponentInParent<IPlayerInput>();
-            _mouseLook = GetComponentInParent<MouseLook>();
             _controller = GetComponent<WeaponController>();
             
             if (_controller != null)
@@ -32,10 +27,7 @@ namespace Weapon
                 _controller.OnStartReload += ExitAimDownSight;
             }
             
-            _playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
-            _weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
-            
-            _originalFOV = _playerCamera.fieldOfView;
+            _originalFOV = _controller.playerCamera.fieldOfView;
             _originalAdsPosition = adsTransform.localPosition;
         }
 
@@ -47,19 +39,19 @@ namespace Weapon
         
         private void ProcessAimingInput()
         {
-            if (toggleAim && _playerInput.IsAimingDown())
+            if (toggleAim && _controller.Input.IsAimingDown())
             {
-                _isAiming = !_isAiming;
+                IsAiming = !IsAiming;
             }
             else if (!toggleAim)
             {
-                _isAiming = _playerInput.IsAimingHeld();
+                IsAiming = _controller.Input.IsAimingHeld();
             }
         }
 
         private void UpdateAiming()
         {
-            if (_isAiming)
+            if (IsAiming)
             {
                 AimDownSights();
             }
@@ -72,31 +64,31 @@ namespace Weapon
         private void AimDownSights()
         {
             var targetScreenPosition = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            var distanceFromCamera = Vector3.Distance(adsTransform.position, _playerCamera.transform.position);
-            Vector3 targetWorldPosition = _playerCamera.ScreenToWorldPoint(new Vector3(targetScreenPosition.x, targetScreenPosition.y, distanceFromCamera));
+            var distanceFromCamera = Vector3.Distance(adsTransform.position, _controller.playerCamera.transform.position);
+            Vector3 targetWorldPosition = _controller.playerCamera.ScreenToWorldPoint(new Vector3(targetScreenPosition.x, targetScreenPosition.y, distanceFromCamera));
             Vector3 targetLocalPosition = adsTransform.parent.InverseTransformPoint(targetWorldPosition);
 
             adsTransform.localPosition = Vector3.Lerp(adsTransform.localPosition, targetLocalPosition, Time.deltaTime * aimDownSightSpeed);
             AdjustFOV(aimFOV);
-            _mouseLook.SetAimingDownSight(true);
+            _controller.mouseLook.SetAimingDownSight(true);
         }
 
         private void ResetAiming()
         {
             adsTransform.localPosition = Vector3.Lerp(adsTransform.localPosition, _originalAdsPosition, Time.deltaTime * aimDownSightSpeed);
             AdjustFOV(_originalFOV);
-            _mouseLook.SetAimingDownSight(false);
+            _controller.mouseLook.SetAimingDownSight(false);
         }
         
         private void AdjustFOV(float targetFOV)
         {
-            _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, targetFOV, Time.deltaTime * aimDownSightSpeed);
-            _weaponCamera.fieldOfView = Mathf.Lerp(_weaponCamera.fieldOfView, targetFOV, Time.deltaTime * aimDownSightSpeed);
+            _controller.playerCamera.fieldOfView = Mathf.Lerp(_controller.playerCamera.fieldOfView, targetFOV, Time.deltaTime * aimDownSightSpeed);
+            _controller.weaponCamera.fieldOfView = Mathf.Lerp(_controller.weaponCamera.fieldOfView, targetFOV, Time.deltaTime * aimDownSightSpeed);
         }
 
         private void ExitAimDownSight()
         {
-            _isAiming = false;
+            IsAiming = false;
             ResetAiming();
         }
 
