@@ -12,7 +12,7 @@ namespace Weapon
 {
     public class Weapon : MonoBehaviour
     {
-        public ReloadableWeaponData weaponData;
+        public WeaponData weaponData;
 
         [Header("References")]
         private CustomFirstPersonController _newPlayerController;
@@ -267,7 +267,7 @@ namespace Weapon
             if (_reloading || !gameObject.activeSelf) return;
 
             _weaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
-            weaponData = _weaponEntry.Item as ReloadableWeaponData;
+            weaponData = _weaponEntry.Item as WeaponData;
             
             if (weaponData != null && _weaponEntry.SecondaryCount < weaponData.maxAmmo)
             {

@@ -24,7 +24,7 @@ namespace HEScripts.Systems
             if (!inUI)
             {
                 --m_InUICount;
-                Debug.Assert(m_InUICount >= 0, "Cursor InUI count went negative. This shouldn't happen. Ssomething calling SetInUI multiple times with the same value");
+                Debug.Assert(m_InUICount >= 0, "Cursor InUI count went negative. This shouldn't happen. Something calling SetInUI multiple times with the same value");
 
                 if (m_InUICount == 0)
                 {

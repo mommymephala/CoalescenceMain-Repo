@@ -15,7 +15,7 @@ namespace Weapon
     {
         public event Action OnStartReload;
 
-        public ReloadableWeaponData weaponData;
+        public WeaponData weaponData;
 
         [HideInInspector] public IPlayerInput Input;
         [HideInInspector] public CustomFirstPersonController playerController;
@@ -54,7 +54,7 @@ namespace Weapon
         {
             CurrentWeaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
 
-            if (CurrentWeaponEntry is { Item: ReloadableWeaponData reloadableWeaponData })
+            if (CurrentWeaponEntry is { Item: WeaponData reloadableWeaponData })
             {
                 weaponData = reloadableWeaponData;
             }
@@ -66,7 +66,7 @@ namespace Weapon
 
         private void Update()
         {
-            if (Input.IsReloadDown() && !IsReloading)
+            if (GameManager.Instance.IsPlaying && Input.IsReloadDown() && !IsReloading)
             {
                 StartReloadProcess(CurrentWeaponEntry);
             }

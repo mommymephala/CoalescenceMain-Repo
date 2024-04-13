@@ -1,3 +1,4 @@
+using HEScripts.Inventory;
 using HEScripts.Items;
 using HEScripts.Systems;
 using HorrorEngine;
@@ -20,17 +21,23 @@ namespace HEScripts.Equipment
             Debug.Assert(m_DepletionFrequency > 0, "Equipment m_DepletionFrequency can't be less than 0", gameObject);
         }
 
-        private void OnEnable()
+        // private void OnEnable()
+        // {
+        //     InvokeRepeating(nameof(Deplete), m_DepletionFrequency, m_DepletionFrequency);
+        // }
+        
+        public bool HasCharge()
         {
-            InvokeRepeating(nameof(Deplete), m_DepletionFrequency, m_DepletionFrequency);
+            InventoryEntry equipped = GameManager.Instance.Inventory.GetEquipped(m_Item.Slot);
+            return equipped.Status > 0;
         }
 
-        private void Deplete()
+        public void Deplete()
         {
-            var equipped = GameManager.Instance.Inventory.GetEquipped(m_Item.Slot);
+            InventoryEntry equipped = GameManager.Instance.Inventory.GetEquipped(m_Item.Slot);
             Debug.Assert(equipped.Item == m_Item, "Item to deplete do not match equipped item");
 
-            float prevStatus = equipped.Status;
+            var prevStatus = equipped.Status;
             equipped.Status = Mathf.Clamp01(equipped.Status - m_Depletion);
             
             if (equipped.Status != prevStatus)

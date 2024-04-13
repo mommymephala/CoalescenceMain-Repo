@@ -1,7 +1,6 @@
 using HEScripts.Combat;
 using HEScripts.Inventory;
 using HEScripts.Systems;
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.Items

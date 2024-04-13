@@ -28,7 +28,7 @@ namespace HEScripts.Interaction
 
         // --------------------------------------------------------------------
 
-        void Start()
+        private void Start()
         {
             m_UIInput = UIManager.Instance.GetComponent<IUIInput>();
             Deactivate();

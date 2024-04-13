@@ -19,10 +19,10 @@ namespace HEScripts.Interaction
                     if (FocusedInteractive == interactive)
                         return;
 
-                    ClearAll(); // We only have 1 interactable in the list at all times for this detector
+                    ClearAll();
                     AddInteractive(interactive);
                 }
-                else // Something is obstructing the ray
+                else
                 {
                     ClearAll();
                 }

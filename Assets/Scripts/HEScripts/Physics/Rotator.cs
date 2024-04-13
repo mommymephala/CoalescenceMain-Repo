@@ -8,7 +8,7 @@ namespace HEScripts.Physics
         [SerializeField] float m_Speed = 10f;
         [SerializeField] bool m_UnscaledTime;
 
-        void Update()
+        private void Update()
         {
             transform.Rotate(m_RotationAxis, m_Speed * (m_UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime));
         }

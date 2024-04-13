@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace HEScripts.Items
 {
-    [CreateAssetMenu(menuName = "Horror Engine/Items/Equipable")]
     public class EquipableItemData : ItemData
     {
         public GameObject EquipPrefab;

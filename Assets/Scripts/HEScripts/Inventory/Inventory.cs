@@ -72,7 +72,7 @@ namespace HEScripts.Inventory
     public class AmmoEntry // Entry used for the ammo that's inside the weapons
     {
         public int Amount;
-        public WeaponData Weapon;
+        public WeaponData weapon;
     }
 
     [Serializable]
@@ -316,14 +316,14 @@ namespace HEScripts.Inventory
             }
 
             // Auto combine weapon/ammo
-            ReloadableWeaponData reloadable1 = entry1.Item as ReloadableWeaponData;
-            ReloadableWeaponData reloadable2 = entry2.Item as ReloadableWeaponData;
+            WeaponData reloadable1 = entry1.Item as WeaponData;
+            WeaponData reloadable2 = entry2.Item as WeaponData;
             if (reloadable1 || reloadable2)
             {
                 InventoryEntry reloadableEntry = reloadable1 ? entry1 : entry2;
                 InventoryEntry ammoEntry = reloadable1 ? entry2 : entry1;
                 
-                ReloadableWeaponData reloadable = reloadableEntry.Item as ReloadableWeaponData;
+                WeaponData reloadable = reloadableEntry.Item as WeaponData;
                 if (reloadable.ammoItem == ammoEntry.Item)
                 {
                     return ReloadWeapon(reloadableEntry, ammoEntry);
@@ -338,7 +338,7 @@ namespace HEScripts.Inventory
 
         public InventoryEntry ReloadWeapon(InventoryEntry weaponEntry, InventoryEntry ammoEntry)
         {
-            ReloadableWeaponData weapon = weaponEntry.Item as ReloadableWeaponData;
+            WeaponData weapon = weaponEntry.Item as WeaponData;
             
             int prevAmmo = weaponEntry.SecondaryCount;
             int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, weapon.maxAmmo);
@@ -507,12 +507,12 @@ namespace HEScripts.Inventory
 
         public bool CanReloadWeapon(InventoryEntry weaponEntry)
         {
-            ReloadableWeaponData reloadableWeapon = weaponEntry.Item as ReloadableWeaponData;
-            if (reloadableWeapon)
+            WeaponData weapon = weaponEntry.Item as WeaponData;
+            if (weapon)
             {
                 Inventory inventory = GameManager.Instance.Inventory;
-                return weaponEntry.SecondaryCount < reloadableWeapon.maxAmmo &&
-                    inventory.TryGet(reloadableWeapon.ammoItem, out InventoryEntry ammoEntry);
+                return weaponEntry.SecondaryCount < weapon.maxAmmo &&
+                    inventory.TryGet(weapon.ammoItem, out InventoryEntry ammoEntry);
             }
 
             return false;

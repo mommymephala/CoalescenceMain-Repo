@@ -1,19 +1,20 @@
 using HEScripts.Inventory;
 using HEScripts.Systems;
 using HEScripts.UI;
-using HorrorEngine;
+using UnityEngine;
 
 namespace HEScripts.Items
 {
+    [CreateAssetMenu(menuName = "Horror Engine/Items/ExpansionItem")]
     public class InventoryExpansionItemData : ItemData
     {
-        public int Amount = 2;
+        public int expansionAmount = 2;
 
         public override void OnUse(InventoryEntry entry)
         {
             base.OnUse(entry);
 
-            GameManager.Instance.Inventory.Expand(Amount);
+            GameManager.Instance.Inventory.Expand(expansionAmount);
 
             UIManager.PushAction(new UIStackedAction()
             {

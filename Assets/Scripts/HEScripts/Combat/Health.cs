@@ -37,8 +37,6 @@ namespace HEScripts.Combat
         public UnityEvent OnLoadedDead;
 
         public Damageable LastDamageableHit { get; private set; }
-        public UnityEngine.Object LastInstigator { get; private set; }
-        public float Normalized { get { return Value / Max; } }
         public bool IsDead { get { return Value <= 0; } }
 
         // --------------------------------------------------------------------
@@ -88,7 +86,7 @@ namespace HEScripts.Combat
 
         private void SetHealth(float value)
         {
-            float prev = Value;
+            var prev = Value;
             Value = Mathf.Clamp(value, Min, Max);
 
             if (prev != Value && OnHealthAltered != null)

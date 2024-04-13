@@ -5,7 +5,7 @@ namespace HEScripts.Player
 {
     public class PlayerActor : Actor
     {
-        void Start()
+        private void Start()
         {
             if (GameManager.Exists)
                 GameManager.Instance.RegisterPlayer(this);
@@ -13,7 +13,7 @@ namespace HEScripts.Player
 
         public void SetVisible(bool visible)
         {
-            // MainAnimator.gameObject.SetActive(visible);
+            gameObject.SetActive(visible);
         }
     }
 

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a1134ad53f52e47897c9055682686c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ee00d1d7585610499dba305665f4c4c, type: 3}
   m_Name: TMP_Pistol
   m_EditorClassIdentifier: 
   uniqueId: 6639ff4b-db63-49aa-ab61-d84ff797a255
@@ -24,7 +24,7 @@ MonoBehaviour:
   Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1
-  allowAutoFire: 1
+  allowAutoFire: 0
   damage: 10
   maxDistance: 100
   fireRate: 1000
@@ -47,3 +47,24 @@ MonoBehaviour:
   kickbackDuration: 0.2
   resetDuration: 0.2
   walkingRecoilMultiplier: 1.5
+  shotSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  reloadSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  noAmmoSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

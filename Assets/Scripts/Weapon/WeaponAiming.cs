@@ -5,7 +5,6 @@ namespace Weapon
 {
     public class WeaponAiming : MonoBehaviour
     {
-        
         private WeaponController _controller;
 
         [SerializeField] private Transform adsTransform;

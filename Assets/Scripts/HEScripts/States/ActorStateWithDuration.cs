@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace HEScripts.States
 {
-
     public class ActorStateWithDuration : ActorState
     {
         [SerializeField] protected float m_Duration;

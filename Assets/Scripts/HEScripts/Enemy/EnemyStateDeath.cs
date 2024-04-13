@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace HEScripts.Enemy
 {
-
     [System.Serializable]
     public class DamageableAnimEntry
     {

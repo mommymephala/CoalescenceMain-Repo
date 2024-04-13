@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using HEScripts.Systems;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -34,6 +35,8 @@ namespace Weapon
 
         private void Update()
         {
+            if (!GameManager.Instance.IsPlaying) return;
+            
             _timeSinceLastShot += Time.deltaTime;
 
             if (_controller.IsReloading || _controller.CurrentWeaponEntry.SecondaryCount <= 0) return;

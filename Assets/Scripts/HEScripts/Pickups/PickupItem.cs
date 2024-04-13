@@ -78,7 +78,7 @@ namespace HEScripts.Pickups
                 invEntry = GameManager.Instance.Inventory.Add(Entry);
             }
 
-            // Some items might need to be used on pikcup even if they're not added to the inventory (e.g. Hip Pouch)
+            // Some items might need to be used on pickup even if they're not added to the inventory (e.g. Hip Pouch)
             if (m_UseOnPickup)
             {
                 Entry.Item.OnUse(invEntry);

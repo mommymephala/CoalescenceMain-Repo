@@ -1,6 +1,4 @@
-﻿using HEScripts.States;
-using HorrorEngine;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace HEScripts.Interaction
 {
@@ -9,10 +7,8 @@ namespace HEScripts.Interaction
     {
         public string Prompt;
         public Sprite Icon;
-        public AnimatorStateHandle AnimState;
         public float InteractionDuration;
         public float InteractionDelay;
-        public bool RotateToInteractive = true;
 
         private void OnValidate()
         {

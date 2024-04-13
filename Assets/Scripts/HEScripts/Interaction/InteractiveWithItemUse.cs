@@ -3,7 +3,6 @@ using HEScripts.Choices;
 using HEScripts.Items;
 using HEScripts.Player;
 using HEScripts.Systems;
-using HorrorEngine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -70,7 +69,7 @@ namespace HEScripts.Interaction
         {
             m_UsingItem = null;
             ItemUseEntry selectedItem = null;
-            foreach (var item in m_UsableItems)
+            foreach (ItemUseEntry item in m_UsableItems)
             {
                 if ((selectedItem == null|| item.Priority > selectedItem.Priority) && GameManager.Instance.Inventory.Contains(item.Item))
                 {
