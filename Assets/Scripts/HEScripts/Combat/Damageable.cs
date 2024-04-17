@@ -9,6 +9,8 @@ namespace HEScripts.Combat
 
     public class Damageable : MonoBehaviour
     {
+        public Combatant Owner { get; private set; }
+        
         [Tooltip("Event fired before the damage is applied")]
         public OnDamageEvent OnPreDamage;
         [Tooltip("Event fired after the damage has been applied")]
@@ -18,6 +20,7 @@ namespace HEScripts.Combat
 
         private void Awake()
         {
+            Owner = GetComponentInParent<Combatant>();
             m_Health = GetComponentInParent<Health>();
         }
 

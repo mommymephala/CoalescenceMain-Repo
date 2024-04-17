@@ -1,5 +1,4 @@
 using HEScripts.Physics;
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.Senses
@@ -32,10 +31,10 @@ namespace HEScripts.Senses
 
         public override void Tick()
         {
-            var target = m_Target.GetTransform();
-            bool wasInsight = m_InSight;
+            Transform target = m_Target.GetTransform();
+            var wasInsight = m_InSight;
 
-            m_InSight = target? m_Sight.IsInSight(target) : false;
+            m_InSight = target && m_Sight.IsInSight(target);
 
             if (wasInsight != m_InSight)
                 OnChanged?.Invoke(this, target);

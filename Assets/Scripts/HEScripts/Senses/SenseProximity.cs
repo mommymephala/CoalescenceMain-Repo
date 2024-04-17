@@ -18,8 +18,8 @@ namespace HEScripts.Senses
 
         public override void Tick()
         {
-            var target = m_Target.GetTransform();
-            bool wasInProximity = m_InProximity;
+            Transform target = m_Target.GetTransform();
+            var wasInProximity = m_InProximity;
 
             if (target)
             {

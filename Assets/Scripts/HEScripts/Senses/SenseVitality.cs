@@ -16,10 +16,10 @@ namespace HEScripts.Senses
 
         public override void Tick()
         {
-            var target = m_Target.GetTransform();
-            bool wasAlive = m_IsAlive;
+            Transform target = m_Target.GetTransform();
+            var wasAlive = m_IsAlive;
 
-            m_IsAlive = target ? target.GetComponent<Health>().Value > 0 : false;
+            m_IsAlive = target && target.GetComponent<Health>().Value > 0;
 
             if (wasAlive != m_IsAlive)
                 OnChanged?.Invoke(this, target);

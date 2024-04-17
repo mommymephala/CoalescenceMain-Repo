@@ -1,4 +1,3 @@
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.Senses

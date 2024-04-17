@@ -1,5 +1,4 @@
 using HEScripts.Systems;
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.Senses

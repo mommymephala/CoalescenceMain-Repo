@@ -28,11 +28,11 @@ namespace HEScripts.Senses
 
         public override void Tick()
         {
-            var target = m_Target.GetTransform();
+            Transform target = m_Target.GetTransform();
 
-            bool wasInReach = m_InReach;
+            var wasInReach = m_InReach;
 
-            m_InReach = target ? m_MeshAgent.CalculatePath(target.position, m_NavMeshPath) && m_NavMeshPath.status == NavMeshPathStatus.PathComplete : false;
+            m_InReach = target && (m_MeshAgent.CalculatePath(target.position, m_NavMeshPath) && m_NavMeshPath.status == NavMeshPathStatus.PathComplete);
 
             if (wasInReach != m_InReach)
                 OnChanged?.Invoke(this, target);

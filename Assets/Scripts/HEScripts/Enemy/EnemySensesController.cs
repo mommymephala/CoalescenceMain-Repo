@@ -31,15 +31,19 @@ namespace HEScripts.Enemy
         {
             if (m_ShowDebug)
             {
-                GUILayout.BeginArea(new Rect(10, 10, 300, Screen.height));
+                GUIStyle debugStyle = new GUIStyle(GUI.skin.label);
+                debugStyle.fontSize = 54;
+                debugStyle.normal.textColor = Color.blue;
+
+                GUILayout.BeginArea(new Rect(10, 10, Screen.width, Screen.height));
                 GUILayout.BeginVertical();
-                GUILayout.Label($"Enemy Senses:");
-                GUILayout.Label("-----------------");
-                GUILayout.Label($"Sight: {IsPlayerInSight}");
-                GUILayout.Label($"Proximity: {IsPlayerInProximity}");
-                GUILayout.Label($"Reachable: {IsPlayerInReach}");
-                GUILayout.Label("-----------------");
-                GUILayout.Label($"Detected: {IsPlayerDetected}");
+                GUILayout.Label("Enemy Senses:", debugStyle);
+                GUILayout.Label("-----------------", debugStyle);
+                GUILayout.Label($"Sight: {IsPlayerInSight}", debugStyle);
+                GUILayout.Label($"Proximity: {IsPlayerInProximity}", debugStyle);
+                GUILayout.Label($"Reachable: {IsPlayerInReach}", debugStyle);
+                GUILayout.Label("-----------------", debugStyle);
+                GUILayout.Label($"Detected: {IsPlayerDetected}", debugStyle);
                 GUILayout.EndVertical();
                 GUILayout.EndArea();
             }
@@ -59,7 +63,7 @@ namespace HEScripts.Enemy
 
         protected override void OnSenseChangedCallback(Sense sense, Transform detected)
         {
-            bool wasInReach = IsPlayerInReach;
+            var wasInReach = IsPlayerInReach;
 
             if (sense is SenseSight)
             {
@@ -79,7 +83,7 @@ namespace HEScripts.Enemy
                 IsPlayerAlive = sense.SuccessfullySensed();
             }
 
-            bool wasDetected = IsPlayerDetected;
+            var wasDetected = IsPlayerDetected;
             IsPlayerDetected = IsPlayerAlive && (IsPlayerInProximity || IsPlayerInSight);
             if (IsPlayerDetected)
             {
@@ -101,7 +105,5 @@ namespace HEScripts.Enemy
                 OnPlayerUnreachable?.Invoke();
             }
         }
-
-
     }
 }

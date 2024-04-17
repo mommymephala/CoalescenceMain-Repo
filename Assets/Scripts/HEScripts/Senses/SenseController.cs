@@ -47,7 +47,7 @@ namespace HEScripts.Senses
             OnSenseChanged?.Invoke(sense, detected);
         }
 
-        IEnumerator ScheduleSenseUpdate(Sense sense)
+        private IEnumerator ScheduleSenseUpdate(Sense sense)
         {
             while (true)
             {

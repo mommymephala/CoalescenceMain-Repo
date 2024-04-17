@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using HEScripts.Pooling;
 using HEScripts.Systems;
 using HEScripts.Utils;
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.States
@@ -26,7 +25,7 @@ namespace HEScripts.States
         {
             m_States = GetComponentsInChildren<ActorState>();
 
-            foreach(var state in m_States)
+            foreach(ActorState state in m_States)
             {
                 foreach (var tag in state.Tags)
                 {
@@ -58,17 +57,18 @@ namespace HEScripts.States
                 SetState_Internal(m_NewState);
         }
 
-        void OnGUI()
+        private void OnGUI()
         {
             if (m_ShowDebug)
             {
                 GUIStyle style = new GUIStyle();
-                style.fontSize = 24;
+                style.fontSize = 42;
                 style.fontStyle = FontStyle.Bold;
                 style.normal.textColor = Color.yellow;
+                style.alignment = TextAnchor.UpperRight;
 
-                GUILayout.BeginArea(new Rect(10, 10, Screen.width, Screen.height));
-                GUILayout.Label(name + ":" + CurrentState.GetType().Name, style);
+                GUILayout.BeginArea(new Rect(-100, 10, Screen.width, Screen.height));
+                GUILayout.Label(name + ": " + CurrentState.GetType().Name, style);
                 GUILayout.EndArea();
             }
         }
@@ -99,12 +99,11 @@ namespace HEScripts.States
         private void SetState_Internal(IActorState state)
         {
             IActorState prevState = CurrentState;
-            if (CurrentState != null)
-                CurrentState.StateExit(state);
+            CurrentState?.StateExit(state);
 
-            ActorState prevAState = prevState as ActorState;
-            ActorState newAState = state as ActorState;
-            if (!newAState.SkipPreviousExitAnimation && prevAState && prevAState.HasExitAnimation())
+            var prevAState = prevState as ActorState;
+            var newAState = state as ActorState;
+            if (newAState != null && !newAState.SkipPreviousExitAnimation && prevAState && prevAState.HasExitAnimation())
             {
                 m_ExitStateRoutine = StartCoroutine(EnterStateDelayed(prevAState.ExitDuration, prevState, state));
             }

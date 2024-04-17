@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4622886631411121290}
+  - component: {fileID: 668122019332245157}
   m_Layer: 9
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -31,6 +32,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5176539453683826543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668122019332245157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2868564476525114508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9cf177e8b18d7418e7de6c807ad69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAmount: 8
+  maxRotationAmount: 10
+  smoothRotation: 12
+  rotationX: 1
+  rotationY: 1
+  rotationZ: 1
 --- !u!1 &3633834877008182930
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +59,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11407251114995401}
+  - component: {fileID: 7674708471663861738}
+  - component: {fileID: 5120389493092797749}
   m_Layer: 8
   m_Name: InteractionDetector
   m_TagString: Untagged
@@ -56,12 +77,47 @@ Transform:
   m_GameObject: {fileID: 3633834877008182930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.84, z: 0.529}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5627072537232425120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7674708471663861738
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633834877008182930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5120389493092797749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633834877008182930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33cfcb9334f92d4f9706619b8f0c2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4022850956386539336
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,9 +309,10 @@ GameObject:
   - component: {fileID: 8122827582609486457}
   - component: {fileID: 4953823772626052266}
   - component: {fileID: 5533212658527636475}
+  - component: {fileID: 8820160044963839070}
   m_Layer: 6
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,12 +601,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855049204320965907}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 995b390981ba4fc47990bbc0f420bef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Detector: {fileID: 0}
+  m_Detector: {fileID: 5120389493092797749}
 --- !u!114 &8122827582609486457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,9 +645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Infinite: 1
   Invulnerable: 0
-  Max: 0
+  Max: 100
   Min: 0
-  Value: 0
+  Value: 100
   InitialValue: 0
   OnHealthAltered:
     m_PersistentCalls:
@@ -604,6 +661,29 @@ MonoBehaviour:
   OnLoadedDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!136 &8820160044963839070
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855049204320965907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6997541139336552359
 GameObject:
   m_ObjectHideFlags: 0

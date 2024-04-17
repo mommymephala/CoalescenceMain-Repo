@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using HEScripts.States;
 using HEScripts.Utils;
-using HorrorEngine;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -82,8 +81,7 @@ namespace HEScripts.Enemy
                 Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation, Time.deltaTime * m_FacingSpeedBetweenAttacks);
                 return;
             }
-
-
+            
             if (m_ShowDebug)
                 DebugUtils.DrawBox(m_EnemySenses.LastKnownPosition, Quaternion.identity, Vector3.one * 0.25f, Color.white, 1f);
 
@@ -101,8 +99,7 @@ namespace HEScripts.Enemy
                 {
                     if (m_TimeInState > m_MinTimeBetweenAttacks)
                     {
-                        SetState(m_CurrentAttack as ActorState);
-                        return;
+                        SetState(m_CurrentAttack);
                     }
                     else
                     {
@@ -120,6 +117,7 @@ namespace HEScripts.Enemy
                 }
                 else
                 {
+                    Debug.Log("This debug is reached.");
                     SetState(m_IdleState);
                 }
             }
@@ -144,7 +142,7 @@ namespace HEScripts.Enemy
             //     }
             // }
 
-            foreach (var attack in m_AttackStates)
+            foreach (EnemyStateAttack attack in m_AttackStates)
             {
                 if (attack.CanEnter())
                 {
