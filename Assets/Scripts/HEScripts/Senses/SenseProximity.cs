@@ -1,4 +1,3 @@
-using HorrorEngine;
 using UnityEngine;
 
 namespace HEScripts.Senses
@@ -6,8 +5,8 @@ namespace HEScripts.Senses
     public class SenseProximity : Sense
     {
         [SerializeField] SenseTarget m_Target;
-        [SerializeField] float m_DetectionRadius = 10;
-        [SerializeField] float m_UndetectionRadius = 15;
+        [SerializeField] float m_DetectionRadius;
+        [SerializeField] float m_UndetectionRadius;
 
         private bool m_InProximity;
 

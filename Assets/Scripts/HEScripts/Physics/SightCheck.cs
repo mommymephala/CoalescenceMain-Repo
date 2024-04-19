@@ -16,17 +16,17 @@ namespace HEScripts.Physics
             return IsInSight(targetPos + m_Offset);
         }
 
-        public bool IsInSight(Vector3 position)
+        private bool IsInSight(Vector3 position)
         {
             // Check player visibility
             var dist = Mathf.Min(Vector3.Distance(m_SightPoint.position, position), m_MaxDistance);
-            var dirToPlayer = (position - m_SightPoint.position).normalized;
+            Vector3 dirToPlayer = (position - m_SightPoint.position).normalized;
 
             // First throw a ray to check sight blockers in the path and then a sight check with the proper mask (these mask are different)
             UnityEngine.Physics.Raycast(new Ray(m_SightPoint.position, dirToPlayer), out RaycastHit blockerHit, dist, m_SightBlockerMask, QueryTriggerInteraction.Ignore);
             if (UnityEngine.Physics.Raycast(new Ray(m_SightPoint.position, dirToPlayer), out RaycastHit sightHit, dist, m_TargetMask, QueryTriggerInteraction.Collide))
             {
-                float distanceDiff = blockerHit.distance - sightHit.distance;
+                var distanceDiff = blockerHit.distance - sightHit.distance;
                 if (!blockerHit.collider || blockerHit.distance > sightHit.distance || Mathf.Abs(distanceDiff) < Mathf.Epsilon)
                 {
                     Debug.DrawLine(m_SightPoint.position, position, Color.green);

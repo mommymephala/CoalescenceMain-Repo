@@ -22,9 +22,9 @@ namespace HEScripts.Combat
             var scaledSize = new Vector3(m_Size.x * transform.lossyScale.x, m_Size.y * transform.lossyScale.y, m_Size.z * transform.lossyScale.z);
 
             DebugUtils.DrawBox(transform.position + scaledCenter, transform.rotation, scaledSize, Color.red, 10);
-            int count = UnityEngine.Physics.OverlapBoxNonAlloc(transform.position + scaledCenter, scaledSize * 0.5f, m_OverlapResults, transform.rotation, m_LayerMask, QueryTriggerInteraction.Collide);
+            var count = UnityEngine.Physics.OverlapBoxNonAlloc(transform.position + scaledCenter, scaledSize * 0.5f, m_OverlapResults, transform.rotation, m_LayerMask, QueryTriggerInteraction.Collide);
             
-            for (int i = 0; i < count; ++i)
+            for (var i = 0; i < count; ++i)
             {
                 if (m_OverlapResults[i].TryGetComponent(out Damageable d))
                     damageables.Add(d);

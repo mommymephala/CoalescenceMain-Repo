@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using HEScripts.Pooling;
-using HorrorEngine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,7 +33,7 @@ namespace HEScripts.States
 
         [SerializeField] protected AnimatorStateHandle m_ExitAnimationState;
         [SerializeField] protected float m_ExitAnimationBlendTime = 0.25f;
-        [SerializeField] protected float m_ExitAnimationDuration = 0f;
+        [SerializeField] protected float m_ExitAnimationDuration;
 
         [Tooltip("If this is set to true the ExitAnimation of the previous state will be ignored when entering this state")]
         public bool SkipPreviousExitAnimation;
@@ -47,7 +46,6 @@ namespace HEScripts.States
         private HashSet<string> m_HashedTags = new HashSet<string>();
 
         protected Actor Actor { get; private set; }
-        protected bool TransitionFinished => m_TransitionTime <= 0;
         private float m_TransitionTime;
 
         private Coroutine m_EnterRoutine;
@@ -72,10 +70,10 @@ namespace HEScripts.States
 
         public virtual void StateEnter(IActorState fromState)
         {
-            bool foundStateTransition = false;
+            var foundStateTransition = false;
             if (m_StateTransitions != null && m_StateTransitions.Length > 0)
             {
-                foreach (var specific in m_StateTransitions)
+                foreach (StateTransition specific in m_StateTransitions)
                 {
                     if (specific.FromState == (ActorState)fromState)
                     {

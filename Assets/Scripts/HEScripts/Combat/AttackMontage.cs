@@ -2,7 +2,6 @@ using System.Collections;
 using HEScripts.States;
 using HEScripts.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace HEScripts.Combat
 {
@@ -12,11 +11,10 @@ namespace HEScripts.Combat
         public AnimatorStateHandle Animation;
         public float AnimationBlendTime = 0.2f;
         public float Duration;
-        public float MontageDelay;
+        public float MontageDelay; // Can be used later if needed
         public float AttackActivationDelay;
 
         [SerializeField] public AudioSource m_AudioSource;
-        [FormerlySerializedAs("AttackSound")]
         [SerializeField] private AudioClip m_AttackSound;
 
         // --------------------------------------------------------------------
@@ -58,7 +56,7 @@ namespace HEScripts.Combat
 
         // --------------------------------------------------------------------
 
-        IEnumerator StartAttackDelayed(float delay)
+        private IEnumerator StartAttackDelayed(float delay)
         {
             yield return Yielders.Time(delay);
             Attack.StartAttack();

@@ -6,7 +6,7 @@ namespace HEScripts.Senses
     {
         public SenseChangedEvent OnChanged = new SenseChangedEvent();
 
-        public float TickFrequency = 0.5f;
+        public float TickFrequency;
         
         protected SenseController m_Controller;
 

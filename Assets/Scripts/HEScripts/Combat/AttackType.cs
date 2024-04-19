@@ -23,9 +23,9 @@ namespace HEScripts.Combat
         private void OnEnable()
         {
             m_HashedImpacts.Clear();
-            foreach (var impact in Impacts)
+            foreach (AttackImpact impact in Impacts)
             {
-                foreach (var type in impact.Damageable)
+                foreach (DamageableType type in impact.Damageable)
                 {
                     if (type)
                     {

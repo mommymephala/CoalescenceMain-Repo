@@ -39,9 +39,9 @@ namespace HEScripts.Enemy
 
             base.StateEnter(fromState);
 
-            // m_Duration = m_AttackMontage.Duration;
+            m_Duration = m_AttackMontage.Duration;
 
-            // m_AttackMontage.Play(Actor.MainAnimator);
+            m_AttackMontage.Play(Actor.MainAnimator);
         }
 
         // --------------------------------------------------------------------
@@ -91,7 +91,7 @@ namespace HEScripts.Enemy
             if ((m_NavPath.status != NavMeshPathStatus.PathInvalid) && (m_NavPath.corners.Length > 1))
             {
                 float distToTarget = 0;
-                for (int i = 1; i < m_NavPath.corners.Length; ++i)
+                for (var i = 1; i < m_NavPath.corners.Length; ++i)
                 {
                     distToTarget += Vector3.Distance(m_NavPath.corners[i - 1], m_NavPath.corners[i]);
                     if (distToTarget > AttackDistance)

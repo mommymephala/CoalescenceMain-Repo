@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using HEScripts.Utils;
-using HorrorEngine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +10,7 @@ namespace HEScripts.Senses
 
     public class SenseController : MonoBehaviour
     {
-        public SenseChangedEvent OnSenseChanged = new SenseChangedEvent();
+        private SenseChangedEvent OnSenseChanged = new SenseChangedEvent();
 
         [SerializeField] List<Sense> m_Senses;
 
@@ -24,7 +23,7 @@ namespace HEScripts.Senses
 
         private void OnEnable()
         {
-            foreach(var sense in m_Senses)
+            foreach(Sense sense in m_Senses)
             {
                 sense.Init(this);
                 sense.OnChanged.AddListener(m_OnSenseChangedCallback);
@@ -36,7 +35,7 @@ namespace HEScripts.Senses
         {
             StopAllCoroutines();
 
-            foreach (var sense in m_Senses)
+            foreach (Sense sense in m_Senses)
             {
                 sense.OnChanged.RemoveListener(m_OnSenseChangedCallback);
             }

@@ -11,7 +11,6 @@ namespace HEScripts.Enemy
     {
         [SerializeField] EnemyStateIdle m_IdleState;
         [SerializeField] EnemyStateAttack[] m_AttackStates;
-        // [SerializeField] EnemyStateGrab[] m_GrabStates;
         [SerializeField] float m_InitialDelay = 1f;
         [SerializeField] float m_MinTimeBetweenAttacks = 1f;
         [SerializeField] float m_FacingSpeedBetweenAttacks = 1f;
@@ -131,15 +130,6 @@ namespace HEScripts.Enemy
         private ActorState PickAttack()
         {
             m_AttackCandidates.Clear();
-
-            // foreach (var attack in m_GrabStates)
-            // {
-            //     if (attack.CanEnter())
-            //     {
-            //         m_AttackCandidates.Add(attack);
-            //         break;
-            //     }
-            // }
 
             foreach (EnemyStateAttack attack in m_AttackStates)
             {

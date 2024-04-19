@@ -53,7 +53,7 @@ namespace HEScripts.Enemy
 
         private void Update()
         {
-            if (PlayerTransform)
+            if (PlayerTransform != null && IsPlayerDetected)
             {
                 LastKnownPosition = PlayerTransform.position;
             }
