@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using HEScripts.Combat;
 using HEScripts.Systems;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,9 +15,16 @@ namespace Weapon
 
         [Header("Shooting Components")]
         [SerializeField] private Transform muzzleTransform;
+        [SerializeField] protected AttackType attackType;
         private Transform _weaponHolderTransform;
         private Transform _cameraPivotTransform;
         
+        [Header("Attack Layer & Range")]
+        [SerializeField] private float maxRange = 100f;
+        [SerializeField] private LayerMask layerMask;
+
+        private RaycastHit _hitResult;
+
         private float _timeSinceLastShot;
         
         //Recoil variables
@@ -45,7 +53,6 @@ namespace Weapon
                  (_controller.weaponData.allowAutoFire || !_controller.Input.IsAttackDown())) || !CanShoot()) return;
             
             Shoot();
-            OnShootSuccess?.Invoke();
         }
         
         private void LateUpdate()
@@ -62,15 +69,53 @@ namespace Weapon
         {
             _timeSinceLastShot = 0f;
             Vector3 shootDirection = CalculateSpread(_controller.weaponCamera.transform.forward);
-            
-            // Implement the actual shooting logic here
-            Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
-            Debug.Log("Shooting.");
-            
+            var ray = new Ray(muzzleTransform.position, shootDirection);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, maxRange, layerMask))
+            {
+                Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
+                ProcessHit(hit);
+            }
+            else
+            {
+                Debug.DrawRay(muzzleTransform.position, shootDirection * maxRange, Color.red, 2f);
+            }
+
             CalculateRecoil();
             ApplyProceduralKickback();
-            
-            // Trigger visual and audio effects for shooting here
+            OnShootSuccess?.Invoke();
+        }
+
+        private void ProcessHit(RaycastHit hit)
+        {
+            var damageable = hit.collider.GetComponent<Damageable>();
+            if (damageable)
+            {
+                AttackImpact impact = attackType.GetImpact(damageable.Type);
+                if (impact != null)
+                {
+                    // Check and apply pre-damage effects if any
+                    if (impact.PreDamageEffects != null)
+                    {
+                        foreach (AttackEffect effect in impact.PreDamageEffects)
+                        {
+                            effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = hit.point, ImpactDir = -hit.normal });
+                        }
+                    }
+
+                    // Apply damage
+                    damageable.Damage(impact.Damage, hit.point, -hit.normal);
+
+                    // Check and apply post-damage effects if any
+                    if (impact.PostDamageEffects != null)
+                    {
+                        foreach (AttackEffect effect in impact.PostDamageEffects)
+                        {
+                            effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = hit.point, ImpactDir = -hit.normal });
+                        }
+                    }
+                }
+            }
         }
 
         private Vector3 CalculateSpread(Vector3 baseDirection)

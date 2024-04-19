@@ -128,6 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleTransform: {fileID: 1088569248021885356}
+  attackType: {fileID: 11400000, guid: 7daef3b28dcde0647a5900e9e2d5b5e5, type: 2}
+  maxRange: 100
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &5525547177265907086
 MonoBehaviour:
   m_ObjectHideFlags: 0

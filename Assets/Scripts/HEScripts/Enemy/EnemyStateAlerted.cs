@@ -117,7 +117,6 @@ namespace HEScripts.Enemy
                 }
                 else
                 {
-                    Debug.Log("This debug is reached.");
                     SetState(m_IdleState);
                 }
             }

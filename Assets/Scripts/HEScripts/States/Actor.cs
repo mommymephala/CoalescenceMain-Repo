@@ -7,6 +7,7 @@ namespace HEScripts.States
     public class Actor : MonoBehaviour
     {
         public ActorStateController StateController { get; private set; }
+        public Animator MainAnimator;
 
         private HashSet<Object> m_DisableContext = new HashSet<Object>();
 

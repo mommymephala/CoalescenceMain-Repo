@@ -10,7 +10,9 @@ namespace HEScripts.Combat
     public class Damageable : MonoBehaviour
     {
         public Combatant Owner { get; private set; }
-        
+
+        public DamageableType Type;
+
         [Tooltip("Event fired before the damage is applied")]
         public OnDamageEvent OnPreDamage;
         [Tooltip("Event fired after the damage has been applied")]

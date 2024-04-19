@@ -1,3 +1,4 @@
+using HEScripts.Combat;
 using HEScripts.States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +9,7 @@ namespace HEScripts.Enemy
     {
         [SerializeField] EnemyStateAlerted m_AlertedState;
         [SerializeField] float m_FacingSpeed = 1f;
-        // [SerializeField] AttackMontage m_AttackMontage;
+        [SerializeField] AttackMontage m_AttackMontage;
         [SerializeField] bool m_RotateTowardsTarget = true;
         public float AttackDistance = 1f;
         public float Cooldown = 3;

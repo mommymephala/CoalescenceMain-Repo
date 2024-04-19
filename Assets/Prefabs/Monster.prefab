@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6667811177870233947}
+  - component: {fileID: 863190544489279195}
+  - component: {fileID: 2236117703279432936}
+  - component: {fileID: 3418702111639061465}
   m_Layer: 9
   m_Name: Attack
   m_TagString: Untagged
@@ -31,6 +34,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8792640955201496408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863190544489279195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389181178494544834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0ea63f2880b2d4ab023e2f3d9f74ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &2236117703279432936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389181178494544834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6276a6c2d9f5241a7adc740462af15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Attack: {fileID: 11400000, guid: 058e2a2c1a006964cac0eeb73d81f872, type: 2}
+  DamageRate: 10
+  Duration: 0
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3418702111639061465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389181178494544834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09754826fdfffb945bee8dfe37c700c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack: {fileID: 2236117703279432936}
+  Animation: {fileID: 11400000, guid: 02ebd4999d3040b46a196a90c0adbcaa, type: 2}
+  AnimationBlendTime: 0.2
+  Duration: 1
+  MontageDelay: 0
+  AttackActivationDelay: 0.5
+  m_AudioSource: {fileID: 0}
+  m_AttackSound: {fileID: 0}
 --- !u!1 &407655096947067450
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,15 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd20d2d1fb44f543a294f3faf8801b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnimationState: {fileID: 0}
+  m_AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
   m_AnimationBlendTime: 0.25
   m_StateTransitions:
   - FromState: {fileID: 1203087359121711604}
-    AnimationState: {fileID: 0}
-    AnimationBlendTime: 0
+    AnimationState: {fileID: 11400000, guid: cc48124fab29cf74fb7f21f65398d20e, type: 2}
+    AnimationBlendTime: 0.25
   - FromState: {fileID: 3308129827462402635}
-    AnimationState: {fileID: 0}
-    AnimationBlendTime: 0
+    AnimationState: {fileID: 11400000, guid: cc48124fab29cf74fb7f21f65398d20e, type: 2}
+    AnimationBlendTime: 0.25
   m_ExitAnimationState: {fileID: 0}
   m_ExitAnimationBlendTime: 0.25
   m_ExitAnimationDuration: 0
@@ -148,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5b1b65776881f4cbd31389f888dc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnimationState: {fileID: 0}
+  m_AnimationState: {fileID: 11400000, guid: 3146a61ec1e88d646b5c241e0dfe516b, type: 2}
   m_AnimationBlendTime: 0.25
   m_StateTransitions: []
   m_ExitAnimationState: {fileID: 0}
@@ -456,6 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1adb2ab5e51e0409b3fe38f29c3c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: fdbbcf8df8fab944dac4cedfe107cc9f, type: 2}
   OnPreDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -613,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0df989f68c3b0741a23004822bbef4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnimationState: {fileID: 0}
+  m_AnimationState: {fileID: 11400000, guid: 33e4667e46a616847a2cd82618ba665d, type: 2}
   m_AnimationBlendTime: 0.25
   m_StateTransitions: []
   m_ExitAnimationState: {fileID: 0}
@@ -672,11 +734,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998423764eaa23247b853b48b4b4eb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnimationState: {fileID: 0}
-  m_AnimationBlendTime: 0.25
+  m_AnimationState: {fileID: 11400000, guid: 2d92a12f0797c824a966a57f4c1eec41, type: 2}
+  m_AnimationBlendTime: 0
   m_StateTransitions:
   - FromState: {fileID: 8410736365416673727}
-    AnimationState: {fileID: 0}
+    AnimationState: {fileID: 11400000, guid: 3146a61ec1e88d646b5c241e0dfe516b, type: 2}
     AnimationBlendTime: 0
   m_ExitAnimationState: {fileID: 0}
   m_ExitAnimationBlendTime: 0.25
@@ -825,7 +887,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.75
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7404806876196133782
@@ -906,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15be47fe4d013f4289946a7272ccbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainAnimator: {fileID: 394515143586657281}
 --- !u!114 &7848664016003671044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,12 +1206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a29e64eafc0e24aae8d250f34e142d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnimationState: {fileID: 0}
+  m_AnimationState: {fileID: 11400000, guid: 90dccce87e2784d4abc0e6393c39c834, type: 2}
   m_AnimationBlendTime: 0.25
   m_StateTransitions:
   - FromState: {fileID: 8410736365416673727}
-    AnimationState: {fileID: 0}
-    AnimationBlendTime: 0
+    AnimationState: {fileID: 11400000, guid: f4c845536b602af4299412e642295728, type: 2}
+    AnimationBlendTime: 0.25
   m_ExitAnimationState: {fileID: 0}
   m_ExitAnimationBlendTime: 0.25
   m_ExitAnimationDuration: 0
@@ -1231,6 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1adb2ab5e51e0409b3fe38f29c3c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: e4177163a99ab4847a091e592739c85b, type: 2}
   OnPreDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -1365,6 +1429,7 @@ MonoBehaviour:
   m_GoToStateAfterDuration: {fileID: 8410736365416673727}
   m_AlertedState: {fileID: 3416583239326226275}
   m_FacingSpeed: 1
+  m_AttackMontage: {fileID: 0}
   m_RotateTowardsTarget: 1
   AttackDistance: 1
   Cooldown: 3
@@ -1467,5 +1532,10 @@ PrefabInstance:
 --- !u!4 &305561553951610137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
+  m_PrefabInstance: {fileID: 301130618071669337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &394515143586657281 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95787105524477528, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
   m_PrefabInstance: {fileID: 301130618071669337}
   m_PrefabAsset: {fileID: 0}
