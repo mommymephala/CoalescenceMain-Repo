@@ -38,7 +38,7 @@ namespace HEScripts.Enemy
         {
             base.StateFixedUpdate();
 
-            m_Velocity = m_Velocity * (1 - m_Drag);
+            m_Velocity *= (1 - m_Drag);
             m_Rigidbody.velocity = m_Velocity;
 
             if (m_Rigidbody.velocity.magnitude < 0.1f)

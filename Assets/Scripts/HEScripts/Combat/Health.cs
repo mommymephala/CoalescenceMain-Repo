@@ -15,6 +15,9 @@ namespace HEScripts.Combat
 
     [Serializable]
     public class HealthDecreasedEvent : UnityEvent<float> { }
+    
+    [Serializable]
+    public class SignificantDamageEvent : UnityEvent<float> { }
 
     public struct HealthSaveData
     {
@@ -32,12 +35,13 @@ namespace HEScripts.Combat
         public float InitialValue;
 
         public HealthAlteredEvent OnHealthAltered = new HealthAlteredEvent();
+        public SignificantDamageEvent OnSignificantDamageTaken = new SignificantDamageEvent();
         public HealthDecreasedEvent OnHealthDecreased = new HealthDecreasedEvent();
         public HealthDepletedEvent OnDeath = new HealthDepletedEvent();
         public UnityEvent OnLoadedDead;
 
         public Damageable LastDamageableHit { get; private set; }
-        public bool IsDead { get { return Value <= 0; } }
+        public bool IsDead => Value <= 0;
 
         // --------------------------------------------------------------------
 
@@ -65,7 +69,14 @@ namespace HEScripts.Combat
             if (Infinite)
                 Value += amount;
 
+            var previousValue = Value;
             SetHealth(Value - amount);
+
+            float significantDamageThreshold = Max * 0.2f;
+            if (amount >= significantDamageThreshold)
+            {
+                OnSignificantDamageTaken?.Invoke(amount);
+            }
         }
 
         // --------------------------------------------------------------------
@@ -89,14 +100,25 @@ namespace HEScripts.Combat
             var prev = Value;
             Value = Mathf.Clamp(value, Min, Max);
 
-            if (prev != Value && OnHealthAltered != null)
+            if (prev != Value)
+            {
                 OnHealthAltered?.Invoke(prev, Value);
 
-            if (prev > Value && OnHealthDecreased != null)
-                OnHealthDecreased?.Invoke(Value);
+                if (prev > Value)
+                {
+                    OnHealthDecreased?.Invoke(Value);
 
-            if (IsDead)
-                OnDeath?.Invoke(this);
+                    var significantDamageThreshold = Max * 0.2f;
+                    var damageTaken = prev - Value;
+                    if (damageTaken >= significantDamageThreshold)
+                    {
+                        OnSignificantDamageTaken?.Invoke(damageTaken);
+                    }
+                }
+
+                if (IsDead)
+                    OnDeath?.Invoke(this);
+            }
         }
 
         // --------------------------------------------------------------------

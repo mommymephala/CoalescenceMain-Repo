@@ -7,7 +7,6 @@ namespace HEScripts.Items
     {
         [Header("Shooting")]
         public bool allowAutoFire;
-        public float damage;
         public float maxDistance;
         [Tooltip("In RPM")] public float fireRate;
         public float spread;

@@ -25,7 +25,6 @@ MonoBehaviour:
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1
   allowAutoFire: 0
-  damage: 10
   maxDistance: 100
   fireRate: 1000
   spread: 0
