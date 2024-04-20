@@ -1,5 +1,4 @@
-﻿using Physical.Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Physical
 {
@@ -59,7 +58,7 @@ namespace Physical
 
         public void FixedUpdate()
         {
-            var t = Utils.EaseInOut(Mathf.PingPong(Time.time, _moveTime), _moveTime);
+            var t = Physical.Common.Utils.EaseInOut(Mathf.PingPong(Time.time, _moveTime), _moveTime);
             var p = Vector3.Lerp(_startPosition, _targetPosition, t);
 
             _rigidbody.MovePosition(p);

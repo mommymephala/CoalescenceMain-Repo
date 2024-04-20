@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using HEScripts.Combat;
-using HEScripts.Systems;
+using Combat;
+using Systems;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

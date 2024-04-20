@@ -1,7 +1,7 @@
 using System.Collections;
-using HEScripts.Equipment;
-using HEScripts.Player;
-using HEScripts.Systems;
+using Equipment;
+using Player;
+using Systems;
 using UnityEngine;
 
 namespace Weapon

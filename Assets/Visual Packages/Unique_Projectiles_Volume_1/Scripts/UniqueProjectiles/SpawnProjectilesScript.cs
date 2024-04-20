@@ -14,7 +14,7 @@ public class SpawnProjectilesScript : MonoBehaviour {
     public bool useTarget;
 	public bool use2D;
 	public bool cameraShake;
-	public Text effectName;
+	public UnityEngine.UI.Text effectName;
 	public RotateToMouseScript rotateToMouse;
 	public GameObject firePoint;
 	public GameObject cameras;

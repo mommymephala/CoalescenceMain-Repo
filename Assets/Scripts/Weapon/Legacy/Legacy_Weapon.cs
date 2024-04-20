@@ -1,11 +1,11 @@
 using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
-using HEScripts.Inventory;
-using HEScripts.Items;
-using HEScripts.Systems;
 using HEScripts.UI;
 using Interfaces;
+using Inventory;
+using Items;
+using Systems;
 using UnityEngine;
 
 namespace Weapon
@@ -295,7 +295,7 @@ namespace Weapon
         
         private void ReloadFromInventory()
         {
-            Inventory inventory = GameManager.Instance.Inventory;
+            Inventory.Inventory inventory = GameManager.Instance.Inventory;
             if (weaponData.ammoItem != null && inventory.TryGet(weaponData.ammoItem, out InventoryEntry ammoEntry))
             {
                 int ammoNeeded = weaponData.maxAmmo - _weaponEntry.SecondaryCount;

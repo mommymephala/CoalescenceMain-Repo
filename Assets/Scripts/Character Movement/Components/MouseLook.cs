@@ -1,4 +1,4 @@
-﻿using HEScripts.Systems;
+﻿using Systems;
 using UnityEngine;
 
 namespace Character_Movement.Components

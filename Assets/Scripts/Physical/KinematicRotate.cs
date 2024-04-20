@@ -32,7 +32,7 @@ namespace Physical
         public float angle
         {
             get { return _angle; }
-            set { _angle = Utils.WrapAngle(value); }
+            set { _angle = Physical.Common.Utils.WrapAngle(value); }
         }
 
         #endregion

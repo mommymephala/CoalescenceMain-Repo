@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
-using HEScripts.Inventory;
-using HEScripts.Items;
-using HEScripts.Player;
-using HEScripts.Systems;
 using HEScripts.UI;
+using Inventory;
+using Items;
+using Player;
+using Systems;
+using UI_Codebase;
 using UnityEngine;
 
 namespace Weapon
@@ -114,7 +115,7 @@ namespace Weapon
             IsReloading = true;
             UIManager.Get<UIInputListener>().AddBlockingContext(this);
             
-            Inventory inventory = GameManager.Instance.Inventory;
+            Inventory.Inventory inventory = GameManager.Instance.Inventory;
             if (weaponData.ammoItem != null && inventory.TryGet(weaponData.ammoItem, out InventoryEntry ammoEntry))
             {
                 var ammoNeeded = weaponData.maxAmmo - weaponEntry.SecondaryCount;

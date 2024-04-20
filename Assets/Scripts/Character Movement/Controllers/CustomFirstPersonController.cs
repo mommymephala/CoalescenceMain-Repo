@@ -1,4 +1,4 @@
-﻿using HEScripts.Player;
+﻿using Player;
 using UnityEngine;
 
 namespace Character_Movement.Controllers
