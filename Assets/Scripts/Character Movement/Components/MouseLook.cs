@@ -57,6 +57,7 @@ namespace Character_Movement.Components
         private bool aimingDownSight;
         
         [Tooltip("How fast the cursor moves when in ADS mode.")]
+        [SerializeField]
         private float _adsSensitivity = 1.0f;
 
         #endregion

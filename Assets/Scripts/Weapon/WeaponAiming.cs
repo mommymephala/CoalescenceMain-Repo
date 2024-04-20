@@ -38,13 +38,20 @@ namespace Weapon
         
         private void ProcessAimingInput()
         {
-            if (toggleAim && _controller.Input.IsAimingDown())
+            if (_controller.playerController.isGrounded && !_controller.playerController.run)
             {
-                IsAiming = !IsAiming;
+                if (toggleAim && _controller.Input.IsAimingDown())
+                {
+                    IsAiming = !IsAiming;
+                }
+                else if (!toggleAim)
+                {
+                    IsAiming = _controller.Input.IsAimingHeld();
+                }
             }
-            else if (!toggleAim)
+            else
             {
-                IsAiming = _controller.Input.IsAimingHeld();
+                IsAiming = false;
             }
         }
 

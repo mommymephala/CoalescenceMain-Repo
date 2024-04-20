@@ -44,15 +44,15 @@ namespace Weapon
         private void Update()
         {
             if (!GameManager.Instance.IsPlaying) return;
-            
+
             _timeSinceLastShot += Time.deltaTime;
 
-            if (_controller.IsReloading || _controller.CurrentWeaponEntry.SecondaryCount <= 0) return;
-
-            if (((!_controller.weaponData.allowAutoFire || !_controller.Input.IsAttackHeld()) &&
-                 (_controller.weaponData.allowAutoFire || !_controller.Input.IsAttackDown())) || !CanShoot()) return;
-            
-            Shoot();
+            if (!CanShoot()) return;
+            if ((!_controller.weaponData.allowAutoFire && _controller.Input.IsAttackDown()) ||
+                (_controller.weaponData.allowAutoFire && _controller.Input.IsAttackHeld()))
+            {
+                Shoot();
+            }
         }
         
         private void LateUpdate()
@@ -62,7 +62,11 @@ namespace Weapon
 
         private bool CanShoot()
         {
-            return _timeSinceLastShot >= 1f / (_controller.weaponData.fireRate / 60f);
+            var hasAmmo = _controller.CurrentWeaponEntry is { SecondaryCount: > 0 };
+            var canShootTiming = _timeSinceLastShot >= 1f / (_controller.weaponData.fireRate / 60f);
+            var playerStateAllowed = !_controller.playerController.run && _controller.playerController.isGrounded;
+
+            return hasAmmo && canShootTiming && playerStateAllowed && !_controller.IsReloading;
         }
 
         private void Shoot()
