@@ -15,10 +15,10 @@ using UnityEngine;
 public class CameraShakeSimpleScript : MonoBehaviour {
 
 	private bool isRunning = false;
-	private Animation anim;
+	private UnityEngine.Animation anim;
 
 	void Start () {
-		anim = GetComponent<Animation> ();
+		anim = GetComponent<UnityEngine.Animation> ();
 	}
 
 	public void ShakeCamera() {	

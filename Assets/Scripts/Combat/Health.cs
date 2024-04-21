@@ -33,6 +33,7 @@ namespace Combat
         public float Value;
         [Tooltip("Optional value that will used on reset. Leave to 0 to reset to Max")]
         public float InitialValue;
+        public float significantDamagePercentage;
 
         public HealthAlteredEvent OnHealthAltered = new HealthAlteredEvent();
         public SignificantDamageEvent OnSignificantDamageTaken = new SignificantDamageEvent();
@@ -41,7 +42,8 @@ namespace Combat
         public UnityEvent OnLoadedDead;
 
         public Damageable LastDamageableHit { get; private set; }
-        public bool IsDead => Value <= 0;
+        public float Normalized { get { return Value / Max; } }
+        public bool IsDead { get { return Value <= 0; } }
 
         // --------------------------------------------------------------------
 
@@ -71,12 +73,6 @@ namespace Combat
 
             var previousValue = Value;
             SetHealth(Value - amount);
-
-            float significantDamageThreshold = Max * 0.2f;
-            if (amount >= significantDamageThreshold)
-            {
-                OnSignificantDamageTaken?.Invoke(amount);
-            }
         }
 
         // --------------------------------------------------------------------
@@ -108,14 +104,14 @@ namespace Combat
                 {
                     OnHealthDecreased?.Invoke(Value);
 
-                    var significantDamageThreshold = Max * 0.2f;
+                    var significantDamageThreshold = Max * significantDamagePercentage;
                     var damageTaken = prev - Value;
                     if (damageTaken >= significantDamageThreshold)
                     {
                         OnSignificantDamageTaken?.Invoke(damageTaken);
                     }
                 }
-
+                
                 if (IsDead)
                     OnDeath?.Invoke(this);
             }

@@ -38,7 +38,6 @@ namespace Combat
 
                     OnDamage?.Invoke(impactPoint, impactDir);
                 }
-
             }
         }
     }

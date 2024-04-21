@@ -20,7 +20,7 @@ MonoBehaviour:
     Filters: []
     PreDamageEffects: []
     PostDamageEffects: []
-  - Damage: 20
+  - Damage: 25
     Damageable:
     - {fileID: 11400000, guid: e4177163a99ab4847a091e592739c85b, type: 2}
     Filters: []
