@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerName: PlayerName
-  Player: {fileID: 0}
+  Player: {fileID: 8122827582609486457, guid: c8bc12c13e5837c4086183776f13fb49, type: 3}
   Inventory:
     Items:
     - Item: {fileID: 0}

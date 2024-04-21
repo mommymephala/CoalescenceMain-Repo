@@ -36,7 +36,6 @@ namespace Level_Events
 
             playerTransform.rotation = targetTransform.rotation;
 
-
             playerRb.velocity = targetTransform.TransformDirection(velocity);
             playerRb.angularVelocity = angularVelocity;
 

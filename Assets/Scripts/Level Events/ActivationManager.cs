@@ -1,27 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
+using VInspector;
 
 namespace Level_Events
 {
-    [System.Serializable]
-    public class ObjectMapping
-    {
-        public ActivationManager.ObjectIdentifier identifier;
-        public GameObject gameObject;
-    }
-
     public class ActivationManager : MonoBehaviour
     {
-        public enum ObjectIdentifier
-        {
-            
-        }
-        
         public static ActivationManager Instance { get; private set; }
         
         [SerializeField]
-        private List<ObjectMapping> objectsToManage = new List<ObjectMapping>();
-        private Dictionary<ObjectIdentifier, GameObject> objectDict = new Dictionary<ObjectIdentifier, GameObject>();
+        private SerializedDictionary<string, GameObject> objectDict = new SerializedDictionary<string, GameObject>();
 
         private void Awake()
         {
@@ -29,7 +16,6 @@ namespace Level_Events
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                InitializeDictionary();
             }
             else
             {
@@ -37,15 +23,7 @@ namespace Level_Events
             }
         }
 
-        private void InitializeDictionary()
-        {
-            foreach (ObjectMapping mapping in objectsToManage)
-            {
-                objectDict[mapping.identifier] = mapping.gameObject;
-            }
-        }
-
-        public void ActivateObject(ObjectIdentifier identifier)
+        public void ActivateObject(string identifier)
         {
             if (objectDict.TryGetValue(identifier, out GameObject obj))
             {
@@ -53,7 +31,7 @@ namespace Level_Events
             }
         }
 
-        public void DeactivateObject(ObjectIdentifier identifier)
+        public void DeactivateObject(string identifier)
         {
             if (objectDict.TryGetValue(identifier, out GameObject obj))
             {
