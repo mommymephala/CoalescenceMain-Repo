@@ -134,6 +134,7 @@ MonoBehaviour:
   mouseLook: {fileID: 0}
   playerCamera: {fileID: 0}
   weaponCamera: {fileID: 0}
+  crosshair: {fileID: 6273629086197932868, guid: e5ef6172077cf0f4ca855e5840654972, type: 3}
 --- !u!114 &1852432027500545454
 MonoBehaviour:
   m_ObjectHideFlags: 0

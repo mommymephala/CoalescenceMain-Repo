@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
-using HEScripts.UI;
 using Inventory;
 using Items;
 using Player;
@@ -23,6 +22,7 @@ namespace Weapon
         [HideInInspector] public MouseLook mouseLook;
         [HideInInspector] public Camera playerCamera;
         [HideInInspector] public Camera weaponCamera;
+        [HideInInspector] public Crosshair crosshair;
         
         private Coroutine _reloadCoroutine;
         
@@ -37,6 +37,7 @@ namespace Weapon
             mouseLook = GetComponentInParent<MouseLook>();
             playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
             weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
+            crosshair = GameObject.Find("Crosshair").GetComponent<Crosshair>();
         }
 
         private void OnEnable()
@@ -67,9 +68,34 @@ namespace Weapon
 
         private void Update()
         {
-            if (GameManager.Instance.IsPlaying && Input.IsReloadDown() && !IsReloading)
+            if (GameManager.Instance.IsPlaying && Input.IsReloadDown() && !IsReloading && CurrentWeaponEntry != null)
             {
                 StartReloadProcess(CurrentWeaponEntry);
+            }
+
+            // Update crosshair for aiming
+            if (!crosshair.IsSizeChangeActive()) 
+            {
+                // Only update crosshair size if no size change is active
+                if (WeaponAiming.IsAiming) 
+                {
+                    crosshair.SetSize(new Vector2(20, 20), 0.25f);
+                } 
+                
+                else
+                {
+                    crosshair.SetSize(new Vector2(40, 40), 0.25f);
+                }
+            }
+
+            // Update crosshair color based on ammo
+            if (CurrentWeaponEntry is { SecondaryCount: <= 0 })
+            {
+                crosshair.SetColor(Color.red, 0.1f);
+            }
+            else
+            {
+                crosshair.SetColor(Color.white, 0.1f);
             }
         }
 
@@ -80,6 +106,7 @@ namespace Weapon
             if (CurrentWeaponEntry.SecondaryCount > 0)
             {
                 CurrentWeaponEntry.SecondaryCount--;
+                crosshair.MultiplySize(100f, 1f, 0.1f);
                 Debug.Log($"Shot fired. Remaining ammo: {CurrentWeaponEntry.SecondaryCount}");
             }
             

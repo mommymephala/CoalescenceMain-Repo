@@ -35,7 +35,6 @@ RectTransform:
   m_Children:
   - {fileID: 467250110101803024}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -59,7 +58,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
@@ -246,12 +247,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 467250110101803024}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 320, y: 0}
-  m_SizeDelta: {x: 580, y: 0}
+  m_AnchoredPosition: {x: 369.50418, y: 0}
+  m_SizeDelta: {x: 679.00836, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &467250109726245309
 CanvasRenderer:
@@ -284,8 +284,8 @@ MonoBehaviour:
   m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fcbac58f9bf4dd8428dea0db0537247b, type: 2}
-  m_sharedMaterial: {fileID: -7803602290350721996, guid: fcbac58f9bf4dd8428dea0db0537247b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -423,7 +423,6 @@ RectTransform:
   m_Children:
   - {fileID: 467250109726245296}
   m_Father: {fileID: 467250109459544631}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
