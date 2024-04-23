@@ -25,8 +25,8 @@ MonoBehaviour:
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1
   allowAutoFire: 0
-  maxDistance: 100
-  fireRate: 1000
+  maxDistance: 150
+  fireRate: 600
   spread: 0
   bulletsPerShot: 1
   ammoItem: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}

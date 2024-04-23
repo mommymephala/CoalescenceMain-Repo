@@ -12,6 +12,8 @@ namespace Weapon
         public event Action OnShootSuccess;
         
         private WeaponController _controller;
+        
+        [SerializeField] private LayerMask layerMask;
 
         [Header("Shooting Components")]
         [SerializeField] private Transform muzzleTransform;
@@ -19,9 +21,6 @@ namespace Weapon
         private Transform _weaponHolderTransform;
         private Transform _cameraPivotTransform;
         
-        [Header("Attack Layer & Range")]
-        [SerializeField] private float maxRange = 100f;
-        [SerializeField] private LayerMask layerMask;
 
         private RaycastHit _hitResult;
 
@@ -75,14 +74,14 @@ namespace Weapon
             Vector3 shootDirection = CalculateSpread(_controller.weaponCamera.transform.forward);
             var ray = new Ray(muzzleTransform.position, shootDirection);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, maxRange, layerMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
             {
                 Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
                 ProcessHit(hit);
             }
             else
             {
-                Debug.DrawRay(muzzleTransform.position, shootDirection * maxRange, Color.red, 2f);
+                Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
             }
 
             CalculateRecoil();

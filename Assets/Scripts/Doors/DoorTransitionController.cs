@@ -30,7 +30,7 @@ namespace Doors
         [SerializeField] private Vector3 m_InstantiationPosition = Vector3.one * 10000f;
         [SerializeField] private bool m_PauseGame = true;
 
-        private AudioSource m_AudioSource;
+        // private AudioSource m_AudioSource;
         private Dictionary<DoorAnimation, DoorAnimation> m_AnimationInstances = new Dictionary<DoorAnimation, DoorAnimation>();
 
         private UIFade m_UIFade;
@@ -40,7 +40,7 @@ namespace Doors
         protected override void Awake()
         {
             base.Awake();
-            m_AudioSource = GetComponent<AudioSource>();
+            // m_AudioSource = GetComponent<AudioSource>();
         }
 
 
@@ -79,7 +79,7 @@ namespace Doors
                 Coroutine doorAnimRoutine = StartCoroutine(doorAnim.Play());
                 
                 if (doorAnim.Sound)
-                    m_AudioSource.PlayOneShot(doorAnim.Sound);
+                    // m_AudioSource.PlayOneShot(doorAnim.Sound);
 
                 // Fade In (for door animation)
                 yield return m_UIFade.Fade(1f, 0f, 0.25f);

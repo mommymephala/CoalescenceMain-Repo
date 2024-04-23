@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
+using FMODUnity;
 using Inventory;
 using Items;
 using Player;
@@ -23,6 +24,7 @@ namespace Weapon
         [HideInInspector] public Camera playerCamera;
         [HideInInspector] public Camera weaponCamera;
         [HideInInspector] public Crosshair crosshair;
+        [SerializeField] private Animator weaponAnimator;
         
         private Coroutine _reloadCoroutine;
         
@@ -106,6 +108,7 @@ namespace Weapon
             if (CurrentWeaponEntry.SecondaryCount > 0)
             {
                 CurrentWeaponEntry.SecondaryCount--;
+                RuntimeManager.PlayOneShot(weaponData.shotSound, transform.position);
                 crosshair.MultiplySize(100f, 1f, 0.1f);
                 Debug.Log($"Shot fired. Remaining ammo: {CurrentWeaponEntry.SecondaryCount}");
             }
@@ -126,6 +129,7 @@ namespace Weapon
             else
             {
                 Debug.Log("Cannot shoot: Out of ammo and no ammo available in inventory.");
+                RuntimeManager.PlayOneShot(weaponData.noAmmoSound, transform.position);
             }
         }
 
@@ -134,6 +138,8 @@ namespace Weapon
             if (IsReloading || weaponEntry.SecondaryCount >= weaponData.maxAmmo) return;
 
             OnStartReload?.Invoke();
+            weaponAnimator.SetTrigger("ReloadTrigger");
+            RuntimeManager.PlayOneShot(weaponData.reloadSound, transform.position);
             _reloadCoroutine = StartCoroutine(ReloadSequence(weaponEntry));
         }
 

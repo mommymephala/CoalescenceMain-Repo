@@ -15,17 +15,16 @@ namespace Audio
             NormalAttack,
             HeavyAttack,
         }
+        
         public enum EnemyType
         {
             BaseEnemy,
             ChipEnemy,
-        
         }
+        
         [System.Serializable]
         public class EnemySounds
         {
-        
-       
             public EventReference footstep;
             //  public EventReference takeDamage;
             public EventReference Normalattack;
@@ -33,6 +32,7 @@ namespace Audio
             public EventReference death;
             public EventReference idle;
         }
+        
         //[SerializeField] private EventReference ambient;
         //[SerializeField] private EventReference safeRoom;
         [Header("Player")]
@@ -144,69 +144,70 @@ namespace Audio
         {
             instance.setPaused(false);
         }
+        
         /*private void PauseSound(EventInstance sound)
-    {
-        sound.setPaused(true);
-    }
-
-    private void ResumeSound(EventInstance sound)
-    {
-        sound.setPaused(false);
-    }
-
-    public void EnterSafeRoom()
-    {
-        if (!_isInsideSafeRoom)
         {
-            FadeOutSound(_Ambient, crossfadeDuration, true);
-            _SafeRoom = RuntimeManager.CreateInstance(safeRoom);
-            _SafeRoom.setVolume(0);
-            _SafeRoom.start();
-            FadeInSound(_SafeRoom, crossfadeDuration);
-            _isInsideSafeRoom = true;
+            sound.setPaused(true);
         }
-    }
 
-    public void ExitSafeRoom()
-    {
-        if (_isInsideSafeRoom)
+        private void ResumeSound(EventInstance sound)
         {
-            FadeOutSound(_SafeRoom, crossfadeDuration);
-            ResumeSound(_Ambient);
-            FadeInSound(_Ambient, crossfadeDuration);
-            _isInsideSafeRoom = false;
+            sound.setPaused(false);
         }
-    }
 
-    private IEnumerator StartFade(EventInstance sound, float targetVolume, float duration, bool pauseOnFadeOut = false)
-    {
-        float currentTime = 0;
-        sound.getVolume(out float startVolume);
-
-        while (currentTime < duration)
+        public void EnterSafeRoom()
         {
-            currentTime += Time.deltaTime;
-            float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
-            sound.setVolume(newVolume);
-            yield return null;
+            if (!_isInsideSafeRoom)
+            {
+                FadeOutSound(_Ambient, crossfadeDuration, true);
+                _SafeRoom = RuntimeManager.CreateInstance(safeRoom);
+                _SafeRoom.setVolume(0);
+                _SafeRoom.start();
+                FadeInSound(_SafeRoom, crossfadeDuration);
+                _isInsideSafeRoom = true;
+            }
         }
-        sound.setVolume(targetVolume);
 
-        if (targetVolume == 0 && pauseOnFadeOut)
+        public void ExitSafeRoom()
         {
-            PauseSound(sound);
+            if (_isInsideSafeRoom)
+            {
+                FadeOutSound(_SafeRoom, crossfadeDuration);
+                ResumeSound(_Ambient);
+                FadeInSound(_Ambient, crossfadeDuration);
+                _isInsideSafeRoom = false;
+            }
         }
-    }
 
-    private void FadeInSound(EventInstance sound, float duration)
-    {
-        StartCoroutine(StartFade(sound, 1.0f, duration));
-    }
+        private IEnumerator StartFade(EventInstance sound, float targetVolume, float duration, bool pauseOnFadeOut = false)
+        {
+            float currentTime = 0;
+            sound.getVolume(out float startVolume);
 
-    private void FadeOutSound(EventInstance sound, float duration, bool pauseOnFadeOut = false)
-    {
-        StartCoroutine(StartFade(sound, 0.0f, duration, pauseOnFadeOut));
-    }*/
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
+                sound.setVolume(newVolume);
+                yield return null;
+            }
+            sound.setVolume(targetVolume);
+
+            if (targetVolume == 0 && pauseOnFadeOut)
+            {
+                PauseSound(sound);
+            }
+        }
+
+        private void FadeInSound(EventInstance sound, float duration)
+        {
+            StartCoroutine(StartFade(sound, 1.0f, duration));
+        }
+
+        private void FadeOutSound(EventInstance sound, float duration, bool pauseOnFadeOut = false)
+        {
+            StartCoroutine(StartFade(sound, 0.0f, duration, pauseOnFadeOut));
+        }*/
     
         public void PlayFootstep()
         {

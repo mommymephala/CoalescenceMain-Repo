@@ -8,6 +8,7 @@ namespace Items
         [Header("Shooting")]
         public bool allowAutoFire;
         public float maxDistance;
+        
         [Tooltip("In RPM")] public float fireRate;
         public float spread;
         public int bulletsPerShot;
