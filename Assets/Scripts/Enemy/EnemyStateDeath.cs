@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Audio;
 using Combat;
+using FMODUnity;
 using States;
 using UnityEngine;
 
@@ -34,6 +36,7 @@ namespace Enemy
                 {
                     if (entry.Damageable == lastDamageable)
                     {
+                        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.BaseEnemy);
                         m_AnimationState = entry.AnimationState;
                     }
                 }

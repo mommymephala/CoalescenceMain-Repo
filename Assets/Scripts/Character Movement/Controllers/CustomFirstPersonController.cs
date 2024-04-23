@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Audio;
+using Player;
 using UnityEngine;
 
 namespace Character_Movement.Controllers
@@ -56,6 +57,53 @@ namespace Character_Movement.Controllers
         {
             AnimateCamera();
         }
+        
+        private void HandleFootsteps()
+        {
+            // if (PauseController.Instance.IsPaused)
+            // {
+            //     return; // Do nothing if the game is paused
+            // }
+            
+            // Check if the character is grounded and moving
+            if (!isGrounded || isMoving)
+            {
+                AudioManager.Instance.footstepTimer = 0;
+                return;
+            }
+
+            // If the footstep timer is 0 and the character is moving, play the first footstep sound immediately
+            if (AudioManager.Instance.footstepTimer == 0)
+            {
+                PlayFootstepSound();
+            }
+
+            AudioManager.Instance.footstepTimer += Time.deltaTime;
+
+            // Determine the current footstep delay based on whether the character is running or walking
+            float currentFootstepDelay = run ? AudioManager.Instance.runningFootstepDelay : AudioManager.Instance.footstepDelay;
+
+            if (AudioManager.Instance.footstepTimer >= currentFootstepDelay)
+            {
+                PlayFootstepSound();
+            }
+        }
+        
+        private void PlayFootstepSound()
+        {
+            if (run)
+            {
+                // Play running footstep sound
+                AudioManager.Instance.PlayRunning(); // Replace with your actual method to play running footsteps
+            }
+            else
+            {
+                // Play walking footstep sound
+                AudioManager.Instance.PlayFootstep();
+            }
+            
+            AudioManager.Instance.footstepTimer = 0;
+        }
 
         /// <summary>
         /// Override BaseFirstPersonController HandleInput method.
@@ -99,6 +147,13 @@ namespace Character_Movement.Controllers
             _input = GetComponent<IPlayerInput>();
             _verticalParamId = Animator.StringToHash("vertical");
             _horizontalParamId = Animator.StringToHash("horizontal");
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            
+            HandleFootsteps();
         }
 
         #endregion

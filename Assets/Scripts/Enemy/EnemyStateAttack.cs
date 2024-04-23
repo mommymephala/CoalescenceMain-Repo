@@ -1,3 +1,4 @@
+using Audio;
 using Combat;
 using States;
 using UnityEngine;
@@ -40,7 +41,7 @@ namespace Enemy
             base.StateEnter(fromState);
 
             m_Duration = m_AttackMontage.Duration;
-
+            AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.NormalAttack);
             m_AttackMontage.Play(Actor.MainAnimator);
         }
 

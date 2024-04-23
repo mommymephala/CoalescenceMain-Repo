@@ -1,3 +1,4 @@
+using Audio;
 using States;
 using Systems;
 using UnityEngine.AI;
@@ -24,6 +25,7 @@ namespace Enemy
         public override void StateUpdate()
         {
             base.StateUpdate();
+            AudioManager.Instance.PlayEnemyIdle(gameObject,AudioManager.EnemyType.BaseEnemy);
             _agent.SetDestination(GameManager.Instance.Player.transform.position);
         }
 

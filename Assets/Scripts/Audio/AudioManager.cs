@@ -27,29 +27,35 @@ namespace Audio
         {
             public EventReference footstep;
             //  public EventReference takeDamage;
-            public EventReference Normalattack;
-            public EventReference Heavyattack;
+            public EventReference normalAttack;
+            public EventReference heavyAttack;
             public EventReference death;
             public EventReference idle;
         }
         
         //[SerializeField] private EventReference ambient;
         //[SerializeField] private EventReference safeRoom;
+        
         [Header("Player")]
-        [SerializeField] private EventReference playerFootsteps;
-        [SerializeField] private EventReference playerRunning;
-        [SerializeField] private EventReference playerTakeDamage;
-        [SerializeField] private EventReference playerDeath;
+        public EventReference playerFootsteps;
+        public EventReference playerRunning;
+        public EventReference playerTakeDamage;
+        public EventReference playerDeath;
+        
+        [Header("Player Footsteps")]
+        public float footstepTimer;
+        public float footstepDelay = 0.5f;
+        public float runningFootstepDelay = 0.25f;
+        
         [Header("Enemy Sounds")]
         public EnemySounds baseEnemySounds;
         public EnemySounds chipEnemySounds;
-    
-        // [SerializeField] private EventReference playerJump;
-        // [SerializeField] private EventReference playerAttackRanged;
+        
+        [Header("Environment")]
         // [SerializeField] private EventReference weaponSwitch;
         [SerializeField] private EventReference metalDoor;
         [SerializeField] private EventReference metalDoorClosed;
-        [SerializeField] private EventReference PowerCore;
+        [SerializeField] private EventReference powerCore;
         // [SerializeField] private EventReference playerHurt;
         private EventInstance _playerFootstepInstance;
         private EventInstance _playerTakeDamage;
@@ -59,12 +65,12 @@ namespace Audio
         // private EventInstance _Ambient;
         //private EventInstance _SafeRoom;
     
-        private Dictionary<EnemyType, EnemySounds> enemySoundsMap;
+        public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
         //private bool _isInsideSafeRoom = false;
     
         public float crossfadeDuration = 1.0f;
     
-        private Dictionary<EventInstance, Coroutine> fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
+        public Dictionary<EventInstance, Coroutine> fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -279,12 +285,12 @@ namespace Audio
         }
         public void PlayEnemyAttack(GameObject enemyobject, EnemyType enemyType, AttackType attackType)
         {
-            if (enemySoundsMap[enemyType].Normalattack.IsNull)
+            if (enemySoundsMap[enemyType].normalAttack.IsNull)
             {
                 Debug.LogWarning("Fmod event not found: enemyattack");
                 return;
             }
-            if (enemySoundsMap[enemyType].Heavyattack.IsNull)
+            if (enemySoundsMap[enemyType].heavyAttack.IsNull)
             {
                 Debug.LogWarning("Fmod event not found: enemyattack");
                 return;
@@ -292,10 +298,10 @@ namespace Audio
             switch (attackType)
             {
                 case AttackType.NormalAttack:
-                    RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].Normalattack, enemyobject.transform.position);
+                    RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].normalAttack, enemyobject.transform.position);
                     break;
                 case AttackType.HeavyAttack:
-                    RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].Heavyattack, enemyobject.transform.position);
+                    RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].heavyAttack, enemyobject.transform.position);
                     break;
                 default:
                     Debug.LogWarning($"Unsupported attack type: {attackType}");
@@ -349,13 +355,13 @@ namespace Audio
         }
         public void PlayPowerCore(GameObject Powecore)
         {
-            if (PowerCore.IsNull)
+            if (powerCore.IsNull)
             {
                 Debug.LogWarning("Fmod event not found: powercore");
                 return;
             }
         
-            RuntimeManager.PlayOneShot(PowerCore, Powecore.transform.position);
+            RuntimeManager.PlayOneShot(powerCore, Powecore.transform.position);
         }
     }
 }

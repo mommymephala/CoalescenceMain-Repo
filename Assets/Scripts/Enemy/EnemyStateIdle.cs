@@ -1,3 +1,4 @@
+using Audio;
 using States;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ namespace Enemy
         public override void StateUpdate()
         {
             base.StateUpdate();
+            AudioManager.Instance.PlayEnemyIdle(gameObject,AudioManager.EnemyType.BaseEnemy);
 
             if (m_EnemySenses.IsPlayerDetected && m_EnemySenses.IsPlayerInReach)
             {
