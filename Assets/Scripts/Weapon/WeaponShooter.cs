@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using Combat;
+using FMODUnity;
+using Items;
 using Systems;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,7 +12,7 @@ namespace Weapon
     public class WeaponShooter : MonoBehaviour
     {
         public event Action OnShootSuccess;
-        
+        public WeaponData weaponData;
         private WeaponController _controller;
         
         [SerializeField] private LayerMask layerMask;
@@ -67,7 +69,7 @@ namespace Weapon
 
             return hasAmmo && canShootTiming && playerStateAllowed && !_controller.IsReloading;
         }
-
+        
         private void Shoot()
         {
             _timeSinceLastShot = 0f;

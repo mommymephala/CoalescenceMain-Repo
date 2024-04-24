@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -40,5 +41,6 @@ namespace Items
         public EventReference shotSound;
         public EventReference reloadSound;
         public EventReference noAmmoSound;
+       
     }
 }

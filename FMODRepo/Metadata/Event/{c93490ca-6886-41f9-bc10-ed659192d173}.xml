@@ -73,9 +73,7 @@
 	</object>
 	<object class="GroupTrack" id="{ed848d8a-cfc1-4c51-82e9-0464ca9f67f9}">
 		<relationship name="modules">
-			<destination>{4741b23f-ec9c-421d-bc9a-70f7417df619}</destination>
 			<destination>{83afeb81-3f38-4236-8517-e114d93d68f1}</destination>
-			<destination>{8b8216e4-0a76-4921-a318-bfa1480c3fc9}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{e64cb572-f0e4-4eb9-9a8f-91cbbfabe3ef}</destination>
@@ -93,9 +91,7 @@
 		<relationship name="modules">
 			<destination>{682e48d1-06d9-4247-9cda-5dda61ebf745}</destination>
 			<destination>{731d556c-de7e-42a1-b6a4-f4dd0fd71426}</destination>
-			<destination>{4741b23f-ec9c-421d-bc9a-70f7417df619}</destination>
 			<destination>{83afeb81-3f38-4236-8517-e114d93d68f1}</destination>
-			<destination>{8b8216e4-0a76-4921-a318-bfa1480c3fc9}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{de77c61b-e713-4f13-9ca0-123fd468ff21}">
@@ -146,17 +142,6 @@
 			<destination>{de77c61b-e713-4f13-9ca0-123fd468ff21}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{4741b23f-ec9c-421d-bc9a-70f7417df619}">
-		<property name="start">
-			<value>4.9821494612068964</value>
-		</property>
-		<property name="length">
-			<value>1.8572083333333333</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{48b9b3e5-e672-425f-8905-bb508da510fb}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{83afeb81-3f38-4236-8517-e114d93d68f1}">
 		<property name="start">
 			<value>0.10000000000000001</value>
@@ -166,17 +151,6 @@
 		</property>
 		<relationship name="audioFile">
 			<destination>{39081812-9275-4f03-8c4d-edb38a5e554b}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{8b8216e4-0a76-4921-a318-bfa1480c3fc9}">
-		<property name="start">
-			<value>3.2000000000000002</value>
-		</property>
-		<property name="length">
-			<value>1.3566875</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{f3e219b6-209e-45da-a9f9-4a0fb28de90e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{e64cb572-f0e4-4eb9-9a8f-91cbbfabe3ef}">

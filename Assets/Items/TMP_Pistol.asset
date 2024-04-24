@@ -48,22 +48,22 @@ MonoBehaviour:
   walkingRecoilMultiplier: 1.5
   shotSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2103223952
+      Data2: 1321540374
+      Data3: -1911335018
+      Data4: -519273705
+    Path: event:/SFX/Weapon/Deagle/Weapon_Deagle
   reloadSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 835032178
+      Data2: 1117621398
+      Data3: -1622433345
+      Data4: 71676357
+    Path: event:/SFX/Weapon/Deagle/Weapon_Deagle_Reload
   noAmmoSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1697449194
+      Data2: 1181512484
+      Data3: 276417707
+      Data4: 1794594094
+    Path: event:/SFX/Weapon/Deagle/Weapon_Deagle_Out_of_Ammo

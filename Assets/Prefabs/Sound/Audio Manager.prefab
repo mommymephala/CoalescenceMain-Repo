@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &965226973123228865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747768605592357762}
+  - component: {fileID: 4741762960818671630}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1747768605592357762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965226973123228865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.548025, y: -2.3559275, z: 1.1949809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4741762960818671630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965226973123228865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1b2bb19498d2a458e5b6b5cbc87f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFootsteps:
+    Guid:
+      Data1: 1874342431
+      Data2: 1321516486
+      Data3: -1709840227
+      Data4: 1259604765
+    Path: event:/SFX/Player/Player_Footsteps
+  playerRunning:
+    Guid:
+      Data1: -2091680138
+      Data2: 1203750866
+      Data3: 184799391
+      Data4: -1896962226
+    Path: event:/SFX/Player/Player_Run
+  playerTakeDamage:
+    Guid:
+      Data1: 32212735
+      Data2: 1171920211
+      Data3: -1484202318
+      Data4: -468843434
+    Path: event:/SFX/Player/Player_Take_Damage
+  playerDeath:
+    Guid:
+      Data1: 1227820766
+      Data2: 1112037699
+      Data3: 93806010
+      Data4: 1869849546
+    Path: event:/SFX/Player/Player_Death
+  footstepTimer: 0
+  footstepDelay: 0.5
+  runningFootstepDelay: 0.25
+  baseEnemySounds:
+    footstep:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    normalAttack:
+      Guid:
+        Data1: -1576766576
+        Data2: 1242475021
+        Data3: 1148887993
+        Data4: -430664985
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Normal_Attack
+    heavyAttack:
+      Guid:
+        Data1: -1576766576
+        Data2: 1242475021
+        Data3: 1148887993
+        Data4: -430664985
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Normal_Attack
+    death:
+      Guid:
+        Data1: 410524000
+        Data2: 1090939099
+        Data3: 1246424730
+        Data4: 2038832096
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
+    idle:
+      Guid:
+        Data1: -919301942
+        Data2: 1106864262
+        Data3: 1710035132
+        Data4: 1943114385
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
+  chipEnemySounds:
+    footstep:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    normalAttack:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    heavyAttack:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    death:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    idle:
+      Guid:
+        Data1: -919301942
+        Data2: 1106864262
+        Data3: 1710035132
+        Data4: 1943114385
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
+  metalDoor:
+    Guid:
+      Data1: -607918179
+      Data2: 1135980185
+      Data3: 1109397659
+      Data4: 973050296
+    Path: event:/OBJ&INT/Metal_Door
+  metalDoorClosed:
+    Guid:
+      Data1: -1436009916
+      Data2: 1317997895
+      Data3: -1215883107
+      Data4: -1505303675
+    Path: event:/OBJ&INT/Metol_Door_Closed
+  powerCore:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  crossfadeDuration: 1

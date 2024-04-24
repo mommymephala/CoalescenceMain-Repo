@@ -37,6 +37,7 @@ namespace Enemy
                     if (entry.Damageable == lastDamageable)
                     {
                         AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.BaseEnemy);
+                       Debug.Log("ölüyoz amk");
                         m_AnimationState = entry.AnimationState;
                     }
                 }

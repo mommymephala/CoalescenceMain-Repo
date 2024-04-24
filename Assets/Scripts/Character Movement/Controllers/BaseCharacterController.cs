@@ -467,7 +467,7 @@ namespace Character_Movement.Controllers
         
         public bool isMoving
         {
-            get { return _moveDirection.sqrMagnitude > 0.0001f; }
+            get { return _moveDirection.sqrMagnitude < 0.0001f; }
         }
 
 

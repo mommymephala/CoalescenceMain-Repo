@@ -37,10 +37,10 @@ namespace Audio
         //[SerializeField] private EventReference safeRoom;
         
         [Header("Player")]
-        public EventReference playerFootsteps;
-        public EventReference playerRunning;
-        public EventReference playerTakeDamage;
-        public EventReference playerDeath;
+        [SerializeField] private EventReference playerFootsteps;
+        [SerializeField] private EventReference playerRunning;
+        [SerializeField] private EventReference playerTakeDamage;
+        [SerializeField] private EventReference playerDeath;
         
         [Header("Player Footsteps")]
         public float footstepTimer;
@@ -71,6 +71,8 @@ namespace Audio
         public float crossfadeDuration = 1.0f;
     
         public Dictionary<EventInstance, Coroutine> fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
+        private Coroutine idleCoroutine;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -216,7 +218,7 @@ namespace Audio
         }*/
     
         public void PlayFootstep()
-        {
+        { 
             if (playerFootsteps.IsNull)
             {
                 Debug.LogWarning("Fmod event not found: playerFootstep");
@@ -240,6 +242,15 @@ namespace Audio
             _playerRunning.start();
             _playerRunning.release();
         
+        }
+    
+        public IEnumerator PlayIdleSoundLoop()
+        {
+            while (true)
+            {
+                PlayEnemyIdle(gameObject, EnemyType.BaseEnemy);
+                yield return new WaitForSeconds(3);
+            }
         }
         public void PlayPlayerTakeDamage()
         {
