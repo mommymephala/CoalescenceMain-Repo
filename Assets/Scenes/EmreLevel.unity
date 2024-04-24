@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 7765436447682733382}
 --- !u!65 &56048870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 6456199640750268575}
 --- !u!65 &250230891
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1102,7 +1102,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 8316702773244786762}
 --- !u!65 &276193536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1368,7 +1368,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3320,7 +3320,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3338,7 +3338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 8488765043992882164}
 --- !u!1 &631178100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,7 +3493,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3511,7 +3511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 8698079744008925380}
 --- !u!1 &713179813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,7 +3756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 4751683375676077259}
 --- !u!65 &729758229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3772,7 +3772,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4496,7 +4496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 5852372339184261894}
 --- !u!65 &777349719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4512,7 +4512,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 6010103080044159772}
 --- !u!65 &798786826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4990,7 +4990,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6104,7 +6104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 9010735088086954227}
 --- !u!65 &1024777153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6120,7 +6120,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -7918,7 +7918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 4713252235754832276}
 --- !u!65 &1380935732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7934,7 +7934,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8678,7 +8678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 8457008641988222121}
 --- !u!65 &1554081386
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8694,7 +8694,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -9132,7 +9132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 7005008667191721457}
 --- !u!65 &1609172067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9148,7 +9148,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -10817,7 +10817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 4390160083917778620}
 --- !u!65 &1966533046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10833,7 +10833,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -10946,7 +10946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 0}
+  doorOpening: {fileID: 7069537584125286995}
 --- !u!65 &1983497584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10962,7 +10962,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -60690,12 +60690,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!4 &4390867988375686067
 Transform:
   m_ObjectHideFlags: 0
@@ -64675,12 +64675,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!33 &4716312772844273708
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -65121,12 +65121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!1 &4751916407885504412
 GameObject:
   m_ObjectHideFlags: 0
@@ -78257,12 +78257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 7
 --- !u!23 &5853168982027159854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -80464,12 +80464,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!23 &6010296374738702033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86968,12 +86968,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!1 &6458859408319434538
 GameObject:
   m_ObjectHideFlags: 0
@@ -96679,12 +96679,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 7
 --- !u!4 &7011926091561814452
 Transform:
   m_ObjectHideFlags: 0
@@ -97921,12 +97921,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!23 &7071182762047587836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -108995,12 +108995,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!23 &7765660859196162641
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -118753,12 +118753,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!1 &8318699399064531328
 GameObject:
   m_ObjectHideFlags: 0
@@ -121725,12 +121725,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!23 &8457383533482006133
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -122415,12 +122415,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 7
 --- !u!1 &8493133276284932463
 GameObject:
   m_ObjectHideFlags: 0
@@ -127133,12 +127133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 7
 --- !u!1 &8700725328991832656
 GameObject:
   m_ObjectHideFlags: 0
@@ -133911,12 +133911,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isRotatingDoor: 1
+  isRotatingDoor: 0
   speed: 1
   rotationAmount: 90
   forwardDirection: 0
-  slideDirection: {x: 0, y: 0, z: -1}
-  slideAmount: 1.9
+  slideDirection: {x: 0, y: 1, z: 0}
+  slideAmount: 9
 --- !u!4 &9011620210844373663
 Transform:
   m_ObjectHideFlags: 0
@@ -138210,6 +138210,6 @@ SceneRoots:
   - {fileID: 348843366}
   - {fileID: 2118784859}
   - {fileID: 758671605}
-  - {fileID: 1013109906}
   - {fileID: 1948393129}
+  - {fileID: 1013109906}
   - {fileID: 59231944}
