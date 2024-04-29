@@ -36,7 +36,7 @@ namespace Enemy
                 {
                     if (entry.Damageable == lastDamageable)
                     {
-                        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.BaseEnemy);
+                        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.TarSpawn);
                         m_AnimationState = entry.AnimationState;
                     }
                 }

@@ -1,105 +1,94 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
 using FMODUnity;
+using Singleton;
 using UnityEngine;
 
 namespace Audio
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : SingletonBehaviour<AudioManager>
     {
-        public static AudioManager Instance { get; private set; }
-    
-        public enum AttackType
+        public enum EnemyAttackType
         {
             NormalAttack,
-            HeavyAttack,
+            HeavyAttack
         }
         
         public enum EnemyType
         {
-            BaseEnemy,
-            ChipEnemy,
+            TarSpawn,
+            ExperimentalMan
         }
         
-        [System.Serializable]
-        public class EnemySounds
+        [Serializable]
+        public struct EnemySounds
         {
+            public EventReference idle;
             public EventReference footstep;
-            //  public EventReference takeDamage;
             public EventReference normalAttack;
             public EventReference heavyAttack;
+            public EventReference enemyHurt;
             public EventReference death;
-            public EventReference idle;
         }
         
-        //[SerializeField] private EventReference ambient;
-        //[SerializeField] private EventReference safeRoom;
-        
         [Header("Player")]
-        public EventReference playerFootsteps;
         public EventReference playerRunning;
-        public EventReference playerTakeDamage;
+        public EventReference playerHurt;
         public EventReference playerDeath;
         
         [Header("Player Footsteps")]
+        public EventReference playerFootsteps;
         public float footstepTimer;
         public float footstepDelay = 0.5f;
         public float runningFootstepDelay = 0.25f;
         
         [Header("Enemy Sounds")]
-        public EnemySounds baseEnemySounds;
-        public EnemySounds chipEnemySounds;
+        public EnemySounds tarSpawnSounds;
+        public EnemySounds experimentalManSounds;
+        public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
         
         [Header("Environment")]
-        // [SerializeField] private EventReference weaponSwitch;
-        [SerializeField] private EventReference metalDoor;
-        [SerializeField] private EventReference metalDoorClosed;
-        [SerializeField] private EventReference powerCore;
-        // [SerializeField] private EventReference playerHurt;
+        public EventReference ambient;
+        public EventReference safeRoom;
+        public EventReference metalDoor;
+        public EventReference metalDoorClosed;
+        public EventReference dysonActivation;
+        
+        // EventInstances
         private EventInstance _playerFootstepInstance;
         private EventInstance _playerTakeDamage;
         private EventInstance _playerRunning;
-
         private EventInstance _baseEnemyFootstepInstance;
-        // private EventInstance _Ambient;
-        //private EventInstance _SafeRoom;
-    
-        public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
-        //private bool _isInsideSafeRoom = false;
-    
-        public float crossfadeDuration = 1.0f;
-    
+        private EventInstance _ambient;
+        private EventInstance _safeRoom;
+        
+        // Cross-fade related fields
         public Dictionary<EventInstance, Coroutine> fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
-        private void Awake()
+        [SerializeField] private float crossfadeDuration = 1.0f;
+        private Coroutine _idleCoroutine;
+        
+        // Flags
+        private bool _isInsideSafeRoom;
+
+        protected override void Awake()
         {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-            //  DontDestroyOnLoad(gameObject);
-
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                Instance = this;
-            }
+            base.Awake();
+            
             enemySoundsMap = new Dictionary<EnemyType, EnemySounds>
             {
-                { EnemyType.BaseEnemy, baseEnemySounds },
-                { EnemyType.ChipEnemy, chipEnemySounds }
-                // Add other enemies here
-            }; 
-            //_Ambient = RuntimeManager.CreateInstance(ambient);
-            //_Ambient.start();
-            //DontDestroyOnLoad(this);
+                { EnemyType.TarSpawn, tarSpawnSounds },
+                { EnemyType.ExperimentalMan, experimentalManSounds }
+            };
         }
+
+        private void Start()
+        {
+            _ambient = RuntimeManager.CreateInstance(ambient);
+            _ambient.start();
+        }
+
         public void Crossfade(EventInstance fromInstance, EventInstance toInstance, float duration)
         {
             // Stop existing fade on the 'from' instance
@@ -109,7 +98,7 @@ namespace Audio
                 fadeCoroutines.Remove(fromInstance);
             }
 
-            // Start new crossfade
+            // Start new cross-fade
             Coroutine newCoroutine = StartCoroutine(CrossfadeCoroutine(fromInstance, toInstance, duration));
             fadeCoroutines[toInstance] = newCoroutine;
         }
@@ -124,9 +113,9 @@ namespace Audio
             while (currentTime < duration)
             {
                 currentTime += Time.deltaTime;
-                float t = currentTime / duration;
+                var t = currentTime / duration;
 
-                // Adjust volumes for crossfade
+                // Adjust volumes for cross-fade
                 fromInstance.setVolume(1 - t);
                 toInstance.setVolume(t);
 
@@ -140,36 +129,26 @@ namespace Audio
         }
 
         // Method to pause an event instance
-        public void PauseEventInstance(EventInstance instance)
+        private static void PauseEventInstance(EventInstance instance)
         {
             instance.setPaused(true);
         }
 
         // Method to resume an event instance
-        public void ResumeEventInstance(EventInstance instance)
+        private static void ResumeEventInstance(EventInstance instance)
         {
             instance.setPaused(false);
-        }
-        
-        /*private void PauseSound(EventInstance sound)
-        {
-            sound.setPaused(true);
-        }
-
-        private void ResumeSound(EventInstance sound)
-        {
-            sound.setPaused(false);
         }
 
         public void EnterSafeRoom()
         {
             if (!_isInsideSafeRoom)
             {
-                FadeOutSound(_Ambient, crossfadeDuration, true);
-                _SafeRoom = RuntimeManager.CreateInstance(safeRoom);
-                _SafeRoom.setVolume(0);
-                _SafeRoom.start();
-                FadeInSound(_SafeRoom, crossfadeDuration);
+                FadeOutSound(_ambient, crossfadeDuration, true);
+                _safeRoom = RuntimeManager.CreateInstance(safeRoom);
+                _safeRoom.setVolume(0);
+                _safeRoom.start();
+                FadeInSound(_safeRoom, crossfadeDuration);
                 _isInsideSafeRoom = true;
             }
         }
@@ -178,30 +157,31 @@ namespace Audio
         {
             if (_isInsideSafeRoom)
             {
-                FadeOutSound(_SafeRoom, crossfadeDuration);
-                ResumeSound(_Ambient);
-                FadeInSound(_Ambient, crossfadeDuration);
+                FadeOutSound(_safeRoom, crossfadeDuration);
+                ResumeEventInstance(_ambient);
+                FadeInSound(_ambient, crossfadeDuration);
                 _isInsideSafeRoom = false;
             }
         }
 
-        private IEnumerator StartFade(EventInstance sound, float targetVolume, float duration, bool pauseOnFadeOut = false)
+        private static IEnumerator StartFade(EventInstance sound, float targetVolume, float duration, bool pauseOnFadeOut = false)
         {
             float currentTime = 0;
-            sound.getVolume(out float startVolume);
+            sound.getVolume(out var startVolume);
 
             while (currentTime < duration)
             {
                 currentTime += Time.deltaTime;
-                float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
+                var newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
                 sound.setVolume(newVolume);
                 yield return null;
             }
+            
             sound.setVolume(targetVolume);
 
             if (targetVolume == 0 && pauseOnFadeOut)
             {
-                PauseSound(sound);
+                PauseEventInstance(sound);
             }
         }
 
@@ -213,43 +193,56 @@ namespace Audio
         private void FadeOutSound(EventInstance sound, float duration, bool pauseOnFadeOut = false)
         {
             StartCoroutine(StartFade(sound, 0.0f, duration, pauseOnFadeOut));
-        }*/
+        }
     
         public void PlayFootstep()
-        {
+        { 
             if (playerFootsteps.IsNull)
             {
                 Debug.LogWarning("Fmod event not found: playerFootstep");
                 return;
             }
+            
             _playerFootstepInstance = RuntimeManager.CreateInstance(playerFootsteps);
         
             _playerFootstepInstance.start();
             _playerFootstepInstance.release();
         
         }
+        
         public void PlayRunning()
         {
             if (playerRunning.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: player running");
+                Debug.LogWarning("Fmod event not found: playerRunning");
                 return;
             }
+            
             _playerRunning = RuntimeManager.CreateInstance(playerRunning);
         
             _playerRunning.start();
             _playerRunning.release();
         
         }
+    
+        public IEnumerator PlayIdleSoundLoop()
+        {
+            while (true)
+            {
+                PlayEnemyIdle(gameObject, EnemyType.TarSpawn);
+                yield return new WaitForSeconds(3);
+            }
+        }
+        
         public void PlayPlayerTakeDamage()
         {
-            if (playerTakeDamage.IsNull)
+            if (playerHurt.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: playertakedamage");
+                Debug.LogWarning("Fmod event not found: playerHurt");
                 return;
             }
 
-            _playerTakeDamage = RuntimeManager.CreateInstance(playerTakeDamage);
+            _playerTakeDamage = RuntimeManager.CreateInstance(playerHurt);
         
             _playerTakeDamage.start();
             _playerTakeDamage.release();
@@ -257,15 +250,16 @@ namespace Audio
 
         public void PlayPlayerDeath()
         {
-            if (playerTakeDamage.IsNull)
+            if (playerHurt.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: playertakedamage");
+                Debug.LogWarning("Fmod event not found: playerDeath");
                 return;
             }
             RuntimeManager.PlayOneShot(playerDeath, transform.position);
 
         }
-        public void PlayEnemyFootStep(GameObject enemyObject, EnemyType enemyType)
+        
+        public void PlayEnemyFootstep(GameObject enemyObject, EnemyType enemyType)
         {
             if (enemySoundsMap[enemyType].footstep.IsNull)
             {
@@ -274,59 +268,62 @@ namespace Audio
             }
             RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].footstep, enemyObject.transform.position);
         }
+        
         public void PlayEnemyIdle(GameObject enemyObject, EnemyType enemyType)
         {
             if (enemySoundsMap[enemyType].idle.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: enemy idle");
+                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].idle");
                 return;
             }
+            
             RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].idle, enemyObject.transform.position);
         }
-        public void PlayEnemyAttack(GameObject enemyobject, EnemyType enemyType, AttackType attackType)
+        
+        public void PlayEnemyAttack(GameObject enemyobject, EnemyType enemyType, EnemyAttackType enemyAttackType)
         {
             if (enemySoundsMap[enemyType].normalAttack.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: enemyattack");
+                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].normalAttack");
                 return;
             }
+            
             if (enemySoundsMap[enemyType].heavyAttack.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: enemyattack");
+                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].heavyAttack");
                 return;
             }
-            switch (attackType)
+            
+            switch (enemyAttackType)
             {
-                case AttackType.NormalAttack:
+                case EnemyAttackType.NormalAttack:
                     RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].normalAttack, enemyobject.transform.position);
                     break;
-                case AttackType.HeavyAttack:
+                case EnemyAttackType.HeavyAttack:
                     RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].heavyAttack, enemyobject.transform.position);
                     break;
                 default:
-                    Debug.LogWarning($"Unsupported attack type: {attackType}");
+                    Debug.LogWarning($"Unsupported attack type: {enemyAttackType}");
                     return;
             }
-        
-            //  RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].attack, enemyobject.transform.position);
         }
-    
-
-        /*  public void PlayEnemyTakeDamage(GameObject enemyobject, EnemyType enemyType)
-    {
-        if (enemySoundsMap[enemyType].takeDamage.IsNull)
+        
+        public void PlayEnemyHurt(GameObject enemyobject, EnemyType enemyType)
         {
-            Debug.LogWarning("Fmod event not found: enemy take damage");
-            return;
+            if (enemySoundsMap[enemyType].enemyHurt.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].enemyHurt");
+                return;
+            }
+                
+            RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].enemyHurt, enemyobject.transform.position);
         }
         
-       RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].takeDamage, enemyobject.transform.position);
-    }*/
-        public void PlayEnemyDeath(GameObject enemyobject,EnemyType enemyType)
+        public void PlayEnemyDeath(GameObject enemyobject, EnemyType enemyType)
         {
             if (enemySoundsMap[enemyType].death.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: enemy death");
+                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].death");
                 return;
             }
         
@@ -337,31 +334,33 @@ namespace Audio
         {
             if (metalDoor.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: doorOpen");
+                Debug.LogWarning("Fmod event not found: metalDoor");
                 return;
             }
         
             RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
         }
+        
         public void PlayDoorClosed(GameObject doorObject)
         {
             if (metalDoorClosed.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: door closed");
+                Debug.LogWarning("Fmod event not found: metalDoorClosed");
                 return;
             }
         
             RuntimeManager.PlayOneShot(metalDoorClosed, doorObject.transform.position);
         }
-        public void PlayPowerCore(GameObject Powecore)
+        
+        public void PlayDysonActivation(GameObject dysonObject)
         {
-            if (powerCore.IsNull)
+            if (dysonActivation.IsNull)
             {
-                Debug.LogWarning("Fmod event not found: powercore");
+                Debug.LogWarning("Fmod event not found: dysonActivation");
                 return;
             }
         
-            RuntimeManager.PlayOneShot(powerCore, Powecore.transform.position);
+            RuntimeManager.PlayOneShot(dysonActivation, dysonObject.transform.position);
         }
     }
 }

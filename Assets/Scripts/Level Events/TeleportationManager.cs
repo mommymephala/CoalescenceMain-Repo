@@ -1,26 +1,12 @@
 using Character_Movement.Components;
 using Character_Movement.Controllers;
+using Singleton;
 using UnityEngine;
 
 namespace Level_Events
 {
-    public class TeleportationManager : MonoBehaviour
+    public class TeleportationManager : SingletonBehaviour<TeleportationManager>
     {
-        private static TeleportationManager Instance { get; set; }
-
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-        
         public static void TeleportPlayer(Transform playerTransform, Transform targetTransform, Rigidbody playerRb, CustomFirstPersonController playerMovement, CharacterMovement playerController)
         {
             playerController.enabled = false;

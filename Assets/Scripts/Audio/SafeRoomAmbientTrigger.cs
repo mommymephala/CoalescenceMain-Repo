@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SafeRoomAmbientTrigger : MonoBehaviour
 {
+    //TODO: DELETE! NOT USED AT ALL!
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // Make sure to check the tag

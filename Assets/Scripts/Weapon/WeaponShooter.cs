@@ -21,12 +21,11 @@ namespace Weapon
         private Transform _weaponHolderTransform;
         private Transform _cameraPivotTransform;
         
-
         private RaycastHit _hitResult;
 
         private float _timeSinceLastShot;
         
-        //Recoil variables
+        // Recoil variables
         private Vector3 _currentPlayerCameraRotation;
         private Vector3 _currentWeaponRotation;
         private Vector3 _weaponOriginalLocalPosition;

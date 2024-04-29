@@ -1,4 +1,5 @@
 using System.Collections;
+using Audio;
 using States;
 using UnityEngine;
 using Utils;
@@ -13,9 +14,6 @@ namespace Combat
         public float Duration;
         public float MontageDelay; // Can be used later if needed
         public float AttackActivationDelay;
-
-        [SerializeField] public AudioSource m_AudioSource;
-        [SerializeField] private AudioClip m_AttackSound;
 
         // --------------------------------------------------------------------
 
@@ -39,8 +37,9 @@ namespace Combat
 
         public void Play(Animator animator)
         {
-            if (m_AttackSound && m_AudioSource)
-                m_AudioSource.PlayOneShot(m_AttackSound);
+            //TODO: Test this
+            AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.TarSpawn, AudioManager.EnemyAttackType.NormalAttack);
+            // Debug.Log("Audio played");
 
             animator.CrossFadeInFixedTime(Animation.Hash, AnimationBlendTime);
 

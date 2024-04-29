@@ -38,7 +38,7 @@ namespace Character_Movement.Controllers
 
         private void AnimateCamera()
         {
-            var lateralVelocity = Vector3.ProjectOnPlane(movement.velocity, transform.up);
+            Vector3 lateralVelocity = Vector3.ProjectOnPlane(movement.velocity, transform.up);
             var normalizedSpeed = Mathf.InverseLerp(0.0f, forwardSpeed, lateralVelocity.magnitude);
 
             cameraAnimator.speed = Mathf.Max(0.5f, cameraAnimSpeed * normalizedSpeed);
@@ -60,19 +60,12 @@ namespace Character_Movement.Controllers
         
         private void HandleFootsteps()
         {
-            // if (PauseController.Instance.IsPaused)
-            // {
-            //     return; // Do nothing if the game is paused
-            // }
-            
-            // Check if the character is grounded and moving
             if (!isGrounded || isMoving)
             {
                 AudioManager.Instance.footstepTimer = 0;
                 return;
             }
 
-            // If the footstep timer is 0 and the character is moving, play the first footstep sound immediately
             if (AudioManager.Instance.footstepTimer == 0)
             {
                 PlayFootstepSound();
@@ -80,8 +73,7 @@ namespace Character_Movement.Controllers
 
             AudioManager.Instance.footstepTimer += Time.deltaTime;
 
-            // Determine the current footstep delay based on whether the character is running or walking
-            float currentFootstepDelay = run ? AudioManager.Instance.runningFootstepDelay : AudioManager.Instance.footstepDelay;
+            var currentFootstepDelay = run ? AudioManager.Instance.runningFootstepDelay : AudioManager.Instance.footstepDelay;
 
             if (AudioManager.Instance.footstepTimer >= currentFootstepDelay)
             {
@@ -93,12 +85,10 @@ namespace Character_Movement.Controllers
         {
             if (run)
             {
-                // Play running footstep sound
-                AudioManager.Instance.PlayRunning(); // Replace with your actual method to play running footsteps
+                AudioManager.Instance.PlayRunning();
             }
             else
             {
-                // Play walking footstep sound
                 AudioManager.Instance.PlayFootstep();
             }
             
@@ -139,8 +129,6 @@ namespace Character_Movement.Controllers
 
         public override void Awake()
         {
-            // Initialize BaseFirstPersonController
-
             base.Awake();
 
             // Cache animator parameter, state ids and input component

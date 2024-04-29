@@ -60,14 +60,8 @@ namespace Systems
 
         public bool IsPlaying 
         { 
-            get
-            {
-                return !PauseController.Instance.IsPaused && m_IsPlaying;
-            }
-            set
-            {
-                m_IsPlaying = value;
-            }
+            get => !PauseController.Instance.IsPaused && m_IsPlaying;
+            set => m_IsPlaying = value;
         }
 
         // --------------------------------------------------------------------
@@ -109,7 +103,7 @@ namespace Systems
 
             if (teleportToSpawnPoint)
             {
-                PlayerSpawnPoint spawnPoint = FindObjectOfType<PlayerSpawnPoint>();
+                var spawnPoint = FindObjectOfType<PlayerSpawnPoint>();
                 if (spawnPoint)
                 {
                     player.transform.position = spawnPoint.transform.position;
@@ -125,8 +119,8 @@ namespace Systems
 
         private void SetupInitialEquipment(PlayerActor player)
         {
-            PlayerEquipment equipment = Player.GetComponentInChildren<PlayerEquipment>();
-            foreach (var e in InitialEquipment)
+            var equipment = Player.GetComponentInChildren<PlayerEquipment>();
+            foreach (EquipableItemData e in InitialEquipment)
             {
                 if (Inventory.TryGet(e, out InventoryEntry entry))
                     Inventory.Equip(entry);
@@ -152,14 +146,14 @@ namespace Systems
 
         // --------------------------------------------------------------------
 
-        void OnDoorTransitionMidway(DoorTransitionMidWayMessage msg)
+        private void OnDoorTransitionMidway(DoorTransitionMidWayMessage msg)
         {
             ObjectStateManager.Instance.CaptureStates();
         }
 
         // --------------------------------------------------------------------
 
-        void OnDoorCrossSceneTransitionBeforeSpawn(DoorCrossSceneTransitionBeforeSpawnMessage msg)
+        private void OnDoorCrossSceneTransitionBeforeSpawn(DoorCrossSceneTransitionBeforeSpawnMessage msg)
         {
             ObjectStateManager.Instance.InstantiateSpawned(SceneManager.GetActiveScene(), SpawnableDatabase);
             ObjectStateManager.Instance.ApplyStates();
@@ -167,7 +161,7 @@ namespace Systems
 
         // --------------------------------------------------------------------
 
-        void OnPlayerDeath(Health health)
+        private void OnPlayerDeath(Health health)
         {
             MessageBuffer<GameOverMessage>.Dispatch();
             IsPlaying = false;
@@ -196,7 +190,5 @@ namespace Systems
             Inventory.SetFromSavedData(savedData.Inventory);
             StorageBox.SetFromSavedData(savedData.StorageBox);
         }
-
-
     }
 }

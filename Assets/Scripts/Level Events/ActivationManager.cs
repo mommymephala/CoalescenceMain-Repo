@@ -1,27 +1,13 @@
+using Singleton;
 using UnityEngine;
 using VInspector;
 
 namespace Level_Events
 {
-    public class ActivationManager : MonoBehaviour
+    public class ActivationManager : SingletonBehaviour<ActivationManager>
     {
-        public static ActivationManager Instance { get; private set; }
-        
         [SerializeField]
         private SerializedDictionary<string, GameObject> objectDict = new SerializedDictionary<string, GameObject>();
-
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
 
         public void ActivateObject(string identifier)
         {

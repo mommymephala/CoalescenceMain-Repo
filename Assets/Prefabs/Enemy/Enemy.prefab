@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6667811177870233947}
-  - component: {fileID: 3418702111639061465}
-  - component: {fileID: 6137504848272804636}
   - component: {fileID: 2376183277609257545}
+  - component: {fileID: 6137504848272804636}
+  - component: {fileID: 3418702111639061465}
   m_Layer: 9
   m_Name: Attack
   m_TagString: Untagged
@@ -34,43 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8792640955201496408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3418702111639061465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389181178494544834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09754826fdfffb945bee8dfe37c700c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Attack: {fileID: 2376183277609257545}
-  Animation: {fileID: 11400000, guid: 02ebd4999d3040b46a196a90c0adbcaa, type: 2}
-  AnimationBlendTime: 0.2
-  Duration: 1
-  MontageDelay: 0
-  AttackActivationDelay: 0.5
-  m_AudioSource: {fileID: 0}
-  m_AttackSound: {fileID: 0}
---- !u!114 &6137504848272804636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389181178494544834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b0ea63f2880b2d4ab023e2f3d9f74ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Center: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0.8, y: 1, z: 1.3}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &2376183277609257545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +55,43 @@ MonoBehaviour:
   OnAttackEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6137504848272804636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389181178494544834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0ea63f2880b2d4ab023e2f3d9f74ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8, y: 1, z: 1.3}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &3418702111639061465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389181178494544834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09754826fdfffb945bee8dfe37c700c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack: {fileID: 2376183277609257545}
+  Animation: {fileID: 11400000, guid: 02ebd4999d3040b46a196a90c0adbcaa, type: 2}
+  AnimationBlendTime: 0.2
+  Duration: 1
+  MontageDelay: 0
+  AttackActivationDelay: 0.5
+  m_AudioSource: {fileID: 0}
+  m_AttackSound: {fileID: 0}
 --- !u!1 &407655096947067450
 GameObject:
   m_ObjectHideFlags: 0

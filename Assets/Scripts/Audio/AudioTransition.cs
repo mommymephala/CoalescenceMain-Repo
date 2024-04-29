@@ -1,8 +1,11 @@
+/*
 using FMODUnity;
 using UnityEngine;
 
 namespace Audio
 {
+    //TODO: DELETE! NOT USED AT ALL!
+
     public class AudioTransition : MonoBehaviour
     {
         [System.Serializable]
@@ -17,7 +20,7 @@ namespace Audio
 
         public AudioSettings[] audioSettings;
     
-        private void OnTriggerEnter()
+        private void OnTriggerEnter(Collider other)
         {
             if (audioSettings != null)
             {
@@ -36,8 +39,10 @@ namespace Audio
                     }
                 }
             }
+            
             else
                 Debug.Log("AudioSettings was NULL");
         }
     }
 }
+*/

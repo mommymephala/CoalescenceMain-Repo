@@ -4,9 +4,9 @@ namespace Singleton
 {
     public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
-        protected static T m_Instance;
+        private static T m_Instance;
 
-        public static bool Exists { get { return m_Instance != null; } }
+        public static bool Exists => m_Instance != null;
 
         /**
            Returns the instance of this singleton.
@@ -20,10 +20,7 @@ namespace Singleton
                 {
 #if UNITY_2021_1_OR_NEWER
                     m_Instance = (T)FindObjectOfType(typeof(T), true);
-#else
-                    m_Instance = (T)FindObjectOfType(typeof(T)); // TODO - Replace with a custom find function
 #endif
-
                     Debug.Assert(m_Instance != null, "SingletonBehaviour couldn't be found");
                 }
 

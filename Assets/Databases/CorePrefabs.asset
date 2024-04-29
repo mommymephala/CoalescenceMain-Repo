@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Prototype: {fileID: 0}
   m_GameManager: {fileID: 1654157888941685904, guid: fe413e664c5b58449a138841724b4ef8, type: 3}
+  m_AudioManager: {fileID: 5791126929832214773, guid: db491d6f5ee9e514f9357cb242dd0238, type: 3}
   m_Character: {fileID: 6855049204320965907, guid: c8bc12c13e5837c4086183776f13fb49, type: 3}
   m_Inventory: {fileID: 7215310692255748130, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
   m_Document: {fileID: 5189606333825347259, guid: a6674c002d021c1409e763241803e3b3, type: 3}
