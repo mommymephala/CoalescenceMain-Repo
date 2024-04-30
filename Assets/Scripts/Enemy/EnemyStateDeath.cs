@@ -1,13 +1,13 @@
+using System;
 using System.Collections.Generic;
 using Audio;
 using Combat;
-using FMODUnity;
 using States;
 using UnityEngine;
 
 namespace Enemy
 {
-    [System.Serializable]
+    [Serializable]
     public class DamageableAnimEntry
     {
         public Damageable Damageable;
@@ -30,18 +30,30 @@ namespace Enemy
         public override void StateEnter(IActorState fromState)
         {
             Damageable lastDamageable = m_Health.LastDamageableHit;
-            if (lastDamageable) 
+
+            if (lastDamageable && Actor) 
             {
-                foreach (var entry in m_DamageableSpecificAnimation)
+                foreach (DamageableAnimEntry entry in m_DamageableSpecificAnimation)
                 {
-                    if (entry.Damageable == lastDamageable)
+                    if (entry.Damageable != lastDamageable) continue;
+                    
+                    switch (Actor.type)
                     {
-                        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.TarSpawn);
-                        m_AnimationState = entry.AnimationState;
+                        case Actor.ActorType.TarSpawn:
+                            AudioManager.Instance.PlayEnemyDeath(AudioManager.EnemyType.TarSpawn);
+                            break;
+                        case Actor.ActorType.ExperimentalMan:
+                            AudioManager.Instance.PlayEnemyDeath(AudioManager.EnemyType.ExperimentalMan);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
+
+                    m_AnimationState = entry.AnimationState;
+                    break;
                 }
             }
-
+            
             base.StateEnter(fromState);
         }
     }

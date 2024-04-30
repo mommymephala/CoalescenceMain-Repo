@@ -48,19 +48,26 @@ MonoBehaviour:
   walkingRecoilMultiplier: 1.5
   shotSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1844504655
+      Data2: 1253633678
+      Data3: -1594968445
+      Data4: -1072045817
+    Path: event:/SFX/Weapon/Shotgun/Weapon_Shotgun
   reloadSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 350510444
+      Data2: 1090153502
+      Data3: -1359629142
+      Data4: -320608033
+    Path: event:/SFX/Weapon/Shotgun/Weapon_Shotgun_Reload
   noAmmoSound:
+    Guid:
+      Data1: 1557240119
+      Data2: 1103861585
+      Data3: 1821831083
+      Data4: 611753695
+    Path: event:/SFX/Weapon/Shotgun/Weapon_Shotgun_Out_of_Ammo
+  weaponSwitch:
     Guid:
       Data1: 0
       Data2: 0

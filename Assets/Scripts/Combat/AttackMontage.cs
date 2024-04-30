@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Audio;
 using States;
@@ -8,6 +9,8 @@ namespace Combat
 {
     public class AttackMontage : MonoBehaviour
     {
+        private Actor _actor;
+
         public AttackBase Attack;
         public AnimatorStateHandle Animation;
         public float AnimationBlendTime = 0.2f;
@@ -19,6 +22,8 @@ namespace Combat
 
         private void Awake()
         {
+            _actor = GetComponentInParent<Actor>();
+            
             if (!Attack)
             {
                 Attack = GetComponent<AttackBase>();
@@ -38,8 +43,17 @@ namespace Combat
         public void Play(Animator animator)
         {
             //TODO: Test this
-            AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.TarSpawn, AudioManager.EnemyAttackType.NormalAttack);
-            // Debug.Log("Audio played");
+            switch (_actor.type)
+            {
+                case Actor.ActorType.TarSpawn:
+                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.TarSpawn, AudioManager.EnemyAttackType.NormalAttack);
+                    break;
+                case Actor.ActorType.ExperimentalMan:
+                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.ExperimentalMan, AudioManager.EnemyAttackType.NormalAttack);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             animator.CrossFadeInFixedTime(Animation.Hash, AnimationBlendTime);
 

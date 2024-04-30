@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HEScripts.UI
+namespace UI_Codebase
 {
     public interface IUIInput
     {

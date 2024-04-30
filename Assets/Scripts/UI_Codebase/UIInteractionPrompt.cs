@@ -1,5 +1,4 @@
 using System;
-using HEScripts.UI;
 using Interaction;
 using Messages;
 using Misc;

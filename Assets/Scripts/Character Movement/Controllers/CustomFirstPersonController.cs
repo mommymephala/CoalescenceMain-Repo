@@ -45,8 +45,8 @@ namespace Character_Movement.Controllers
 
             const float dampTime = 0.1f;
 
-            cameraAnimator.SetFloat(_verticalParamId, moveDirection.z, dampTime, Time.deltaTime);
-            cameraAnimator.SetFloat(_horizontalParamId, moveDirection.x, dampTime, Time.deltaTime);
+            cameraAnimator.SetFloat(_verticalParamId, MoveDirection.z, dampTime, Time.deltaTime);
+            cameraAnimator.SetFloat(_horizontalParamId, MoveDirection.x, dampTime, Time.deltaTime);
         }
 
         /// <summary>
@@ -60,24 +60,20 @@ namespace Character_Movement.Controllers
         
         private void HandleFootsteps()
         {
-            if (!isGrounded || isMoving)
+            if (IsGrounded && IsMoving)
+            {
+                AudioManager.Instance.footstepTimer += Time.deltaTime;
+                var currentFootstepDelay = run ? AudioManager.Instance.runningFootstepDelay : AudioManager.Instance.footstepDelay;
+
+                if (AudioManager.Instance.footstepTimer >= currentFootstepDelay)
+                {
+                    PlayFootstepSound();
+                    AudioManager.Instance.footstepTimer = 0;
+                }
+            }
+            else
             {
                 AudioManager.Instance.footstepTimer = 0;
-                return;
-            }
-
-            if (AudioManager.Instance.footstepTimer == 0)
-            {
-                PlayFootstepSound();
-            }
-
-            AudioManager.Instance.footstepTimer += Time.deltaTime;
-
-            var currentFootstepDelay = run ? AudioManager.Instance.runningFootstepDelay : AudioManager.Instance.footstepDelay;
-
-            if (AudioManager.Instance.footstepTimer >= currentFootstepDelay)
-            {
-                PlayFootstepSound();
             }
         }
         
@@ -101,15 +97,9 @@ namespace Character_Movement.Controllers
 
         protected override void HandleInput()
         {
-            // Toggle pause / resume.
-            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
-
-            // if (Input.GetKeyDown(KeyCode.P))
-            //     pause = !pause;
-            
             // Use GetPrimaryAxis for movement direction
             Vector2 inputAxis = _input.GetPrimaryAxis();
-            moveDirection = new Vector3
+            MoveDirection = new Vector3
             {
                 x = inputAxis.x,
                 y = 0.0f,

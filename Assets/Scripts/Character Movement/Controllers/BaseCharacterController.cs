@@ -405,7 +405,7 @@ namespace Character_Movement.Controllers
 
         public bool jump
         {
-            get { return _jump; }
+            get => _jump;
             set
             {
                 // If jump is released, allow to jump again
@@ -428,83 +428,35 @@ namespace Character_Movement.Controllers
         /// Is the character jumping? (moving up result of jump button press).
         /// </summary>
 
-        public bool isJumping
-        {
-            get { return _isJumping; }
-        }
+        public bool IsJumping => _isJumping;
 
         /// <summary>
         /// True if character is falling, false if not.
         /// </summary>
 
-        public bool isFalling
-        {
-            get { return !movement.isGrounded && movement.velocity.y < 0.0001f; }
-        }
+        public bool IsFalling => !movement.isGrounded && movement.velocity.y < 0.0001f;
 
         /// <summary>
         /// Is the character standing on 'ground'?
         /// </summary>
 
-        public bool isGrounded
-        {
-            get { return movement.isGrounded; }
-        }
+        public bool IsGrounded => movement.isGrounded;
 
         /// <summary>
         /// Movement input command. The desired move direction.
         /// </summary>
 
-        public Vector3 moveDirection
+        public Vector3 MoveDirection
         {
-            get { return _moveDirection; }
-            set { _moveDirection = Vector3.ClampMagnitude(value, 1.0f); }
+            get => _moveDirection;
+            set => _moveDirection = Vector3.ClampMagnitude(value, 1.0f);
         }
         
         /// <summary>
         /// Indicates whether the character is currently moving based on the movement input.
         /// </summary>
         
-        public bool isMoving
-        {
-            get { return _moveDirection.sqrMagnitude > 0.0001f; }
-        }
-
-
-        /*/// <summary>
-        /// Toggle pause / resume.
-        /// </summary>
-
-        public bool pause { get; set; }
-
-        /// <summary>
-        /// Is the character paused?
-        /// </summary>
-
-        public bool isPaused { get; private set; }
-
-        /// <summary>
-        /// Should saved velocity (when pause == true) be restored on resume (when pause == false)?
-        /// If true, the saved rigidbody velocity will be restored on resume, if false, the rigidbody will be reset (zero).
-        /// </summary>
-
-        public bool restoreVelocityOnResume
-        {
-            get { return _restoreVelocityOnResume; }
-            set { _restoreVelocityOnResume = value; }
-        }
-
-        /// <summary>
-        /// Crouch input command.
-        /// </summary>
-
-        public bool crouch { get; set; }
-
-        /// <summary>
-        /// Is the character crouching?
-        /// </summary>
-
-        public bool isCrouching { get; protected set; }*/
+        public bool IsMoving => _moveDirection.sqrMagnitude >= 0.0001f;
 
         #endregion
 
@@ -551,7 +503,7 @@ namespace Character_Movement.Controllers
 
         public void RotateTowardsMoveDirection(bool onlyLateral = true)
         {
-            RotateTowards(moveDirection, onlyLateral);
+            RotateTowards(MoveDirection, onlyLateral);
         }
 
         /// <summary>
@@ -572,7 +524,7 @@ namespace Character_Movement.Controllers
         {
             // Update _isJumping flag state
 
-            if (isJumping)
+            if (IsJumping)
             {
                 // On landing, reset _isJumping flag
 
@@ -754,7 +706,7 @@ namespace Character_Movement.Controllers
 
         protected virtual Vector3 CalcDesiredVelocity()
         {
-            return moveDirection * speed;
+            return MoveDirection * speed;
         }
 
         /// <summary>
@@ -778,7 +730,7 @@ namespace Character_Movement.Controllers
             {
                 // Move with acceleration and friction
 
-                var currentFriction = isGrounded ? groundFriction : airFriction;
+                var currentFriction = IsGrounded ? groundFriction : airFriction;
                 var currentBrakingFriction = useBrakingFriction ? brakingFriction : currentFriction;
 
                 movement.Move(desiredVelocity, speed, acceleration, deceleration, currentFriction,
@@ -839,7 +791,7 @@ namespace Character_Movement.Controllers
 
             // Handle user input
 
-            moveDirection = new Vector3
+            MoveDirection = new Vector3
             {
                 x = Input.GetAxisRaw("Horizontal"),
                 y = 0.0f,

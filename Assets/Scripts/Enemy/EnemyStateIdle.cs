@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Audio;
 using States;
 using UnityEngine;
@@ -9,27 +11,32 @@ namespace Enemy
         [SerializeField] private EnemyStateAlerted m_AlertedState;
         [SerializeField] private EnemyStateWanderAroundTarget m_WanderState;
         [SerializeField] private float TimeBetweenWander = 3;
-        private Coroutine idleSoundCoroutine;
         private float m_StateTime;
         private EnemySensesController m_EnemySenses;
+        
+        private Coroutine _idleSoundCoroutine;
 
         protected override void Awake()
         {
             base.Awake();
-
             m_EnemySenses = GetComponentInParent<EnemySensesController>();
         }
 
         public override void StateEnter(IActorState fromState)
         {
             base.StateEnter(fromState);
-            
-            if (idleSoundCoroutine == null)
-            {
-                idleSoundCoroutine = StartCoroutine(AudioManager.Instance.PlayIdleSoundLoop());
-            }
-            
             m_StateTime = 0;
+            _idleSoundCoroutine = StartCoroutine(PlayIdleSoundLoop());
+        }
+
+        private IEnumerator PlayIdleSoundLoop()
+        {
+            while (true)
+            {
+                AudioManager.Instance.PlayEnemyIdle(gameObject, Actor.type);
+                yield return new WaitForSeconds(3);
+            }
+            // ReSharper disable once IteratorNeverReturns
         }
 
         public override void StateUpdate()
@@ -38,26 +45,15 @@ namespace Enemy
 
             if (m_EnemySenses.IsPlayerDetected && m_EnemySenses.IsPlayerInReach)
             {
-                if (idleSoundCoroutine != null)
-                {
-                    StopCoroutine(idleSoundCoroutine);
-                    idleSoundCoroutine = null;
-                }
-                
+                StopCoroutine(_idleSoundCoroutine);
                 SetState(m_AlertedState);
-                return; 
+                return;
             }
 
             m_StateTime += Time.deltaTime;
-            
             if (m_WanderState && m_StateTime > TimeBetweenWander)
             {
-                if (idleSoundCoroutine != null)
-                {
-                    StopCoroutine(idleSoundCoroutine);
-                    idleSoundCoroutine = null;
-                }
-                
+                StopCoroutine(_idleSoundCoroutine);
                 SetState(m_WanderState);
             }
         }

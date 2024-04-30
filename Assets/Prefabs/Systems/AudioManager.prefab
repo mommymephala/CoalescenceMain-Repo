@@ -44,142 +44,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1b2bb19498d2a458e5b6b5cbc87f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRunning:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   playerHurt:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 32212735
+      Data2: 1171920211
+      Data3: -1484202318
+      Data4: -468843434
+    Path: event:/SFX/Player/Player_Take_Damage
   playerDeath:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1227820766
+      Data2: 1112037699
+      Data3: 93806010
+      Data4: 1869849546
+    Path: event:/SFX/Player/Player_Death
   playerFootsteps:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1874342431
+      Data2: 1321516486
+      Data3: -1709840227
+      Data4: 1259604765
+    Path: event:/SFX/Player/Player_Footsteps
+  playerRunning:
+    Guid:
+      Data1: -2091680138
+      Data2: 1203750866
+      Data3: 184799391
+      Data4: -1896962226
+    Path: event:/SFX/Player/Player_Run
   footstepTimer: 0
   footstepDelay: 0.5
   runningFootstepDelay: 0.25
   tarSpawnSounds:
     idle:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -919301942
+        Data2: 1106864262
+        Data3: 1710035132
+        Data4: 1943114385
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
     footstep:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 669736964
+        Data2: 1313791695
+        Data3: -1316190548
+        Data4: -773224799
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Footstep/Tar_Spawn_Footstep
     normalAttack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1576766576
+        Data2: 1242475021
+        Data3: 1148887993
+        Data4: -430664985
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Normal_Attack
     heavyAttack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -352967841
+        Data2: 1171035083
+        Data3: -1434024532
+        Data4: -1102331217
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Heavy_Attack
     enemyHurt:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 252499626
+        Data2: 1090298653
+        Data3: 1785524877
+        Data4: -850768911
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Take_Damage/Tar_Spawn_Take_Damage
     death:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 410524000
+        Data2: 1090939099
+        Data3: 1246424730
+        Data4: 2038832096
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
   experimentalManSounds:
     idle:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 2028078850
+        Data2: 1338528419
+        Data3: -2125631336
+        Data4: -751747404
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Idle/Chip_Enemy_Idle
     footstep:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1985346438
+        Data2: 1157996324
+        Data3: -322858847
+        Data4: -227501852
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Footstep/Chip_Enemy_Footsteps
     normalAttack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 20833893
+        Data2: 1155053795
+        Data3: -1003491435
+        Data4: -1081385637
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Attacks/Chip_Enemy_Normal_Attack
     heavyAttack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1523091217
+        Data2: 1254355555
+        Data3: -1052581981
+        Data4: 1232170868
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Attacks/Chip_Enemy_Heavy_Attack
     enemyHurt:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1642935697
+        Data2: 1261931472
+        Data3: -81546570
+        Data4: -412839977
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Take_Damage/Chip_Enemy_Take_Damage
     death:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1889166572
+        Data2: 1324818673
+        Data3: 726761105
+        Data4: 1240178927
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Death/Chip_Enemy_Death
+  ambient:
+    Guid:
+      Data1: 680040118
+      Data2: 1183175381
+      Data3: 1780836256
+      Data4: 373826043
+    Path: event:/AMB/Player_Ambience/Player_Amb
+  safeRoom:
+    Guid:
+      Data1: -1881996236
+      Data2: 1134459329
+      Data3: -651037786
+      Data4: 625371982
+    Path: event:/AMB/SaveRoom/Safe_Room
   metalDoor:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -607918179
+      Data2: 1135980185
+      Data3: 1109397659
+      Data4: 973050296
+    Path: event:/OBJ&INT/Metal_Door
   metalDoorClosed:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  powerCore:
+      Data1: -1436009916
+      Data2: 1317997895
+      Data3: -1215883107
+      Data4: -1505303675
+    Path: event:/OBJ&INT/Metol_Door_Closed
+  dysonActivation:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  crossfadeDuration: 1
+      Data1: -1838914258
+      Data2: 1284732683
+      Data3: -678901322
+      Data4: -241383821
+    Path: event:/OBJ&INT/Power_Core/Power_Core_On

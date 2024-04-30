@@ -90,8 +90,6 @@ MonoBehaviour:
   Duration: 1
   MontageDelay: 0
   AttackActivationDelay: 0.5
-  m_AudioSource: {fileID: 0}
-  m_AttackSound: {fileID: 0}
 --- !u!1 &407655096947067450
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +140,7 @@ MonoBehaviour:
   - FromState: {fileID: 1203087359121711604}
     AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
     AnimationBlendTime: 0.25
-  - FromState: {fileID: 3308129827462402635}
+  - FromState: {fileID: 0}
     AnimationState: {fileID: 11400000, guid: cc48124fab29cf74fb7f21f65398d20e, type: 2}
     AnimationBlendTime: 0.25
   m_ExitAnimationState: {fileID: 0}
@@ -460,7 +458,7 @@ MonoBehaviour:
   m_FromAllStates: 1
   m_FromStates: []
   m_ExcludeStates: []
-  m_ToState: {fileID: 3308129827462402635}
+  m_ToState: {fileID: 5618881770667597335}
 --- !u!1 &3836322152308743342
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 639337233375873310}
-  - component: {fileID: 3308129827462402635}
+  - component: {fileID: 5618881770667597335}
   m_Layer: 0
   m_Name: Hurt
   m_TagString: Untagged
@@ -785,7 +783,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6303927467742110913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3308129827462402635
+--- !u!114 &5618881770667597335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,7 +792,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5495913349094729045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998423764eaa23247b853b48b4b4eb42, type: 3}
+  m_Script: {fileID: 11500000, guid: ebf281f721cd41b4b9522d8099070f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AnimationState: {fileID: 11400000, guid: 2d92a12f0797c824a966a57f4c1eec41, type: 2}
@@ -1049,6 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15be47fe4d013f4289946a7272ccbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   MainAnimator: {fileID: 8551170328765602679}
 --- !u!114 &7848664016003671044
 MonoBehaviour:
@@ -1602,9 +1601,9 @@ MonoBehaviour:
   Tags: []
   m_Duration: 1
   m_GoToStateAfterDuration: {fileID: 8410736365416673727}
+  attackOptions: []
   m_AlertedState: {fileID: 3416583239326226275}
   m_FacingSpeed: 2
-  m_AttackMontage: {fileID: 3418702111639061465}
   m_RotateTowardsTarget: 1
   AttackDistance: 1.5
   Cooldown: 1.5

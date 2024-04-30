@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HEScripts.UI
+namespace UI_Codebase
 {
     [RequireComponent(typeof(AudioSource))]
     public class UIAudio : MonoBehaviour

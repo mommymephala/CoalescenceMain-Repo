@@ -5,6 +5,14 @@ namespace States
 {
     public class Actor : MonoBehaviour
     {
+        public enum ActorType
+        {
+            TarSpawn,
+            ExperimentalMan
+        }
+
+        public ActorType type;
+        
         public ActorStateController StateController { get; private set; }
         public Animator MainAnimator;
 
@@ -27,7 +35,7 @@ namespace States
 
         public void Disable(Object context)
         {
-            bool wasDisabled = IsDisabled;
+            var wasDisabled = IsDisabled;
             if (!m_DisableContext.Contains(context))
                 m_DisableContext.Add(context);
 
@@ -44,7 +52,7 @@ namespace States
 
         public void Enable(Object context)
         {
-            bool wasDisabled = IsDisabled;
+            var wasDisabled = IsDisabled;
             m_DisableContext.Remove(context);
 
             if (wasDisabled && !IsDisabled)

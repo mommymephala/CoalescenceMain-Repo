@@ -1,5 +1,4 @@
-﻿using HEScripts.UI;
-using UI_Codebase;
+﻿using UI_Codebase;
 using UnityEngine;
 
 namespace Doors

@@ -820,8 +820,8 @@ MonoBehaviour:
   m_PageRightHook: {fileID: 6618071986680605378}
   m_RightArrow: {fileID: 4435126109498781159}
   m_LeftArrow: {fileID: 3283809637587139639}
-  m_NavigateClip: {fileID: 8300000, guid: 7506a771bac04be41b734d4c1ed70939, type: 3}
-  m_CloseClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
+  m_NavigateClip: {fileID: 0}
+  m_CloseClip: {fileID: 0}
 --- !u!1 &3427505111232941961
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ namespace Weapon
         
         private void ProcessAimingInput()
         {
-            if (_controller.playerController.isGrounded && !_controller.playerController.run)
+            if (_controller.playerController.IsGrounded && !_controller.playerController.run)
             {
                 if (toggleAim && _controller.Input.IsAimingDown())
                 {

@@ -1,6 +1,5 @@
 using System;
 using Extensions;
-using HEScripts.UI;
 using Player;
 using UI_Codebase;
 using UnityEngine;

@@ -8,13 +8,7 @@ namespace Utils
     {
         private int dismissedFramecount = 0;
 
-        public override bool keepWaiting
-        {
-            get
-            {
-                return !(dismissedFramecount == Time.frameCount);
-            }
-        }
+        public override bool keepWaiting => dismissedFramecount != Time.frameCount;
 
         public WaitForMessageBufferEvent()
         {

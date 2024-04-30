@@ -1,27 +1,29 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
 using FMODUnity;
 using Singleton;
+using States;
 using UnityEngine;
 
 namespace Audio
 {
     public class AudioManager : SingletonBehaviour<AudioManager>
     {
-        public enum EnemyAttackType
-        {
-            NormalAttack,
-            HeavyAttack
+        public enum EnemyAttackType 
+        { 
+            NormalAttack, 
+            HeavyAttack 
         }
-        
-        public enum EnemyType
-        {
-            TarSpawn,
-            ExperimentalMan
+
+        public enum EnemyType 
+        { 
+            TarSpawn, 
+            ExperimentalMan 
         }
-        
+
+        public Dictionary<Actor.ActorType, EnemyType> actorToEnemyTypeMap;
+
         [Serializable]
         public struct EnemySounds
         {
@@ -32,335 +34,163 @@ namespace Audio
             public EventReference enemyHurt;
             public EventReference death;
         }
-        
-        [Header("Player")]
-        public EventReference playerRunning;
-        public EventReference playerHurt;
+
+        [Header("Player")] 
+        public EventReference playerHurt; 
         public EventReference playerDeath;
-        
-        [Header("Player Footsteps")]
+
+        [Header("Player Footsteps")] 
         public EventReference playerFootsteps;
+        public EventReference playerRunning;
         public float footstepTimer;
         public float footstepDelay = 0.5f;
         public float runningFootstepDelay = 0.25f;
-        
-        [Header("Enemy Sounds")]
+
+        [Header("Enemy Sounds")] 
         public EnemySounds tarSpawnSounds;
         public EnemySounds experimentalManSounds;
         public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
-        
+
         [Header("Environment")]
         public EventReference ambient;
         public EventReference safeRoom;
         public EventReference metalDoor;
         public EventReference metalDoorClosed;
         public EventReference dysonActivation;
-        
-        // EventInstances
-        private EventInstance _playerFootstepInstance;
-        private EventInstance _playerTakeDamage;
-        private EventInstance _playerRunning;
-        private EventInstance _baseEnemyFootstepInstance;
-        private EventInstance _ambient;
-        private EventInstance _safeRoom;
-        
-        // Cross-fade related fields
-        public Dictionary<EventInstance, Coroutine> fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
-        [SerializeField] private float crossfadeDuration = 1.0f;
-        private Coroutine _idleCoroutine;
-        
-        // Flags
+
+        // Private fields for FMOD instances and internal state
+        private Dictionary<EventInstance, Coroutine> _fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
+        private float _crossfadeDuration = 1.0f;
+
         private bool _isInsideSafeRoom;
+
 
         protected override void Awake()
         {
             base.Awake();
-            
+            InitializeSoundsMap();
+            InitializeTypeMappings();
+        }
+
+        private void Start()
+        {
+            StartAmbientSound();
+        }
+        
+        private void InitializeSoundsMap()
+        {
             enemySoundsMap = new Dictionary<EnemyType, EnemySounds>
             {
                 { EnemyType.TarSpawn, tarSpawnSounds },
                 { EnemyType.ExperimentalMan, experimentalManSounds }
             };
         }
-
-        private void Start()
+        
+        private void InitializeTypeMappings()
         {
-            _ambient = RuntimeManager.CreateInstance(ambient);
-            _ambient.start();
-        }
-
-        public void Crossfade(EventInstance fromInstance, EventInstance toInstance, float duration)
-        {
-            // Stop existing fade on the 'from' instance
-            if (fadeCoroutines.TryGetValue(fromInstance, out Coroutine existingCoroutine))
+            actorToEnemyTypeMap = new Dictionary<Actor.ActorType, EnemyType>
             {
-                StopCoroutine(existingCoroutine);
-                fadeCoroutines.Remove(fromInstance);
-            }
-
-            // Start new cross-fade
-            Coroutine newCoroutine = StartCoroutine(CrossfadeCoroutine(fromInstance, toInstance, duration));
-            fadeCoroutines[toInstance] = newCoroutine;
+                { Actor.ActorType.TarSpawn, EnemyType.TarSpawn },
+                { Actor.ActorType.ExperimentalMan, EnemyType.ExperimentalMan }
+            };
         }
 
-        private IEnumerator CrossfadeCoroutine(EventInstance fromInstance, EventInstance toInstance, float duration)
+        private EnemyType GetEnemyTypeFromActorType(Actor.ActorType actorType)
         {
-            float currentTime = 0;
-
-            // Ensure the 'to' instance is playing
-            toInstance.start();
-
-            while (currentTime < duration)
+            if (actorToEnemyTypeMap.TryGetValue(actorType, out EnemyType enemyType))
             {
-                currentTime += Time.deltaTime;
-                var t = currentTime / duration;
-
-                // Adjust volumes for cross-fade
-                fromInstance.setVolume(1 - t);
-                toInstance.setVolume(t);
-
-                yield return null;
-            }
-
-            // Stop the 'from' instance after fading
-            fromInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            fromInstance.release();
-            fadeCoroutines.Remove(toInstance);
-        }
-
-        // Method to pause an event instance
-        private static void PauseEventInstance(EventInstance instance)
-        {
-            instance.setPaused(true);
-        }
-
-        // Method to resume an event instance
-        private static void ResumeEventInstance(EventInstance instance)
-        {
-            instance.setPaused(false);
-        }
-
-        public void EnterSafeRoom()
-        {
-            if (!_isInsideSafeRoom)
-            {
-                FadeOutSound(_ambient, crossfadeDuration, true);
-                _safeRoom = RuntimeManager.CreateInstance(safeRoom);
-                _safeRoom.setVolume(0);
-                _safeRoom.start();
-                FadeInSound(_safeRoom, crossfadeDuration);
-                _isInsideSafeRoom = true;
-            }
-        }
-
-        public void ExitSafeRoom()
-        {
-            if (_isInsideSafeRoom)
-            {
-                FadeOutSound(_safeRoom, crossfadeDuration);
-                ResumeEventInstance(_ambient);
-                FadeInSound(_ambient, crossfadeDuration);
-                _isInsideSafeRoom = false;
-            }
-        }
-
-        private static IEnumerator StartFade(EventInstance sound, float targetVolume, float duration, bool pauseOnFadeOut = false)
-        {
-            float currentTime = 0;
-            sound.getVolume(out var startVolume);
-
-            while (currentTime < duration)
-            {
-                currentTime += Time.deltaTime;
-                var newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
-                sound.setVolume(newVolume);
-                yield return null;
+                return enemyType;
             }
             
-            sound.setVolume(targetVolume);
-
-            if (targetVolume == 0 && pauseOnFadeOut)
+            Debug.LogWarning("No AudioManager.EnemyType mapped for Actor.ActorType: " + actorType);
+            return default;  // Or throw an exception or return a default value as necessary
+        }
+        
+        // --------------------------------------------------------------------
+        
+        private void PlayOneShot(EventReference eventRef, string eventName)
+        {
+            if (!eventRef.IsNull)
             {
-                PauseEventInstance(sound);
+                RuntimeManager.PlayOneShot(eventRef, transform.position);
+            }
+            else
+            {
+                Debug.LogWarning($"FMOD event not found: {eventName}");
             }
         }
 
-        private void FadeInSound(EventInstance sound, float duration)
+        private void StartAmbientSound()
         {
-            StartCoroutine(StartFade(sound, 1.0f, duration));
+            EventInstance ambientInstance = RuntimeManager.CreateInstance(ambient);
+            ambientInstance.start();
+            _fadeCoroutines.Add(ambientInstance, null);
         }
 
-        private void FadeOutSound(EventInstance sound, float duration, bool pauseOnFadeOut = false)
-        {
-            StartCoroutine(StartFade(sound, 0.0f, duration, pauseOnFadeOut));
-        }
-    
+        // --------------------------------------------------------------------
+
         public void PlayFootstep()
-        { 
-            if (playerFootsteps.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: playerFootstep");
-                return;
-            }
-            
-            _playerFootstepInstance = RuntimeManager.CreateInstance(playerFootsteps);
-        
-            _playerFootstepInstance.start();
-            _playerFootstepInstance.release();
-        
+        {
+            PlayOneShot(playerFootsteps, "Player footstep");
         }
-        
+
         public void PlayRunning()
         {
-            if (playerRunning.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: playerRunning");
-                return;
-            }
-            
-            _playerRunning = RuntimeManager.CreateInstance(playerRunning);
-        
-            _playerRunning.start();
-            _playerRunning.release();
-        
+            PlayOneShot(playerRunning, "Player running");
         }
-    
-        public IEnumerator PlayIdleSoundLoop()
-        {
-            while (true)
-            {
-                PlayEnemyIdle(gameObject, EnemyType.TarSpawn);
-                yield return new WaitForSeconds(3);
-            }
-        }
-        
-        public void PlayPlayerTakeDamage()
-        {
-            if (playerHurt.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: playerHurt");
-                return;
-            }
 
-            _playerTakeDamage = RuntimeManager.CreateInstance(playerHurt);
-        
-            _playerTakeDamage.start();
-            _playerTakeDamage.release();
+        public void PlayPlayerHurt()
+        {
+            PlayOneShot(playerHurt, "Player hurt");
         }
 
         public void PlayPlayerDeath()
         {
-            if (playerHurt.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: playerDeath");
-                return;
-            }
-            RuntimeManager.PlayOneShot(playerDeath, transform.position);
+            PlayOneShot(playerDeath, "Player death");
+        }
 
-        }
-        
-        public void PlayEnemyFootstep(GameObject enemyObject, EnemyType enemyType)
+        public void PlayDoor()
         {
-            if (enemySoundsMap[enemyType].footstep.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: enemyFootstep");
-                return;
-            }
-            RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].footstep, enemyObject.transform.position);
+            PlayOneShot(metalDoor, "Metal door open");
         }
-        
-        public void PlayEnemyIdle(GameObject enemyObject, EnemyType enemyType)
+
+        public void PlayDoorClosed()
         {
-            if (enemySoundsMap[enemyType].idle.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].idle");
-                return;
-            }
-            
-            RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].idle, enemyObject.transform.position);
+            PlayOneShot(metalDoorClosed, "Metal door closed");
         }
-        
-        public void PlayEnemyAttack(GameObject enemyobject, EnemyType enemyType, EnemyAttackType enemyAttackType)
+
+        public void PlayDysonActivation()
         {
-            if (enemySoundsMap[enemyType].normalAttack.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].normalAttack");
-                return;
-            }
-            
-            if (enemySoundsMap[enemyType].heavyAttack.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].heavyAttack");
-                return;
-            }
-            
-            switch (enemyAttackType)
-            {
-                case EnemyAttackType.NormalAttack:
-                    RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].normalAttack, enemyobject.transform.position);
-                    break;
-                case EnemyAttackType.HeavyAttack:
-                    RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].heavyAttack, enemyobject.transform.position);
-                    break;
-                default:
-                    Debug.LogWarning($"Unsupported attack type: {enemyAttackType}");
-                    return;
-            }
+            PlayOneShot(dysonActivation, "Dyson activation");
         }
-        
-        public void PlayEnemyHurt(GameObject enemyobject, EnemyType enemyType)
+
+        public void PlayEnemyFootstep(EnemyType enemyType)
         {
-            if (enemySoundsMap[enemyType].enemyHurt.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].enemyHurt");
-                return;
-            }
-                
-            RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].enemyHurt, enemyobject.transform.position);
+            PlayOneShot(enemySoundsMap[enemyType].footstep, "Enemy footstep");
         }
-        
-        public void PlayEnemyDeath(GameObject enemyobject, EnemyType enemyType)
+
+        public void PlayEnemyAttack(EnemyType enemyType, EnemyAttackType attackType)
         {
-            if (enemySoundsMap[enemyType].death.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: enemySoundsMap[enemyType].death");
-                return;
-            }
-        
-            RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].death, enemyobject.transform.position);
+            EventReference attackSound = attackType == EnemyAttackType.NormalAttack ? 
+                enemySoundsMap[enemyType].normalAttack : enemySoundsMap[enemyType].heavyAttack;
+
+            PlayOneShot(attackSound, "Enemy attack");
         }
-    
-        public void PlayDoor(GameObject doorObject)
+
+        public void PlayEnemyHurt(EnemyType enemyType)
         {
-            if (metalDoor.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: metalDoor");
-                return;
-            }
-        
-            RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
+            PlayOneShot(enemySoundsMap[enemyType].enemyHurt, "Enemy hurt");
         }
-        
-        public void PlayDoorClosed(GameObject doorObject)
+
+        public void PlayEnemyDeath(EnemyType enemyType)
         {
-            if (metalDoorClosed.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: metalDoorClosed");
-                return;
-            }
-        
-            RuntimeManager.PlayOneShot(metalDoorClosed, doorObject.transform.position);
+            PlayOneShot(enemySoundsMap[enemyType].death, "Enemy death");
         }
-        
-        public void PlayDysonActivation(GameObject dysonObject)
+
+        public void PlayEnemyIdle(GameObject enemyObject, Actor.ActorType actorType)
         {
-            if (dysonActivation.IsNull)
-            {
-                Debug.LogWarning("Fmod event not found: dysonActivation");
-                return;
-            }
-        
-            RuntimeManager.PlayOneShot(dysonActivation, dysonObject.transform.position);
+            EnemyType enemyType = GetEnemyTypeFromActorType(actorType);
+            PlayOneShot(enemySoundsMap[enemyType].idle, "Enemy idle");
         }
     }
 }

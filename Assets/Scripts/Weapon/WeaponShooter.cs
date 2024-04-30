@@ -62,7 +62,7 @@ namespace Weapon
         {
             var hasAmmo = _controller.CurrentWeaponEntry is { SecondaryCount: > 0 };
             var canShootTiming = _timeSinceLastShot >= 1f / (_controller.weaponData.fireRate / 60f);
-            var playerStateAllowed = !_controller.playerController.run && _controller.playerController.isGrounded;
+            var playerStateAllowed = !_controller.playerController.run && _controller.playerController.IsGrounded;
 
             return hasAmmo && canShootTiming && playerStateAllowed && !_controller.IsReloading;
         }
@@ -81,6 +81,7 @@ namespace Weapon
             else
             {
                 Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
+                // TODO: Implement the sounds of other things than combat.
             }
 
             CalculateRecoil();
@@ -114,6 +115,7 @@ namespace Weapon
                         foreach (AttackEffect effect in impact.PostDamageEffects)
                         {
                             effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = hit.point, ImpactDir = -hit.normal });
+                            // TODO: Hit impact sound place.
                         }
                     }
                 }
@@ -130,7 +132,7 @@ namespace Weapon
             Vector3 recoilRotation = WeaponAiming.IsAiming  ? _controller.weaponData.recoilRotationAiming : _controller.weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (_controller.playerController.isMoving)
+            if (_controller.playerController.IsMoving)
             {
                 recoilMultiplier = _controller.weaponData.walkingRecoilMultiplier;
             }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Audio;
 using States;
 using Systems;
@@ -9,7 +11,8 @@ namespace Enemy
     public class EnemyStateChase : ActorStateWithDuration
     {
         private NavMeshAgent _agent;
-        private Coroutine idleSoundCoroutine;
+        
+        private Coroutine _idleSoundCoroutine;
         
         protected override void Awake()
         {
@@ -22,22 +25,27 @@ namespace Enemy
             base.StateEnter(fromState);
             _agent.isStopped = false;
             
-            if (idleSoundCoroutine == null)
-            {
-                idleSoundCoroutine = StartCoroutine(AudioManager.Instance.PlayIdleSoundLoop());
-            }
+            _idleSoundCoroutine = StartCoroutine(PlayIdleSoundLoop());
             
             m_TimeInState = 0f;
+        }
+        
+        private IEnumerator PlayIdleSoundLoop()
+        {
+            while (true)
+            {
+                AudioManager.Instance.PlayEnemyIdle(gameObject, Actor.type);
+                yield return new WaitForSeconds(3);
+            }
+            // ReSharper disable once IteratorNeverReturns
         }
 
         public override void StateUpdate()
         {
             base.StateUpdate();
-            if (idleSoundCoroutine != null)
-            {
-                StopCoroutine(idleSoundCoroutine);
-                idleSoundCoroutine = null;
-            }
+            
+            StopCoroutine(_idleSoundCoroutine);
+                
             _agent.SetDestination(GameManager.Instance.Player.transform.position);
         }
 
@@ -45,8 +53,11 @@ namespace Enemy
         {
             base.OnStateDurationEnd();
             _agent.isStopped = true;
-            if (m_GoToStateAfterDuration)
-                SetState(m_GoToStateAfterDuration);
+            
+            if (!m_GoToStateAfterDuration) return;
+            
+            StopCoroutine(_idleSoundCoroutine);
+            SetState(m_GoToStateAfterDuration);
         }
         
         // public virtual void PlayFootstepSound()
@@ -57,6 +68,8 @@ namespace Enemy
         public override void StateExit(IActorState intoState)
         {
             base.StateExit(intoState);
+            StopCoroutine(_idleSoundCoroutine);
+
             _agent.isStopped = true;
         }
     }

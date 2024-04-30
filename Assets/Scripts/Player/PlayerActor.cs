@@ -16,5 +16,4 @@ namespace Player
             gameObject.SetActive(visible);
         }
     }
-
 }

@@ -136,18 +136,18 @@ namespace Character_Movement.Controllers
 
             // Strafe
 
-            if (moveDirection.x is > 0.0f or < 0.0f)
+            if (MoveDirection.x is > 0.0f or < 0.0f)
                 targetSpeed = strafeSpeed;
 
             // Backwards
 
-            if (moveDirection.z < 0.0f)
+            if (MoveDirection.z < 0.0f)
                 targetSpeed = backwardSpeed;
 
             // Forward handled last as if strafing and moving forward at the same time,
             // forward speed should take precedence
 
-            if (moveDirection.z > 0.0f)
+            if (MoveDirection.z > 0.0f)
                 targetSpeed = forwardSpeed;
 
             // Handle run speed modifier
@@ -186,7 +186,7 @@ namespace Character_Movement.Controllers
 
             // Player input
 
-            moveDirection = new Vector3
+            MoveDirection = new Vector3
             {
                 x = Input.GetAxisRaw("Horizontal"),
                 y = 0.0f,

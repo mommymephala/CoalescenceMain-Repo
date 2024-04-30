@@ -1,7 +1,6 @@
 using System.Collections;
 using Character_Movement.Components;
 using Character_Movement.Controllers;
-using HEScripts.UI;
 using Interfaces;
 using Inventory;
 using Items;
@@ -208,7 +207,7 @@ namespace Weapon
             Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (_newPlayerController.isMoving)
+            if (_newPlayerController.IsMoving)
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }

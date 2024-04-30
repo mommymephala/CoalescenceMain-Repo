@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Audio;
 using Combat;
 using States;
@@ -8,18 +9,18 @@ namespace Enemy
 {
     public class EnemyStateAttack : ActorStateWithDuration
     {
+        [SerializeField] private List<AttackMontage> attackOptions;
         [SerializeField] EnemyStateAlerted m_AlertedState;
         [SerializeField] float m_FacingSpeed = 1f;
-        [SerializeField] AttackMontage m_AttackMontage;
         [SerializeField] bool m_RotateTowardsTarget = true;
         public float AttackDistance = 1f;
         public float Cooldown = 3;
 
+        private AttackMontage selectedAttack;
         private NavMeshAgent m_NavMeshAgent;
         private EnemySensesController m_EnemySenses;
         private float m_LastAttackTime;
         private NavMeshPath m_NavPath;
-
         // --------------------------------------------------------------------
 
         protected override void Awake()
@@ -35,13 +36,13 @@ namespace Enemy
 
         public override void StateEnter(IActorState fromState)
         {
-            if (m_AnimationState)
-                Debug.LogWarning("AnimationState will be overwritten by the attack animation", gameObject);
-
             base.StateEnter(fromState);
-
-            m_Duration = m_AttackMontage.Duration;
-            m_AttackMontage.Play(Actor.MainAnimator);
+            selectedAttack = SelectAttack();
+            if (selectedAttack != null)
+            {
+                m_Duration = selectedAttack.Duration;
+                selectedAttack.Play(Actor.MainAnimator);
+            }
         }
 
         // --------------------------------------------------------------------
@@ -58,7 +59,6 @@ namespace Enemy
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
                 Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation, Time.deltaTime * m_FacingSpeed);
             }
-
         }
 
         // --------------------------------------------------------------------
@@ -79,6 +79,15 @@ namespace Enemy
 
             if (m_EnemySenses.IsPlayerDetected)
                 SetState(m_AlertedState);
+        }
+        
+        // --------------------------------------------------------------------
+
+        private AttackMontage SelectAttack()
+        {
+            // Here you can implement any logic to select an attack based on current game state
+            // For example, random, based on distance, enemy health, etc.
+            return attackOptions[UnityEngine.Random.Range(0, attackOptions.Count)];
         }
 
         // --------------------------------------------------------------------
