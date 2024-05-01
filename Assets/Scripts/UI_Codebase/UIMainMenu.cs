@@ -1,3 +1,4 @@
+using FMODUnity;
 using SaveSystem;
 using Systems;
 using UnityEditor;
@@ -14,8 +15,7 @@ namespace UI_Codebase
         [SerializeField] private Button m_NewButton;
         [SerializeField] private Button m_LoadButton;
         [SerializeField] private Button m_QuitButton;
-        [SerializeField] private AudioClip m_CloseSlotsClip;
-        [FormerlySerializedAs("StartScene")]
+        [SerializeField] private EventReference m_CloseSlotsClip;
         [SerializeField] private SceneReference m_StartScene;
 
         private IUIInput m_Input;
@@ -81,7 +81,7 @@ namespace UI_Codebase
             m_LoadSlotsScreen.SetActive(false);
             SelectDefault();
 
-            if (m_CloseSlotsClip)
+            if (!m_CloseSlotsClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_CloseSlotsClip);
         }
 

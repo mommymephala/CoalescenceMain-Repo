@@ -1,5 +1,6 @@
 using System;
 using Extensions;
+using FMODUnity;
 using Inventory;
 using Items;
 using Pickups;
@@ -22,12 +23,12 @@ namespace UI_Codebase
         [SerializeField] private float m_ExpandingInteractionDelay = 1f;
 
         [Header("Audio")]
-        [SerializeField] private AudioClip m_ShowClip;
-        [SerializeField] private AudioClip m_UseClip;
-        [SerializeField] private AudioClip m_CantUseClip;
-        [SerializeField] private AudioClip m_NavigateClip;
-        [SerializeField] private AudioClip m_CloseClip;
-        [SerializeField] private AudioClip m_ExpandClip;
+        [SerializeField] private EventReference m_ShowClip;
+        [SerializeField] private EventReference m_UseClip;
+        [SerializeField] private EventReference m_CantUseClip;
+        [SerializeField] private EventReference m_NavigateClip;
+        [SerializeField] private EventReference m_CloseClip;
+        [SerializeField] private EventReference m_ExpandClip;
 
         private UIInventoryItem m_SelectedSlot;
         private UIInventoryItem m_CombiningSlot;

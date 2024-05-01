@@ -1,47 +1,32 @@
-﻿using Physical.Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Physical
 {
     [RequireComponent(typeof(Rigidbody))]
     public class KinematicRotate : MonoBehaviour
     {
-        #region FIELDS
-
         [SerializeField]
-        private float _rotationSpeed = 30.0f;
-
-        #endregion
-
-        #region PRIVATE FIELDS
+        private float rotationSpeed = 30.0f;
 
         private Rigidbody _rigidbody;
 
         private float _angle;
 
-        #endregion
-
-        #region PROPERTIES
-
-        public float rotationSpeed
+        public float RotationSpeed
         {
-            get { return _rotationSpeed; }
-            set { _rotationSpeed = Mathf.Clamp(value, -360.0f, 360.0f); }
+            get => rotationSpeed;
+            set => rotationSpeed = Mathf.Clamp(value, -360.0f, 360.0f);
         }
 
-        public float angle
+        public float Angle
         {
-            get { return _angle; }
-            set { _angle = Physical.Common.Utils.WrapAngle(value); }
+            get => _angle;
+            set => _angle = Common.Utils.WrapAngle(value);
         }
-
-        #endregion
-
-        #region MONOBEHAVIOUR
 
         public void OnValidate()
         {
-            rotationSpeed = _rotationSpeed;
+            RotationSpeed = rotationSpeed;
         }
 
         public void Awake()
@@ -52,12 +37,10 @@ namespace Physical
 
         public void FixedUpdate()
         {
-            angle += rotationSpeed * Time.deltaTime;
+            Angle += RotationSpeed * Time.deltaTime;
             
-            var rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+            Quaternion rotation = Quaternion.Euler(0.0f, Angle, 0.0f);
             _rigidbody.MoveRotation(rotation);
         }
-
-        #endregion
     }
 }

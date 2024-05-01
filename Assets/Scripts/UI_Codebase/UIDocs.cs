@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using Systems;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,8 +23,8 @@ namespace UI_Codebase
         [SerializeField] private UISelectableCallbacks m_LeftArrow;
 
         [Header("Audio")]
-        [SerializeField] private AudioClip m_NavigateClip;
-        [SerializeField] private AudioClip m_CloseClip;
+        [SerializeField] private EventReference m_NavigateClip;
+        [SerializeField] private EventReference m_CloseClip;
 
         private Transform[] m_Pages;
         private List<UIDocumentEntry> m_Entries = new List<UIDocumentEntry>();
@@ -86,8 +87,10 @@ namespace UI_Codebase
         {
             m_SelectedEntry = go.GetComponent<UIDocumentEntry>();
             m_DocumentName.text = m_SelectedEntry && m_SelectedEntry.Data ? m_SelectedEntry.Data.Name : "";
-            if (m_SelectedEntry && m_NavigateClip)
+            if (m_SelectedEntry != null && m_SelectedEntry.Data != null && !m_NavigateClip.IsNull)
+            {
                 UIManager.Get<UIAudio>().Play(m_NavigateClip);
+            }
         }
 
         // --------------------------------------------------------------------
@@ -178,8 +181,10 @@ namespace UI_Codebase
 
         private void OnCancel()
         {
-            if (m_CloseClip)
+            if (!m_CloseClip.IsNull)
+            {
                 UIManager.Get<UIAudio>().Play(m_CloseClip);
+            }
 
             Hide();
         }

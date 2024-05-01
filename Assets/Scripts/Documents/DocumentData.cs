@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using SaveSystem;
 using UnityEngine;
 
@@ -30,8 +31,8 @@ namespace Documents
         public DocumentPage[] Pages;
 
         [Header("Audio")]
-        public AudioClip ShowClip;
-        public AudioClip PageClip;
-        public AudioClip CloseClip;
+        public EventReference ShowClip;
+        public EventReference PageClip;
+        public EventReference CloseClip;
     }
 }

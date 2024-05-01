@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using Items;
 using Messages;
 using SaveSystem;
@@ -15,9 +16,9 @@ namespace UI_Codebase
         [SerializeField] private GameObject m_SaveInProgressScreen;
         
         [Header("Audio")]
-        [SerializeField] private AudioClip m_ShowClip;
-        [SerializeField] private AudioClip m_SelectClip;
-        [SerializeField] private AudioClip m_CloseClip;
+        [SerializeField] private EventReference m_ShowClip;
+        [SerializeField] private EventReference m_SelectClip;
+        [SerializeField] private EventReference m_CloseClip;
 
         private IUIInput m_Input;
         private ItemData m_ItemToConsume;
@@ -60,7 +61,7 @@ namespace UI_Codebase
             m_ItemToConsume = itemToConsume;
             m_Location = location;
             
-            if (m_ShowClip)
+            if (!m_ShowClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_ShowClip);
 
             gameObject.SetActive(true);
@@ -79,7 +80,7 @@ namespace UI_Codebase
             PauseController.Instance.Resume();
             CursorController.Instance.SetInUI(false);
 
-            if (m_CloseClip)
+            if (!m_CloseClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_CloseClip);
 
             gameObject.SetActive(false);
@@ -101,7 +102,7 @@ namespace UI_Codebase
 
             GameManager.Instance.Inventory.Remove(m_ItemToConsume);
             
-            if (m_SelectClip)
+            if (!m_SelectClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_SelectClip);
 
             GameSaveData saveData = GameManager.Instance.GetSavableData();

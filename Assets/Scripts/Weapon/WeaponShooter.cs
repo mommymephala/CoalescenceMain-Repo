@@ -81,7 +81,7 @@ namespace Weapon
             else
             {
                 Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
-                // TODO: Implement the sounds of other things than combat.
+                // TODO: Implement the sounds of other things than combat layer.
             }
 
             CalculateRecoil();

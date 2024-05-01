@@ -1,20 +1,20 @@
 using UnityEngine;
+using FMODUnity;
 
 namespace UI_Codebase
 {
-    [RequireComponent(typeof(AudioSource))]
     public class UIAudio : MonoBehaviour
     {
-        // private AudioSource m_AudioSource;
-
-        private void Awake()
+        public void Play(EventReference soundEvent)
         {
-            // m_AudioSource = GetComponent<AudioSource>();
-        }
-
-        public void Play(AudioClip clip)
-        {
-            // m_AudioSource.PlayOneShot(clip);
+            if (!soundEvent.IsNull)
+            {
+                RuntimeManager.PlayOneShot(soundEvent);
+            }
+            else
+            {
+                Debug.LogWarning("FMOD event reference is not set or is invalid", this);
+            }
         }
     }
 }

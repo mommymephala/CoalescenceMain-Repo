@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Container;
+using FMODUnity;
 using Inventory;
 using Items;
 using Pooling;
@@ -22,10 +23,10 @@ namespace UI_Codebase
         [SerializeField] private TMPro.TextMeshProUGUI m_ItemDesc;
 
         [Header("Audio")]
-        [SerializeField] private AudioClip m_ShowClip;
-        [SerializeField] private AudioClip m_CancelClip;
-        [SerializeField] private AudioClip m_CloseClip;
-        [SerializeField] private AudioClip m_NavigateClip;
+        [SerializeField] private EventReference m_ShowClip;
+        [SerializeField] private EventReference m_CancelClip;
+        [SerializeField] private EventReference m_CloseClip;
+        [SerializeField] private EventReference m_NavigateClip;
 
         private IUIInput m_Input;
         private ContainerData m_ContainerData;
@@ -66,7 +67,7 @@ namespace UI_Codebase
             {
                 m_ItemName.text = slot.InventoryEntry.Item.Name;
                 m_ItemDesc.text = slot.InventoryEntry.Item.description;
-                if (m_NavigateClip)
+                if (!m_NavigateClip.IsNull)
                     UIManager.Get<UIAudio>().Play(m_NavigateClip);
             }
             else
@@ -99,7 +100,7 @@ namespace UI_Codebase
             {
                 if (m_LockedItem)
                 {
-                    if (m_CancelClip)
+                    if (!m_CancelClip.IsNull)
                         UIManager.Get<UIAudio>().Play(m_CancelClip);
 
                     ReleaseLocked();
@@ -174,7 +175,7 @@ namespace UI_Codebase
             PauseController.Instance.Resume();
             CursorController.Instance.SetInUI(false);
 
-            if (m_CloseClip)
+            if (!m_CloseClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_CloseClip);
 
             gameObject.SetActive(false);
@@ -196,7 +197,7 @@ namespace UI_Codebase
             PauseController.Instance.Pause();
             CursorController.Instance.SetInUI(true);
 
-            if (m_ShowClip)
+            if (!m_ShowClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_ShowClip);
 
             FillContainer();

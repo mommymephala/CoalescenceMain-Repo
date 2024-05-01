@@ -1601,7 +1601,8 @@ MonoBehaviour:
   Tags: []
   m_Duration: 1
   m_GoToStateAfterDuration: {fileID: 8410736365416673727}
-  attackOptions: []
+  attackOptions:
+  - {fileID: 3418702111639061465}
   m_AlertedState: {fileID: 3416583239326226275}
   m_FacingSpeed: 2
   m_RotateTowardsTarget: 1

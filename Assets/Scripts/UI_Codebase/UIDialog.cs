@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using Systems;
 using Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utils;
 
 namespace UI_Codebase
@@ -15,13 +15,12 @@ namespace UI_Codebase
     {
         public float Delay;
         public string Text;
-        public AudioClip Clip;
+        public EventReference Clip;
     }
 
     [Serializable]
     public class DialogData
     {
-        [FormerlySerializedAs("Lines")]
         [SerializeField]
         private DialogLine[] m_Lines;
 
@@ -70,14 +69,13 @@ namespace UI_Codebase
 
         private IUIInput m_Input;
         private bool m_HideOnEnd;
-        private AudioSource m_AudioSource;
 
         // --------------------------------------------------------------------
 
         private void Awake()
         {
             m_AppearingText = GetComponentInChildren<AppearingText>();
-            m_AudioSource = GetComponent<AudioSource>();
+            GetComponent<AudioSource>();
             m_Input = GetComponentInParent<IUIInput>();
 
             gameObject.SetActive(false);
@@ -137,8 +135,8 @@ namespace UI_Codebase
                 m_Text.text = line.Text;
 
             m_Content.SetActive(true);
-            if (line.Clip)
-                m_AudioSource.PlayOneShot(line.Clip);
+            if (!line.Clip.IsNull)
+                UIManager.Get<UIAudio>().Play(line.Clip);
         }
 
         // --------------------------------------------------------------------

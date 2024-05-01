@@ -5,46 +5,33 @@ namespace Physical
     [RequireComponent(typeof(Rigidbody))]
     public class KinematicMove : MonoBehaviour
     {
-        #region FIELDS
 
         [SerializeField]
-        public float _moveTime = 3.0f;
+        public float moveTime = 3.0f;
 
         [SerializeField]
-        private Vector3 _offset;
-
-        #endregion
-
-        #region PRIVATE FIELDS
-
+        private Vector3 offset;
+        
         private Rigidbody _rigidbody;
 
         private Vector3 _startPosition;
         private Vector3 _targetPosition;
-
-        #endregion
-
-        #region PROPERTIES
         
-        public float moveTime
+        public float MoveTime
         {
-            get { return _moveTime; }
-            set { _moveTime = Mathf.Max(1.0f, value); }
+            get => moveTime;
+            set => moveTime = Mathf.Max(1.0f, value);
         }
 
-        public Vector3 offset
+        public Vector3 Offset
         {
-            get { return _offset; }
-            set { _offset = value; }
+            get => offset;
+            set => offset = value;
         }
-
-        #endregion
-
-        #region MONOBEHAVIOUR
 
         public void OnValidate()
         {
-            moveTime = _moveTime;
+            MoveTime = moveTime;
         }
 
         public void Awake()
@@ -53,17 +40,15 @@ namespace Physical
             _rigidbody.isKinematic = true;
 
             _startPosition = transform.position;
-            _targetPosition = _startPosition + offset;
+            _targetPosition = _startPosition + Offset;
         }
 
         public void FixedUpdate()
         {
-            var t = Physical.Common.Utils.EaseInOut(Mathf.PingPong(Time.time, _moveTime), _moveTime);
-            var p = Vector3.Lerp(_startPosition, _targetPosition, t);
+            var t = Common.Utils.EaseInOut(Mathf.PingPong(Time.time, moveTime), moveTime);
+            Vector3 p = Vector3.Lerp(_startPosition, _targetPosition, t);
 
             _rigidbody.MovePosition(p);
         }
-
-        #endregion
     }
 }

@@ -1,4 +1,5 @@
 using Extensions;
+using FMODUnity;
 using Items;
 using Messages;
 using Pickups;
@@ -20,8 +21,8 @@ namespace UI_Codebase
         [SerializeField] private bool InteractDuringExamination = true;
 
         [Header("Audio")]
-        [SerializeField] private AudioClip m_ShowClip;
-        [SerializeField] private AudioClip m_CloseClip;
+        [SerializeField] private EventReference m_ShowClip;
+        [SerializeField] private EventReference m_CloseClip;
 
         private IUIInput m_Input;
         

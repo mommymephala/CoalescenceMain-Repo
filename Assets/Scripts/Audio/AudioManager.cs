@@ -11,9 +11,9 @@ namespace Audio
     public class AudioManager : SingletonBehaviour<AudioManager>
     {
         public enum EnemyAttackType 
-        { 
+        {
             NormalAttack, 
-            HeavyAttack 
+            HeavyAttack
         }
 
         public enum EnemyType 
@@ -54,8 +54,9 @@ namespace Audio
         [Header("Environment")]
         public EventReference ambient;
         public EventReference safeRoom;
-        public EventReference metalDoor;
-        public EventReference metalDoorClosed;
+        public EventReference door;
+        public EventReference doorClosed;
+        public EventReference elevatorActivation;
         public EventReference dysonActivation;
 
         // Private fields for FMOD instances and internal state
@@ -149,14 +150,19 @@ namespace Audio
             PlayOneShot(playerDeath, "Player death");
         }
 
-        public void PlayDoor()
+        public void PlayDoorOpen()
         {
-            PlayOneShot(metalDoor, "Metal door open");
+            PlayOneShot(door, "Door open");
         }
 
         public void PlayDoorClosed()
         {
-            PlayOneShot(metalDoorClosed, "Metal door closed");
+            PlayOneShot(doorClosed, "Door closed");
+        }
+        
+        public void PlayElevatorActivation()
+        {
+            PlayOneShot(elevatorActivation, "Elevator activation");
         }
 
         public void PlayDysonActivation()
@@ -187,9 +193,8 @@ namespace Audio
             PlayOneShot(enemySoundsMap[enemyType].death, "Enemy death");
         }
 
-        public void PlayEnemyIdle(GameObject enemyObject, Actor.ActorType actorType)
+        public void PlayEnemyIdle(EnemyType enemyType)
         {
-            EnemyType enemyType = GetEnemyTypeFromActorType(actorType);
             PlayOneShot(enemySoundsMap[enemyType].idle, "Enemy idle");
         }
     }

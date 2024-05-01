@@ -1,3 +1,4 @@
+using FMODUnity;
 using Systems;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace UI_Codebase
     {
         [SerializeField] private GameObject m_Content;
         [SerializeField] private GameObject m_PauseHint;
-        [SerializeField] private AudioClip m_ShowClip;
+        [SerializeField] private EventReference m_ShowClip;
 
         private IUIInput m_Input;
 

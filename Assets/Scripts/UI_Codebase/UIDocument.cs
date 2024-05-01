@@ -53,7 +53,7 @@ namespace UI_Codebase
             m_PageImage.color = m_ImageFadeOutColor;
             
             gameObject.SetActive(true);
-            if (data.ShowClip)
+            if (!data.ShowClip.IsNull)
                 UIManager.Get<UIAudio>().Play(data.ShowClip);
             ShowNextPage();
         }
@@ -64,7 +64,7 @@ namespace UI_Codebase
         {
             ++m_CurrentPage;
             FillPage(m_CurrentPage);
-            if (m_CurrentPage > 0 && m_CurrentData.PageClip)
+            if (m_CurrentPage > 0 && !m_CurrentData.PageClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_CurrentData.PageClip);
         }
 
@@ -74,7 +74,7 @@ namespace UI_Codebase
         {
             m_CurrentPage = Mathf.Max(0, m_CurrentPage-1);
             FillPage(m_CurrentPage);
-            if (m_CurrentPage > 0 && m_CurrentData.PageClip)
+            if (m_CurrentPage > 0 && !m_CurrentData.PageClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_CurrentData.PageClip);
         }
 

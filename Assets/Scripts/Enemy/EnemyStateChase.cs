@@ -34,9 +34,21 @@ namespace Enemy
         {
             while (true)
             {
-                AudioManager.Instance.PlayEnemyIdle(gameObject, Actor.type);
+                switch (Actor.type)
+                {
+                    case Actor.ActorType.TarSpawn:
+                        AudioManager.Instance.PlayEnemyIdle(AudioManager.EnemyType.TarSpawn);
+                        break;
+                    case Actor.ActorType.ExperimentalMan:
+                        AudioManager.Instance.PlayEnemyIdle(AudioManager.EnemyType.ExperimentalMan);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                
                 yield return new WaitForSeconds(3);
             }
+            
             // ReSharper disable once IteratorNeverReturns
         }
 

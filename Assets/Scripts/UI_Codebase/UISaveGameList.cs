@@ -1,3 +1,4 @@
+using FMODUnity;
 using SaveSystem;
 using Systems;
 using Text;
@@ -15,7 +16,7 @@ namespace UI_Codebase
         public UnityEvent<GameObject> OnSubmit;
 
         [Header("Audio")]
-        [SerializeField] private AudioClip m_NavigateClip;
+        [SerializeField] private EventReference m_NavigateClip;
         
         private GameObject m_SelectedSlot;
 

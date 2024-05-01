@@ -49,7 +49,7 @@ namespace Level_Events
             else
             {
                 _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
-                AudioManager.Instance.PlayDoor();
+                AudioManager.Instance.PlayDoorOpen();
             }
         }
 
