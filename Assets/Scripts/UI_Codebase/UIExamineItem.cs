@@ -17,9 +17,7 @@ namespace UI_Codebase
         [SerializeField] private TMPro.TextMeshProUGUI m_NameText;
         [SerializeField] private Transform m_InteractionPrompt;
         [SerializeField] private GameObject m_ButtonLegend;
-
-
-
+        
         private IUIInput m_Input;
         private UIExamineItemRenderer m_Renderer;
 
@@ -114,7 +112,7 @@ namespace UI_Codebase
 
             if (m_CanInteract)
             {
-                UnityEngine.Physics.SyncTransforms(); // Needed for interaction since time is paused 
+                Physics.SyncTransforms(); // Needed for interaction since time is paused 
 
                 m_Renderer.InteractionDetector.Cast();
                 if (m_Renderer.InteractionDetector.FocusedInteractive)

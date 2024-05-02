@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Audio;
 using States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +17,9 @@ namespace Enemy
         private EnemySensesController m_EnemySenses;
         private List<Vector3> m_WanderPoints = new List<Vector3>();
         private Vector3 m_CurrentWanderPoint;
+        
+        private float _footstepTimer;
+        private float _footstepInterval = 0.5f;
 
         // --------------------------------------------------------------------
 
@@ -77,6 +81,14 @@ namespace Enemy
         public override void StateUpdate()
         {
             base.StateUpdate();
+            
+            // Footstep sound logic
+            _footstepTimer += Time.deltaTime;
+            if (_footstepTimer >= _footstepInterval)
+            {
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                _footstepTimer = 0;
+            }
 
             if (m_EnemySenses.IsPlayerDetected && m_EnemySenses.IsPlayerInReach)
             {

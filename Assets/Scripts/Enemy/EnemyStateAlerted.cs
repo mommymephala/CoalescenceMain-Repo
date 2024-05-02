@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Audio;
 using States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,9 @@ namespace Enemy
         private UnityAction m_OnPlayerUnreachable;
         private ActorState m_CurrentAttack;
         private List<ActorState> m_AttackCandidates = new List<ActorState>();
+        
+        private float _footstepTimer;
+        private float _footstepInterval = 0.5f;
 
         // --------------------------------------------------------------------
 
@@ -84,6 +88,14 @@ namespace Enemy
             if (m_ShowDebug)
                 DebugUtils.DrawBox(m_EnemySenses.LastKnownPosition, Quaternion.identity, Vector3.one * 0.25f, Color.white, 1f);
 
+            // Footstep sound logic
+            _footstepTimer += Time.deltaTime;
+            if (_footstepTimer >= _footstepInterval)
+            {
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                _footstepTimer = 0;
+            }
+            
             m_Agent.SetDestination(m_EnemySenses.LastKnownPosition);
             m_Agent.isStopped = false;
 

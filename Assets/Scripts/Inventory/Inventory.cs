@@ -365,6 +365,9 @@ namespace Inventory
 
         public bool Use(InventoryEntry entry)
         {
+            if (entry == null || entry.Item == null)
+                return false;
+            
             if (entry.Item.inventoryAction == InventoryMainAction.None)
                 return false;
 
@@ -573,6 +576,14 @@ namespace Inventory
         
         public void SwapItems(int index1, int index2)
         {
+            // Check if either index is out of the bounds of the items array
+            if (index1 < 0 || index1 >= Items.Length || index2 < 0 || index2 >= Items.Length)
+            {
+                // Debug.LogError("Attempted to swap items with indices out of bounds.");
+                return;
+            }
+
+            // Swap the items at the given indices
             (Items[index1], Items[index2]) = (Items[index2], Items[index1]);
         }
 

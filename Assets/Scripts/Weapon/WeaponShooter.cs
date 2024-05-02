@@ -115,7 +115,7 @@ namespace Weapon
                         foreach (AttackEffect effect in impact.PostDamageEffects)
                         {
                             effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = hit.point, ImpactDir = -hit.normal });
-                            // TODO: Hit impact sound place.
+                            // TODO: Hit impact sound/fx place.
                         }
                     }
                 }

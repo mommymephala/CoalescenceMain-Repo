@@ -2,7 +2,6 @@ using Inventory;
 using Items;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI_Codebase
@@ -19,10 +18,13 @@ namespace UI_Codebase
         public UnityEvent OnClose;
 
         private IUIInput m_Input;
-        private Button m_DefaultButton;
+
+        private Camera _camera;
+        // private Button m_DefaultButton;
 
         private void Awake()
         {
+            _camera = Camera.main;
             m_Input = GetComponentInParent<IUIInput>();
 
             UseButton.onClick.AddListener(OnOptionSelected);
@@ -45,15 +47,35 @@ namespace UI_Codebase
 
         public bool Show(ItemData item)
         {
-            Fill(item);
-            if (!m_DefaultButton)
+            if (item == null)
             {
+                gameObject.SetActive(false);
                 return false;
             }
 
-            SelectDefault();
-            gameObject.SetActive(true);
+            Fill(item);
 
+            // Convert mouse position to world point in screen space
+            var rectTransform = GetComponent<RectTransform>();
+            Vector2 mousePosition = Input.mousePosition;
+    
+            // Define the offset to the left of the cursor
+            var offset = new Vector2(-300, -50);
+
+            // Adjusting for Canvas scaling and position
+            var canvas = GetComponentInParent<Canvas>();
+            if (canvas.renderMode == RenderMode.ScreenSpaceOverlay || (canvas.renderMode == RenderMode.ScreenSpaceCamera && canvas.worldCamera != null))
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, mousePosition + offset, canvas.worldCamera, out Vector2 localPoint);
+                rectTransform.localPosition = localPoint;
+            }
+            else // For World Space Canvas (less common for UI like context menus)
+            {
+                Vector3 worldPoint = _camera!.ScreenToWorldPoint(mousePosition + new Vector2(offset.x, offset.y));
+                rectTransform.position = worldPoint;
+            }
+
+            gameObject.SetActive(true);
             return true;
         }
 
@@ -68,7 +90,7 @@ namespace UI_Codebase
 
         private void Fill(ItemData item)
         {
-            m_DefaultButton = null;
+            // m_DefaultButton = null;
 
             UseButton.gameObject.SetActive(false);
             EquipButton.gameObject.SetActive(false);
@@ -76,54 +98,60 @@ namespace UI_Codebase
             CombineButton.gameObject.SetActive(false);
             DropButton.gameObject.SetActive(false);
             MoveButton.gameObject.SetActive(false);
+            
+            if (item == null) 
+            {
+                return;
+            }
 
             if (item.inventoryAction.HasFlag(InventoryMainAction.Use))
             {
                 UseButton.gameObject.SetActive(true);
-                m_DefaultButton = UseButton;
+                // m_DefaultButton = UseButton;
             }
             
             if(item.inventoryAction.HasFlag(InventoryMainAction.Equip))
             {
                 var equipable = item as EquipableItemData;
-                if (equipable.Slot != EquipmentSlot.None)
+                if (equipable!.Slot != EquipmentSlot.None)
                 {
                     EquipButton.gameObject.SetActive(true);
-                    if (!m_DefaultButton) m_DefaultButton = EquipButton;
+                    // if (!m_DefaultButton) 
+                    //     m_DefaultButton = EquipButton;
                 }
             }
 
             if (item.flags.HasFlag(ItemFlags.Combinable))
             {
                 CombineButton.gameObject.SetActive(true);
-                if (!m_DefaultButton) m_DefaultButton = CombineButton;
+                // if (!m_DefaultButton) m_DefaultButton = CombineButton;
             }
 
             if (item.flags.HasFlag(ItemFlags.Examinable))
             {
                 ExamineButton.gameObject.SetActive(true);
-                if (!m_DefaultButton) m_DefaultButton = ExamineButton;
+                // if (!m_DefaultButton) m_DefaultButton = ExamineButton;
             }
 
             if (item.flags.HasFlag(ItemFlags.Droppable))
             {
                 DropButton.gameObject.SetActive(true);
-                if (!m_DefaultButton) m_DefaultButton = DropButton;
+                // if (!m_DefaultButton) m_DefaultButton = DropButton;
             }
             
             if (item.flags.HasFlag(ItemFlags.Movable))
             {
                 MoveButton.gameObject.SetActive(true);
-                if (!m_DefaultButton) m_DefaultButton = MoveButton;
+                // if (!m_DefaultButton) m_DefaultButton = MoveButton;
             }
 
 
-            FixNavigation();
+            // FixNavigation();
         }
 
         // --------------------------------------------------------------------
 
-        private void FixNavigation() 
+        /*private void FixNavigation() 
         {
             var navigation = new Navigation();
             navigation.mode = Navigation.Mode.Explicit;
@@ -136,14 +164,14 @@ namespace UI_Codebase
                 navigation.selectOnDown = i == lastIndex ? buttons[0] : buttons[i + 1];
                 buttons[i].navigation = navigation;
             }
-        }
+        }*/
 
         // --------------------------------------------------------------------
 
-        private void SelectDefault()
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(m_DefaultButton.gameObject);
-        }
+        // private void SelectDefault()
+        // {
+        //     EventSystem.current.SetSelectedGameObject(null);
+        //     EventSystem.current.SetSelectedGameObject(m_DefaultButton.gameObject);
+        // }
     }
 }

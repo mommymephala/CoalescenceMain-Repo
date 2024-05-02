@@ -1,3 +1,4 @@
+using Audio;
 using States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +14,9 @@ namespace Enemy
         private EnemySensesController m_EnemySenses;
         private Vector3 m_Destination;
         private Vector3 m_InitialPosition;
+        
+        private float _footstepTimer;
+        private float _footstepInterval = 0.5f;
 
         // --------------------------------------------------------------------
 
@@ -75,6 +79,14 @@ namespace Enemy
         {
             base.StateUpdate();
 
+            // Footstep sound logic
+            _footstepTimer += Time.deltaTime;
+            if (_footstepTimer >= _footstepInterval)
+            {
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                _footstepTimer = 0;
+            }
+
             var reachedTarget = m_Agent.remainingDistance <= m_Agent.stoppingDistance;
             if (reachedTarget)
             {
@@ -84,6 +96,5 @@ namespace Enemy
                     SetState(m_AlertedState);
             }
         }
-
     }
 }

@@ -113,13 +113,13 @@ namespace Interaction
         {
             var minDistance = float.MaxValue;
             Interactive canditate = null;
-            Vector3 cursorOnScreen = UnityEngine.Camera.main.WorldToScreenPoint(m_Cursor.position);
+            Vector3 cursorOnScreen = Camera.main.WorldToScreenPoint(m_Cursor.position);
             foreach (Interactive interactive in m_Interactives)
             {
                 if (interactive == m_SelectedInteractive)
                     continue;
                 
-                Vector3 interactiveOnScreen = UnityEngine.Camera.main.WorldToScreenPoint(interactive.transform.position);
+                Vector3 interactiveOnScreen = Camera.main.WorldToScreenPoint(interactive.transform.position);
                 Vector3 dirToButton = interactiveOnScreen - cursorOnScreen;
                 Vector3 projection = Vector3.Project(dirToButton, desiredDir);
                 if (Vector3.Dot(desiredDir, dirToButton.normalized) <= 0)

@@ -11,6 +11,7 @@ namespace Enemy
         [SerializeField] private EnemyStateAlerted m_AlertedState;
         [SerializeField] private EnemyStateWanderAroundTarget m_WanderState;
         [SerializeField] private float TimeBetweenWander = 3;
+        
         private float m_StateTime;
         private EnemySensesController m_EnemySenses;
         
@@ -25,6 +26,7 @@ namespace Enemy
         public override void StateEnter(IActorState fromState)
         {
             base.StateEnter(fromState);
+            
             m_StateTime = 0;
             _idleSoundCoroutine = StartCoroutine(PlayIdleSoundLoop());
         }
@@ -33,17 +35,7 @@ namespace Enemy
         {
             while (true)
             {
-                switch (Actor.type)
-                {
-                    case Actor.ActorType.TarSpawn:
-                        AudioManager.Instance.PlayEnemyIdle(AudioManager.EnemyType.TarSpawn);
-                        break;
-                    case Actor.ActorType.ExperimentalMan:
-                        AudioManager.Instance.PlayEnemyIdle(AudioManager.EnemyType.ExperimentalMan);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                AudioManager.Instance.PlayEnemyIdle(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
                 
                 yield return new WaitForSeconds(3);
             }
@@ -63,7 +55,8 @@ namespace Enemy
             }
 
             m_StateTime += Time.deltaTime;
-            if (m_WanderState && m_StateTime > TimeBetweenWander)
+            
+            if (m_WanderState && m_StateTime > TimeBetweenWander && !m_EnemySenses.IsPlayerDetected)
             {
                 StopCoroutine(_idleSoundCoroutine);
                 SetState(m_WanderState);

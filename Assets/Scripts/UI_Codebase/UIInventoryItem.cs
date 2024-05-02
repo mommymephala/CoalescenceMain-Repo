@@ -32,7 +32,7 @@ namespace UI_Codebase
                 amount = entry.Item.flags.HasFlag(ItemFlags.Bulkable) ? entry.Count : entry.SecondaryCount;
             }
 
-            FillItem(entry != null ? entry.Item : null, amount, entry != null ? entry.Status : 0f);
+            FillItem(entry?.Item, amount, entry?.Status ?? 0f);
            
             if (m_SelectionLocked)
                 m_SelectionLocked.gameObject.SetActive(false);

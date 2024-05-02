@@ -15,24 +15,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleMapList",
-                    "type": "Button",
-                    "id": "5998e10b-1915-43be-a4f6-ce7020e7c0fb",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleMap",
-                    "type": "Button",
-                    "id": "d98fdc36-6453-4790-b2cd-a8004a5106b2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ToggleInventory",
                     "type": "Button",
                     "id": "16227e8b-84f9-45f5-8651-22a92de71109",
@@ -54,15 +36,6 @@
                     "name": "TogglePause",
                     "type": "Button",
                     "id": "c0c6504d-c8b6-4b4b-9bfe-9c9c74a0f57a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Combine",
-                    "type": "Button",
-                    "id": "1a12e663-8324-420b-982a-1a7376e168d7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -145,24 +118,6 @@
                     "type": "PassThrough",
                     "id": "aee4e50e-7de4-4907-b3ff-455e53467249",
                     "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "NextSubmap",
-                    "type": "Button",
-                    "id": "df603bae-c6a0-4514-ad1f-fb6c0c8c6e82",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "PrevSubmap",
-                    "type": "Button",
-                    "id": "870f6850-69a2-4e93-86ba-ff3b05ef4f5e",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -600,28 +555,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5db8b6f3-eb77-4357-89eb-f9bb9b2b61c0",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Combine",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7fd95b6f-318e-4851-bf00-fcb2e64368b7",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Combine",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "11f59ea9-8d51-4287-a5db-ea59644e8293",
                     "path": "<Keyboard>/p",
                     "interactions": "",
@@ -732,50 +665,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ff0cd2bd-27b5-4aac-9d0c-5ce8f089fe93",
-                    "path": "<Keyboard>/m",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleMap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cc27b1fe-03d4-4d55-836b-3a6de769854c",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleMap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c7794b16-3639-4ff4-a0a3-490aaabf6897",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleMapList",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de129537-d65d-4a67-904f-14917f3523d4",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleMapList",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4207bd73-d652-4204-a623-c293aea647d0",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -793,50 +682,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cfb4f94f-3c20-451b-a94f-8572ddb7dba6",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextSubmap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e8c9f746-0b22-4985-b95e-52ffc585dc8a",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextSubmap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "805e61c7-d527-410c-ab1f-7b9f1b7457f1",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrevSubmap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bb4c3159-58c9-427b-97e2-a41a2ba3b27b",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrevSubmap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

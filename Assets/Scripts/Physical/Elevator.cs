@@ -52,7 +52,7 @@ namespace Physical
                 _isActive = false;
                 _currentLerpTime = 0;
                 onElevatorStopped.Invoke();
-                // _isAvailable = true;
+                _startPosition = transform.position;
             }
             else
             {

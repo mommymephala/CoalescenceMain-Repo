@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Extensions;
 using FMODUnity;
 using Inventory;
@@ -42,11 +43,13 @@ namespace UI_Codebase
         {
             m_Input = GetComponentInParent<IUIInput>();
 
-            foreach (var slot in m_ItemSlots)
+            foreach (UIInventoryItem slot in m_ItemSlots)
             {
                 RegisterItemCallbacks(slot);
             }
 
+            // Register callbacks for equipped slots
+            RegisterItemCallbacks(m_Equipped);
             RegisterItemCallbacks(m_EquippedSecondary);
 
             m_ContextMenu.UseButton.onClick.AddListener(OnUse);
@@ -55,17 +58,18 @@ namespace UI_Codebase
             m_ContextMenu.ExamineButton.onClick.AddListener(OnExamine);
             m_ContextMenu.DropButton.onClick.AddListener(OnDrop);
             m_ContextMenu.MoveButton.onClick.AddListener(OnSwap);
-            m_ContextMenu.OnClose.AddListener(SelectDefault);
+            // m_ContextMenu.OnClose.AddListener(SelectDefault);
         }
 
         // --------------------------------------------------------------------
 
         private void RegisterItemCallbacks(UIInventoryItem slot)
         {
-            UISelectableCallbacks selectable = slot.GetComponent<UISelectableCallbacks>();
+            var selectable = slot.GetComponent<UISelectableCallbacks>();
             selectable.OnSelected.AddListener(OnSlotSelected);
 
-            UIPointerClickEvents pointerEvents = slot.GetComponent<UIPointerClickEvents>();
+            var pointerEvents = slot.GetComponent<UIPointerClickEvents>();
+            pointerEvents.OnClick.AddListener(() => OnSlotSelected(slot.gameObject));
             pointerEvents.OnDoubleClick.AddListener(OnSubmit);
         }
 
@@ -73,19 +77,40 @@ namespace UI_Codebase
 
         private void OnSlotSelected(GameObject obj)
         {
-            UIInventoryItem slot = obj.GetComponent<UIInventoryItem>();
-            m_SelectedSlot = slot;
-            if (slot.InventoryEntry != null && slot.InventoryEntry.Item)
+            var slot = obj.GetComponent<UIInventoryItem>();
+            if (slot != null && slot.InventoryEntry != null && slot.InventoryEntry.Item != null)
             {
+                m_SelectedSlot = slot;
                 m_ItemName.text = slot.InventoryEntry.Item.Name;
                 m_ItemDesc.text = slot.InventoryEntry.Item.description;
                 UIManager.Get<UIAudio>().Play(m_NavigateClip);
             }
             else
             {
-                m_ItemName.text = "";
-                m_ItemDesc.text = "";
+                ClearSelection();
             }
+
+            StartCoroutine(SetSelectedGameObjectAfterFrame(obj));
+        }
+
+        private void ClearSelection()
+        {
+            m_SelectedSlot = null;
+            m_ItemName.text = "";
+            m_ItemDesc.text = "";
+            
+            if (m_CombiningSlot != null)
+            {
+                CancelCombine();
+            }
+            
+            m_ContextMenu.gameObject.SetActive(false); // Ensure the context menu is closed if open
+        }
+
+        private static IEnumerator SetSelectedGameObjectAfterFrame(GameObject obj)
+        {
+            yield return null;
+            EventSystem.current.SetSelectedGameObject(obj);
         }
 
         // --------------------------------------------------------------------
@@ -107,6 +132,12 @@ namespace UI_Codebase
                 OnCancel();
             }
 
+            // Right-click to clear selection
+            if (Input.GetMouseButtonDown(1) && m_SelectedSlot != null)
+            {
+                ClearSelection();
+            }
+
             if (m_SelectedSlot && m_SelectedSlot.InventoryEntry != null)
             {
                 if (m_Input.IsConfirmDown())
@@ -114,9 +145,6 @@ namespace UI_Codebase
                     OnSubmit();
                 }
             }
-
-            if (EventSystem.current.currentSelectedGameObject == null) // Give back focus to inventory if lost
-                SelectDefault();   
         }
 
         // --------------------------------------------------------------------
@@ -133,7 +161,7 @@ namespace UI_Codebase
 
             Fill();
             FillEquipped();
-            SelectDefault();
+            // SelectDefault();
 
             m_ContextMenu.gameObject.SetActive(false);
 
@@ -175,10 +203,12 @@ namespace UI_Codebase
             {
                 CancelCombine();
             }
+            
             else if (m_ContextMenu.isActiveAndEnabled)
             {
                 m_ContextMenu.gameObject.SetActive(false);
             }
+            
             else
             {
                 Hide();
@@ -197,29 +227,18 @@ namespace UI_Codebase
 
         private void OnSubmit()
         {
-            m_SelectedSlot = EventSystem.current.currentSelectedGameObject.GetComponent<UIInventoryItem>();
-            if (!m_SelectedSlot)
-            {
-                if (m_CombiningSlot)
-                    CancelCombine();
+            if (m_SelectedSlot == null || m_SelectedSlot.InventoryEntry == null || m_SelectedSlot.InventoryEntry.Item == null)
                 return;
-            }
 
             ItemData item = m_SelectedSlot.InventoryEntry.Item;
-            if (item == null)
-                return;
 
-            
             if (m_CombiningSlot && m_SelectedSlot != m_CombiningSlot)
             {
                 Combine();
             }
-            else
+            else if (!m_ContextMenu.Show(item))
             {
-                if (!m_ContextMenu.Show(item))
-                {
-                    OnUse();   
-                }
+                OnUse();
             }
         }
 
@@ -338,7 +357,7 @@ namespace UI_Codebase
                 m_FirstItemForSwap = null;
                 Fill();
                 FillEquipped();
-                SelectDefault();
+                // SelectDefault();
             }
 
             m_ContextMenu.gameObject.SetActive(false);
@@ -357,15 +376,7 @@ namespace UI_Codebase
             Hide();
             UIManager.Get<UIDocs>().Show();
         }
-
-        // --------------------------------------------------------------------
-
-        // public void OnMapCategory()
-        // {
-        //     Hide();
-        //     UIManager.Get<UIMap>().Show();
-        // }
-
+        
         // --------------------------------------------------------------------
 
         private void Combine()
@@ -387,7 +398,7 @@ namespace UI_Codebase
             }
             else
             {
-                SelectDefault();
+                // SelectDefault();
             }
 
             m_CombiningSlot = null;
@@ -434,19 +445,26 @@ namespace UI_Codebase
 
         private void FillEquipped(EquipmentSlot slot, UIInventoryItem uiItem)
         {
-            InventoryEntry equippedPrim = GameManager.Instance.Inventory.GetEquipped(slot);
-            if (equippedPrim != null)
-                uiItem.Fill(equippedPrim);
+            InventoryEntry equippedEntry = GameManager.Instance.Inventory.GetEquipped(slot);
+            if (equippedEntry != null)
+            {
+                uiItem.Fill(equippedEntry);
+                uiItem.gameObject.SetActive(true);
+                RegisterItemCallbacks(uiItem);  // Make sure callbacks are registered
+            }
             else
+            {
                 uiItem.Fill(null);
+                // uiItem.gameObject.SetActive(false);  // Deactivate the slot if it is empty
+            }
         }
 
         // --------------------------------------------------------------------
 
-        private void SelectDefault()
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(m_SelectedSlot ? m_SelectedSlot.gameObject : m_ItemSlots[0].gameObject);
-        }
+        // private void SelectDefault()
+        // {
+        //     EventSystem.current.SetSelectedGameObject(null);
+        //     EventSystem.current.SetSelectedGameObject(m_SelectedSlot ? m_SelectedSlot.gameObject : m_ItemSlots[0].gameObject);
+        // }
     }
 }

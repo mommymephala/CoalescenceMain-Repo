@@ -1,13 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace UI_Codebase
 {
     public class UIPointerClickEvents : MonoBehaviour, IPointerClickHandler
     {
-        [FormerlySerializedAs("Button")]
         [SerializeField] private PointerEventData.InputButton m_Button;
         public UnityEvent OnClick;
         public UnityEvent OnDoubleClick;

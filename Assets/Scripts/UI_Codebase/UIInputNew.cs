@@ -12,11 +12,7 @@ namespace UI_Codebase
         private InputActionProcessor m_CancelP = new InputActionProcessor();
         private InputActionProcessor m_ConfirmP = new InputActionProcessor();
         private InputActionProcessor m_ToggleInventoryP = new InputActionProcessor();
-        private InputActionProcessor m_ToggleMapP = new InputActionProcessor();
-        private InputActionProcessor m_ToggleMapListP = new InputActionProcessor();
         private InputActionProcessor m_TogglePauseP = new InputActionProcessor();
-        private InputActionProcessor m_NextSubmapP = new InputActionProcessor();
-        private InputActionProcessor m_PrevSubmapP = new InputActionProcessor();
 
         // ------------------------------------ SendMessages from PlayerInput component
 
@@ -35,30 +31,10 @@ namespace UI_Codebase
             m_ToggleInventoryP.Process(value);
         }
 
-        private void OnToggleMap(InputValue value)
-        {
-            m_ToggleMapP.Process(value);
-        }
-        private void OnToggleMapList(InputValue value)
-        {
-            m_ToggleMapListP.Process(value);
-        }
-
         private void OnTogglePause(InputValue value)
         {
             m_TogglePauseP.Process(value);
         }
-
-        private void OnNextSubmap(InputValue value)
-        {
-            m_NextSubmapP.Process(value);
-        }
-
-        private void OnPrevSubmap(InputValue value)
-        {
-            m_PrevSubmapP.Process(value);
-        }
-
 
         private void OnPrimaryAxis(InputValue value)
         {
@@ -71,6 +47,7 @@ namespace UI_Codebase
         {
             return m_CancelP.IsDown();
         }
+        
         public bool IsConfirmDown()
         {
             return m_ConfirmP.IsDown();
@@ -86,29 +63,9 @@ namespace UI_Codebase
             return m_ToggleInventoryP.IsDown();
         }
 
-        public bool IsToggleMapDown()
-        {
-            return m_ToggleMapP.IsDown();
-        }
-
-        public bool IsToggleMapListDown()
-        {
-            return m_ToggleMapListP.IsDown();
-        }
-
         public Vector2 GetPrimaryAxis()
         {
             return m_InputAxis;
-        }
-
-        public bool IsPrevSubmapDown()
-        {
-            return m_PrevSubmapP.IsDown();
-        }
-
-        public bool IsNextSubmapDown()
-        {
-            return m_NextSubmapP.IsDown();
         }
 
         public void Flush()
@@ -117,8 +74,6 @@ namespace UI_Codebase
             m_ConfirmP.Clear();
             m_ToggleInventoryP.Clear();
             m_TogglePauseP.Clear();
-            m_ToggleMapP.Clear();
-            m_ToggleMapListP.Clear();
         }
 
     }

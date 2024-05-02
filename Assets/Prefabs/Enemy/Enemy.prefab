@@ -140,9 +140,6 @@ MonoBehaviour:
   - FromState: {fileID: 1203087359121711604}
     AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
     AnimationBlendTime: 0.25
-  - FromState: {fileID: 0}
-    AnimationState: {fileID: 11400000, guid: cc48124fab29cf74fb7f21f65398d20e, type: 2}
-    AnimationBlendTime: 0.25
   m_ExitAnimationState: {fileID: 0}
   m_ExitAnimationBlendTime: 0.25
   m_ExitAnimationDuration: 0
@@ -365,6 +362,7 @@ MonoBehaviour:
   Tags: []
   m_Duration: 5
   m_GoToStateAfterDuration: {fileID: 3416583239326226275}
+  m_IdleState: {fileID: 8410736365416673727}
 --- !u!1 &3148058930938553850
 GameObject:
   m_ObjectHideFlags: 0

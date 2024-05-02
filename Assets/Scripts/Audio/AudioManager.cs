@@ -96,7 +96,7 @@ namespace Audio
             };
         }
 
-        private EnemyType GetEnemyTypeFromActorType(Actor.ActorType actorType)
+        public EnemyType GetEnemyTypeFromActorType(Actor.ActorType actorType)
         {
             if (actorToEnemyTypeMap.TryGetValue(actorType, out EnemyType enemyType))
             {
