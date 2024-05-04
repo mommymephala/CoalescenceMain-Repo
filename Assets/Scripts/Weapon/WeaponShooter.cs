@@ -70,18 +70,22 @@ namespace Weapon
         private void Shoot()
         {
             _timeSinceLastShot = 0f;
-            Vector3 shootDirection = CalculateSpread(_controller.weaponCamera.transform.forward);
-            var ray = new Ray(muzzleTransform.position, shootDirection);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
+            for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
-                Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
-                ProcessHit(hit);
-            }
-            else
-            {
-                Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
-                // TODO: Implement the sounds of other things than combat layer.
+                Vector3 shootDirection = CalculateSpread(_controller.weaponCamera.transform.forward);
+                var ray = new Ray(muzzleTransform.position, shootDirection);
+
+                if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
+                {
+                    Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
+                    ProcessHit(hit);
+                }
+                else
+                {
+                    Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
+                    // TODO: Implement sounds or effects for missing the target
+                }
             }
 
             CalculateRecoil();
@@ -124,7 +128,10 @@ namespace Weapon
 
         private Vector3 CalculateSpread(Vector3 baseDirection)
         {
-            return baseDirection + Random.insideUnitSphere * _controller.weaponData.spread;
+            var spreadFactor = WeaponAiming.IsAiming ? 0.1f : 1f;  // Reduce spread by 90% when aiming
+            Vector3 spread = Random.insideUnitSphere * (_controller.weaponData.spread * spreadFactor);
+
+            return baseDirection + spread;
         }
         
         private void CalculateRecoil()
