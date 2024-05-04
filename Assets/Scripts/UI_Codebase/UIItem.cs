@@ -29,7 +29,7 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void Awake()
+        private void Awake()
         {
             m_Input = GetComponentInParent<IUIInput>();
             MessageBuffer<ItemPickedUpMessage>.Subscribe(OnItemPickedUp);
@@ -45,9 +45,9 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void OnItemPickedUp(ItemPickedUpMessage msg)
+        private void OnItemPickedUp(ItemPickedUpMessage msg)
         {
-            var itemData = msg.Data;
+            ItemData itemData = msg.Data;
 
             if (gameObject.activeInHierarchy)
             {
@@ -103,7 +103,7 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void Hide()
+        private void Hide()
         {
             if (OpenExamination)
             {

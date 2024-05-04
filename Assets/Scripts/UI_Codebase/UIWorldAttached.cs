@@ -15,7 +15,7 @@ namespace UI_Codebase
                 return;
             }
 
-            transform.position = UnityEngine.Camera.main.WorldToScreenPoint(m_AttachedTo.position + m_BaseOffset);
+            transform.position = Camera.main!.WorldToScreenPoint(m_AttachedTo.position + m_BaseOffset);
         }
 
         public void Attach(Transform attachedTo) 

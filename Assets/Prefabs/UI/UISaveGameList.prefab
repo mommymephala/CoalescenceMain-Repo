@@ -44,7 +44,6 @@ RectTransform:
   - {fileID: 7954166456294980682}
   - {fileID: 1775062719133298934}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -142,13 +141,19 @@ MonoBehaviour:
   OnSubmit:
     m_PersistentCalls:
       m_Calls: []
-  m_SelectClip: {fileID: 8300000, guid: 91a8ec5f87464ca428fa78f3caf07370, type: 3}
-  m_NavigateClip: {fileID: 8300000, guid: 7506a771bac04be41b734d4c1ed70939, type: 3}
+  m_NavigateClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &87909242835643310
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -185,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -239,7 +244,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!224 &210679557639389297 stripped
 RectTransform:
@@ -262,6 +278,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -298,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -352,7 +369,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!224 &1559573091103568138 stripped
 RectTransform:
@@ -375,6 +403,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -411,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -465,7 +494,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!224 &1775062719133298934 stripped
 RectTransform:
@@ -488,6 +528,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -524,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -578,7 +619,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!114 &1017121220097396780 stripped
 MonoBehaviour:
@@ -601,6 +653,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -637,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -691,7 +744,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!224 &5456894619382983105 stripped
 RectTransform:
@@ -714,6 +778,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -750,7 +815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -804,7 +869,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!224 &5998562279604846030 stripped
 RectTransform:
@@ -827,6 +903,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -863,7 +940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -917,7 +994,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!224 &6174632810160477011 stripped
 RectTransform:
@@ -940,6 +1028,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -976,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1030,7 +1119,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!114 &6337895378044600917 stripped
 MonoBehaviour:
@@ -1053,6 +1153,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -1089,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1143,7 +1244,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!114 &6253154677084505662 stripped
 MonoBehaviour:
@@ -1166,6 +1278,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -1202,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1256,7 +1369,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!114 &5588138133192979983 stripped
 MonoBehaviour:
@@ -1279,6 +1403,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 145524426097934285}
     m_Modifications:
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
@@ -1315,7 +1440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275892810219613151, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1369,7 +1494,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISaveGameEntry (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8694661979515043831, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f1ce7ef2b84647b825fd5b2fac897, type: 3}
 --- !u!114 &5480048418758254496 stripped
 MonoBehaviour:
