@@ -4,7 +4,6 @@ using FMODUnity;
 using Systems;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Utils;
 
 namespace UI_Codebase

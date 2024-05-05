@@ -21,6 +21,7 @@ namespace Enemy
         private EnemySensesController m_EnemySenses;
         private float m_LastAttackTime;
         private NavMeshPath m_NavPath;
+        
         // --------------------------------------------------------------------
 
         protected override void Awake()
@@ -38,6 +39,7 @@ namespace Enemy
         {
             base.StateEnter(fromState);
             selectedAttack = SelectAttack();
+            
             if (selectedAttack != null)
             {
                 m_Duration = selectedAttack.Duration;
@@ -87,7 +89,7 @@ namespace Enemy
         {
             // Here you can implement any logic to select an attack based on current game state
             // For example, random, based on distance, enemy health, etc.
-            return attackOptions[UnityEngine.Random.Range(0, attackOptions.Count)];
+            return attackOptions[Random.Range(0, attackOptions.Count)];
         }
 
         // --------------------------------------------------------------------
@@ -107,6 +109,7 @@ namespace Enemy
                         return false;
                 }
             }
+            
             else
             {
                 return false;

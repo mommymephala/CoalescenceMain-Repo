@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Duration: 5
   m_GoToStateAfterDuration: {fileID: 3416583239326226275}
   m_IdleState: {fileID: 8410736365416673727}
+  m_AlertState: {fileID: 3416583239326226275}
 --- !u!1 &3148058930938553850
 GameObject:
   m_ObjectHideFlags: 0
