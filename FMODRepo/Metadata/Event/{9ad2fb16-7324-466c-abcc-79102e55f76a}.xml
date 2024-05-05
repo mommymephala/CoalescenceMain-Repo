@@ -85,6 +85,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e5c2f1d9-01dc-4e9b-a96d-2e5ad26ca19f}">
+		<property name="volume">
+			<value>5.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{5a166ce1-882e-4dd6-877b-52ccf56bb408}</destination>
 		</relationship>
@@ -105,13 +108,16 @@
 		<property name="length">
 			<value>0.43473922902494333</value>
 		</property>
+		<property name="pitch">
+			<value>-0.400000006</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{c58c62f8-9fd6-4acc-8bfb-d1e44588e641}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{841c093e-1385-4842-8cb2-b1ff9d5f9d8c}">
 		<property name="volume">
-			<value>-3</value>
+			<value>-5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -142,7 +148,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{306ccf40-b310-4b91-9b16-e4844f3feef7}">
 		<property name="volume">
-			<value>-19</value>
+			<value>-14</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -160,6 +166,7 @@
 	<object class="MixerBusEffectChain" id="{5a166ce1-882e-4dd6-877b-52ccf56bb408}">
 		<relationship name="effects">
 			<destination>{01224e71-b785-49e2-86dd-f2d91cb688fa}</destination>
+			<destination>{d20ad1ae-c141-49f9-82e4-548d60667422}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9c749069-cb67-4956-98a1-9a05ddba3a39}" />
@@ -185,6 +192,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{357da4fd-8812-4374-9977-b6f3b84b2f46}" />
 	<object class="MixerBusFader" id="{01224e71-b785-49e2-86dd-f2d91cb688fa}" />
+	<object class="SFXReverbEffect" id="{d20ad1ae-c141-49f9-82e4-548d60667422}">
+		<property name="decayTime">
+			<value>3600</value>
+		</property>
+		<property name="diffusion">
+			<value>35.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{c7f5f775-06dc-477b-9837-dd880168d044}" />
 	<object class="AutomationPoint" id="{cd581341-d54b-4d4e-a471-12cab5af6a8c}">
 		<property name="position">

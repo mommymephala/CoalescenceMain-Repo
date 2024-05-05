@@ -137,6 +137,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{0f72ac75-42ac-4f5a-adac-6f1f7a0566b1}">
+		<property name="volume">
+			<value>3.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{4f1a80f8-20c0-47c6-a3fd-5ea5116d0303}</destination>
 		</relationship>
@@ -163,7 +166,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{3fcfd8f6-73dd-4aa9-8ee4-e1a7646041ef}">
 		<property name="volume">
-			<value>-16</value>
+			<value>-11</value>
 		</property>
 		<property name="name">
 			<value>Beam</value>
@@ -182,13 +185,16 @@
 		<property name="length">
 			<value>1.964421768707483</value>
 		</property>
+		<property name="pitch">
+			<value>-7</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{5eb150d3-6a9b-4010-82e0-802d72fbba3e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{7132999d-5d16-4116-b5ef-1853ffdc2332}">
 		<property name="name">
-			<value>Classic</value>
+			<value>Classic/Rework</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{211e03f7-4e10-41b1-932d-6526df023ac4}</destination>
@@ -375,6 +381,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{4f1a80f8-20c0-47c6-a3fd-5ea5116d0303}">
 		<relationship name="effects">
+			<destination>{d515053e-0548-485d-aac6-355e3d194460}</destination>
 			<destination>{d93fbe08-ccf0-4496-a9d8-d82bf5e64755}</destination>
 			<destination>{50360e79-6937-4c2a-8f3a-91446f57cd81}</destination>
 		</relationship>
@@ -477,10 +484,15 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ca2bc156-dd3c-4297-aae5-1551c4a1dc53}" />
+	<object class="GainEffect" id="{d515053e-0548-485d-aac6-355e3d194460}">
+		<property name="gain">
+			<value>1.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{d93fbe08-ccf0-4496-a9d8-d82bf5e64755}" />
 	<object class="SFXReverbEffect" id="{50360e79-6937-4c2a-8f3a-91446f57cd81}">
 		<property name="decayTime">
-			<value>3700</value>
+			<value>5500</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{89292047-d86c-4d9f-8c40-6ea8006b7881}" />
