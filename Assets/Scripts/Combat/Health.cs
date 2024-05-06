@@ -1,5 +1,5 @@
 ﻿using System;
-using HorrorEngine;
+using System.Collections.Generic;
 using Pooling;
 using SaveSystem;
 using UnityEngine;
@@ -40,10 +40,14 @@ namespace Combat
         public HealthDecreasedEvent OnHealthDecreased = new HealthDecreasedEvent();
         public HealthDepletedEvent OnDeath = new HealthDepletedEvent();
         public UnityEvent OnLoadedDead;
+        
+        private List<float> damageQueue = new List<float>();
+        private float damageAccumulationTime = 0.1f; // Time frame to accumulate damage
+        private float lastDamageTime;
 
         public Damageable LastDamageableHit { get; private set; }
-        public float Normalized { get { return Value / Max; } }
-        public bool IsDead { get { return Value <= 0; } }
+        public float Normalized => Value / Max;
+        public bool IsDead => Value <= 0;
 
         // --------------------------------------------------------------------
 
@@ -53,6 +57,16 @@ namespace Combat
         }
 
         // --------------------------------------------------------------------
+        
+        private void Update()
+        {
+            if (Time.time > lastDamageTime + damageAccumulationTime && damageQueue.Count > 0)
+            {
+                ApplyAccumulatedDamage();
+            }
+        }
+        
+        // --------------------------------------------------------------------
 
         public void Kill()
         {
@@ -60,21 +74,33 @@ namespace Combat
         }
 
         // --------------------------------------------------------------------
-
+        
         public void TakeDamage(float amount, Damageable damageable = null)
         {
-            LastDamageableHit = damageable;
-
             if (Invulnerable)
                 return;
 
-            if (Infinite)
-                Value += amount;
-
-            var previousValue = Value;
-            SetHealth(Value - amount);
+            LastDamageableHit = damageable;
+            damageQueue.Add(amount);
+            lastDamageTime = Time.time;
         }
+        
+        private void ApplyAccumulatedDamage()
+        {
+            float totalDamage = 0;
+            foreach (var damage in damageQueue)
+            {
+                totalDamage += damage;
+            }
+            
+            damageQueue.Clear();
 
+            if (Infinite)
+                Value += totalDamage;
+            else
+                SetHealth(Value - totalDamage);
+        }
+        
         // --------------------------------------------------------------------
 
         public void Regenerate(float amount)
@@ -90,7 +116,7 @@ namespace Combat
         }
 
         // --------------------------------------------------------------------
-
+        
         private void SetHealth(float value)
         {
             var prev = Value;
@@ -102,16 +128,16 @@ namespace Combat
 
                 if (prev > Value)
                 {
+                    var damageTaken = prev - Value;
                     OnHealthDecreased?.Invoke(Value);
 
                     var significantDamageThreshold = Max * significantDamagePercentage;
-                    var damageTaken = prev - Value;
                     if (damageTaken >= significantDamageThreshold)
                     {
                         OnSignificantDamageTaken?.Invoke(damageTaken);
                     }
                 }
-                
+
                 if (IsDead)
                     OnDeath?.Invoke(this);
             }

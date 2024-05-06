@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using Combat;
@@ -17,6 +18,7 @@ namespace Enemy
     public class EnemyStateDeath : ActorState
     {
         [SerializeField] private List<DamageableAnimEntry> m_DamageableSpecificAnimation;
+        [SerializeField] private List<Collider> collidersToDisable;
 
         private Health m_Health;
 
@@ -54,7 +56,17 @@ namespace Enemy
                 }
             }
             
+            DisableColliders();
             base.StateEnter(fromState);
+        }
+        
+        private void DisableColliders()
+        {
+            foreach (Collider collider in collidersToDisable)
+            {
+                if (collider != null)
+                    collider.enabled = false;
+            }
         }
     }
 }

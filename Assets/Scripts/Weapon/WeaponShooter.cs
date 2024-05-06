@@ -18,8 +18,10 @@ namespace Weapon
         [Header("Shooting Components")]
         [SerializeField] private Transform muzzleTransform;
         [SerializeField] protected AttackType attackType;
+
         private Transform _weaponHolderTransform;
         private Transform _cameraPivotTransform;
+        private Camera _camera;
         
         private RaycastHit _hitResult;
 
@@ -34,6 +36,7 @@ namespace Weapon
         private void Awake()
         {
             _controller = GetComponent<WeaponController>();
+            _camera = Camera.main;
             _weaponHolderTransform = GameObject.Find("WeaponHolder").transform;
             _cameraPivotTransform = GameObject.Find("Camera_Pivot").transform;
             _weaponOriginalLocalPosition = transform.localPosition;
@@ -70,22 +73,29 @@ namespace Weapon
         private void Shoot()
         {
             _timeSinceLastShot = 0f;
-            Vector3 shootDirection = CalculateSpread(_controller.weaponCamera.transform.forward);
-            var ray = new Ray(muzzleTransform.position, shootDirection);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
+            var screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+            Ray ray = _camera.ScreenPointToRay(screenCenter);
+
+            for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
-                Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
-                ProcessHit(hit);
-            }
-            else
-            {
-                Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
-                // TODO: Implement the sounds of other things than combat layer.
+                Vector3 shootDirection = CalculateSpread(ray.direction);
+                var spreadRay = new Ray(_camera.transform.position, shootDirection);
+
+                if (Physics.Raycast(spreadRay, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
+                {
+                    Debug.DrawRay(spreadRay.origin, shootDirection * hit.distance, Color.green, 2f);
+                    ProcessHit(hit);
+                }
+                else
+                {
+                    Debug.DrawRay(spreadRay.origin, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
+                    // TODO: Implement sounds or effects for missing the target
+                }
             }
 
             CalculateRecoil();
-            ApplyProceduralKickback();
+            ApplyKickback();
             OnShootSuccess?.Invoke();
         }
 
@@ -124,7 +134,15 @@ namespace Weapon
 
         private Vector3 CalculateSpread(Vector3 baseDirection)
         {
-            return baseDirection + Random.insideUnitSphere * _controller.weaponData.spread;
+            var distanceToTarget = Vector3.Distance(_camera.transform.position, GameManager.Instance.Player.transform.position);
+            var spreadFactor = WeaponAiming.IsAiming ? 0.1f : 0.5f;  // Reduced base spread factor
+            var maxSpreadIncrease = WeaponAiming.IsAiming ? 1.5f : 2.5f;  // Max spread factor when at max range
+
+            var distanceFactor = Mathf.Pow(distanceToTarget / _controller.weaponData.maxDistance, 2);
+
+            Vector3 spread = Random.insideUnitSphere * (_controller.weaponData.spread * spreadFactor * Mathf.Lerp(1f, maxSpreadIncrease, distanceFactor));
+
+            return baseDirection + spread;
         }
         
         private void CalculateRecoil()
@@ -159,7 +177,7 @@ namespace Weapon
             _currentWeaponRotation = currentWeaponCameraRotation;
         }
         
-        private void ApplyProceduralKickback()
+        private void ApplyKickback()
         {
             Vector3 kickbackDirection = -Vector3.forward;
             

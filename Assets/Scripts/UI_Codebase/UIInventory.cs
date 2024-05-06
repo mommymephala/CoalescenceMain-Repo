@@ -132,7 +132,6 @@ namespace UI_Codebase
                 OnCancel();
             }
 
-            // Right-click to clear selection
             if (Input.GetMouseButtonDown(1) && m_SelectedSlot != null)
             {
                 ClearSelection();

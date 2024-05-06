@@ -82,7 +82,7 @@ namespace UI_Codebase
 
         private void FillPage(int index)
         {
-            var page = m_CurrentData.Pages[m_CurrentPage];
+            DocumentPage page = m_CurrentData.Pages[m_CurrentPage];
             m_Text.text = page.Text;
             m_PageImageCaption.text = page.ImageCaption;
             m_PageNumber.text = $"{index + 1}/{m_CurrentData.Pages.Length}";
@@ -121,7 +121,7 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        IEnumerator FadeImageColor(Color toColor, float time)
+        private IEnumerator FadeImageColor(Color toColor, float time)
         {
             float t = 0;
             Color originalColor = m_PageImage.color;

@@ -15,3 +15,7 @@ MonoBehaviour:
   Prototype: {fileID: 0}
   Registers:
   - {fileID: 11400000, guid: ba96d8d3fa4b277438ed45c986d0c145, type: 2}
+  - {fileID: 11400000, guid: 086d3635b49f6214e9c71a42b02bb04c, type: 2}
+  - {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
+  - {fileID: 11400000, guid: bdd432aa04ef00a4795851cbe6abf451, type: 2}
+  - {fileID: 11400000, guid: ae0b53bd804cfbe42840ed3dbde74f37, type: 2}

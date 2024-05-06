@@ -4,7 +4,6 @@ using FMODUnity;
 using Systems;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Utils;
 
 namespace UI_Codebase
@@ -36,34 +35,34 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        private void Awake()
+        private void Awake() 
         {
             m_Input = GetComponentInParent<IUIInput>();
 
             m_Pages = new Transform[m_PageCount];
             m_Pages[0] = m_DocumentsPage.transform;
-            for (int i = 1; i < m_PageCount; ++i)
+            
+            for (int i = 1; i < m_PageCount; ++i) 
             {
-                m_Pages[i] = Instantiate(m_DocumentsPage).transform;
-                m_Pages[i].position = new Vector3(10000, 10000, 0); // Move offscreen;
+                m_Pages[i] = Instantiate(m_DocumentsPage, m_PageParent).transform;
+                m_Pages[i].position = new Vector3(10000, 10000, 0); // Move offscreen
                 m_Pages[i].SetParent(m_PageParent);
             }
 
-            foreach(var page in m_Pages)
+            foreach(var page in m_Pages) 
             {
                 var pageEntries = page.GetComponentsInChildren<UIDocumentEntry>();
                 m_Entries.AddRange(pageEntries);
             }
-
-            foreach (var entry in m_Entries)
+            
+            foreach (var entry in m_Entries) 
             {
-                entry.GetComponent<Button>().onClick.AddListener(OnSubmit);
-                entry.GetComponent<UISelectableCallbacks>().OnSelected.AddListener(OnSelected);
+                RegisterDocumentCallbacks(entry);
             }
 
-
-            m_LeftArrow.OnSelected.AddListener((go) => {
-                if (m_CurrentPageIndex > 0)
+            m_LeftArrow.OnSelected.AddListener((go) => 
+            {
+                if (m_CurrentPageIndex > 0) 
                 {
                     MovePageToRight(m_CurrentPageIndex);
                     SetActivePage(--m_CurrentPageIndex);
@@ -71,8 +70,9 @@ namespace UI_Codebase
                 }
             });
 
-            m_RightArrow.OnSelected.AddListener((go)=>{
-                if (m_CurrentPageIndex < m_PageCount - 1)
+            m_RightArrow.OnSelected.AddListener((go) => 
+            {
+                if (m_CurrentPageIndex < m_PageCount - 1) 
                 {
                     MovePageToLeft(m_CurrentPageIndex);
                     SetActivePage(++m_CurrentPageIndex);
@@ -80,17 +80,27 @@ namespace UI_Codebase
                 }
             });
         }
+        
+        // --------------------------------------------------------------------
+        
+        private void RegisterDocumentCallbacks(UIDocumentEntry entry) 
+        {
+            var pointerEvents = entry.GetComponent<UIPointerClickEvents>();
+            
+            pointerEvents.OnClick.AddListener(() => OnSelected(entry.gameObject));
+            pointerEvents.OnDoubleClick.AddListener(OnSubmit);
+        }
 
         // --------------------------------------------------------------------
 
-        private void OnSelected(GameObject go)
+        private void OnSelected(GameObject go) 
         {
             m_SelectedEntry = go.GetComponent<UIDocumentEntry>();
             m_DocumentName.text = m_SelectedEntry && m_SelectedEntry.Data ? m_SelectedEntry.Data.Name : "";
-            if (m_SelectedEntry != null && m_SelectedEntry.Data != null && !m_NavigateClip.IsNull)
-            {
+            if (m_SelectedEntry && !m_NavigateClip.IsNull)
                 UIManager.Get<UIAudio>().Play(m_NavigateClip);
-            }
+                
+            Debug.Log("Document selected: " + m_DocumentName.text);
         }
 
         // --------------------------------------------------------------------
@@ -126,7 +136,7 @@ namespace UI_Codebase
 
             m_Animating = 0;
             SetActivePage(0);
-            SelectDefault();
+            // SelectDefault();
 
             gameObject.SetActive(true);
             MovePageFromRight(m_CurrentPageIndex);
@@ -171,9 +181,9 @@ namespace UI_Codebase
                 OnCancel();
             }
 
-            if (EventSystem.current.currentSelectedGameObject == null && m_Animating == 0)
-                SelectDefault();
-            else if (m_Animating > 0)
+            // if (EventSystem.current.currentSelectedGameObject == null && m_Animating == 0)
+            //     SelectDefault();
+            if (m_Animating > 0)
                 EventSystem.current.SetSelectedGameObject(null);
         }
 
@@ -182,22 +192,26 @@ namespace UI_Codebase
         private void OnCancel()
         {
             if (!m_CloseClip.IsNull)
-            {
                 UIManager.Get<UIAudio>().Play(m_CloseClip);
-            }
 
             Hide();
         }
 
         // --------------------------------------------------------------------
 
-        public void OnSubmit()
+        public void OnSubmit() 
         {
-            if (!m_SelectedEntry || !m_SelectedEntry.Data)
-                return;
-
-            Hide();
-            UIManager.Get<UIDocument>().Show(m_SelectedEntry.Data);
+            if (m_SelectedEntry != null && m_SelectedEntry.Data != null) 
+            {
+                Debug.Log("Document submitted: " + m_SelectedEntry.Data.Name);
+                UIManager.Get<UIDocument>().Show(m_SelectedEntry.Data);
+                Hide();
+            } 
+            
+            else 
+            {
+                Debug.Log("No document to submit.");
+            }
         }
 
         // --------------------------------------------------------------------
@@ -231,7 +245,7 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        IEnumerator MovePageCoroutine(int index, Transform fromT, Transform toT, bool endActive)
+        private IEnumerator MovePageCoroutine(int index, Transform fromT, Transform toT, bool endActive)
         {
             ++m_Animating;
             Vector3 from = fromT.position;
@@ -255,19 +269,19 @@ namespace UI_Codebase
             m_Pages[index].gameObject.SetActive(endActive);
 
             --m_Animating;
-            if (m_Animating == 0)
-            {
-                SelectDefault();
-            }
+            // if (m_Animating == 0)
+            // {
+            //     SelectDefault();
+            // }
         }
 
         // --------------------------------------------------------------------
 
-        private void SelectDefault()
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(m_Pages[m_CurrentPageIndex].GetComponentInChildren<UISelectableCallbacks>().gameObject);
-        }
+        // private void SelectDefault()
+        // {
+        //     EventSystem.current.SetSelectedGameObject(null);
+        //     EventSystem.current.SetSelectedGameObject(m_Pages[m_CurrentPageIndex].GetComponentInChildren<UISelectableCallbacks>().gameObject);
+        // }
 
         // --------------------------------------------------------------------
 

@@ -654,6 +654,17 @@
                 },
                 {
                     "name": "",
+                    "id": "05b3adb7-1640-46a9-8867-77c7516bcc51",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4c8dde35-8ca2-4ae5-bc64-8d9b893fdf02",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
