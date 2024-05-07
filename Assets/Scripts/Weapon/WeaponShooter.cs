@@ -12,20 +12,26 @@ namespace Weapon
         public event Action OnShootSuccess;
         
         private WeaponController _controller;
-        
-        [SerializeField] private LayerMask layerMask;
 
         [Header("Shooting Components")]
-        [SerializeField] private Transform muzzleTransform;
         [SerializeField] protected AttackType attackType;
-
+        [SerializeField] private LayerMask layerMask;
+        
         private Transform _weaponHolderTransform;
         private Transform _cameraPivotTransform;
+        
         private Camera _camera;
         
         private RaycastHit _hitResult;
-
+        
         private float _timeSinceLastShot;
+        
+        [Header("Visuals")]
+        [SerializeField] private Transform muzzleTransform;
+        [SerializeField] private Transform shellTransform;
+        [SerializeField] private GameObject gunshotVFXPrefab;
+        [SerializeField] private GameObject shellVFXPrefab;
+        [SerializeField] private GameObject impactVFXPrefab;
         
         // Recoil variables
         private Vector3 _currentPlayerCameraRotation;
@@ -74,23 +80,36 @@ namespace Weapon
         {
             _timeSinceLastShot = 0f;
 
-            var screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            Ray ray = _camera.ScreenPointToRay(screenCenter);
+            LayerMask defaultLayerMask = LayerMask.GetMask("Default");
 
             for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
-                Vector3 shootDirection = CalculateSpread(ray.direction);
-                var spreadRay = new Ray(_camera.transform.position, shootDirection);
+                Vector3 shootDirection = CalculateSpread(_camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f)).direction);
+                var ray = new Ray(muzzleTransform.position, shootDirection);
 
-                if (Physics.Raycast(spreadRay, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
+                if (gunshotVFXPrefab)
+                    Instantiate(gunshotVFXPrefab, muzzleTransform.position, Quaternion.LookRotation(shootDirection));
+                if (shellVFXPrefab)
+                    Instantiate(shellVFXPrefab, shellTransform.position, Quaternion.LookRotation(shootDirection));
+
+                // First check the hit against combat layer
+                if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
                 {
-                    Debug.DrawRay(spreadRay.origin, shootDirection * hit.distance, Color.green, 2f);
+                    Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
                     ProcessHit(hit);
+                }
+
+                // Then check for visual effects on Default layer
+                if (Physics.Raycast(ray, out hit, _controller.weaponData.maxDistance, defaultLayerMask))
+                {
+                    if (impactVFXPrefab)
+                    {
+                        Instantiate(impactVFXPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
                 }
                 else
                 {
-                    Debug.DrawRay(spreadRay.origin, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
-                    // TODO: Implement sounds or effects for missing the target
+                    Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
                 }
             }
 

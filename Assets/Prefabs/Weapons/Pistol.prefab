@@ -32,6 +32,37 @@ Transform:
   - {fileID: 5005846300486696248}
   m_Father: {fileID: 8638673680878383216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3188821930274226780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5637959519376649584}
+  m_Layer: 9
+  m_Name: ShellPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5637959519376649584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188821930274226780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3651, y: -0.134, z: 1.167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5005846300486696248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8829382058114295377
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 8829382058114295377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3651, y: -0.1028, z: 1.114}
+  m_LocalPosition: {x: 0.3651, y: -0.095, z: 1.274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -148,11 +179,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c879f2f536b4a49a79d7f49134113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackType: {fileID: 11400000, guid: 7daef3b28dcde0647a5900e9e2d5b5e5, type: 2}
   layerMask:
     serializedVersion: 2
     m_Bits: 512
   muzzleTransform: {fileID: 4800567252572990094}
-  attackType: {fileID: 11400000, guid: 7daef3b28dcde0647a5900e9e2d5b5e5, type: 2}
+  shellTransform: {fileID: 5637959519376649584}
+  gunshotVFXPrefab: {fileID: 1198663731479534, guid: e24b66086b0f861499f53cf5d6c56bb8, type: 3}
+  shellVFXPrefab: {fileID: 1822961243351976, guid: aa738e685e7dbc64997fa412c3d6ce06, type: 3}
+  impactVFXPrefab: {fileID: 1067536016464596, guid: 9edbc7f50a9ff9e4789ba2cb196f5b51, type: 3}
 --- !u!114 &5525547177265907086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4483,6 +4518,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1c7a201d0b93534db2aef9fcea27cb7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4800567252572990094}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1c7a201d0b93534db2aef9fcea27cb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5637959519376649584}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b1c7a201d0b93534db2aef9fcea27cb7, type: 3}
       insertIndex: -1
