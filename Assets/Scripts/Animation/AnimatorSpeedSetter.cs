@@ -8,8 +8,8 @@ namespace Animation
         [SerializeField] protected string m_PropertyName;
         [SerializeField] protected float m_InterpolationSpeed = 1f;
 
-        protected Animator m_Animator;
-        protected int m_PropertyHash;
+        private Animator m_Animator;
+        private int m_PropertyHash;
         private float m_CurrentValue;
 
         private void ResetToInit()
@@ -82,11 +82,11 @@ namespace Animation
 
         // --------------------------------------------------------------------
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             Vector3 disp = (transform.position - m_PrevPos);
-            float sign = Mathf.Sign(Vector3.Dot(disp.normalized, OptionalForwardReference ? OptionalForwardReference.forward : transform.forward));
-            float speed = disp.magnitude < m_TeleportationThreshold ?  disp.magnitude / Time.deltaTime * sign : 0f;
+            var sign = Mathf.Sign(Vector3.Dot(disp.normalized, OptionalForwardReference ? OptionalForwardReference.forward : transform.forward));
+            var speed = disp.magnitude < m_TeleportationThreshold ?  disp.magnitude / Time.deltaTime * sign : 0f;
             Set(speed);
             m_PrevPos = transform.position;
         }
