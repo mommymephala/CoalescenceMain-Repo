@@ -80,7 +80,7 @@ MonoBehaviour:
       Count: 0
       SecondaryCount: 0
       Status: 0
-    m_MaxItems: 8
+    m_MaxItems: 6
     m_AutoBulk: 1
     m_Combinations: []
     m_OnFullDialog:

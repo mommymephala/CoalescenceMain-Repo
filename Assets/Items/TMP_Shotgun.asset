@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TMP_Shotgun
   m_EditorClassIdentifier: 
   uniqueId: 6639ff4b-db63-49aa-ab61-d84ff797a255
-  image: {fileID: 21300000, guid: 6cc40bca54585084db994d1e37b8c765, type: 3}
+  image: {fileID: 21300000, guid: c5329a8a2b61caf4aa0ac3b24affcba9, type: 3}
   examineModel: {fileID: 1347901682671290, guid: b017a00e018b1bc4f9ef2a84e5644a92, type: 3}
   Name: Demo Shotgun
   description: This is a demo shotgun.
