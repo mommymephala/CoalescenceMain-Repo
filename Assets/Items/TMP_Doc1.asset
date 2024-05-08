@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueId: 59ab0127-4ccf-4374-8e74-e63476ad98b1
   Name: Deneme Dokumani 1
-  Image: {fileID: 21300000, guid: 5a984bff39e031944bdd8fc5ae443bd8, type: 3}
+  Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
   ShowImageOnRead: 1
   ShowPageCount: 1
   PagesText_DEPRECATED: []
