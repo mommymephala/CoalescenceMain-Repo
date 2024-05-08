@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b4cb6b27-34b6-4a99-8c02-46332de56fb1}">
+		<property name="assetPath">
+			<value>499454-Medium_BIRD_or_REPTILE_Voice_-DEAD_CRY_SCREAM_-Creatures-Monsters-Beasts-Dragons_Dinosaurs_-03.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.048</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>
