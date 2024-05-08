@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TMP_Pistol
   m_EditorClassIdentifier: 
   uniqueId: 6639ff4b-db63-49aa-ab61-d84ff797a255
-  image: {fileID: 21300000, guid: b9304fc66c9b8ee4d9a6557c81e3d39a, type: 3}
+  image: {fileID: 21300000, guid: b1286659a6e7c074983ab42e1a533fda, type: 3}
   examineModel: {fileID: 1347901682671290, guid: b017a00e018b1bc4f9ef2a84e5644a92, type: 3}
   Name: Demo Pistol
   description: This is a demo pistol.
