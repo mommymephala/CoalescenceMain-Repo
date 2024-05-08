@@ -18,7 +18,7 @@ MonoBehaviour:
   Name: Demo Shotgun
   description: This is a demo shotgun.
   inventoryAction: 2
-  flags: 616
+  flags: 520
   dropPrefab: {fileID: 0}
   EquipPrefab: {fileID: 9117134561805105503, guid: a698714a79d19d542a10fb0416749f14, type: 3}
   Slot: 1

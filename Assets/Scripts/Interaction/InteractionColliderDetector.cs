@@ -48,7 +48,5 @@ namespace Interaction
         {
             RemoveInteractive(other.gameObject);
         }
-
-       
     }
 }

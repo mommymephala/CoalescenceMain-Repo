@@ -8,7 +8,8 @@ namespace States
         public enum ActorType
         {
             TarSpawn,
-            ExperimentalMan
+            ExperimentalMan,
+            Player
         }
 
         public ActorType type;

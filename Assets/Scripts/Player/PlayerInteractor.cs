@@ -10,7 +10,8 @@ namespace Player
     public class PlayerInteractor : MonoBehaviour, IInteractor, IDeactivateWithActor
     {
         [SerializeField] InteractionColliderDetector m_Detector;
-
+        private Interactive m_Interactive;
+        
         private IPlayerInput m_Input;
 
         public bool IsInteracting { get; private set; }
@@ -31,7 +32,7 @@ namespace Player
 
         // --------------------------------------------------------------------
 
-        void Update()
+        private void Update()
         {
             IsInteracting = CheckIsInteracting();
         }
@@ -42,11 +43,25 @@ namespace Player
         {
             if (!PauseController.Instance.IsPaused && m_Detector.FocusedInteractive && m_Input.IsInteractingDown())
             {
+                m_Interactive = m_Detector.FocusedInteractive;
+                Interact();
                 return true;
             }
             else
             {
                 return false;
+            }
+        }
+        
+        private void Interact()
+        {
+            if (m_Interactive != null)
+            {
+                m_Interactive.Interact(GetComponentInParent<PlayerInteractor>());
+            }
+            else
+            {
+                Debug.LogError("No interactive object focused.");
             }
         }
     }

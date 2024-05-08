@@ -18,7 +18,7 @@ MonoBehaviour:
   Name: Demo Pistol
   description: This is a demo pistol.
   inventoryAction: 2
-  flags: 616
+  flags: 520
   dropPrefab: {fileID: 0}
   EquipPrefab: {fileID: 9117134561805105503, guid: 95a119e34e92f16468760de1fe3530d7, type: 3}
   Slot: 1
