@@ -5,7 +5,7 @@
 			<value>Red</value>
 		</property>
 		<property name="name">
-			<value>Chip_Enemy_Footsteps</value>
+			<value>Chip_Enemy_Footstepss</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -124,6 +124,7 @@
 		<relationship name="effects">
 			<destination>{33e05689-2172-4a33-be9e-cdf891c037bf}</destination>
 			<destination>{5d2dd55d-1c1e-4dbe-a30e-23e4280e7087}</destination>
+			<destination>{36331db6-ca4c-4b71-a03f-23c4c456e5f2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d8153a67-29ab-464c-b258-cf99eedb2b16}" />
@@ -146,5 +147,10 @@
 	<object class="MixerBusPanner" id="{4c43f0c1-4df9-4c9d-9e7c-cba233ed98b2}" />
 	<object class="MixerBusFader" id="{33e05689-2172-4a33-be9e-cdf891c037bf}" />
 	<object class="SpatialiserEffect" id="{5d2dd55d-1c1e-4dbe-a30e-23e4280e7087}" />
+	<object class="SFXReverbEffect" id="{36331db6-ca4c-4b71-a03f-23c4c456e5f2}">
+		<property name="decayTime">
+			<value>3400</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{4a07a9f0-8f8d-4f52-9fbe-ead8b6ac1a05}" />
 </objects>

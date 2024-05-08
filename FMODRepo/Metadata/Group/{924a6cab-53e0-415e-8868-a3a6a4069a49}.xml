@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerGroup" id="{924a6cab-53e0-415e-8868-a3a6a4069a49}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Tar_Spawn_Attacks</value>
 		</property>

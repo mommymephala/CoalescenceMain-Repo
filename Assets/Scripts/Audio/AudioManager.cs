@@ -28,6 +28,7 @@ namespace Audio
         public struct EnemySounds
         {
             public EventReference idle;
+            public EventReference alert;
             public EventReference footstep;
             public EventReference normalAttack;
             public EventReference heavyAttack;
@@ -196,6 +197,11 @@ namespace Audio
         public void PlayEnemyIdle(EnemyType enemyType)
         {
             PlayOneShot(enemySoundsMap[enemyType].idle, "Enemy idle");
+        }
+
+        public void PlayEnemyAlert(EnemyType enemyType)
+        {
+            PlayOneShot(enemySoundsMap[enemyType].alert, "Enemy alert");
         }
     }
 }

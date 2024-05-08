@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/MeteScene.unity.meta
 guid: 05194a2340d99c14eb41b8f971ab764f
+========
+guid: 3097c74476e57074897bf01ff7dbb9d2
+>>>>>>>> Yagiz-Sound-Start:Assets/Scenes/Yagiz_Scene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

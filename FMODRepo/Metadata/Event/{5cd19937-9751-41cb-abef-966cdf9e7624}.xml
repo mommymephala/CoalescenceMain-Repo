@@ -85,6 +85,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{bd3fdccf-3b5b-41a2-b3b2-e9a42674fce3}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{30b6935c-01d6-4d67-ae56-ec2a700e7d4e}</destination>
 		</relationship>
@@ -160,6 +163,7 @@
 	<object class="MixerBusEffectChain" id="{30b6935c-01d6-4d67-ae56-ec2a700e7d4e}">
 		<relationship name="effects">
 			<destination>{1bbaaff0-c22b-4109-afd5-20b6794947a9}</destination>
+			<destination>{737d5b7b-f520-45bd-ad1a-57ea4f55fcfa}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f1592dff-6d44-4757-9bcd-a85d9755258d}" />
@@ -185,6 +189,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{ada89b67-10dd-461b-ab15-3080d14eecbb}" />
 	<object class="MixerBusFader" id="{1bbaaff0-c22b-4109-afd5-20b6794947a9}" />
+	<object class="SFXReverbEffect" id="{737d5b7b-f520-45bd-ad1a-57ea4f55fcfa}">
+		<property name="decayTime">
+			<value>2700</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{f68b3c0d-fd60-4680-94f8-b1c9e5f2840f}" />
 	<object class="AutomationPoint" id="{f8f84aa8-b057-401f-bd37-2808dfa89a50}">
 		<property name="position">

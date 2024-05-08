@@ -83,6 +83,13 @@ MonoBehaviour:
         Data3: 1710035132
         Data4: 1943114385
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
+    alert:
+      Guid:
+        Data1: 539353403
+        Data2: 1245661390
+        Data3: 2144278687
+        Data4: 1133579728
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Alert
     footstep:
       Guid:
         Data1: 669736964
@@ -126,6 +133,13 @@ MonoBehaviour:
         Data3: -2125631336
         Data4: -751747404
       Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Idle/Chip_Enemy_Idle
+    alert:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
     footstep:
       Guid:
         Data1: -1985346438
@@ -175,20 +189,27 @@ MonoBehaviour:
       Data3: -651037786
       Data4: 625371982
     Path: event:/AMB/SaveRoom/Safe_Room
-  metalDoor:
+  door:
     Guid:
-      Data1: -607918179
-      Data2: 1135980185
-      Data3: 1109397659
-      Data4: 973050296
-    Path: event:/OBJ&INT/Metal_Door
-  metalDoorClosed:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  doorClosed:
     Guid:
-      Data1: -1436009916
-      Data2: 1317997895
-      Data3: -1215883107
-      Data4: -1505303675
-    Path: event:/OBJ&INT/Metol_Door_Closed
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  elevatorActivation:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   dysonActivation:
     Guid:
       Data1: -1838914258

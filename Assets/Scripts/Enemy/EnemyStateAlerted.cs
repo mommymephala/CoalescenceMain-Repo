@@ -44,6 +44,8 @@ namespace Enemy
         public override void StateEnter(IActorState fromState)
         {
             base.StateEnter(fromState);
+            
+            AudioManager.Instance.PlayEnemyAlert(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
 
             m_Delay = 0;
             m_CurrentAttack = null;

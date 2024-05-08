@@ -5,7 +5,7 @@
 			<value>Red</value>
 		</property>
 		<property name="name">
-			<value>Tar_Spawn_Heavy_Attack</value>
+			<value>Tar_Spawn_Heavy_Attacks</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
