@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Distance: 2
   m_GroundCheckLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16385
   OnGroundChanged:
     m_PersistentCalls:
       m_Calls: []
