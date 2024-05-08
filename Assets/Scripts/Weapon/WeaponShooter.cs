@@ -80,7 +80,7 @@ namespace Weapon
         {
             _timeSinceLastShot = 0f;
 
-            LayerMask defaultLayerMask = LayerMask.GetMask("Default");
+            LayerMask defaultLayerMask = LayerMask.GetMask("EnvironmentDefault");
 
             for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
