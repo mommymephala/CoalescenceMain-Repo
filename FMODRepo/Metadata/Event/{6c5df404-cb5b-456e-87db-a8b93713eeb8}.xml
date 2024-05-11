@@ -130,6 +130,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{80c15dc9-d175-49f4-9011-13daca89da85}">
+		<property name="volume">
+			<value>4.5</value>
+		</property>
 		<property name="name">
 			<value>Base</value>
 		</property>
@@ -162,7 +165,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{c9de3858-051c-4079-84be-e5e1bbb64424}">
 		<property name="volume">
-			<value>-5</value>
+			<value>-0.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 3</value>
@@ -193,7 +196,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{426a5659-71ed-4eee-b043-b6cf9f5882c4}">
 		<property name="volume">
-			<value>-7.5</value>
+			<value>-2</value>
 		</property>
 		<property name="name">
 			<value>Tar_Enemy</value>
