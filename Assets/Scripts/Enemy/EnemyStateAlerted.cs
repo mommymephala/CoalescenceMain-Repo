@@ -45,7 +45,7 @@ namespace Enemy
         {
             base.StateEnter(fromState);
             
-            AudioManager.Instance.PlayEnemyAlert(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+            AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
 
             m_Delay = 0;
             m_CurrentAttack = null;
@@ -94,7 +94,7 @@ namespace Enemy
             _footstepTimer += Time.deltaTime;
             if (_footstepTimer >= _footstepInterval)
             {
-                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
                 _footstepTimer = 0;
             }
             

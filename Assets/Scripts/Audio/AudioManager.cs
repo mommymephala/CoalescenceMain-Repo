@@ -110,11 +110,11 @@ namespace Audio
         
         // --------------------------------------------------------------------
         
-        private void PlayOneShot(EventReference eventRef, string eventName)
+        private static void PlayOneShot(EventReference eventRef, Vector3 position, string eventName)
         {
             if (!eventRef.IsNull)
             {
-                RuntimeManager.PlayOneShot(eventRef, transform.position);
+                RuntimeManager.PlayOneShot(eventRef, position);
             }
             else
             {
@@ -131,77 +131,77 @@ namespace Audio
 
         // --------------------------------------------------------------------
 
-        public void PlayFootstep()
+        public void PlayFootstep(Vector3 position)
         {
-            PlayOneShot(playerFootsteps, "Player footstep");
+            PlayOneShot(playerFootsteps, position, "Player footstep");
         }
 
-        public void PlayRunning()
+        public void PlayRunning(Vector3 position)
         {
-            PlayOneShot(playerRunning, "Player running");
+            PlayOneShot(playerRunning, position, "Player running");
         }
 
-        public void PlayPlayerHurt()
+        public void PlayPlayerHurt(Vector3 position)
         {
-            PlayOneShot(playerHurt, "Player hurt");
+            PlayOneShot(playerHurt, position, "Player hurt");
         }
 
-        public void PlayPlayerDeath()
+        public void PlayPlayerDeath(Vector3 position)
         {
-            PlayOneShot(playerDeath, "Player death");
+            PlayOneShot(playerDeath, position, "Player death");
         }
 
-        public void PlayDoorOpen()
+        public void PlayDoorOpen(Vector3 position)
         {
-            PlayOneShot(door, "Door open");
+            PlayOneShot(door, position, "Door open");
         }
 
-        public void PlayDoorClosed()
+        public void PlayDoorClosed(Vector3 position)
         {
-            PlayOneShot(doorClosed, "Door closed");
-        }
-        
-        public void PlayElevatorActivation()
-        {
-            PlayOneShot(elevatorActivation, "Elevator activation");
+            PlayOneShot(doorClosed, position, "Door closed");
         }
 
-        public void PlayDysonActivation()
+        public void PlayElevatorActivation(Vector3 position)
         {
-            PlayOneShot(dysonActivation, "Dyson activation");
+            PlayOneShot(elevatorActivation, position, "Elevator activation");
         }
 
-        public void PlayEnemyFootstep(EnemyType enemyType)
+        public void PlayDysonActivation(Vector3 position)
         {
-            PlayOneShot(enemySoundsMap[enemyType].footstep, "Enemy footstep");
+            PlayOneShot(dysonActivation, position, "Dyson activation");
         }
 
-        public void PlayEnemyAttack(EnemyType enemyType, EnemyAttackType attackType)
+        public void PlayEnemyFootstep(EnemyType enemyType, Vector3 position)
+        {
+            PlayOneShot(enemySoundsMap[enemyType].footstep, position, "Enemy footstep");
+        }
+
+        public void PlayEnemyAttack(EnemyType enemyType, EnemyAttackType attackType, Vector3 position)
         {
             EventReference attackSound = attackType == EnemyAttackType.NormalAttack ? 
                 enemySoundsMap[enemyType].normalAttack : enemySoundsMap[enemyType].heavyAttack;
 
-            PlayOneShot(attackSound, "Enemy attack");
+            PlayOneShot(attackSound, position, "Enemy attack");
         }
 
-        public void PlayEnemyHurt(EnemyType enemyType)
+        public void PlayEnemyHurt(EnemyType enemyType, Vector3 position)
         {
-            PlayOneShot(enemySoundsMap[enemyType].enemyHurt, "Enemy hurt");
+            PlayOneShot(enemySoundsMap[enemyType].enemyHurt, position, "Enemy hurt");
         }
 
-        public void PlayEnemyDeath(EnemyType enemyType)
+        public void PlayEnemyDeath(EnemyType enemyType, Vector3 position)
         {
-            PlayOneShot(enemySoundsMap[enemyType].death, "Enemy death");
+            PlayOneShot(enemySoundsMap[enemyType].death, position, "Enemy death");
         }
 
-        public void PlayEnemyIdle(EnemyType enemyType)
+        public void PlayEnemyIdle(EnemyType enemyType, Vector3 position)
         {
-            PlayOneShot(enemySoundsMap[enemyType].idle, "Enemy idle");
+            PlayOneShot(enemySoundsMap[enemyType].idle, position, "Enemy idle");
         }
 
-        public void PlayEnemyAlert(EnemyType enemyType)
+        public void PlayEnemyAlert(EnemyType enemyType, Vector3 position)
         {
-            PlayOneShot(enemySoundsMap[enemyType].alert, "Enemy alert");
+            PlayOneShot(enemySoundsMap[enemyType].alert, position, "Enemy alert");
         }
     }
 }

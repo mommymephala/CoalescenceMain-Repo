@@ -42,10 +42,10 @@ namespace Enemy
                     switch (Actor.type)
                     {
                         case Actor.ActorType.TarSpawn:
-                            AudioManager.Instance.PlayEnemyDeath(AudioManager.EnemyType.TarSpawn);
+                            AudioManager.Instance.PlayEnemyDeath(AudioManager.EnemyType.TarSpawn, transform.position);
                             break;
                         case Actor.ActorType.ExperimentalMan:
-                            AudioManager.Instance.PlayEnemyDeath(AudioManager.EnemyType.ExperimentalMan);
+                            AudioManager.Instance.PlayEnemyDeath(AudioManager.EnemyType.ExperimentalMan, transform.position);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

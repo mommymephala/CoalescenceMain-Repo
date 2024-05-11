@@ -49,7 +49,7 @@ namespace Level_Events
             else
             {
                 _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
-                AudioManager.Instance.PlayDoorOpen();
+                AudioManager.Instance.PlayDoorOpen(transform.position);
             }
         }
 
@@ -95,7 +95,7 @@ namespace Level_Events
             }
 
             _animationCoroutine = StartCoroutine(isRotatingDoor ? DoRotationClose() : DoSlidingClose());
-            AudioManager.Instance.PlayDoorClosed();
+            AudioManager.Instance.PlayDoorClosed(transform.position);
         }
 
         private IEnumerator DoRotationClose()

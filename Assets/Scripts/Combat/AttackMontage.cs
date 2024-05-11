@@ -46,10 +46,10 @@ namespace Combat
             switch (_actor.type)
             {
                 case Actor.ActorType.TarSpawn:
-                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.TarSpawn, AudioManager.EnemyAttackType.NormalAttack);
+                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.TarSpawn, AudioManager.EnemyAttackType.NormalAttack, transform.position);
                     break;
                 case Actor.ActorType.ExperimentalMan:
-                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.ExperimentalMan, AudioManager.EnemyAttackType.NormalAttack);
+                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.ExperimentalMan, AudioManager.EnemyAttackType.NormalAttack, transform.position);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

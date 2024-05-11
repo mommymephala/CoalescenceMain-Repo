@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Audio;
 using States;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Enemy
@@ -35,7 +36,7 @@ namespace Enemy
         {
             while (true)
             {
-                AudioManager.Instance.PlayEnemyIdle(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                AudioManager.Instance.PlayEnemyIdle(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
                 
                 yield return new WaitForSeconds(3);
             }

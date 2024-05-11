@@ -83,7 +83,7 @@ namespace Enemy
             _footstepTimer += Time.deltaTime;
             if (_footstepTimer >= _footstepInterval)
             {
-                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
                 _footstepTimer = 0;
             }
 

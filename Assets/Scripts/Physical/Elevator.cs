@@ -73,7 +73,7 @@ namespace Physical
         private IEnumerator ActivateElevator()
         {
             onElevatorActivated.Invoke();
-            AudioManager.Instance.PlayElevatorActivation();
+            AudioManager.Instance.PlayElevatorActivation(transform.position);
             yield return new WaitForSeconds(initialDelay);
             _isActive = true;
         }

@@ -81,11 +81,11 @@ namespace Character_Movement.Controllers
         {
             if (run)
             {
-                AudioManager.Instance.PlayRunning();
+                AudioManager.Instance.PlayRunning(transform.position);
             }
             else
             {
-                AudioManager.Instance.PlayFootstep();
+                AudioManager.Instance.PlayFootstep(transform.position);
             }
             
             AudioManager.Instance.footstepTimer = 0;

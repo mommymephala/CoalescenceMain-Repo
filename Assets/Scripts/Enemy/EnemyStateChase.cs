@@ -94,14 +94,14 @@ namespace Enemy
 
         private void PlayFootstepSound()
         {
-            AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+            AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
         }
 
         private IEnumerator PlayIdleSoundLoop()
         {
             while (true)
             {
-                AudioManager.Instance.PlayEnemyIdle(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type));
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
 
                 yield return new WaitForSeconds(3);
             }
