@@ -3347,11 +3347,15 @@ PrefabInstance:
     - target: {fileID: 1323076431461569607, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 9adad6832ed798f4991acd9be6d4e891, type: 2}
     - target: {fileID: 1323076431461569607, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 7569207680297255430, guid: 9adad6832ed798f4991acd9be6d4e891, type: 2}
+    - target: {fileID: 1323076431461569607, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2228871583323004063, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3399,11 +3403,15 @@ PrefabInstance:
     - target: {fileID: 3986743345091576594, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 9adad6832ed798f4991acd9be6d4e891, type: 2}
     - target: {fileID: 3986743345091576594, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 7569207680297255430, guid: 9adad6832ed798f4991acd9be6d4e891, type: 2}
+    - target: {fileID: 3986743345091576594, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4998191386328235617, guid: 3a38468f6e8d9234287739dfa036581a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
