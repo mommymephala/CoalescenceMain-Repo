@@ -78,10 +78,10 @@ MonoBehaviour:
   tarSpawnSounds:
     idle:
       Guid:
-        Data1: -919301942
-        Data2: 1106864262
-        Data3: 1710035132
-        Data4: 1943114385
+        Data1: -367498778
+        Data2: 1270986004
+        Data3: -764659581
+        Data4: -2073290926
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
     alert:
       Guid:
@@ -92,24 +92,24 @@ MonoBehaviour:
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Alert
     footstep:
       Guid:
-        Data1: 669736964
-        Data2: 1313791695
-        Data3: -1316190548
-        Data4: -773224799
+        Data1: -1515574493
+        Data2: 1245567568
+        Data3: 1807847298
+        Data4: 505197366
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Footstep/Tar_Spawn_Footstep
     normalAttack:
       Guid:
-        Data1: -1576766576
-        Data2: 1242475021
-        Data3: 1148887993
-        Data4: -430664985
+        Data1: -1699949791
+        Data2: 1104938665
+        Data3: 947065221
+        Data4: 1163189192
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Normal_Attack
     heavyAttack:
       Guid:
-        Data1: -352967841
-        Data2: 1171035083
-        Data3: -1434024532
-        Data4: -1102331217
+        Data1: 1818096644
+        Data2: 1164888923
+        Data3: -1180116089
+        Data4: -1192357065
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Heavy_Attack
     enemyHurt:
       Guid:
@@ -120,10 +120,10 @@ MonoBehaviour:
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Take_Damage/Tar_Spawn_Take_Damage
     death:
       Guid:
-        Data1: 410524000
-        Data2: 1090939099
-        Data3: 1246424730
-        Data4: 2038832096
+        Data1: 1210827514
+        Data2: 1337369996
+        Data3: -282045798
+        Data4: 180044456
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
   experimentalManSounds:
     idle:

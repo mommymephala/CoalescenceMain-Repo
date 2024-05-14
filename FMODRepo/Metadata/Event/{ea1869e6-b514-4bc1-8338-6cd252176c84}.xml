@@ -33,6 +33,9 @@
 		<relationship name="timeline">
 			<destination>{81625dc1-28bc-4b3c-bf85-2ec642397b52}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{1b08b3ba-efad-4b45-a4b4-3e7db07be8a5}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{4f6288ff-a59d-4d60-8ba4-c0603848475b}">
 		<relationship name="masterBus">
@@ -52,7 +55,7 @@
 			<destination>{42e38198-9b8f-41c9-9f12-2ffdb43351b4}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{8929927a-5b5b-4286-b08d-092f1f77a0c3}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{ec5c796c-b704-47f2-a7bd-77574ff86b15}" />
@@ -121,7 +124,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{9ca46b93-dd55-4e09-adf6-4f3787ff9001}">
 		<property name="volume">
-			<value>-7.5</value>
+			<value>-16.5</value>
 		</property>
 		<property name="name">
 			<value>Tar_Enemy</value>
@@ -149,7 +152,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{dafb851e-f9db-4871-a6df-a45952360551}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-9</value>
 		</property>
 		<property name="name">
 			<value>Chip</value>
@@ -183,7 +186,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{a548a99c-cd8a-43ce-8fb8-a2df578ff9b5}">
 		<property name="volume">
-			<value>-5</value>
+			<value>-8.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 3</value>
