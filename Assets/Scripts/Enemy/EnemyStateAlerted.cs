@@ -45,6 +45,7 @@ namespace Enemy
         {
             base.StateEnter(fromState);
             
+            AudioManager.Instance.PlayEnemyAlert(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
             AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
 
             m_Delay = 0;
