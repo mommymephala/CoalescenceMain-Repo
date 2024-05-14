@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{8929927a-5b5b-4286-b08d-092f1f77a0c3}">
+		<property name="volume">
+			<value>-2.5</value>
+		</property>
+		<property name="name">
+			<value>New Enemy</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{527e910e-ee71-447b-b201-df122ce5ce77}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{e94576d8-22e5-4eff-83c6-c6f1e31a9901}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{b230a7fc-2623-4b13-a4d6-1fec452e93e7}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{527e910e-ee71-447b-b201-df122ce5ce77}">
+		<relationship name="effects">
+			<destination>{b3091384-96b4-44f7-8e1c-f6929306021b}</destination>
+			<destination>{c71d945f-9282-4fa5-983d-246fe033b979}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{e94576d8-22e5-4eff-83c6-c6f1e31a9901}" />
+	<object class="MixerBusFader" id="{b3091384-96b4-44f7-8e1c-f6929306021b}" />
+	<object class="SFXReverbEffect" id="{c71d945f-9282-4fa5-983d-246fe033b979}">
+		<property name="decayTime">
+			<value>700</value>
+		</property>
+	</object>
+</objects>
