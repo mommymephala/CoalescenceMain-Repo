@@ -7,7 +7,7 @@ namespace Level_Events
     public class DoorOpening : MonoBehaviour
     {
         public bool isOpen;
-        [SerializeField] private bool isRotatingDoor = true;
+        [SerializeField] private bool isRotatingDoor = false;
         [SerializeField] private float speed = 1f;
     
         [Header("Rotation Configs")]
@@ -15,8 +15,8 @@ namespace Level_Events
         [SerializeField] private float forwardDirection;
     
         [Header("Sliding Configs")] 
-        [SerializeField] private Vector3 slideDirection = Vector3.back; 
-        [SerializeField] private float slideAmount = 1.9f;
+        [SerializeField] private Vector3 slideDirection = Vector3.right;
+        [SerializeField] private float slideAmount = 3f;
 
         private Vector3 _startRotation;
         private Vector3 _startPosition;

@@ -9,8 +9,8 @@ namespace Systems
         [SerializeField] private CorePrefabs m_Prototype;
         [SerializeField] private GameObject m_GameManager;
         [SerializeField] private GameObject m_AudioManager;
+        [SerializeField] private GameObject m_TeleportationManager;
         [SerializeField] private GameObject m_Character;
-        
         [Header("UI")]
         [SerializeField] private GameObject m_Inventory;
         [SerializeField] private GameObject m_Document;
@@ -45,6 +45,7 @@ namespace Systems
             List<GameObject> rootGO = new List<GameObject>();
             Add(rootGO, m_GameManager, m_Prototype?.m_GameManager);
             Add(rootGO, m_AudioManager, m_Prototype?.m_AudioManager);
+            Add(rootGO, m_TeleportationManager, m_Prototype?.m_TeleportationManager);
             Add(rootGO, m_Character, m_Prototype?.m_Character);
 
             List<GameObject> uiGO = new List<GameObject>();
