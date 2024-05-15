@@ -205,11 +205,11 @@ MonoBehaviour:
     Path: event:/OBJ&INT/Metol_Door_Closed
   elevatorActivation:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1909866775
+      Data2: 1308959276
+      Data3: -1048547705
+      Data4: 438408141
+    Path: event:/OBJ&INT/Elevator/Elevator
   dysonActivation:
     Guid:
       Data1: -1838914258

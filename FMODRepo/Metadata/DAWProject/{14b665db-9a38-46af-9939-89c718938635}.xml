@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DAWProject" id="{14b665db-9a38-46af-9939-89c718938635}">
+		<property name="assetPath">
+			<value>biyogen_video_reaper.rpp (2).link/</value>
+		</property>
+		<property name="dawProjectPath">
+			<value>C:/Users/yagiz/OneDrive/Belgeler/REAPER Media/biyogen_video_reaper/biyogen_video_reaper.rpp</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>
