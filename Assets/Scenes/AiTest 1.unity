@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.5106211, g: 0.5212748, b: 0.54499286, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4288832}
   - component: {fileID: 4288831}
   m_Layer: 0
-  m_Name: ContainmentEntranceDoor_R
+  m_Name: ContainmentEntranceDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 9098268905420946675}
+  - {fileID: 8513792357726938417}
 --- !u!65 &4288832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1590,73 +1592,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4749779357243744, guid: 682255724988b1541af0927787d8456e, type: 3}
   m_PrefabInstance: {fileID: 1655417790}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &120811220
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 120811221}
-  - component: {fileID: 120811223}
-  - component: {fileID: 120811222}
-  m_Layer: 0
-  m_Name: PowerCoreEnt_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &120811221
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120811220}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.58, y: -20.74, z: -47.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &120811222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120811220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
---- !u!65 &120811223
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120811220}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.641548, y: 2.9316468, z: 4.5948105}
-  m_Center: {x: -0.80387497, y: -2.6590197, z: -0.472538}
 --- !u!1 &131726486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,15 +3502,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3772103242538898809, guid: 455a0d83e7921ab4e9335a2fe24b143f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -92.79371
+      value: -50.751564
       objectReference: {fileID: 0}
     - target: {fileID: 3772103242538898809, guid: 455a0d83e7921ab4e9335a2fe24b143f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0932097
+      value: 13.50161
       objectReference: {fileID: 0}
     - target: {fileID: 3772103242538898809, guid: 455a0d83e7921ab4e9335a2fe24b143f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.966711
+      value: -49.979294
       objectReference: {fileID: 0}
     - target: {fileID: 3772103242538898809, guid: 455a0d83e7921ab4e9335a2fe24b143f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4000,7 +3935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293189661}
   m_Layer: 0
-  m_Name: movable
+  m_Name: Movables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4019,7 +3954,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 543450652975248511}
   - {fileID: 2492443939354976241}
   - {fileID: 7273771339648769479}
   - {fileID: 4977718163851803936}
@@ -4035,6 +3969,7 @@ Transform:
   - {fileID: 2795308451924058505}
   - {fileID: 1753049964}
   - {fileID: 960938133}
+  - {fileID: 543450652975248511}
   m_Father: {fileID: 1777154562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &296378792
@@ -4537,19 +4472,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1037021961}
-  - {fileID: 1072761525}
   - {fileID: 4288830}
-  - {fileID: 1894030303}
   - {fileID: 2026213706}
-  - {fileID: 2053184783}
   - {fileID: 2147450960}
-  - {fileID: 697247710}
   - {fileID: 927804291}
-  - {fileID: 1281388929}
   - {fileID: 1091619560}
-  - {fileID: 120811221}
   - {fileID: 2032467802}
-  - {fileID: 625018521}
   m_Father: {fileID: 1818240727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372567612
@@ -5481,6 +5409,39 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &537156549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537156550}
+  m_Layer: 0
+  m_Name: ===LIGHTING===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537156550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537156549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1307936056}
+  - {fileID: 1954815282}
+  m_Father: {fileID: 1777154562}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &551534635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,7 +5647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &563097452
 Transform:
   m_ObjectHideFlags: 0
@@ -6300,73 +6261,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &625018520
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 625018521}
-  - component: {fileID: 625018523}
-  - component: {fileID: 625018522}
-  m_Layer: 0
-  m_Name: PowerCoreExit_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &625018521
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625018520}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -89.655, y: -25.757, z: -18.936}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &625018522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625018520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
---- !u!65 &625018523
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625018520}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.641548, y: 2.9316468, z: 4.5948105}
-  m_Center: {x: -0.80387497, y: -2.6590197, z: -0.472538}
 --- !u!1 &649692648
 GameObject:
   m_ObjectHideFlags: 0
@@ -6649,73 +6543,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &697247709
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 697247710}
-  - component: {fileID: 697247712}
-  - component: {fileID: 697247711}
-  m_Layer: 0
-  m_Name: ContainmentHallwayExitDoor_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &697247710
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697247709}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.2415, y: -19.26, z: 66.503}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697247711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697247709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
---- !u!65 &697247712
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697247709}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.641548, y: 2.9316468, z: 4.5948105}
-  m_Center: {x: -0.80387497, y: -2.6590197, z: -0.472538}
 --- !u!114 &701838016 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8149515815366397458, guid: 56116a7e6e6140b40895c96d1fbd6218, type: 3}
@@ -8217,10 +8044,18 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 733fc24b911c0144fa3bcc0b69d58e04, type: 2}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
@@ -8228,7 +8063,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 563097451}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 861221305}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 3469287836891757531}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
@@ -8236,15 +8087,47 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetAvailability
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Physical.Elevator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8262,6 +8145,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2128693019522745467, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
   m_PrefabInstance: {fileID: 861221302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &861221305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+  m_PrefabInstance: {fileID: 861221302}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861221304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc146b719d4cae3409b98e484b6b70d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &876657735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8368,7 +8262,7 @@ GameObject:
   - component: {fileID: 927804293}
   - component: {fileID: 927804292}
   m_Layer: 0
-  m_Name: ContainmentPowerEnt_R
+  m_Name: ContainmentPowerEnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8401,7 +8295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 1430443450}
+  - {fileID: 1055150121}
 --- !u!65 &927804293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9030,7 +8926,7 @@ GameObject:
   - component: {fileID: 1037021962}
   - component: {fileID: 1037021963}
   m_Layer: 0
-  m_Name: MainElevatorDoor_R
+  m_Name: MainElevatorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9084,7 +8980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 7273771339648769481}
+  - {fileID: 6229454012198989389}
 --- !u!1 &1037502590
 GameObject:
   m_ObjectHideFlags: 0
@@ -9398,73 +9296,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055150119}
   m_Mesh: {fileID: -1647320990364801009, guid: 8345fd75835af0844bb073a388b6d737, type: 3}
---- !u!1 &1072761524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1072761525}
-  - component: {fileID: 1072761526}
-  - component: {fileID: 1072761527}
-  m_Layer: 0
-  m_Name: MainElevatorDoor_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1072761525
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072761524}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.57, y: -17.260992, z: -28.442}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1072761526
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072761524}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 11.883739, y: 4.8509016, z: 15.759709}
-  m_Center: {x: -0.47128487, y: -3.5913463, z: -1.5909209}
---- !u!114 &1072761527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072761524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
 --- !u!1 &1083267694
 GameObject:
   m_ObjectHideFlags: 0
@@ -9571,7 +9402,7 @@ GameObject:
   - component: {fileID: 1091619562}
   - component: {fileID: 1091619561}
   m_Layer: 0
-  m_Name: PowerCoreEnt_R
+  m_Name: PowerCoreEnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9604,7 +9435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 7119690376812101727}
+  - {fileID: 5505851559974796156}
 --- !u!65 &1091619562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10633,73 +10466,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1281388928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1281388929}
-  - component: {fileID: 1281388931}
-  - component: {fileID: 1281388930}
-  m_Layer: 0
-  m_Name: ContainmentPowerEnt_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1281388929
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281388928}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.399, y: -20.74, z: -15.88}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1281388930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281388928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
---- !u!65 &1281388931
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281388928}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.641548, y: 2.9316468, z: 4.5948105}
-  m_Center: {x: -0.80387497, y: -2.6590197, z: -0.472538}
 --- !u!1 &1284505693
 GameObject:
   m_ObjectHideFlags: 0
@@ -10926,7 +10692,7 @@ Transform:
   - {fileID: 1568748496}
   - {fileID: 61862526}
   - {fileID: 74660179}
-  m_Father: {fileID: 1777154562}
+  m_Father: {fileID: 537156550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311009818
 GameObject:
@@ -13299,7 +13065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1494953102}
   m_Layer: 0
-  m_Name: interactable
+  m_Name: Interactables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14666,7 +14432,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 455273963870671028, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.81811
+      value: -36.34
       objectReference: {fileID: 0}
     - target: {fileID: 455273963870671028, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14714,10 +14480,14 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 733fc24b911c0144fa3bcc0b69d58e04, type: 2}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
@@ -14725,7 +14495,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 861221304}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1656544868}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
@@ -14733,15 +14511,31 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14754,6 +14548,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 455273963870671028, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
   m_PrefabInstance: {fileID: 1656544866}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1656544868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
+  m_PrefabInstance: {fileID: 1656544866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc146b719d4cae3409b98e484b6b70d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1683186201
 GameObject:
   m_ObjectHideFlags: 0
@@ -15359,7 +15164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1777154562}
   m_Layer: 0
-  m_Name: parentForScale
+  m_Name: ParentForScale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15379,11 +15184,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 293189661}
-  - {fileID: 1307936056}
-  - {fileID: 1954815282}
   - {fileID: 1494953102}
-  - {fileID: 2875820694439640696}
   - {fileID: 1818240727}
+  - {fileID: 2875820694439640696}
+  - {fileID: 537156550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777834852
@@ -16330,73 +16134,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1894030302
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1894030303}
-  - component: {fileID: 1894030305}
-  - component: {fileID: 1894030304}
-  m_Layer: 0
-  m_Name: ContainmentEntranceDoor_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1894030303
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894030302}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.08, y: -25.84, z: 11.45}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1894030304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894030302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
---- !u!65 &1894030305
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894030302}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 11.883739, y: 4.8509016, z: 10.084238}
-  m_Center: {x: -0.47128487, y: -3.5913463, z: -0.73847294}
 --- !u!1 &1895319597
 GameObject:
   m_ObjectHideFlags: 0
@@ -16803,7 +16540,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 155351991}
-  m_Father: {fileID: 1777154562}
+  m_Father: {fileID: 537156550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965243070
 GameObject:
@@ -17198,7 +16935,7 @@ GameObject:
   - component: {fileID: 2026213708}
   - component: {fileID: 2026213707}
   m_Layer: 0
-  m_Name: ContainmentHallwayDoor_R
+  m_Name: ContainmentHallwayDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17231,7 +16968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 6350082224047468920}
+  - {fileID: 7424656581798292337}
 --- !u!65 &2026213708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17265,7 +17004,7 @@ GameObject:
   - component: {fileID: 2032467804}
   - component: {fileID: 2032467803}
   m_Layer: 0
-  m_Name: PowerCoreExit_R
+  m_Name: PowerCoreExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17298,7 +17037,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 960938137}
+  - {fileID: 1753049968}
 --- !u!65 &2032467804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17696,73 +17437,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &2053184782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2053184783}
-  - component: {fileID: 2053184785}
-  - component: {fileID: 2053184784}
-  m_Layer: 0
-  m_Name: ContainmentHallwayDoor_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2053184783
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053184782}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.691044, y: -25.62, z: 65.786}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 360129826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2053184784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053184782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenings: []
---- !u!65 &2053184785
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053184782}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 11.883739, y: 4.823601, z: 10.099043}
-  m_Center: {x: -0.47128487, y: -3.6049967, z: -0.80305576}
 --- !u!1 &2059388370
 GameObject:
   m_ObjectHideFlags: 0
@@ -18809,7 +18483,7 @@ GameObject:
   - component: {fileID: 2147450962}
   - component: {fileID: 2147450961}
   m_Layer: 0
-  m_Name: ContainmentHallwayExitDoor_R
+  m_Name: ContainmentHallwayExitDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18842,7 +18516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpenings: []
+  doorOpenings:
+  - {fileID: 7441991019456475141}
+  - {fileID: 9040503072347131144}
 --- !u!65 &2147450962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21752,6 +21428,7 @@ GameObject:
   - component: {fileID: 6614312199122977258}
   - component: {fileID: 6614312199122977260}
   - component: {fileID: 6614312199122977259}
+  - component: {fileID: 6614312199122977261}
   m_Layer: 0
   m_Name: building
   m_TagString: Untagged
@@ -22366,7 +22043,7 @@ GameObject:
   - component: {fileID: 2875820694439640696}
   - component: {fileID: 3216457456124880067}
   m_Layer: 0
-  m_Name: static
+  m_Name: StaticMeshes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22738,27 +22415,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01794f4569ce4751a1d5512629855b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevatorType: 0
+  elevatorType: 1
   moveTime: 3
   moveDirection: {x: 0, y: 1, z: 0}
   newMoveDirection: {x: 0, y: 0, z: 0}
-  moveDistance: 15
+  moveDistance: 14.5
   initialDelay: 1
   onElevatorStopped:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3469287836891757531}
-        m_TargetAssemblyTypeName: Physical.Elevator, Assembly-CSharp
-        m_MethodName: SetAvailability
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onElevatorActivated:
     m_PersistentCalls:
       m_Calls: []
@@ -22830,8 +22495,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0202487, y: 7.46595, z: 0.25011086}
-  m_Center: {x: -0.23668408, y: 0.011317376, z: 0.005616101}
+  m_Size: {x: 1.6324528, y: 3.2218387, z: 0.25011086}
+  m_Center: {x: -0.3294352, y: 0.24410865, z: 0.005616099}
 --- !u!1 &3473804124933565603
 GameObject:
   m_ObjectHideFlags: 0
@@ -26276,7 +25941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isRotatingDoor: 0
-  speed: 1
+  speed: 0.5
   rotationAmount: 90
   forwardDirection: 0
   slideDirection: {x: -1, y: 0, z: 0}
@@ -26831,6 +26496,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 111.75018, y: 11.250814, z: 3.2894287}
   m_Center: {x: 96.02997, y: 11.573657, z: 165.42267}
+--- !u!65 &6614312199122977261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781739704409597763}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 52.866272, y: 11.136908, z: 12.545166}
+  m_Center: {x: 128.41046, y: 15.881608, z: 138.70847}
 --- !u!33 &6623138399479873242
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27721,7 +27407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isRotatingDoor: 0
-  speed: 1
+  speed: 0.5
   rotationAmount: 90
   forwardDirection: 0
   slideDirection: {x: 1, y: 0, z: 0}
@@ -29937,26 +29623,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elevatorType: 0
-  moveTime: 3
+  moveTime: 5
   moveDirection: {x: 0, y: -1, z: 0}
   newMoveDirection: {x: 0, y: 0, z: 0}
   moveDistance: 12
   initialDelay: 1
   onElevatorStopped:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8668268438833498357}
-        m_TargetAssemblyTypeName: Physical.Elevator, Assembly-CSharp
-        m_MethodName: SetAvailability
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onElevatorActivated:
     m_PersistentCalls:
       m_Calls: []

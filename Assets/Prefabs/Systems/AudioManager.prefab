@@ -203,13 +203,20 @@ MonoBehaviour:
       Data3: -1215883107
       Data4: -1505303675
     Path: event:/OBJ&INT/Metol_Door_Closed
-  elevatorActivation:
+  mainElevatorSound:
     Guid:
       Data1: -1909866775
       Data2: 1308959276
       Data3: -1048547705
       Data4: 438408141
     Path: event:/OBJ&INT/Elevator/Elevator
+  powerCoreElevatorSound:
+    Guid:
+      Data1: 452706580
+      Data2: 1129016954
+      Data3: 289103803
+      Data4: -1398278705
+    Path: event:/OBJ&INT/Elevator/Elevator_Core
   dysonActivation:
     Guid:
       Data1: -1838914258
