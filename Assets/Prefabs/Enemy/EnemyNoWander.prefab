@@ -1276,7 +1276,7 @@ MonoBehaviour:
   Min: 0
   Value: 100
   InitialValue: 0
-  significantDamagePercentage: 0.2
+  significantDamagePercentage: 0.25
   OnHealthAltered:
     m_PersistentCalls:
       m_Calls: []
@@ -1417,7 +1417,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_SightPoint: {fileID: 3829038963506775264}
-  m_MaxDistance: 6
+  m_MaxDistance: 20
   m_Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &3568127479674915995
 MonoBehaviour:

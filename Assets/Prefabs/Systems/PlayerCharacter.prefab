@@ -494,7 +494,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 16385
-  _groundLimit: 89
+  _groundLimit: 45
   _stepOffset: 0.5
   _ledgeOffset: 0
   _castDistance: 0.5
