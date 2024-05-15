@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: f072a6471023225458a0b2d4b963dd02, type: 2}
   m_HaloStrength: 0.5
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 8513792357726938417}
+  doorOpenings: []
 --- !u!65 &4288832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 7119690376812101727}
+  doorOpenings: []
 --- !u!65 &120811223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6345,7 +6345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 960938137}
+  doorOpenings: []
 --- !u!65 &625018523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6694,7 +6694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 7441991019456475141}
+  doorOpenings: []
 --- !u!65 &697247712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8401,7 +8401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 1055150121}
+  doorOpenings: []
 --- !u!65 &927804293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9084,7 +9084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 7273771339648769481}
+  doorOpenings: []
 --- !u!1 &1037502590
 GameObject:
   m_ObjectHideFlags: 0
@@ -9464,7 +9464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 6229454012198989389}
+  doorOpenings: []
 --- !u!1 &1083267694
 GameObject:
   m_ObjectHideFlags: 0
@@ -9604,7 +9604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 5505851559974796156}
+  doorOpenings: []
 --- !u!65 &1091619562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10678,7 +10678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 1430443450}
+  doorOpenings: []
 --- !u!65 &1281388931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16375,7 +16375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 9098268905420946675}
+  doorOpenings: []
 --- !u!65 &1894030305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17231,7 +17231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 7424656581798292337}
+  doorOpenings: []
 --- !u!65 &2026213708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17298,7 +17298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 1753049968}
+  doorOpenings: []
 --- !u!65 &2032467804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17741,7 +17741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 6350082224047468920}
+  doorOpenings: []
 --- !u!65 &2053184785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18842,7 +18842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d58e999f7f45b49ac7e5dc855d5030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorOpening: {fileID: 9040503072347131144}
+  doorOpenings: []
 --- !u!65 &2147450962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19122,7 +19122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -8350710125277546012, guid: 8345fd75835af0844bb073a388b6d737, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22738,6 +22738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01794f4569ce4751a1d5512629855b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elevatorType: 0
   moveTime: 3
   moveDirection: {x: 0, y: 1, z: 0}
   newMoveDirection: {x: 0, y: 0, z: 0}
@@ -27292,8 +27293,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 2.9999952, z: 3}
-  m_Center: {x: -1.8631105, y: 2.1670694, z: -0.99999297}
+  m_Size: {x: 4.602366, y: 2.9999952, z: 4.5558033}
+  m_Center: {x: -1.5619276, y: 2.1670704, z: -1.7779038}
 --- !u!23 &6945226733885695479
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28955,8 +28956,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.191395, y: 3.2766948, z: 3.0000007}
-  m_Center: {x: -1.8630953, y: 2.1670718, z: -3.9999943}
+  m_Size: {x: 4.191395, y: 3.2766864, z: 5.4628596}
+  m_Center: {x: -1.8630952, y: 2.1670809, z: -5.2314715}
 --- !u!1 &8145461701594007722
 GameObject:
   m_ObjectHideFlags: 0
@@ -29935,6 +29936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01794f4569ce4751a1d5512629855b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elevatorType: 0
   moveTime: 3
   moveDirection: {x: 0, y: -1, z: 0}
   newMoveDirection: {x: 0, y: 0, z: 0}
@@ -30577,8 +30579,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.74953, y: 3.0655613, z: 3.6785011}
-  m_Center: {x: -4.2908597, y: -2.7179804, z: 5.484526}
+  m_Size: {x: 11.15019, y: 3.0655613, z: 3.678502}
+  m_Center: {x: -3.5905318, y: -2.7179804, z: 5.484526}
 --- !u!4 &9132118543612737634
 Transform:
   m_ObjectHideFlags: 0
