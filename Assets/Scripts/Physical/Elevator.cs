@@ -8,9 +8,11 @@ namespace Physical
     [RequireComponent(typeof(Rigidbody))]
     public class Elevator : MonoBehaviour
     {
+        [SerializeField] private AudioManager.ElevatorType elevatorType;
+        
         [SerializeField] private float moveTime = 3.0f;
         [SerializeField] private Vector3 moveDirection = Vector3.up;
-        [SerializeField] private Vector3 newMoveDirection;  // Added this field
+        [SerializeField] private Vector3 newMoveDirection;
         [SerializeField] private float moveDistance = 5.0f;
         [SerializeField] private float initialDelay = 2.0f;
 
@@ -51,8 +53,11 @@ namespace Physical
             {
                 _isActive = false;
                 _currentLerpTime = 0;
+                SetAvailability(false);
                 onElevatorStopped.Invoke();
-                _startPosition = transform.position;
+                
+                // Reverse direction
+                (_startPosition, _targetPosition) = (_targetPosition, _startPosition);
             }
             else
             {
@@ -73,7 +78,7 @@ namespace Physical
         private IEnumerator ActivateElevator()
         {
             onElevatorActivated.Invoke();
-            AudioManager.Instance.PlayElevatorActivation(transform.position);
+            AudioManager.Instance.PlayElevatorActivation(elevatorType, transform.position);
             yield return new WaitForSeconds(initialDelay);
             _isActive = true;
         }

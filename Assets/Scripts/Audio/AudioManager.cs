@@ -10,20 +10,6 @@ namespace Audio
 {
     public class AudioManager : SingletonBehaviour<AudioManager>
     {
-        public enum EnemyAttackType 
-        {
-            NormalAttack, 
-            HeavyAttack
-        }
-
-        public enum EnemyType 
-        { 
-            TarSpawn, 
-            ExperimentalMan 
-        }
-
-        public Dictionary<Actor.ActorType, EnemyType> actorToEnemyTypeMap;
-
         [Serializable]
         public struct EnemySounds
         {
@@ -35,6 +21,26 @@ namespace Audio
             public EventReference enemyHurt;
             public EventReference death;
         }
+        
+        public enum EnemyAttackType 
+        {
+            NormalAttack, 
+            HeavyAttack
+        }
+
+        public enum EnemyType 
+        { 
+            TarSpawn, 
+            ExperimentalMan 
+        }
+        
+        public enum ElevatorType
+        {
+            MainElevator,
+            PowerCoreElevator
+        }
+
+        public Dictionary<Actor.ActorType, EnemyType> actorToEnemyTypeMap;
 
         [Header("Player")] 
         public EventReference playerHurt; 
@@ -57,7 +63,9 @@ namespace Audio
         public EventReference safeRoom;
         public EventReference door;
         public EventReference doorClosed;
-        public EventReference elevatorActivation;
+        public EventReference mainElevatorSound;
+        public EventReference powerCoreElevatorSound;
+        public Dictionary<ElevatorType, EventReference> elevatorSoundsMap;
         public EventReference dysonActivation;
 
         // Private fields for FMOD instances and internal state
@@ -65,8 +73,7 @@ namespace Audio
         private float _crossfadeDuration = 1.0f;
 
         private bool _isInsideSafeRoom;
-
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -85,6 +92,12 @@ namespace Audio
             {
                 { EnemyType.TarSpawn, tarSpawnSounds },
                 { EnemyType.ExperimentalMan, experimentalManSounds }
+            };
+
+            elevatorSoundsMap = new Dictionary<ElevatorType, EventReference>
+            {
+                { ElevatorType.MainElevator, mainElevatorSound },
+                { ElevatorType.PowerCoreElevator, powerCoreElevatorSound }
             };
         }
         
@@ -105,7 +118,7 @@ namespace Audio
             }
             
             Debug.LogWarning("No AudioManager.EnemyType mapped for Actor.ActorType: " + actorType);
-            return default;  // Or throw an exception or return a default value as necessary
+            return default;
         }
         
         // --------------------------------------------------------------------
@@ -161,9 +174,16 @@ namespace Audio
             PlayOneShot(doorClosed, position, "Door closed");
         }
 
-        public void PlayElevatorActivation(Vector3 position)
+        public void PlayElevatorActivation(ElevatorType elevatorType, Vector3 position)
         {
-            PlayOneShot(elevatorActivation, position, "Elevator activation");
+            if (elevatorSoundsMap.TryGetValue(elevatorType, out EventReference elevatorActivationSound))
+            {
+                PlayOneShot(elevatorActivationSound, position, $"Elevator activation: {elevatorType}");
+            }
+            else
+            {
+                Debug.LogWarning($"Elevator type not found: {elevatorType}");
+            }
         }
 
         public void PlayDysonActivation(Vector3 position)
