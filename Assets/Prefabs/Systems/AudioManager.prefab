@@ -73,8 +73,8 @@ MonoBehaviour:
       Data4: -1896962226
     Path: event:/SFX/Player/Player_Run
   footstepTimer: 0
-  footstepDelay: 0.5
-  runningFootstepDelay: 0.25
+  footstepDelay: 0.6
+  runningFootstepDelay: 0.5
   tarSpawnSounds:
     idle:
       Guid:
