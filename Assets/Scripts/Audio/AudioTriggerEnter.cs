@@ -1,4 +1,3 @@
-/*
 using System.Collections;
 using FMODUnity;
 using UnityEngine;
@@ -15,6 +14,7 @@ namespace Audio
             Play,
             Stop,
             Pause,
+            Unpause,
             SetParameter
         }
 
@@ -22,14 +22,11 @@ namespace Audio
         public class AudioTriggerSettings
         {
             public StudioEventEmitter emitter;
-            public string tag = "";
             public Action action = Action.None;
             public string parameter = "";
             public float targetValue;
-
             public float fadeInDuration = 1f; // Default to 1 second for fade in
             public float fadeOutDuration = 1f; 
-            // public bool shouldPauseInsteadOfStop = false;
         }
 
         public AudioTriggerSettings[] audioTriggerSettings;
@@ -40,7 +37,7 @@ namespace Audio
             {
                 foreach (var settings in audioTriggerSettings)
                 {
-                    settings.emitter = GameObject.FindGameObjectWithTag(settings.tag).GetComponent<StudioEventEmitter>();
+                    if (settings.emitter == null) continue;
 
                     switch (settings.action)
                     {
@@ -54,6 +51,10 @@ namespace Audio
                             break;
                         case Action.Pause:
                             StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration, true)); // Fade out and pause
+                            break;
+                        case Action.Unpause:
+                            settings.emitter.EventInstance.setPaused(false);
+                            StartCoroutine(FadeIn(settings.emitter, 1f, settings.fadeInDuration)); // Fade in over 1 second
                             break;
                         case Action.SetParameter:
                             settings.emitter.SetParameter(settings.parameter, settings.targetValue);
@@ -106,4 +107,3 @@ namespace Audio
         }
     }
 }
-*/

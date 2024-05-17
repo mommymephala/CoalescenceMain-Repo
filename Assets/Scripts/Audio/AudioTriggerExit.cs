@@ -1,4 +1,3 @@
-/*
 using System.Collections;
 using FMODUnity;
 using UnityEngine;
@@ -14,6 +13,7 @@ namespace Audio
             None,
             Play,
             Stop,
+            Pause,
             Unpause,
             SetParameter
         }
@@ -22,7 +22,6 @@ namespace Audio
         public class AudioTriggerSettings
         {
             public StudioEventEmitter emitter;
-            public string tag = "";
             public Action action = Action.None;
             public string parameter = "";
             public float targetValue;
@@ -38,7 +37,7 @@ namespace Audio
             {
                 foreach (var settings in audioTriggerSettings)
                 {
-                    settings.emitter = GameObject.FindGameObjectWithTag(settings.tag).GetComponent<StudioEventEmitter>();
+                    if (settings.emitter == null) continue;
 
                     switch (settings.action)
                     {
@@ -48,7 +47,10 @@ namespace Audio
                             StartCoroutine(FadeIn(settings.emitter, 1f, settings.fadeInDuration));
                             break;
                         case Action.Stop:
-                            StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration));
+                            StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration, false));
+                            break;
+                        case Action.Pause:
+                            StartCoroutine(FadeOut(settings.emitter, settings.fadeOutDuration, true)); // Fade out and pause
                             break;
                         case Action.Unpause:
                             settings.emitter.EventInstance.setPaused(false);
@@ -82,7 +84,7 @@ namespace Audio
             emitter.EventInstance.setVolume(finalVolume);
         }
 
-        private IEnumerator FadeOut(StudioEventEmitter emitter, float duration)
+        private IEnumerator FadeOut(StudioEventEmitter emitter, float duration, bool shouldPause)
         {
             emitter.EventInstance.getVolume(out float startVolume);
             float currentTime = 0;
@@ -94,8 +96,14 @@ namespace Audio
                 yield return null;
             }
             emitter.EventInstance.setVolume(0);
-            emitter.Stop();
+            if (shouldPause)
+            {
+                emitter.EventInstance.setPaused(true);
+            }
+            else
+            {
+                emitter.Stop();
+            }
         }
     }
 }
-*/
