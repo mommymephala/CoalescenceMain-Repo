@@ -131,7 +131,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{d368e3e3-06cc-4402-93a0-feb1a12a386f}">
 		<property name="volume">
-			<value>-14.5</value>
+			<value>-6.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{0dbdc845-052d-40bf-bbbf-bbdd661fd816}</destination>
@@ -406,7 +406,7 @@
 	<object class="MixerBusFader" id="{551204a2-81cc-4ea2-a3c3-a9aff079fd3d}" />
 	<object class="SFXReverbEffect" id="{68b86e37-e64c-484b-bb01-d1c006fd6784}">
 		<property name="decayTime">
-			<value>600</value>
+			<value>1300</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{c57394d4-2204-47f0-8de4-2b2b54c0b6b3}">
