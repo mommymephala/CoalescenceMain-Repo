@@ -1,4 +1,4 @@
-/*using FMODUnity;
+using FMODUnity;
 using UnityEngine;
 
 namespace Audio
@@ -69,4 +69,4 @@ namespace Audio
                 Debug.Log("AudioZoneSettings was NULL");
         }
     }
-}*/
+}

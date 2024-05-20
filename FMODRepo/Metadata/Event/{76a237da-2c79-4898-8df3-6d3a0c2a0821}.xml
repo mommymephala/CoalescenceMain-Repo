@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{76a237da-2c79-4898-8df3-6d3a0c2a0821}">
+		<property name="color">
+			<value>Red</value>
+		</property>
 		<property name="name">
 			<value>Chip_Enemy_Footsteps</value>
 		</property>
