@@ -42,7 +42,6 @@ namespace Combat
 
         public void Play(Animator animator)
         {
-            //TODO: Test this
             switch (_actor.type)
             {
                 case Actor.ActorType.TarSpawn:

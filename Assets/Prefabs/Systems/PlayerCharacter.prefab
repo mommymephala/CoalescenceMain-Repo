@@ -574,9 +574,9 @@ MonoBehaviour:
   _useRootMotion: 0
   _rootMotionRotation: 0
   _forwardSpeed: 5
-  _backwardSpeed: 3
-  _strafeSpeed: 4
-  _runSpeedMultiplier: 2
+  _backwardSpeed: 1.5
+  _strafeSpeed: 2
+  _runSpeedMultiplier: 1.5
   cameraAnimator: {fileID: 5376267049380254710}
   cameraAnimSpeed: 1.2
 --- !u!114 &827843620537281998
