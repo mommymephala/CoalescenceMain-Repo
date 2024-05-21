@@ -10,20 +10,23 @@ namespace Enemy
 {
     public class EnemyStateAlerted : ActorStateWithDuration
     {
-        [SerializeField] EnemyStateIdle m_IdleState;
-        [SerializeField] EnemyStateAttack[] m_AttackStates;
-        [SerializeField] float m_InitialDelay = 1f;
-        [SerializeField] float m_MinTimeBetweenAttacks = 1f;
-        [SerializeField] float m_FacingSpeedBetweenAttacks = 1f;
-        [SerializeField] bool m_ShowDebug;
-
-        private NavMeshAgent m_Agent;
-
-        private EnemySensesController m_EnemySenses;
-        private float m_Delay;
+        [SerializeField] private EnemyStateIdle m_IdleState;
+        [SerializeField] private EnemyStateAttack[] m_AttackStates;
+        [SerializeField] private float m_InitialDelay = 1f;
+        [SerializeField] private float m_MinTimeBetweenAttacks = 1f;
+        [SerializeField] private float m_FacingSpeedBetweenAttacks = 1f;
+        [SerializeField] private bool m_ShowDebug;
+        
         private UnityAction m_OnPlayerUnreachable;
+        
+        private NavMeshAgent m_Agent;
+        
+        private EnemySensesController m_EnemySenses;
+        
         private ActorState m_CurrentAttack;
         private List<ActorState> m_AttackCandidates = new List<ActorState>();
+        
+        private float m_Delay;
         
         private float _footstepTimer;
         private float _footstepInterval = 0.5f;
@@ -44,9 +47,11 @@ namespace Enemy
         public override void StateEnter(IActorState fromState)
         {
             base.StateEnter(fromState);
-            
-            AudioManager.Instance.PlayEnemyAlert(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
-            AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
+
+            AudioManager.Instance.PlayEnemyAlert(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type),
+                transform.position);
+            AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type),
+                transform.position);
 
             m_Delay = 0;
             m_CurrentAttack = null;
@@ -80,25 +85,23 @@ namespace Enemy
             {
                 m_Delay += Time.deltaTime;
 
-                // Face target
-                Vector3 lookPos = m_EnemySenses.LastKnownPosition - Actor.transform.position;
-                lookPos.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation, Time.deltaTime * m_FacingSpeedBetweenAttacks);
+                FaceTarget();
                 return;
             }
-            
+
             if (m_ShowDebug)
-                DebugUtils.DrawBox(m_EnemySenses.LastKnownPosition, Quaternion.identity, Vector3.one * 0.25f, Color.white, 1f);
+                DebugUtils.DrawBox(m_EnemySenses.LastKnownPosition, Quaternion.identity, Vector3.one * 0.25f,
+                    Color.white, 1f);
 
             // Footstep sound logic
             _footstepTimer += Time.deltaTime;
             if (_footstepTimer >= _footstepInterval)
             {
-                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
+                AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type),
+                    transform.position);
                 _footstepTimer = 0;
             }
-            
+
             m_Agent.SetDestination(m_EnemySenses.LastKnownPosition);
             m_Agent.isStopped = false;
 
@@ -122,11 +125,7 @@ namespace Enemy
                         if (m_ShowDebug)
                             Debug.DrawLine(Actor.transform.position, m_EnemySenses.LastKnownPosition, Color.magenta, 5);
 
-                        // Face target
-                        Vector3 lookPos = m_EnemySenses.LastKnownPosition - Actor.transform.position;
-                        lookPos.y = 0;
-                        Quaternion rotation = Quaternion.LookRotation(lookPos);
-                        Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation, Time.deltaTime * m_FacingSpeedBetweenAttacks);
+                        FaceTarget();
                     }
                 }
                 else
@@ -137,7 +136,18 @@ namespace Enemy
             else
             {
                 m_Agent.updateRotation = true;
-            }   
+            }
+        }
+
+        // --------------------------------------------------------------------
+
+        private void FaceTarget()
+        {
+            Vector3 lookPos = m_EnemySenses.LastKnownPosition - Actor.transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation,
+                Time.deltaTime * m_FacingSpeedBetweenAttacks);
         }
 
         // --------------------------------------------------------------------
@@ -159,11 +169,8 @@ namespace Enemy
             {
                 return null;
             }
-            else
-            {
-                return m_AttackCandidates[Random.Range(0, m_AttackCandidates.Count)];
-            }
+
+            return m_AttackCandidates[Random.Range(0, m_AttackCandidates.Count)];
         }
     }
-
 }

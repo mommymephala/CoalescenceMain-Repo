@@ -356,7 +356,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.645, z: 0.136}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6914085737828186285}
@@ -990,8 +990,7 @@ MonoBehaviour:
   Tags: []
   m_Duration: 1
   m_GoToStateAfterDuration: {fileID: 8726381682374611150}
-  attackOptions:
-  - {fileID: 4364668085784745757}
+  m_AttackOptions: []
   m_AlertedState: {fileID: 212868336466211945}
   m_FacingSpeed: 2
   m_RotateTowardsTarget: 1
@@ -1415,7 +1414,7 @@ MonoBehaviour:
     m_Bits: 64
   m_SightBlockerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16385
   m_SightPoint: {fileID: 3829038963506775264}
   m_MaxDistance: 20
   m_Offset: {x: 0, y: 0, z: 0}

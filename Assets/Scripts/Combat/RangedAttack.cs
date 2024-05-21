@@ -4,26 +4,50 @@ namespace Combat
 {
     public class RangedAttack : AttackBase
     {
-        public GameObject ProjectilePrefab;
-        public Transform FirePoint;
-        public float FireRate = 1f;
-        public float AttackDuration = 1f;
-        private float nextFireTime;
+        public GameObject projectilePrefab;
+        public AttackType attackType;
+        public Transform firePoint;
+        public float fireRate;
+        private float _nextFireTime;
 
         public override void StartAttack()
         {
-            if (Time.time >= nextFireTime)
+            if (Time.time >= _nextFireTime)
             {
                 FireProjectile();
-                nextFireTime = Time.time + 1f / FireRate;
+                _nextFireTime = Time.time + 1f / fireRate;
             }
         }
 
         private void FireProjectile()
         {
-            if (ProjectilePrefab && FirePoint)
+            if (projectilePrefab && firePoint)
             {
-                Instantiate(ProjectilePrefab, FirePoint.position, FirePoint.rotation);
+                GameObject projectileInstance = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+                var projectile = projectileInstance.GetComponent<Projectile>();
+                projectile.Initialize(this);
+            }
+        }
+
+        public void ProcessCollision(Collider other)
+        {
+            var damageable = other.GetComponentInChildren<Damageable>();
+
+            if (damageable)
+            {
+                AttackImpact impact = attackType.GetImpact(damageable.Type);
+                if (impact != null)
+                {
+                    Vector3 impactPoint = other.transform.position;
+                    Vector3 impactDir = other.transform.forward;
+                    Process(new AttackInfo
+                    {
+                        Attack = this,
+                        Damageable = damageable,
+                        ImpactDir = impactDir,
+                        ImpactPoint = impactPoint
+                    });
+                }
             }
         }
 

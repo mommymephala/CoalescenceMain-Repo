@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 350038855356877070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.087}
+  m_LocalPosition: {x: 0, y: 0.914, z: 0.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -161,7 +161,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.223, y: 1.39, z: 0.562}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4012026604646124151}
@@ -307,7 +307,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 1000
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -472,7 +472,7 @@ MonoBehaviour:
     m_Bits: 64
   m_SightBlockerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16385
   m_SightPoint: {fileID: 3799028487842291835}
   m_MaxDistance: 20
   m_Offset: {x: 0, y: 0, z: 0}
@@ -973,10 +973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Attack: {fileID: 11400000, guid: 058e2a2c1a006964cac0eeb73d81f872, type: 2}
-  ProjectilePrefab: {fileID: 1722081097931586, guid: 51514cb216c1d74419c89383ab57986e, type: 3}
-  FirePoint: {fileID: 568741470936294957}
-  FireRate: 1
-  AttackDuration: 1
+  projectilePrefab: {fileID: 1722081097931586, guid: 51514cb216c1d74419c89383ab57986e, type: 3}
+  attackType: {fileID: 11400000, guid: 058e2a2c1a006964cac0eeb73d81f872, type: 2}
+  firePoint: {fileID: 568741470936294957}
+  fireRate: 100
 --- !u!1 &4346767916603141570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2265211939056580348}
-  - component: {fileID: 8444772252204295921}
+  - component: {fileID: 6323295563216098421}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -1385,7 +1385,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8678927548671293603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8444772252204295921
+--- !u!114 &6323295563216098421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8266894385991128181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192c70a39481f404fa72e416c7c8902e, type: 3}
+  m_Script: {fileID: 11500000, guid: 21dac212c54847f68f6bf1a1ad420d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AnimationState: {fileID: 0}
@@ -1413,14 +1413,13 @@ MonoBehaviour:
   Tags: []
   m_Duration: 1
   m_GoToStateAfterDuration: {fileID: 6040020857962946237}
-  attackOptions:
+  m_AttackOptions:
   - {fileID: 2290506110983446122}
-  rangedAttack: {fileID: 3875954900548861832}
   m_AlertedState: {fileID: 1868372873648984923}
-  m_FacingSpeed: 2
+  m_FacingSpeed: 3
   m_RotateTowardsTarget: 1
-  AttackDistance: 10
-  Cooldown: 1.5
+  AttackDistance: 5
+  Cooldown: 1
 --- !u!1 &8304707046515468402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1584,7 @@ MonoBehaviour:
   m_AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
   m_AnimationBlendTime: 0.25
   m_StateTransitions:
-  - FromState: {fileID: 8444772252204295921}
+  - FromState: {fileID: 6323295563216098421}
     AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
     AnimationBlendTime: 0.25
   m_ExitAnimationState: {fileID: 0}
@@ -1603,7 +1602,7 @@ MonoBehaviour:
   m_GoToStateAfterDuration: {fileID: 0}
   m_IdleState: {fileID: 6040020857962946237}
   m_AttackStates:
-  - {fileID: 8444772252204295921}
+  - {fileID: 6323295563216098421}
   m_InitialDelay: 1
   m_MinTimeBetweenAttacks: 1
   m_FacingSpeedBetweenAttacks: 1
@@ -1618,7 +1617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568741470936294957}
   m_Layer: 0
-  m_Name: AttackPoint
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1634,7 +1633,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.084, y: 1.12, z: 0.626}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4012026604646124151}

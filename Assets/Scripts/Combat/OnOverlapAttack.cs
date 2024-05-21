@@ -53,7 +53,6 @@ namespace Combat
             if (Duration > 0 && m_CurrentDuration >= Duration)
             {
                 enabled = false;
-                return;
             }
         }
 
@@ -65,7 +64,7 @@ namespace Combat
                 // TODO - Calculate real hit-point, for now just an estimation
                 Vector3 fakeHitPoint = (dmg.transform.position + m_HitBox.transform.position) * 0.5f;
                 Vector3 impactDir = (dmg.transform.position - m_HitBox.transform.position).normalized;
-                Process(new AttackInfo()
+                Process(new AttackInfo
                 {
                     Attack = this,
                     Damageable = dmg,

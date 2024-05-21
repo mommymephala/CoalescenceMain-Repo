@@ -21,19 +21,19 @@ namespace Audio
             public EventReference enemyHurt;
             public EventReference death;
         }
-        
-        public enum EnemyAttackType 
+
+        public enum EnemyAttackType
         {
-            NormalAttack, 
+            NormalAttack,
             HeavyAttack
         }
 
-        public enum EnemyType 
-        { 
-            TarSpawn, 
-            ExperimentalMan 
+        public enum EnemyType
+        {
+            TarSpawn,
+            ExperimentalMan
         }
-        
+
         public enum ElevatorType
         {
             MainElevator,
@@ -42,18 +42,18 @@ namespace Audio
 
         public Dictionary<Actor.ActorType, EnemyType> actorToEnemyTypeMap;
 
-        [Header("Player")] 
-        public EventReference playerHurt; 
+        [Header("Player")]
+        public EventReference playerHurt;
         public EventReference playerDeath;
 
-        [Header("Player Footsteps")] 
+        [Header("Player Footsteps")]
         public EventReference playerFootsteps;
         public EventReference playerRunning;
         public float footstepTimer;
         public float footstepDelay = 0.5f;
         public float runningFootstepDelay = 0.25f;
 
-        [Header("Enemy Sounds")] 
+        [Header("Enemy Sounds")]
         public EnemySounds tarSpawnSounds;
         public EnemySounds experimentalManSounds;
         public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
@@ -68,12 +68,11 @@ namespace Audio
         public Dictionary<ElevatorType, EventReference> elevatorSoundsMap;
         public EventReference dysonActivation;
 
-        // Private fields for FMOD instances and internal state
         private Dictionary<EventInstance, Coroutine> _fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
-        private float _crossfadeDuration = 1.0f;
+        private float _crossfadeDuration;
 
         private bool _isInsideSafeRoom;
-        
+
         protected override void Awake()
         {
             base.Awake();
@@ -85,7 +84,7 @@ namespace Audio
         {
             StartAmbientSound();
         }
-        
+
         private void InitializeSoundsMap()
         {
             enemySoundsMap = new Dictionary<EnemyType, EnemySounds>
@@ -100,7 +99,7 @@ namespace Audio
                 { ElevatorType.PowerCoreElevator, powerCoreElevatorSound }
             };
         }
-        
+
         private void InitializeTypeMappings()
         {
             actorToEnemyTypeMap = new Dictionary<Actor.ActorType, EnemyType>
@@ -116,13 +115,11 @@ namespace Audio
             {
                 return enemyType;
             }
-            
+
             Debug.LogWarning("No AudioManager.EnemyType mapped for Actor.ActorType: " + actorType);
             return default;
         }
-        
-        // --------------------------------------------------------------------
-        
+
         private static void PlayOneShot(EventReference eventRef, Vector3 position, string eventName)
         {
             if (!eventRef.IsNull)
@@ -141,8 +138,6 @@ namespace Audio
             ambientInstance.start();
             _fadeCoroutines.Add(ambientInstance, null);
         }
-
-        // --------------------------------------------------------------------
 
         public void PlayFootstep(Vector3 position)
         {
@@ -198,7 +193,7 @@ namespace Audio
 
         public void PlayEnemyAttack(EnemyType enemyType, EnemyAttackType attackType, Vector3 position)
         {
-            EventReference attackSound = attackType == EnemyAttackType.NormalAttack ? 
+            EventReference attackSound = attackType == EnemyAttackType.NormalAttack ?
                 enemySoundsMap[enemyType].normalAttack : enemySoundsMap[enemyType].heavyAttack;
 
             PlayOneShot(attackSound, position, "Enemy attack");

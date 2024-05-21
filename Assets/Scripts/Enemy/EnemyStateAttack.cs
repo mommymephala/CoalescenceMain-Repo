@@ -8,58 +8,53 @@ namespace Enemy
 {
     public class EnemyStateAttack : ActorStateWithDuration
     {
-        [SerializeField] private List<AttackMontage> attackOptions;
-        [SerializeField] private RangedAttack rangedAttack;
-        [SerializeField] EnemyStateAlerted m_AlertedState;
-        [SerializeField] float m_FacingSpeed = 1f;
-        [SerializeField] bool m_RotateTowardsTarget = true;
+        [SerializeField] private List<AttackMontage> m_AttackOptions;
+        [SerializeField] protected EnemyStateAlerted m_AlertedState;
+        [SerializeField] private float m_FacingSpeed = 1f;
+        [SerializeField] private bool m_RotateTowardsTarget = true;
         public float AttackDistance = 1f;
         public float Cooldown = 3;
 
-        private AttackMontage selectedAttack;
-        private NavMeshAgent m_NavMeshAgent;
-        private EnemySensesController m_EnemySenses;
-        private float m_LastAttackTime;
-        private NavMeshPath m_NavPath;
+        protected AttackMontage m_SelectedAttack;
+        protected NavMeshAgent m_NavMeshAgent;
+        protected EnemySensesController m_EnemySenses;
+        protected float m_LastAttackTime;
+        protected NavMeshPath m_NavPath;
+
+        // --------------------------------------------------------------------
 
         protected override void Awake()
         {
             base.Awake();
+
             m_NavPath = new NavMeshPath();
             m_NavMeshAgent = GetComponentInParent<NavMeshAgent>();
             m_EnemySenses = GetComponentInParent<EnemySensesController>();
         }
 
+        // --------------------------------------------------------------------
+
         public override void StateEnter(IActorState fromState)
         {
             base.StateEnter(fromState);
-            selectedAttack = SelectAttack();
-
-            if (selectedAttack != null)
-            {
-                m_Duration = selectedAttack.Duration;
-                selectedAttack.Play(Actor.MainAnimator);
-            }
+            m_SelectedAttack = SelectAttack();
             
-            else if (rangedAttack != null)
+            if (m_SelectedAttack != null)
             {
-                rangedAttack.StartAttack();
-                m_Duration = rangedAttack.AttackDuration;
+                m_Duration = m_SelectedAttack.Duration;
+                m_SelectedAttack.Play(Actor.MainAnimator);
             }
         }
+
+        // --------------------------------------------------------------------
 
         public override void StateUpdate()
         {
             base.StateUpdate();
-
-            if (m_RotateTowardsTarget)
-            {
-                Vector3 lookPos = m_EnemySenses.LastKnownPosition - transform.position;
-                lookPos.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation, Time.deltaTime * m_FacingSpeed);
-            }
+            FaceTarget();
         }
+
+        // --------------------------------------------------------------------
 
         public override void StateExit(IActorState intoState)
         {
@@ -69,33 +64,51 @@ namespace Enemy
             base.StateExit(intoState);
         }
 
+        // --------------------------------------------------------------------
+
         protected override void OnStateDurationEnd()
         {
             base.OnStateDurationEnd();
 
-            if (m_EnemySenses.IsPlayerDetected)
-                SetState(m_AlertedState);
-        }
-
-        private AttackMontage SelectAttack()
-        {
-            if (attackOptions is { Count: > 0 })
+            if (m_EnemySenses.IsPlayerDetected && CanEnter())
             {
-                if (Vector3.Distance(m_EnemySenses.LastKnownPosition, transform.position) <= AttackDistance)
-                {
-                    return attackOptions[Random.Range(0, attackOptions.Count)];
-                }
+                SetState(this);
             }
-
-            return null;
+            else
+            {
+                SetState(m_AlertedState);
+            }
         }
+
+        // --------------------------------------------------------------------
+        
+        protected void FaceTarget()
+        {
+            if (m_RotateTowardsTarget)
+            {
+                Vector3 lookPos = m_EnemySenses.LastKnownPosition - transform.position;
+                lookPos.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, rotation, Time.deltaTime * m_FacingSpeed);
+            }
+        }
+        
+        // --------------------------------------------------------------------
+
+        protected AttackMontage SelectAttack()
+        {
+            // Here we can implement any logic to select an attack based on current game state
+            return m_AttackOptions[Random.Range(0, m_AttackOptions.Count)];
+        }
+
+        // --------------------------------------------------------------------
 
         public virtual bool CanEnter()
         {
             m_NavPath.ClearCorners();
             m_NavMeshAgent.CalculatePath(m_EnemySenses.LastKnownPosition, m_NavPath);
-
-            if ((m_NavPath.status != NavMeshPathStatus.PathInvalid) && (m_NavPath.corners.Length > 1))
+            
+            if (m_NavPath.status != NavMeshPathStatus.PathInvalid && m_NavPath.corners.Length > 1)
             {
                 float distToTarget = 0;
                 for (var i = 1; i < m_NavPath.corners.Length; ++i)
@@ -110,7 +123,7 @@ namespace Enemy
                 return false;
             }
 
-            return (Time.time - m_LastAttackTime) > Cooldown;
+            return Time.time - m_LastAttackTime > Cooldown;
         }
     }
 }

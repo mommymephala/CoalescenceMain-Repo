@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -18,13 +19,6 @@ namespace Items
         public int maxAmmo;
         public float reloadDuration;
         
-        [Header("Aim Down Sight")]
-        public float originalPlayerFOV;
-        public float originalWeaponFOV;
-        public float aimDownSightFOV;
-        public float aimDownSightSpeed;
-        public float zoomSpeed;
-        
         [Header("Recoil Settings")]
         public Vector3 recoilRotationHipfire;
         public Vector3 recoilRotationAiming;
@@ -35,8 +29,8 @@ namespace Items
         public float kickbackDuration;
         public float resetDuration;
         public float walkingRecoilMultiplier;
-        
-        [Header("Audio")]
+
+        [Header("Audio")] 
         public EventReference shotSound;
         public EventReference reloadSound;
         public EventReference noAmmoSound;
