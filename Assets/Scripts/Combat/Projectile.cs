@@ -2,55 +2,84 @@ using UnityEngine;
 
 namespace Combat
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class Projectile : MonoBehaviour
     {
-        public float Speed = 10f;
-        public float Lifetime = 5f;
-        public int Damage = 10;
-        public LayerMask HitLayers;
+        public float speed = 10f;
+        public float lifetime = 5f;
+        public AttackType attackType;
+        public LayerMask hitLayers;
 
-        private Rigidbody rb;
+        private Rigidbody _rb;
 
         private void Start()
         {
-            rb = GetComponent<Rigidbody>();
-            rb.velocity = transform.forward * Speed;
-
-            // Set collision detection mode to Continuous
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-
-            Destroy(gameObject, Lifetime);
+            _rb = GetComponent<Rigidbody>();
+            _rb.velocity = transform.forward * speed;
+            _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            
+            Destroy(gameObject, lifetime);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if ((HitLayers.value & (1 << other.gameObject.layer)) > 0)
-            {
-                if (other.TryGetComponent(out Damageable damageable))
-                {
-                    // Assuming Damageable has a Damage method
-                    damageable.Damage(Damage, transform.position, transform.forward);
-                }
-                Destroy(gameObject);
-            }
+            ProcessCollision(other);
+            Debug.Log(other.name);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        // private void OnCollisionEnter(Collision collision)
+        // {
+        //     ProcessCollision(collision.collider);
+        // }
+
+        private void ProcessCollision(Collider other)
         {
-            if ((HitLayers.value & (1 << collision.gameObject.layer)) > 0)
+            if (IsInLayerMask(other.gameObject, hitLayers))
             {
-                if (collision.gameObject.TryGetComponent(out Damageable damageable))
+                var damageable = other.GetComponentInChildren<Damageable>();
+        
+                if (damageable)
                 {
-                    // Assuming Damageable has a Damage method
-                    damageable.Damage(Damage, transform.position, transform.forward);
+                    AttackImpact impact = attackType.GetImpact(damageable.Type);
+                    if (impact != null)
+                    {
+                        ApplyDamage(damageable, impact, other.transform.position, transform.forward);
+                    }
                 }
+
                 Destroy(gameObject);
             }
             else
             {
-                // Destroy the projectile if it hits any solid object
                 Destroy(gameObject);
+            }
+        }
+
+        private static bool IsInLayerMask(GameObject obj, LayerMask layerMask)
+        {
+            return (layerMask.value & (1 << obj.layer)) != 0;
+        }
+
+        private static void ApplyDamage(Damageable damageable, AttackImpact impact, Vector3 impactPoint, Vector3 impactDir)
+        {
+            // Check and apply pre-damage effects if any
+            if (impact.PreDamageEffects != null)
+            {
+                foreach (AttackEffect effect in impact.PreDamageEffects)
+                {
+                    effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = impactPoint, ImpactDir = impactDir });
+                }
+            }
+
+            // Apply damage
+            damageable.Damage(impact.Damage, impactPoint, impactDir);
+
+            // Check and apply post-damage effects if any
+            if (impact.PostDamageEffects != null)
+            {
+                foreach (AttackEffect effect in impact.PostDamageEffects)
+                {
+                    effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = impactPoint, ImpactDir = impactDir });
+                }
             }
         }
     }

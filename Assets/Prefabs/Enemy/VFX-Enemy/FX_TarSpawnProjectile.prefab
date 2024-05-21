@@ -18678,10 +18678,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c79a7fd345340399be589a266fdac4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  Lifetime: 5
-  Damage: 10
-  HitLayers:
+  speed: 10
+  lifetime: 5
+  attackType: {fileID: 11400000, guid: 058e2a2c1a006964cac0eeb73d81f872, type: 2}
+  hitLayers:
     serializedVersion: 2
     m_Bits: 4294967295
 --- !u!135 &1524153558023806012

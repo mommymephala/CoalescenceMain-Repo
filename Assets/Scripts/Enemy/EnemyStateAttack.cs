@@ -40,10 +40,11 @@ namespace Enemy
                 m_Duration = selectedAttack.Duration;
                 selectedAttack.Play(Actor.MainAnimator);
             }
+            
             else if (rangedAttack != null)
             {
                 rangedAttack.StartAttack();
-                m_Duration = rangedAttack.AttackDuration; // Assuming AttackDuration is a property of RangedAttack
+                m_Duration = rangedAttack.AttackDuration;
             }
         }
 
@@ -78,7 +79,7 @@ namespace Enemy
 
         private AttackMontage SelectAttack()
         {
-            if (attackOptions != null && attackOptions.Count > 0)
+            if (attackOptions is { Count: > 0 })
             {
                 if (Vector3.Distance(m_EnemySenses.LastKnownPosition, transform.position) <= AttackDistance)
                 {
@@ -86,7 +87,7 @@ namespace Enemy
                 }
             }
 
-            return null; // No melee attack selected, fallback to ranged if available
+            return null;
         }
 
         public virtual bool CanEnter()

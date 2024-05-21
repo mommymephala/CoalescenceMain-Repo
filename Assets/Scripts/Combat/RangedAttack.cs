@@ -7,7 +7,7 @@ namespace Combat
         public GameObject ProjectilePrefab;
         public Transform FirePoint;
         public float FireRate = 1f;
-        public float AttackDuration = 1f; // Add this property
+        public float AttackDuration = 1f;
         private float nextFireTime;
 
         public override void StartAttack()
