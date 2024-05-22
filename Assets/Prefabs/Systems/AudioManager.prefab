@@ -58,6 +58,7 @@ MonoBehaviour:
       Data3: 93806010
       Data4: 1869849546
     Path: event:/SFX/Player/Player_Death
+  footstepTimer: 0
   playerFootsteps:
     Guid:
       Data1: 1874342431
@@ -72,7 +73,6 @@ MonoBehaviour:
       Data3: 184799391
       Data4: -1896962226
     Path: event:/SFX/Player/Player_Run
-  footstepTimer: 0
   footstepDelay: 0.6
   runningFootstepDelay: 0.5
   tarSpawnSounds:
@@ -118,6 +118,13 @@ MonoBehaviour:
         Data3: 1785524877
         Data4: -850768911
       Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Take_Damage/Tar_Spawn_Take_Damage
+    weakpoint:
+      Guid:
+        Data1: -607918179
+        Data2: 1135980185
+        Data3: 1109397659
+        Data4: 973050296
+      Path: event:/OBJ&INT/Metal_Door
     death:
       Guid:
         Data1: 1210827514
@@ -168,6 +175,13 @@ MonoBehaviour:
         Data3: -81546570
         Data4: -412839977
       Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Take_Damage/Chip_Enemy_Take_Damage
+    weakpoint:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
     death:
       Guid:
         Data1: 1889166572

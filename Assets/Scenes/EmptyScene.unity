@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 513048255}
   - component: {fileID: 513048254}
   - component: {fileID: 513048253}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: GroundDeneme (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 548178514}
   - component: {fileID: 548178513}
   - component: {fileID: 548178512}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: GroundDeneme (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 784519710}
   - component: {fileID: 784519709}
   - component: {fileID: 784519708}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 913996105}
   - component: {fileID: 913996104}
   - component: {fileID: 913996103}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: GroundDeneme (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1777419974032092, guid: 4fdc90d4810052940bae39b01e92a182, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4828199830545936, guid: 4fdc90d4810052940bae39b01e92a182, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1028,7 +1028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1460905088059818, guid: 682255724988b1541af0927787d8456e, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1460905088059818, guid: 682255724988b1541af0927787d8456e, type: 3}
       propertyPath: m_IsActive
@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 1165588312}
   - component: {fileID: 1165588311}
   - component: {fileID: 1165588310}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: GroundDeneme (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 1215839481}
   - component: {fileID: 1215839480}
   - component: {fileID: 1215839479}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: GroundDeneme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1649,7 +1649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1460905088059818, guid: 682255724988b1541af0927787d8456e, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1460905088059818, guid: 682255724988b1541af0927787d8456e, type: 3}
       propertyPath: m_IsActive
@@ -1714,7 +1714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081761891796199055, guid: 4b5acffb6112fad49833faa1fb6b7f0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8792640955201496408, guid: 4b5acffb6112fad49833faa1fb6b7f0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1775,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1460905088059818, guid: 682255724988b1541af0927787d8456e, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1460905088059818, guid: 682255724988b1541af0927787d8456e, type: 3}
       propertyPath: m_IsActive
@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 2028023049}
   - component: {fileID: 2028023048}
   - component: {fileID: 2028023047}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: GroundDeneme (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

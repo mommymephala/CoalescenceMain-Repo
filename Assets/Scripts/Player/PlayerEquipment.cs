@@ -19,9 +19,6 @@ namespace Player
         // --------------------------------------------------------------------
 
         private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
-        
-        // [Header("Key Codes")]
-        // [SerializeField] private KeyCode holsterKey = KeyCode.H; // Key to holster the weapon
 
         [SerializeField] private GameObject weaponHolder;
 
@@ -38,9 +35,10 @@ namespace Player
         {
             SetupCurrentEquipment();
         }
+        
         private void Update()
         {
-            /*if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 TryActivateEquipment(EquipmentSlot.Primary);
             }
@@ -48,10 +46,6 @@ namespace Player
             {
                 TryActivateEquipment(EquipmentSlot.Secondary);
             }
-            else if (Input.GetKeyDown(holsterKey))
-            {
-                HolsterEquipment();
-            }*/
         }
         
         private void TryActivateEquipment(EquipmentSlot slot)
@@ -154,14 +148,6 @@ namespace Player
                     Destroy(entry.Instance);
 
                 m_CurrentEquipment.Remove(type);
-            }
-        }
-        
-        private void HolsterEquipment()
-        {
-            foreach (var equipment in m_CurrentEquipment)
-            {
-                equipment.Value.Instance.SetActive(false);
             }
         }
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Audio;
 using States;
@@ -18,7 +17,7 @@ namespace Enemy
 
         private Coroutine _idleSoundCoroutine;
 
-        private float _footstepInterval = 0.5f;
+        [SerializeField] private float footstepInterval = 0.5f;
         private float _footstepTimer;
 
         protected override void Awake()
@@ -50,7 +49,7 @@ namespace Enemy
                 _agent.SetDestination(GameManager.Instance.Player.transform.position);
 
                 _footstepTimer += Time.deltaTime;
-                if (_footstepTimer >= _footstepInterval)
+                if (_footstepTimer >= footstepInterval)
                 {
                     PlayFootstepSound();
                     _footstepTimer = 0;

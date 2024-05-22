@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using Combat;
 using Systems;
 using UnityEngine;
@@ -126,7 +127,6 @@ namespace Weapon
                 AttackImpact impact = attackType.GetImpact(damageable.Type);
                 if (impact != null)
                 {
-                    // Check and apply pre-damage effects if any
                     if (impact.PreDamageEffects != null)
                     {
                         foreach (AttackEffect effect in impact.PreDamageEffects)
@@ -135,16 +135,15 @@ namespace Weapon
                         }
                     }
 
-                    // Apply damage
                     damageable.Damage(impact.Damage, hit.point, -hit.normal);
+                    
+                    AudioManager.Instance.PlayEnemyWeakpoint(hit.collider.tag, hit.point);
 
-                    // Check and apply post-damage effects if any
                     if (impact.PostDamageEffects != null)
                     {
                         foreach (AttackEffect effect in impact.PostDamageEffects)
                         {
                             effect.Apply(new AttackInfo { Damageable = damageable, ImpactPoint = hit.point, ImpactDir = -hit.normal });
-                            // TODO: Hit impact sound/fx place.
                         }
                     }
                 }

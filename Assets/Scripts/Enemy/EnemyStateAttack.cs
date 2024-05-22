@@ -8,10 +8,11 @@ namespace Enemy
 {
     public class EnemyStateAttack : ActorStateWithDuration
     {
-        [SerializeField] private List<AttackMontage> m_AttackOptions;
+        [SerializeField] protected List<AttackMontage> m_AttackOptions;
         [SerializeField] protected EnemyStateAlerted m_AlertedState;
-        [SerializeField] private float m_FacingSpeed = 1f;
-        [SerializeField] private bool m_RotateTowardsTarget = true;
+        [SerializeField] protected float m_FacingSpeed = 1f;
+        [SerializeField] protected bool m_RotateTowardsTarget = true;
+        
         public float AttackDistance = 1f;
         public float Cooldown = 3;
 

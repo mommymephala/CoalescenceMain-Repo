@@ -18,8 +18,8 @@ namespace Enemy
         private List<Vector3> m_WanderPoints = new List<Vector3>();
         private Vector3 m_CurrentWanderPoint;
         
+        [SerializeField] private float footstepInterval = 0.5f;
         private float _footstepTimer;
-        private float _footstepInterval = 0.5f;
 
         // --------------------------------------------------------------------
 
@@ -84,7 +84,7 @@ namespace Enemy
             
             // Footstep sound logic
             _footstepTimer += Time.deltaTime;
-            if (_footstepTimer >= _footstepInterval)
+            if (_footstepTimer >= footstepInterval)
             {
                 AudioManager.Instance.PlayEnemyFootstep(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type), transform.position);
                 _footstepTimer = 0;

@@ -3934,6 +3934,46 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_UseClip.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_ShowClip.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_UseClip.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_UseClip.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_UseClip.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_UseClip.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_ShowClip.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_ShowClip.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_ShowClip.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918982207284009011, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
+      propertyPath: m_ShowClip.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8932338283601040893, guid: 78c03812f27f06141a0bf12636c4b518, type: 3}
       propertyPath: m_Layer
       value: 5

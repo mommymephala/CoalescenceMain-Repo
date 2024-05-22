@@ -19,6 +19,7 @@ namespace Audio
             public EventReference normalAttack;
             public EventReference heavyAttack;
             public EventReference enemyHurt;
+            public EventReference weakpoint;
             public EventReference death;
         }
 
@@ -47,9 +48,9 @@ namespace Audio
         public EventReference playerDeath;
 
         [Header("Player Footsteps")]
+        [HideInInspector] public float footstepTimer;
         public EventReference playerFootsteps;
         public EventReference playerRunning;
-        public float footstepTimer;
         public float footstepDelay = 0.5f;
         public float runningFootstepDelay = 0.25f;
 
@@ -202,6 +203,33 @@ namespace Audio
         public void PlayEnemyHurt(EnemyType enemyType, Vector3 position)
         {
             PlayOneShot(enemySoundsMap[enemyType].enemyHurt, position, "Enemy hurt");
+        }
+        
+        public void PlayEnemyWeakpoint(string tag, Vector3 position)
+        {
+            EnemyType enemyType;
+    
+            switch (tag)
+            {
+                case "TarSpawnWeakpoint":
+                    enemyType = EnemyType.TarSpawn;
+                    break;
+                case "ExperimentalManWeakpoint":
+                    enemyType = EnemyType.ExperimentalMan;
+                    break;
+                default:
+                    Debug.LogWarning($"Unknown weakpoint tag: {tag}");
+                    return;
+            }
+
+            if (enemySoundsMap.TryGetValue(enemyType, out EnemySounds sounds))
+            {
+                PlayOneShot(sounds.weakpoint, position, "Enemy weakpoint");
+            }
+            else
+            {
+                Debug.LogError($"No sounds defined for enemy type: {enemyType}");
+            }
         }
 
         public void PlayEnemyDeath(EnemyType enemyType, Vector3 position)

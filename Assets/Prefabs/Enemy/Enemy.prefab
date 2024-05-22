@@ -160,6 +160,7 @@ MonoBehaviour:
   m_MinTimeBetweenAttacks: 1
   m_FacingSpeedBetweenAttacks: 1
   m_ShowDebug: 1
+  footstepInterval: 0.5
 --- !u!1 &1256592688707845899
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +365,7 @@ MonoBehaviour:
   m_GoToStateAfterDuration: {fileID: 3416583239326226275}
   m_IdleState: {fileID: 8410736365416673727}
   m_AlertState: {fileID: 3416583239326226275}
+  footstepInterval: 0.5
 --- !u!1 &3148058930938553850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1300,7 @@ GameObject:
   - component: {fileID: 6744750222630287295}
   m_Layer: 9
   m_Name: DamageableWeak
-  m_TagString: Untagged
+  m_TagString: TarSpawnWeakpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1359,19 +1361,7 @@ MonoBehaviour:
       m_Calls: []
   OnDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3044057536042228009, guid: db491d6f5ee9e514f9357cb242dd0238, type: 3}
-        m_TargetAssemblyTypeName: Audio.AudioManager, Assembly-CSharp
-        m_MethodName: PlayEnemyHurt
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6744750222630287295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,6 +1530,7 @@ MonoBehaviour:
   m_GoToStateAfterDuration: {fileID: 8410736365416673727}
   m_AlertedState: {fileID: 3416583239326226275}
   m_Radius: 5
+  footstepInterval: 0.5
 --- !u!1 &8790361473324610803
 GameObject:
   m_ObjectHideFlags: 0
