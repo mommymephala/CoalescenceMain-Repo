@@ -32,11 +32,6 @@ MonoBehaviour:
   ammoItem: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
   maxAmmo: 12
   reloadDuration: 1.5
-  originalPlayerFOV: 60
-  originalWeaponFOV: 60
-  aimDownSightFOV: 40
-  aimDownSightSpeed: 10
-  zoomSpeed: 10
   recoilRotationHipfire: {x: 450, y: 40, z: 0}
   recoilRotationAiming: {x: 350, y: 30, z: 0}
   rotationSpeed: 2

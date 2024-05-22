@@ -21,7 +21,7 @@ MonoBehaviour:
   flags: 520
   dropPrefab: {fileID: 0}
   EquipPrefab: {fileID: 9117134561805105503, guid: a698714a79d19d542a10fb0416749f14, type: 3}
-  Slot: 2
+  Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1
   allowAutoFire: 0

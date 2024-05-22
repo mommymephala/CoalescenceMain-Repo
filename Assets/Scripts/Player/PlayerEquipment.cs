@@ -111,6 +111,7 @@ namespace Player
                 instance.SetActive(true);
                 DeactivateOtherWeapons(EquipmentSlot.Secondary);
             }
+            
             else
             {
                 instance.SetActive(false);

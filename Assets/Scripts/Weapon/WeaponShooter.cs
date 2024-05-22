@@ -81,13 +81,13 @@ namespace Weapon
         {
             _timeSinceLastShot = 0f;
 
-            LayerMask defaultLayerMask = LayerMask.GetMask("EnvironmentDefault");
-
+            LayerMask defaultLayerMask = LayerMask.GetMask("Default");
+            
             for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
                 Vector3 shootDirection = CalculateSpread(_camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f)).direction);
                 var ray = new Ray(muzzleTransform.position, shootDirection);
-
+                
                 if (gunshotVFXPrefab)
                     Instantiate(gunshotVFXPrefab, muzzleTransform.position, Quaternion.LookRotation(shootDirection));
                 if (shellVFXPrefab)
@@ -108,10 +108,9 @@ namespace Weapon
                         Instantiate(impactVFXPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                     }
                 }
-                else
-                {
-                    Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
-                }
+
+                // Draw the ray for debugging purposes
+                Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
             }
 
             CalculateRecoil();
@@ -159,7 +158,7 @@ namespace Weapon
             var distanceFactor = Mathf.Pow(distanceToTarget / _controller.weaponData.maxDistance, 2);
 
             Vector3 spread = Random.insideUnitSphere * (_controller.weaponData.spread * spreadFactor * Mathf.Lerp(1f, maxSpreadIncrease, distanceFactor));
-
+            
             return baseDirection + spread;
         }
         
