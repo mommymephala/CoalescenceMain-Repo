@@ -84,8 +84,6 @@ namespace UI_Codebase
                 m_ItemName.text = slot.InventoryEntry.Item.Name;
                 m_ItemDesc.text = slot.InventoryEntry.Item.description;
                 UIManager.Get<UIAudio>().Play(m_NavigateClip);
-                Debug.Log("burdayım");
-                Debug.Log(m_NavigateClip);
             }
             else
             {

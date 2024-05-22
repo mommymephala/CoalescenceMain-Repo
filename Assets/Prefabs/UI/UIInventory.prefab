@@ -1110,46 +1110,46 @@ MonoBehaviour:
   m_ExpandingInteractionDelay: 1
   m_ShowClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1854739223
+      Data2: 1258625511
+      Data3: 1382192016
+      Data4: -608468932
+    Path: event:/SFX/UI/Inventory
   m_UseClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -784216038
+      Data2: 1086359743
+      Data3: -1467307386
+      Data4: -1083093743
+    Path: event:/SFX/UI/Menu_Select
   m_CantUseClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -624134871
+      Data2: 1087848466
+      Data3: 1782887564
+      Data4: 1051053484
+    Path: event:/SFX/UI/Menu_Files
   m_NavigateClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1523945865
+      Data2: 1184180376
+      Data3: 1338892720
+      Data4: -1289150585
+    Path: event:/SFX/UI/Menu_Start
   m_CloseClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -624134871
+      Data2: 1087848466
+      Data3: 1782887564
+      Data4: 1051053484
+    Path: event:/SFX/UI/Menu_Files
   m_ExpandClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -784216038
+      Data2: 1086359743
+      Data3: -1467307386
+      Data4: -1083093743
+    Path: event:/SFX/UI/Menu_Select
 --- !u!1 &7593419070713145190
 GameObject:
   m_ObjectHideFlags: 0
