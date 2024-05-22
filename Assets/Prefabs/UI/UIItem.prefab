@@ -423,18 +423,18 @@ MonoBehaviour:
   InteractDuringExamination: 1
   m_ShowClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -491553826
+      Data2: 1114473147
+      Data3: -745919085
+      Data4: -344973669
+    Path: event:/SFX/UI/Menu_Hover
   m_CloseClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -491553826
+      Data2: 1114473147
+      Data3: -745919085
+      Data4: -344973669
+    Path: event:/SFX/UI/Menu_Hover
 --- !u!1 &6011341161467009787
 GameObject:
   m_ObjectHideFlags: 0

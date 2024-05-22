@@ -851,4 +851,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 8258808933185817152}
   m_PauseHint: {fileID: 0}
-  m_ShowClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
+  m_ShowClip:
+    Guid:
+      Data1: -1523945865
+      Data2: 1184180376
+      Data3: 1338892720
+      Data4: -1289150585
+    Path: event:/SFX/UI/Menu_Start
