@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4210113038172744}
   - component: {fileID: 198897932501958704}
   - component: {fileID: 199837720287212598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FX_Fireball_Embers_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4592,7 +4592,7 @@ GameObject:
   - component: {fileID: 4090964502471736}
   - component: {fileID: 198635721415395410}
   - component: {fileID: 199028559573871196}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FX_Fireball_Embers_Trail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9173,7 +9173,7 @@ GameObject:
   - component: {fileID: 4828190570393816}
   - component: {fileID: 198003865990872292}
   - component: {fileID: 199486417664069434}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FX_Fireball_Trail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13758,7 +13758,7 @@ GameObject:
   - component: {fileID: 7102096070269903374}
   - component: {fileID: 1524153558023806012}
   - component: {fileID: 5056028575769615075}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FX_TarSpawnProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18679,11 +18679,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifetime: 5
-  attackType: {fileID: 11400000, guid: 058e2a2c1a006964cac0eeb73d81f872, type: 2}
+  lifetime: 3
   hitLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65
 --- !u!135 &1524153558023806012
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18694,10 +18693,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -18721,13 +18720,13 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

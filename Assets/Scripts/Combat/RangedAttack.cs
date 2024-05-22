@@ -5,27 +5,36 @@ namespace Combat
     public class RangedAttack : AttackBase
     {
         public GameObject projectilePrefab;
-        public AttackType attackType;
         public Transform firePoint;
-        public float fireRate;
-        private float _nextFireTime;
-
+        public int numberOfProjectiles = 3;
+        public float spreadAngle = 5f;
+        
         public override void StartAttack()
         {
-            if (Time.time >= _nextFireTime)
-            {
-                FireProjectile();
-                _nextFireTime = Time.time + 1f / fireRate;
-            }
+            FireProjectiles();
         }
 
-        private void FireProjectile()
+        private void FireProjectiles()
         {
             if (projectilePrefab && firePoint)
             {
-                GameObject projectileInstance = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-                var projectile = projectileInstance.GetComponent<Projectile>();
-                projectile.Initialize(this);
+                for (var i = 0; i < numberOfProjectiles; i++)
+                {
+                    FireProjectile(i);
+                }
+            }
+        }
+
+        private void FireProjectile(int index)
+        {
+            GameObject projectileInstance = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            var projectile = projectileInstance.GetComponent<Projectile>();
+            projectile.Initialize(this);
+
+            if (numberOfProjectiles > 1)
+            {
+                var angleOffset = spreadAngle * ((float)index / (numberOfProjectiles - 1) - 0.5f);
+                projectile.transform.Rotate(0, angleOffset, 0);
             }
         }
 
@@ -35,7 +44,7 @@ namespace Combat
 
             if (damageable)
             {
-                AttackImpact impact = attackType.GetImpact(damageable.Type);
+                AttackImpact impact = m_Attack.GetImpact(damageable.Type);
                 if (impact != null)
                 {
                     Vector3 impactPoint = other.transform.position;
@@ -50,7 +59,7 @@ namespace Combat
                 }
             }
         }
-
+        
         public override void OnAttackNotStarted() { }
     }
 }

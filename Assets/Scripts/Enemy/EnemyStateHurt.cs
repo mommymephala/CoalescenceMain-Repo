@@ -1,7 +1,6 @@
 using System;
 using Audio;
 using States;
-using UnityEngine;
 
 namespace Enemy
 {

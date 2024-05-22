@@ -29,7 +29,11 @@ namespace Combat
         {
             if (IsInLayerMask(other.gameObject, hitLayers))
             {
-                _rangedAttack.ProcessCollision(other);
+                if (other.CompareTag("Player"))
+                {
+                    _rangedAttack.ProcessCollision(other);
+                }
+
                 Destroy(gameObject);
             }
         }

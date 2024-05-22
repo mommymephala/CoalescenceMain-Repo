@@ -18,12 +18,10 @@ namespace Combat
         private HitBox m_HitBox;
         private float m_CurrentDuration;
         private float m_Time;
-        private List<Damageable> m_Damageables = new List<Damageable>();
 
         protected override void Awake()
         {
             base.Awake();
-
             m_HitBox = GetComponent<HitBox>();
         }
 
@@ -58,8 +56,7 @@ namespace Combat
 
         private void Hit()
         {
-            m_HitBox.GetOverlappingDamageables(m_Damageables);
-            foreach (Damageable dmg in m_Damageables)
+            if (m_HitBox.CheckForPlayer(out Damageable dmg))
             {
                 // TODO - Calculate real hit-point, for now just an estimation
                 Vector3 fakeHitPoint = (dmg.transform.position + m_HitBox.transform.position) * 0.5f;
@@ -84,6 +81,5 @@ namespace Combat
         {
             enabled = true;
         }
-
     }
 }

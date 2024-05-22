@@ -137,7 +137,7 @@ MonoBehaviour:
   m_AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
   m_AnimationBlendTime: 0.25
   m_StateTransitions:
-  - FromState: {fileID: 1203087359121711604}
+  - FromState: {fileID: 0}
     AnimationState: {fileID: 11400000, guid: 38297b17bd6196f4baed590a4f40ed8d, type: 2}
     AnimationBlendTime: 0.25
   m_ExitAnimationState: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_GoToStateAfterDuration: {fileID: 0}
   m_IdleState: {fileID: 8410736365416673727}
   m_AttackStates:
-  - {fileID: 1203087359121711604}
+  - {fileID: 2754507350817046170}
   m_InitialDelay: 1
   m_MinTimeBetweenAttacks: 1
   m_FacingSpeedBetweenAttacks: 1
@@ -458,7 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FromAllStates: 1
   m_FromStates: []
-  m_ExcludeStates: []
+  m_ExcludeStates:
+  - {fileID: 2754507350817046170}
   m_ToState: {fileID: 5618881770667597335}
 --- !u!1 &3836322152308743342
 GameObject:
@@ -813,7 +814,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Tags: []
-  m_Duration: 0.5
+  m_Duration: 0.25
   m_GoToStateAfterDuration: {fileID: 7574415718736593202}
 --- !u!1 &6005668545083860781
 GameObject:
@@ -1588,7 +1589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9218822190806181163}
-  - component: {fileID: 1203087359121711604}
+  - component: {fileID: 2754507350817046170}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -1611,7 +1612,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6303927467742110913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1203087359121711604
+--- !u!114 &2754507350817046170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1620,7 +1621,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8857347539298169429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192c70a39481f404fa72e416c7c8902e, type: 3}
+  m_Script: {fileID: 11500000, guid: e598a0ff1903ffc41b822969a4bcf603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AnimationState: {fileID: 0}
@@ -1638,14 +1639,63 @@ MonoBehaviour:
       m_Calls: []
   Tags: []
   m_Duration: 0
-  m_GoToStateAfterDuration: {fileID: 8410736365416673727}
+  m_GoToStateAfterDuration: {fileID: 3416583239326226275}
   m_AttackOptions:
   - {fileID: 3418702111639061465}
   m_AlertedState: {fileID: 3416583239326226275}
-  m_FacingSpeed: 2
+  m_FacingSpeed: 3
   m_RotateTowardsTarget: 1
   AttackDistance: 1.5
-  Cooldown: 2
+  Cooldown: 1
+  m_DisplacementForward:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_DisplacementUp:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_MaxAngle: 360
 --- !u!1 &9129546104590957728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1721,7 @@ Transform:
   m_GameObject: {fileID: 9129546104590957728}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.645, z: 0.136}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0.505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
