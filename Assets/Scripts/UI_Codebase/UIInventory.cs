@@ -19,7 +19,7 @@ namespace UI_Codebase
         [SerializeField] private TMPro.TextMeshProUGUI m_ItemName;
         [SerializeField] private TMPro.TextMeshProUGUI m_ItemDesc;
         [SerializeField] private UIInventoryItem m_Equipped;
-        [SerializeField] private UIInventoryItem m_EquippedSecondary;
+        // [SerializeField] private UIInventoryItem m_EquippedSecondary;
         [SerializeField] private UIInventoryItem m_FirstItemForSwap;
         [SerializeField] private float m_ExpandingInteractionDelay = 1f;
 
@@ -50,7 +50,7 @@ namespace UI_Codebase
 
             // Register callbacks for equipped slots
             RegisterItemCallbacks(m_Equipped);
-            RegisterItemCallbacks(m_EquippedSecondary);
+            // RegisterItemCallbacks(m_EquippedSecondary);
 
             m_ContextMenu.UseButton.onClick.AddListener(OnUse);
             m_ContextMenu.EquipButton.onClick.AddListener(OnEquip);
@@ -436,8 +436,8 @@ namespace UI_Codebase
 
         private void FillEquipped()
         {
-            FillEquipped(EquipmentSlot.Primary, m_Equipped);
-            FillEquipped(EquipmentSlot.Secondary, m_EquippedSecondary);
+            FillEquipped(EquipmentSlot.Weapon, m_Equipped);
+            // FillEquipped(EquipmentSlot.Secondary, m_EquippedSecondary);
         }
 
         // --------------------------------------------------------------------

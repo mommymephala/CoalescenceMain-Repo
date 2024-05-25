@@ -9,7 +9,7 @@ namespace Items
     public class EquipableItemData : ItemData
     {
         public GameObject EquipPrefab;
-        public EquipmentSlot Slot = EquipmentSlot.Primary;
+        public EquipmentSlot Slot = EquipmentSlot.Weapon;
         [Tooltip("If true, this item will be attached to the character when used from the inventory selecting the Equip option. In some cases, items might not need to be attached until a action happens")]
         public bool AttachOnEquipped = true;
         [Tooltip("If true, this item will be removed from the current inventory slot when equipped")]

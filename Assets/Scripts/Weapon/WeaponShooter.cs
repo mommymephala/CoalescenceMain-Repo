@@ -86,7 +86,7 @@ namespace Weapon
             for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
                 Vector3 shootDirection = CalculateSpread(_camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f)).direction);
-                var ray = new Ray(muzzleTransform.position, shootDirection);
+                var ray = new Ray(_camera.transform.position, shootDirection);
                 
                 if (gunshotVFXPrefab)
                     Instantiate(gunshotVFXPrefab, muzzleTransform.position, Quaternion.LookRotation(shootDirection));
@@ -96,7 +96,7 @@ namespace Weapon
                 // First check the hit against combat layer
                 if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
                 {
-                    Debug.DrawRay(muzzleTransform.position, shootDirection * hit.distance, Color.green, 2f);
+                    Debug.DrawRay(_camera.transform.position, shootDirection * hit.distance, Color.green, 2f);
                     ProcessHit(hit);
                 }
 
@@ -109,8 +109,7 @@ namespace Weapon
                     }
                 }
 
-                // Draw the ray for debugging purposes
-                Debug.DrawRay(muzzleTransform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
+                Debug.DrawRay(_camera.transform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);
             }
 
             CalculateRecoil();

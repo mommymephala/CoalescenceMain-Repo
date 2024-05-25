@@ -29,8 +29,7 @@ namespace Inventory
     public enum EquipmentSlot
     {
         None,
-        Primary,
-        Secondary
+        Weapon,
     }
 
     [Serializable]
@@ -69,13 +68,6 @@ namespace Inventory
     }
 
     [Serializable]
-    public class AmmoEntry // Entry used for the ammo that's inside the weapons
-    {
-        public int Amount;
-        public WeaponData weapon;
-    }
-
-    [Serializable]
     public struct InventoryEntrySaveData
     {
         public string ItemId;
@@ -99,7 +91,6 @@ namespace Inventory
         public List<InventoryEquippedEntrySaveData> EquippedItems;
         public int EquipedWeaponEntry;
         public List<string> Documents;
-        public List<string> Maps;
         public int MaxItems;
     }
 
@@ -117,7 +108,7 @@ namespace Inventory
         [SerializeField] private List<InventoryItemCombination> m_Combinations;
         [SerializeField] private DialogData m_OnFullDialog;
 
-        public EquipmentSlot WeaponSlot = EquipmentSlot.Primary;
+        public EquipmentSlot weaponSlot = EquipmentSlot.Weapon;
         public event Action OnEquippedWeaponChanged;
         public bool Expanded;
         public int PreExpansionSize;
@@ -300,7 +291,8 @@ namespace Inventory
                 {
                     return combi.OnCombine(entry1, entry2);
                 }
-                else if (combi.CanCombine(entry2, entry1))
+
+                if (combi.CanCombine(entry2, entry1))
                 {
                     return combi.OnCombine(entry2, entry1);
                 }
@@ -309,7 +301,7 @@ namespace Inventory
             // Auto combine bulkable items
             if (entry1.Item == entry2.Item && entry1.Item.flags.HasFlag(ItemFlags.Bulkable) && entry1 != entry2)
             {
-                entry1.Count = entry1.Count + entry2.Count;
+                entry1.Count += entry2.Count;
                 Remove(entry2, entry2.Count);
 
                 return entry1;
@@ -341,11 +333,15 @@ namespace Inventory
             WeaponData weapon = weaponEntry.Item as WeaponData;
             
             int prevAmmo = weaponEntry.SecondaryCount;
-            int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, weapon.maxAmmo);
-            weaponEntry.SecondaryCount = newAmmo;
-            int dif = newAmmo - prevAmmo;
+            if (weapon != null)
+            {
+                int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, weapon.maxAmmo);
+                weaponEntry.SecondaryCount = newAmmo;
+                int dif = newAmmo - prevAmmo;
 
-            Remove(ammoEntry, dif);
+                Remove(ammoEntry, dif);
+            }
+
             return weaponEntry;
         }
 
@@ -417,13 +413,14 @@ namespace Inventory
             
             if (equipable.MoveOutOfInventoryOnEquip)
             {
-                entry = new InventoryEntry()
+                entry = new InventoryEntry
                 {
                     Count = entry.Count,
                     SecondaryCount = entry.SecondaryCount,
                     Status = entry.Status,
                     Item = entry.Item
                 };
+                
                 Remove(entry.Item, 1, false);
                 OnEquippedWeaponChanged?.Invoke();
             }
@@ -498,7 +495,7 @@ namespace Inventory
 
         public bool CanReloadEquippedWeapon()
         {
-            if (m_Equipped.TryGetValue(WeaponSlot, out var entry))
+            if (m_Equipped.TryGetValue(weaponSlot, out InventoryEntry entry))
             {
                 return CanReloadWeapon(entry);
             }
@@ -523,35 +520,36 @@ namespace Inventory
 
         // --------------------------------------------------------------------
 
-        public InventoryEntry GetEquipped(EquipmentSlot slot) 
+        public InventoryEntry GetEquipped(EquipmentSlot slot)
         {
             if (m_Equipped.TryGetValue(slot, out InventoryEntry entry))
                 return entry;
-            else
-                return null;
+            
+            return null;
         }
 
         // --------------------------------------------------------------------
 
         public InventoryEntry GetEquippedWeapon()
         {
-            if (m_Equipped.TryGetValue(WeaponSlot, out InventoryEntry entry))
+            if (m_Equipped.TryGetValue(weaponSlot, out InventoryEntry entry))
                 return entry;
-            else
-                return null;
+            
+            return null;
         }
         
         // --------------------------------------------------------------------
 
         public EquipmentSlot GetOccupyingEquipmentSlot(InventoryEntry entry)
         {
-            foreach (var v in m_Equipped)
+            foreach (var valuePair in m_Equipped)
             {
-                if (v.Value == entry)
+                if (valuePair.Value == entry)
                 {
-                    return v.Key;
+                    return valuePair.Key;
                 }
             }
+            
             return EquipmentSlot.None;
         }
 
@@ -635,32 +633,12 @@ namespace Inventory
                 });
             }
 
-            // Save ammo in weapons
-            /*
-            int ammoCount = WeaponAmmo.Keys.Count;
-            saveData.WeaponAmmo = new InventoryAmmoSaveData[ammoCount];
-            int index = 0;
-            foreach(var ammoEntry in WeaponAmmo)
-            {
-                saveData.WeaponAmmo[index] = new InventoryAmmoSaveData()
-                {
-                    WeaponId = ammoEntry.Key.UniqueId,
-                    Amount = ammoEntry.Value
-                };
-                ++index;
-            }
-            */
-
-
             // Save documents
             saveData.Documents = new List<string>();
-            foreach (var doc in Documents)
+            foreach (DocumentData doc in Documents)
             {
                 saveData.Documents.Add(doc.uniqueId);
             }
-
-            // Save maps
-            saveData.Maps = new List<string>();
             
             saveData.MaxItems = m_MaxItems;
 
@@ -677,7 +655,7 @@ namespace Inventory
             Items = new InventoryEntry[m_MaxItems];
 
             // Load items
-            for (int i = 0; i < Items.Length; ++i)
+            for (var i = 0; i < Items.Length; ++i)
             {
                 Items[i] = new InventoryEntry();
 
@@ -699,8 +677,8 @@ namespace Inventory
 
             // Load equipped items
             m_Equipped.Clear();
-            List<InventoryEntry> equipped = new List<InventoryEntry>();
-            foreach (var savedEquipment in savedData.EquippedItems)
+            var equipped = new List<InventoryEntry>();
+            foreach (InventoryEquippedEntrySaveData savedEquipment in savedData.EquippedItems)
             {
                 if (savedEquipment.InventoryIndex >= 0)
                 {
@@ -718,16 +696,6 @@ namespace Inventory
                 }
             }
 
-            // Load ammo loaded in weapons
-            /*
-            WeaponAmmo.Clear();
-            for (int i = 0; i < savedData.WeaponAmmo.Length; ++i)
-            {
-                WeaponData weapon = (WeaponData)GameManager.Instance.ItemDatabase.GetRegister(savedData.WeaponAmmo[i].WeaponId);
-                WeaponAmmo.Add(weapon, savedData.WeaponAmmo[i].Amount);
-            }
-            */
-
             // Load Documents
             Documents.Clear();
             foreach (var docId in savedData.Documents)
@@ -735,11 +703,10 @@ namespace Inventory
                 Documents.Add(GameManager.Instance.DocumentDatabase.GetRegister(docId));
             }
 
-            foreach(var e in equipped)
+            foreach(InventoryEntry e in equipped)
             {
                 Equip(e);
             }
         }
     }
-
 }

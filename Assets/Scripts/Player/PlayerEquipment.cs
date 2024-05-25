@@ -16,11 +16,8 @@ namespace Player
             public ItemData Data;
         }
 
-        // --------------------------------------------------------------------
-
-        private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
-
         [SerializeField] private GameObject weaponHolder;
+        private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
 
         // --------------------------------------------------------------------
 
@@ -35,27 +32,7 @@ namespace Player
         {
             SetupCurrentEquipment();
         }
-        
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                TryActivateEquipment(EquipmentSlot.Primary);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                TryActivateEquipment(EquipmentSlot.Secondary);
-            }
-        }
-        
-        private void TryActivateEquipment(EquipmentSlot slot)
-        {
-            if (IsEquipmentSlotFilled(slot))
-            {
-                ActivateEquipment(slot);
-            }
-        }
-        
+
         private void SetupCurrentEquipment()
         {
             Dictionary<EquipmentSlot, InventoryEntry> equipped = GameManager.Instance.Inventory.Equipped;
@@ -63,7 +40,7 @@ namespace Player
             {
                 var equipable = e.Value.Item as EquipableItemData;
                 if (equipable.AttachOnEquipped)
-                    Equip(equipable, equipable.Slot);
+                    Equip(equipable, EquipmentSlot.Weapon);
             }
         }
 
@@ -82,11 +59,11 @@ namespace Player
             {
                 EquipableItemData equipable = msg.InventoryEntry.Item as EquipableItemData;
                 if (equipable.AttachOnEquipped)
-                    Equip(equipable, equipable.Slot);
+                    Equip(equipable, EquipmentSlot.Weapon);
             }
             else
             {
-                Unequip(msg.Slot);
+                Unequip(EquipmentSlot.Weapon);
             }
         }
 
@@ -98,48 +75,23 @@ namespace Player
                 Unequip(slot);
 
             GameObject instance = Instantiate(equipable.EquipPrefab, weaponHolder.transform);
-            
-            m_CurrentEquipment.Add(slot, new EquipmentEntry()
+
+            m_CurrentEquipment.Add(slot, new EquipmentEntry
             {
                 Instance = instance,
                 Data = equipable
             });
 
-            // Activate only if it's the primary weapon
-            if (slot == EquipmentSlot.Primary)
+            // Activate the equipped weapon
+            if (slot == EquipmentSlot.Weapon)
             {
                 instance.SetActive(true);
-                DeactivateOtherWeapons(EquipmentSlot.Secondary);
             }
-            
             else
             {
                 instance.SetActive(false);
             }
         }
-        
-        private void DeactivateOtherWeapons(EquipmentSlot slotToDeactivate)
-        {
-            if (m_CurrentEquipment.TryGetValue(slotToDeactivate, out EquipmentEntry entry))
-            {
-                entry.Instance.SetActive(false);
-            }
-        }
-        
-        private bool IsEquipmentSlotFilled(EquipmentSlot slot)
-        {
-            return m_CurrentEquipment.ContainsKey(slot) && m_CurrentEquipment[slot].Instance != null;
-        }
-        
-        private void ActivateEquipment(EquipmentSlot slot)
-        {
-            foreach (var equipment in m_CurrentEquipment)
-            {
-                equipment.Value.Instance.SetActive(equipment.Key == slot);
-            }
-        }
-    
-        // --------------------------------------------------------------------
 
         private void Unequip(EquipmentSlot type, bool destroy = true)
         {
@@ -151,35 +103,6 @@ namespace Player
                 m_CurrentEquipment.Remove(type);
             }
         }
-
-        // --------------------------------------------------------------------
-
-        /*public bool GetEquipped(EquipmentSlot type, out ItemData item, out GameObject instance)
-        {
-            item = null;
-            instance = null;
-
-            if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
-            {
-                item = entry.Data;
-                instance = entry.Instance;
-                return true;
-            }
-
-            return false;
-        }*/
-
-        // --------------------------------------------------------------------
-
-        // public GameObject GetWeaponInstance(EquipmentSlot type)
-        // {
-        //     if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
-        //     {
-        //         if (entry.Data as WeaponData)
-        //             return entry.Instance;
-        //     }
-        //     return null;
-        // }
 
         // --------------------------------------------------------------------
 

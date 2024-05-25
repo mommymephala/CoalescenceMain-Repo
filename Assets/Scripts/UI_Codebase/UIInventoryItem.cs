@@ -20,8 +20,6 @@ namespace UI_Codebase
 
         public InventoryEntry InventoryEntry { get; private set; }
 
-        public ItemData Data => InventoryEntry.Item;
-
         public void Fill(InventoryEntry entry)
         {
             InventoryEntry = entry;
