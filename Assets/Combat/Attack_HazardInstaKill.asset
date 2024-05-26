@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Attack_HazardInstaKill
   m_EditorClassIdentifier: 
   Impacts:
-  - Damage: 999
+  - Damage: 100
     Damageable:
     - {fileID: 11400000, guid: a0bcdcbbe4e64be4a8972bfe99195813, type: 2}
-    - {fileID: 11400000, guid: fdbbcf8df8fab944dac4cedfe107cc9f, type: 2}
     Filters: []
     PreDamageEffects: []
     PostDamageEffects: []

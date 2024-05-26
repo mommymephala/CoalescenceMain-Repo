@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5949896695563780502}
   - component: {fileID: 1549452370179021458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MainCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eafa02a1ebd7df43824c652e40d3a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ImpactVFX: {fileID: 1489431029902184, guid: 81415d60a3fe7074e82b186ee6f14b04, type: 3}
+  m_ImpactVFX: {fileID: 1277154925287174, guid: 15dc2313ea972f1478b5ef8aafa4171c, type: 3}
   m_ImpactVFXPosition: 0
   OnlyOnDeath: 0
 --- !u!1 &6588774028314337027

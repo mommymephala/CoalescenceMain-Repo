@@ -81,32 +81,40 @@ namespace Weapon
         {
             _timeSinceLastShot = 0f;
 
-            LayerMask defaultLayerMask = LayerMask.GetMask("Default");
-            
+            LayerMask combinedLayerMask = layerMask | LayerMask.GetMask("Default");
+    
             for (var i = 0; i < _controller.weaponData.bulletsPerShot; i++)
             {
                 Vector3 shootDirection = CalculateSpread(_camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f)).direction);
                 var ray = new Ray(_camera.transform.position, shootDirection);
-                
+        
                 if (gunshotVFXPrefab)
                     Instantiate(gunshotVFXPrefab, muzzleTransform.position, Quaternion.LookRotation(shootDirection));
                 if (shellVFXPrefab)
                     Instantiate(shellVFXPrefab, shellTransform.position, Quaternion.LookRotation(shootDirection));
 
-                // First check the hit against combat layer
-                if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, layerMask))
+                // Check the hit against combined layers
+                if (Physics.Raycast(ray, out RaycastHit hit, _controller.weaponData.maxDistance, combinedLayerMask))
                 {
                     Debug.DrawRay(_camera.transform.position, shootDirection * hit.distance, Color.green, 2f);
-                    ProcessHit(hit);
-                }
-
-                // Then check for visual effects on Default layer
-                if (Physics.Raycast(ray, out hit, _controller.weaponData.maxDistance, defaultLayerMask))
-                {
-                    if (impactVFXPrefab)
+            
+                    // Process the hit based on the layer
+                    if (((1 << hit.collider.gameObject.layer) & layerMask) != 0)
                     {
-                        Instantiate(impactVFXPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                        // Hit on combat layer
+                        ProcessHit(hit);
                     }
+                    else if (((1 << hit.collider.gameObject.layer) & LayerMask.GetMask("Default")) != 0)
+                    {
+                        // Hit on default layer
+                        if (impactVFXPrefab)
+                        {
+                            Instantiate(impactVFXPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                        }
+                    }
+
+                    // No need to check further since the ray hit something
+                    continue;
                 }
 
                 Debug.DrawRay(_camera.transform.position, shootDirection * _controller.weaponData.maxDistance, Color.red, 2f);

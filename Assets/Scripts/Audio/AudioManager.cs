@@ -205,11 +205,11 @@ namespace Audio
             PlayOneShot(enemySoundsMap[enemyType].enemyHurt, position, "Enemy hurt");
         }
         
-        public void PlayEnemyWeakpoint(string tag, Vector3 position)
+        public void PlayEnemyWeakpoint(string weakpointTag, Vector3 position)
         {
             EnemyType enemyType;
     
-            switch (tag)
+            switch (weakpointTag)
             {
                 case "TarSpawnWeakpoint":
                     enemyType = EnemyType.TarSpawn;
@@ -218,7 +218,7 @@ namespace Audio
                     enemyType = EnemyType.ExperimentalMan;
                     break;
                 default:
-                    Debug.LogWarning($"Unknown weakpoint tag: {tag}");
+                    Debug.LogWarning($"Unknown weakpoint tag: {weakpointTag}");
                     return;
             }
 
