@@ -256,7 +256,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{270055dc-6f95-43b7-a352-127892b6b9f9}">
 		<property name="volume">
-			<value>2.5</value>
+			<value>-7</value>
 		</property>
 		<property name="name">
 			<value>Audio 3</value>
@@ -324,6 +324,7 @@
 			<destination>{1712de8a-8e7e-4a0e-97fe-09d729af439a}</destination>
 			<destination>{7bcd4596-00d6-40e2-a5e4-0ff8e0a1435d}</destination>
 			<destination>{0d2bba4e-fc7e-458f-be23-48dbd3365b33}</destination>
+			<destination>{acba7ca7-a436-47c2-9e52-405474be0e2b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{19cb39b1-ede5-4bcf-b505-0495540ebbf3}" />
@@ -382,7 +383,18 @@
 	</object>
 	<object class="TremoloEffect" id="{0d2bba4e-fc7e-458f-be23-48dbd3365b33}">
 		<property name="frequency">
-			<value>0.900000036</value>
+			<value>0.650000036</value>
+		</property>
+		<property name="shape">
+			<value>0.275000006</value>
+		</property>
+	</object>
+	<object class="ThreeEQEffect" id="{acba7ca7-a436-47c2-9e52-405474be0e2b}">
+		<property name="midGain">
+			<value>8</value>
+		</property>
+		<property name="highGain">
+			<value>9.5</value>
 		</property>
 	</object>
 </objects>
