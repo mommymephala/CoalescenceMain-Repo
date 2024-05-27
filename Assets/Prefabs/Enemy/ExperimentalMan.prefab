@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15be47fe4d013f4289946a7272ccbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   MainAnimator: {fileID: 8991379180508460631}
 --- !u!114 &7848664016003671044
 MonoBehaviour:
@@ -1283,11 +1283,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Tags: []
-  m_DamageableSpecificAnimation: []
   collidersToDisable:
   - {fileID: 468959857660752580}
   - {fileID: 3480402836077216216}
   - {fileID: 5369623305134498980}
+  - {fileID: 7841338020795321452}
 --- !u!1 &7646507139384961102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 6744750222630287295}
   m_Layer: 9
   m_Name: DamageableWeak
-  m_TagString: TarSpawnWeakpoint
+  m_TagString: ExperimentalManWeakpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1711,7 +1711,7 @@ GameObject:
   - component: {fileID: 3188264851328578170}
   m_Layer: 9
   m_Name: DamageableWeak (1)
-  m_TagString: TarSpawnWeakpoint
+  m_TagString: ExperimentalManWeakpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

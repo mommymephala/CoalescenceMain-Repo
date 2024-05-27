@@ -127,11 +127,11 @@ MonoBehaviour:
       Path: 
     death:
       Guid:
-        Data1: 1210827514
-        Data2: 1337369996
-        Data3: -282045798
-        Data4: 180044456
-      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
+        Data1: 539353403
+        Data2: 1245661390
+        Data3: 2144278687
+        Data4: 1133579728
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Alert
   experimentalManSounds:
     idle:
       Guid:

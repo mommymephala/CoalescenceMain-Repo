@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using Audio;
 using States;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Enemy
