@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{d846636e-56d8-4ad3-8596-805fce2fe93a}">
+		<property name="name">
+			<value>Chip_Alert</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{4a960b8d-1d09-4445-a928-ef2611b79e11}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{0fea28f1-8e6c-43c5-b262-6e0a70d8cca8}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{2c8f7e2b-5279-4c85-aac7-bc935ef05bff}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{4a960b8d-1d09-4445-a928-ef2611b79e11}">
+		<relationship name="effects">
+			<destination>{d94b2ce3-b8e2-4f4e-a180-3c642915826b}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{0fea28f1-8e6c-43c5-b262-6e0a70d8cca8}" />
+	<object class="MixerBusFader" id="{d94b2ce3-b8e2-4f4e-a180-3c642915826b}" />
+</objects>

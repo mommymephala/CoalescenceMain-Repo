@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{40c74504-3f81-40df-a014-0e2b2bffe6ee}">
+		<property name="name">
+			<value>Elevator_Cor</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{63ebf765-629b-41a4-af2f-dd9bd12d055f}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{95266d20-382b-4414-aba9-5ef02bd9bb9d}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{1eb86f77-c307-4fa2-b659-081690174eb0}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{63ebf765-629b-41a4-af2f-dd9bd12d055f}">
+		<relationship name="effects">
+			<destination>{79626acb-cc4a-43a2-ba49-0460a97fc7ec}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{95266d20-382b-4414-aba9-5ef02bd9bb9d}" />
+	<object class="MixerBusFader" id="{79626acb-cc4a-43a2-ba49-0460a97fc7ec}" />
+</objects>

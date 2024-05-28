@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{c8593c55-2fc3-49dd-b41e-85577d1a7b13}">
+		<property name="name">
+			<value>Tar_Footstep</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{dff86385-1df5-4d1d-a2e6-450a3ebb58ee}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{b469da9f-8b01-46a1-8f89-d83b452676e9}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{8929927a-5b5b-4286-b08d-092f1f77a0c3}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{dff86385-1df5-4d1d-a2e6-450a3ebb58ee}">
+		<relationship name="effects">
+			<destination>{b5fc6ed9-fb6c-4497-9016-6408add9bcaf}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{b469da9f-8b01-46a1-8f89-d83b452676e9}" />
+	<object class="MixerBusFader" id="{b5fc6ed9-fb6c-4497-9016-6408add9bcaf}" />
+</objects>

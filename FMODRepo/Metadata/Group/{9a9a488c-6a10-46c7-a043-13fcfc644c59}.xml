@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{9a9a488c-6a10-46c7-a043-13fcfc644c59}">
+		<property name="name">
+			<value>Dog_idle</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{fff5f9c8-ee16-4f60-88c6-15b0fc444dcb}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{cc8ff0b5-09ed-49b8-adee-9064aa25cd9b}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{ba0e050b-b881-4fc8-b59e-a92d8222cd65}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{fff5f9c8-ee16-4f60-88c6-15b0fc444dcb}">
+		<relationship name="effects">
+			<destination>{df42f5ee-6cac-4019-a5f7-fda1cb5a58a9}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{cc8ff0b5-09ed-49b8-adee-9064aa25cd9b}" />
+	<object class="MixerBusFader" id="{df42f5ee-6cac-4019-a5f7-fda1cb5a58a9}" />
+</objects>
