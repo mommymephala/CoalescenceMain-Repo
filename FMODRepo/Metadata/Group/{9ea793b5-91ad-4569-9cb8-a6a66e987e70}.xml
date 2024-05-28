@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{9ea793b5-91ad-4569-9cb8-a6a66e987e70}">
+		<property name="name">
+			<value>Chip_Weakpoint</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{8f57f0a0-5d2a-4aaa-9928-a2717c80385e}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{029d7f1f-d66b-4837-bd6a-2449af33ba9d}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{2c8f7e2b-5279-4c85-aac7-bc935ef05bff}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{8f57f0a0-5d2a-4aaa-9928-a2717c80385e}">
+		<relationship name="effects">
+			<destination>{ca3b05dd-15c0-4814-8ce3-a1d8ce2a0fc2}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{029d7f1f-d66b-4837-bd6a-2449af33ba9d}" />
+	<object class="MixerBusFader" id="{ca3b05dd-15c0-4814-8ce3-a1d8ce2a0fc2}" />
+</objects>

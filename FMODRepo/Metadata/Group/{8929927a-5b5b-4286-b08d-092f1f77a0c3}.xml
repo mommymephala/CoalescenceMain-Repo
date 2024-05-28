@@ -5,7 +5,7 @@
 			<value>-2.5</value>
 		</property>
 		<property name="name">
-			<value>New Enemy</value>
+			<value>Tar</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{527e910e-ee71-447b-b201-df122ce5ce77}</destination>

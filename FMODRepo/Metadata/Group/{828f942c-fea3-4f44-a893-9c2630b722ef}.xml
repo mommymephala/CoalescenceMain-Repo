@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{828f942c-fea3-4f44-a893-9c2630b722ef}">
+		<property name="name">
+			<value>Tar_Idle</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{19049315-3e68-4fea-827a-3a9923aa0c47}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{8f0a1ff6-ebd6-40c6-84eb-5a308c192a7d}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{8929927a-5b5b-4286-b08d-092f1f77a0c3}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{19049315-3e68-4fea-827a-3a9923aa0c47}">
+		<relationship name="effects">
+			<destination>{1d1ce51e-c7a3-43b7-a844-4d71f93bfbec}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{8f0a1ff6-ebd6-40c6-84eb-5a308c192a7d}" />
+	<object class="MixerBusFader" id="{1d1ce51e-c7a3-43b7-a844-4d71f93bfbec}" />
+</objects>

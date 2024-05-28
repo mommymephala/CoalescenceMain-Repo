@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{21143052-0997-4324-9d77-78fdc7624e98}">
+		<property name="name">
+			<value>Silence</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{48b92798-6cf4-4472-b0cc-b741c70e311e}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{47e25198-3360-46c3-879f-40b6a9c02b0d}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{950f6607-b38c-4528-b49a-c04904b03e9b}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{48b92798-6cf4-4472-b0cc-b741c70e311e}">
+		<relationship name="effects">
+			<destination>{f4a7f23e-0b2b-4b46-9e9d-b677dbc57d12}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{47e25198-3360-46c3-879f-40b6a9c02b0d}" />
+	<object class="MixerBusFader" id="{f4a7f23e-0b2b-4b46-9e9d-b677dbc57d12}" />
+</objects>

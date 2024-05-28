@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{4434b7cb-a90d-4fb6-a561-f6583b48838a}">
+		<property name="name">
+			<value>Tar_Weakpoint</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{3965227a-628f-4b64-85c3-0c3a5e29d538}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{e36f0ccb-6395-41cb-be60-c3596e01a456}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{8929927a-5b5b-4286-b08d-092f1f77a0c3}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{3965227a-628f-4b64-85c3-0c3a5e29d538}">
+		<relationship name="effects">
+			<destination>{d4a28c49-9381-4fe1-be8f-560c37a911a1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{e36f0ccb-6395-41cb-be60-c3596e01a456}" />
+	<object class="MixerBusFader" id="{d4a28c49-9381-4fe1-be8f-560c37a911a1}" />
+</objects>

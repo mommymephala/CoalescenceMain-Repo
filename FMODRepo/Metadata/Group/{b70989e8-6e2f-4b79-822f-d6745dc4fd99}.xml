@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{b70989e8-6e2f-4b79-822f-d6745dc4fd99}">
+		<property name="name">
+			<value>Tar_Ranged</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{1c39f60f-6af3-4c47-91c4-7ffd4049c877}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{c7dcdb6d-63f0-4cc5-a690-5c074d37642a}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{8929927a-5b5b-4286-b08d-092f1f77a0c3}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{1c39f60f-6af3-4c47-91c4-7ffd4049c877}">
+		<relationship name="effects">
+			<destination>{cee88570-9e54-41fe-8788-b2f17352cbb1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{c7dcdb6d-63f0-4cc5-a690-5c074d37642a}" />
+	<object class="MixerBusFader" id="{cee88570-9e54-41fe-8788-b2f17352cbb1}" />
+</objects>
