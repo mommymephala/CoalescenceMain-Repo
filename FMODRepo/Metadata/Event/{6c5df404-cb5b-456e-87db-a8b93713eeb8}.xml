@@ -199,7 +199,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{426a5659-71ed-4eee-b043-b6cf9f5882c4}">
 		<property name="volume">
-			<value>-2</value>
+			<value>-80</value>
 		</property>
 		<property name="name">
 			<value>Tar_Enemy</value>

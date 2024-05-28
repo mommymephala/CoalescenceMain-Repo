@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{7f358f2e-fb9f-41fe-a3be-0d56625e5604}">
+		<property name="assetPath">
+			<value>499671-Small_FISH_or_REPTILE_Voice_-HURT_CRY_SCREAM_-Creatures-Monsters-Beasts-Dragons_Dinosaurs_-V2_08.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.3653333333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>
