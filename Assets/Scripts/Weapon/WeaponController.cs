@@ -9,6 +9,7 @@ using Player;
 using Systems;
 using UI_Codebase;
 using UnityEngine;
+using TMPro;
 
 namespace Weapon
 {
@@ -32,6 +33,8 @@ namespace Weapon
 
         public InventoryEntry CurrentWeaponEntry { get; private set; }
 
+        private TextMeshProUGUI ammoText;
+
         private void Awake()
         {
             Input = GetComponentInParent<IPlayerInput>();
@@ -39,7 +42,8 @@ namespace Weapon
             mouseLook = GetComponentInParent<MouseLook>();
             playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
             weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
-            crosshair = GameObject.Find("Crosshair").GetComponent<Crosshair>();
+            crosshair = GameObject.Find("Crosshair")?.GetComponent<Crosshair>();
+            ammoText = GameObject.Find("AmmoText")?.GetComponent<TextMeshProUGUI>();
         }
 
         private void OnEnable()
@@ -61,6 +65,7 @@ namespace Weapon
             if (CurrentWeaponEntry is { Item: WeaponData reloadableWeaponData })
             {
                 weaponData = reloadableWeaponData;
+                UpdateAmmoUI();
             }
             else
             {
@@ -111,6 +116,7 @@ namespace Weapon
                 RuntimeManager.PlayOneShot(weaponData.shotSound, transform.position);
                 crosshair.MultiplySize(100f, 1f, 0.1f);
                 Debug.Log($"Shot fired. Remaining ammo: {CurrentWeaponEntry.SecondaryCount}");
+                UpdateAmmoUI();
             }
             
             if (IsReloading)
@@ -161,6 +167,7 @@ namespace Weapon
                     weaponEntry.SecondaryCount += ammoAvailable;
                     inventory.Remove(ammoEntry.Item, ammoAvailable);
                     Debug.Log($"Reload complete. Ammo loaded: {ammoAvailable}");
+                    UpdateAmmoUI();
                 }
                 else
                 {
@@ -175,6 +182,16 @@ namespace Weapon
             IsReloading = false;
             UIManager.Get<UIInputListener>().RemoveBlockingContext(this);
             _reloadCoroutine = null;
+        }
+
+        private void UpdateAmmoUI()
+        {
+            if (ammoText != null && CurrentWeaponEntry != null)
+            {
+                int currentAmmo = CurrentWeaponEntry.SecondaryCount;
+                int maxAmmo = weaponData.maxAmmo;
+                ammoText.text = $"{currentAmmo} / {maxAmmo}";
+            }
         }
 
         private void OnDisable()

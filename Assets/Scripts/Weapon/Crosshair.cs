@@ -8,20 +8,20 @@ namespace Weapon
         [SerializeField] private int range;
         [SerializeField] private Vector2 minSize = new Vector2(87, 87);
         [SerializeField] private Vector2 maxSize = new Vector2(300, 300);
-        [SerializeField] private GameObject targetedObject;
-        private float sizeChangeDuration = 0f; // Duration for temporary size changes
+        private GameObject _targetedObject;
+        private float _sizeChangeDuration;
         
         public void Update() 
         {
-            if (sizeChangeDuration > 0) 
+            if (_sizeChangeDuration > 0) 
             {
-                sizeChangeDuration -= Time.deltaTime;
+                _sizeChangeDuration -= Time.deltaTime;
             }
         }
         
         public bool IsSizeChangeActive() 
         {
-            return sizeChangeDuration > 0;
+            return _sizeChangeDuration > 0;
         }
         
         public Vector2 GetSize()
@@ -60,7 +60,7 @@ namespace Weapon
             
             Vector2 smoothedSize = Vector2.Lerp(initialSize, newSize, time);
             GetComponent<RectTransform>().sizeDelta = smoothedSize;
-            sizeChangeDuration = duration;
+            _sizeChangeDuration = duration;
         }
         
         public void SetColor(Color color, float time = 0.1f)
@@ -81,11 +81,11 @@ namespace Weapon
             
             if (Physics.Raycast(ray, out RaycastHit hit, range))
             {
-                targetedObject = hit.transform.gameObject;
+                _targetedObject = hit.transform.gameObject;
                 return hit.transform.gameObject;
             }
 
-            targetedObject = null;
+            _targetedObject = null;
             return null;
         }
         
