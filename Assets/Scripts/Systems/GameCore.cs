@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -8,8 +9,6 @@ namespace Systems
     {
         [SerializeField] private CorePrefabs CorePrefabs;
         [SerializeField] private SceneReference[] DestroyInScenes;
-
-        // --------------------------------------------------------------------
 
         private void Awake()
         {
@@ -27,26 +26,22 @@ namespace Systems
             SceneManager.activeSceneChanged += OnSceneChange;
         }
 
-        // --------------------------------------------------------------------
-
         private void Start()
-        {            
+        {
             if (CorePrefabs)
             {
                 InitCorePrefabs();
             }
             else
             {
-                Debug.LogWarning("CorePrefabs has not been assigned. Are you using a deprecated HECommon? Use HECore prefab with a valid reference to CorePrefabs", gameObject);
+                Debug.LogWarning("CorePrefabs has not been assigned.");
             }
         }
-
-        // --------------------------------------------------------------------
 
         private void InitCorePrefabs()
         {
             var mapped = CorePrefabs.GetMappedPrefabs();
-            foreach(var mapEntry in mapped)
+            foreach (var mapEntry in mapped)
             {
                 var path = mapEntry.Key;
                 var objects = mapEntry.Value;
@@ -59,7 +54,7 @@ namespace Systems
                     parent.SetParent(transform);
                 }
 
-                foreach(GameObject go in objects)
+                foreach (GameObject go in objects)
                 {
                     if (!go)
                         continue;
@@ -69,33 +64,37 @@ namespace Systems
             }
         }
 
-        // --------------------------------------------------------------------
-
         private void OnSceneChange(Scene oldScene, Scene newScene)
         {
             EventSystem oldEventSystem = EventSystem.current;
             GameObject selected = oldEventSystem?.currentSelectedGameObject;
 
-            var destroyed = false;
+            bool shouldDestroy = false;
             foreach (SceneReference scene in DestroyInScenes)
             {
-                if (newScene.name == scene.name)
+                if (newScene.name == scene.Name)
                 {
-                    SceneManager.activeSceneChanged -= OnSceneChange;
-                    Destroy(gameObject);
-                    destroyed = true;
+                    shouldDestroy = true;
+                    break;
                 }
             }
 
-            //This fixes the issue where a new EventSystem doesn't work after the existing one is destroyed
-            EventSystem newEventSystem = EventSystem.current;
-            if (destroyed && oldEventSystem != newEventSystem && newEventSystem)
+            if (shouldDestroy)
             {
-                newEventSystem.gameObject.SetActive(false);
-                newEventSystem.gameObject.SetActive(true);
+                AudioManager.Instance.StopAmbientSound();
+                SceneManager.activeSceneChanged -= OnSceneChange;
+                Destroy(gameObject);
 
-                if (selected)
-                    newEventSystem.SetSelectedGameObject(selected);
+                // Fix for EventSystem issues
+                EventSystem newEventSystem = EventSystem.current;
+                if (oldEventSystem != newEventSystem && newEventSystem)
+                {
+                    newEventSystem.gameObject.SetActive(false);
+                    newEventSystem.gameObject.SetActive(true);
+
+                    if (selected)
+                        newEventSystem.SetSelectedGameObject(selected);
+                }
             }
         }
     }

@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Attack: {fileID: 11400000, guid: 06b3e2dd4e2784e4aaa580907142ed3c, type: 2}
-  projectilePrefab: {fileID: 1722081097931586, guid: 51514cb216c1d74419c89383ab57986e, type: 3}
+  projectilePrefab: {fileID: 1833268098726028, guid: 39660de9ab2710240bcb4e2a6d90e7b8, type: 3}
   firePoint: {fileID: 8041302348147929227}
   numberOfProjectiles: 1
   spreadAngle: 30

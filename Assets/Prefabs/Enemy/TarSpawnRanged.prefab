@@ -1565,7 +1565,7 @@ MonoBehaviour:
   m_AlertedState: {fileID: 1868372873648984923}
   m_FacingSpeed: 3
   m_RotateTowardsTarget: 1
-  AttackDistance: 5
+  AttackDistance: 7
   Cooldown: 1
 --- !u!1 &8892912308945189392
 GameObject:

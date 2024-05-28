@@ -1,3 +1,4 @@
+using Audio;
 using UI_Codebase;
 using UnityEngine;
 using UnityEngine.Video;
@@ -9,6 +10,7 @@ namespace Cinematics
         public void Play(VideoClip clip)
         {
             UIManager.Get<UICinematicPlayer>().Show(clip);
+            AudioManager.Instance.StopAmbientSound();
         }
     }
 }

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EmptyScene.unity
     guid: 1165606051fad0d4e8b458d018ae0876
+  - enabled: 1
+    path: Assets/Scenes/TempScene.unity
+    guid: eaba88cf16094a049a25f8729e37462f
   m_configObjects: {}

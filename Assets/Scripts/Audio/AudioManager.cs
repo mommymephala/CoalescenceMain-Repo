@@ -5,6 +5,7 @@ using FMODUnity;
 using Singleton;
 using States;
 using UnityEngine;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Audio
 {
@@ -73,6 +74,8 @@ namespace Audio
         private float _crossfadeDuration;
 
         private bool _isInsideSafeRoom;
+        
+        private EventInstance _ambientInstance;
 
         protected override void Awake()
         {
@@ -135,9 +138,18 @@ namespace Audio
 
         private void StartAmbientSound()
         {
-            EventInstance ambientInstance = RuntimeManager.CreateInstance(ambient);
-            ambientInstance.start();
-            _fadeCoroutines.Add(ambientInstance, null);
+            _ambientInstance = RuntimeManager.CreateInstance(ambient);
+            _ambientInstance.start();
+            _fadeCoroutines.Add(_ambientInstance, null);
+        }
+        
+        public void StopAmbientSound()
+        {
+            if (_ambientInstance.isValid())
+            {
+                _ambientInstance.stop(STOP_MODE.IMMEDIATE);
+                _ambientInstance.release();
+            }
         }
 
         public void PlayFootstep(Vector3 position)
