@@ -1,9 +1,0 @@
-ChoiceNodeInspector {
-    padding: 20px 14px;
-}
-
-ChoiceNodeInspector Button.add-option {
-    margin-top: 10px;
-    padding: 10px;
-    -unity-font-style: bold;
-}

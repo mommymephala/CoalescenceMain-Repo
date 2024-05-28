@@ -1,5 +1,0 @@
-ActorField > *
-{
-    margin-bottom: 5px;
-    height: 22px;
-}
