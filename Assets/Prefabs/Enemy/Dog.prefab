@@ -49,7 +49,7 @@ MonoBehaviour:
   Animation: {fileID: 11400000, guid: 02ebd4999d3040b46a196a90c0adbcaa, type: 2}
   AnimationBlendTime: 0.2
   Duration: 1
-  AttackActivationDelay: 1
+  AttackActivationDelay: 0.5
 --- !u!114 &3803455235367742081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15be47fe4d013f4289946a7272ccbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 4
   MainAnimator: {fileID: 6801928526224197610}
 --- !u!114 &7848664016003671044
 MonoBehaviour:
@@ -1309,7 +1309,7 @@ GameObject:
   - component: {fileID: 6744750222630287295}
   m_Layer: 9
   m_Name: DamageableWeak
-  m_TagString: TarSpawnWeakpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1792,6 +1792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PropertyName: Speed
-  m_InterpolationSpeed: 0.5
+  m_InterpolationSpeed: 5
   OptionalForwardReference: {fileID: 0}
   m_TeleportationThreshold: 1

@@ -33,7 +33,9 @@ namespace Audio
         public enum EnemyType
         {
             TarSpawn,
-            ExperimentalMan
+            ExperimentalMan,
+            TarSpawnRanged,
+            Dog,
         }
 
         public enum ElevatorType
@@ -58,6 +60,8 @@ namespace Audio
         [Header("Enemy Sounds")]
         public EnemySounds tarSpawnSounds;
         public EnemySounds experimentalManSounds;
+        public EnemySounds tarSpawnRangedSounds;
+        public EnemySounds dogSounds;
         public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
 
         [Header("Environment")]
@@ -94,7 +98,9 @@ namespace Audio
             enemySoundsMap = new Dictionary<EnemyType, EnemySounds>
             {
                 { EnemyType.TarSpawn, tarSpawnSounds },
-                { EnemyType.ExperimentalMan, experimentalManSounds }
+                { EnemyType.ExperimentalMan, experimentalManSounds },
+                { EnemyType.TarSpawnRanged, tarSpawnRangedSounds},
+                { EnemyType.Dog, dogSounds}
             };
 
             elevatorSoundsMap = new Dictionary<ElevatorType, EventReference>
@@ -109,7 +115,9 @@ namespace Audio
             actorToEnemyTypeMap = new Dictionary<Actor.ActorType, EnemyType>
             {
                 { Actor.ActorType.TarSpawn, EnemyType.TarSpawn },
-                { Actor.ActorType.ExperimentalMan, EnemyType.ExperimentalMan }
+                { Actor.ActorType.ExperimentalMan, EnemyType.ExperimentalMan },
+                { Actor.ActorType.TarSpawnRanged, EnemyType.TarSpawnRanged},
+                { Actor.ActorType.Dog, EnemyType.Dog }
             };
         }
 

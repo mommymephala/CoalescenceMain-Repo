@@ -1,4 +1,3 @@
-using System;
 using Audio;
 using States;
 
@@ -10,17 +9,8 @@ namespace Enemy
         {
             base.StateEnter(fromState);
 
-            switch (Actor.type)
-            {
-                case Actor.ActorType.TarSpawn:
-                    AudioManager.Instance.PlayEnemyHurt(AudioManager.EnemyType.TarSpawn, transform.position);
-                    break;
-                case Actor.ActorType.ExperimentalMan:
-                    AudioManager.Instance.PlayEnemyHurt(AudioManager.EnemyType.ExperimentalMan, transform.position);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            AudioManager.Instance.PlayEnemyHurt(AudioManager.Instance.GetEnemyTypeFromActorType(Actor.type),
+                transform.position);
         }
     }
 }

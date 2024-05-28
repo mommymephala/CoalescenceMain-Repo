@@ -9,7 +9,9 @@ namespace States
         {
             TarSpawn,
             ExperimentalMan,
-            Player
+            Player,
+            TarSpawnRanged,
+            Dog
         }
 
         public ActorType type;

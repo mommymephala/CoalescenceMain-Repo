@@ -49,6 +49,12 @@ namespace Combat
                 case Actor.ActorType.ExperimentalMan:
                     AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.ExperimentalMan, AudioManager.EnemyAttackType.NormalAttack, transform.position);
                     break;
+                case Actor.ActorType.TarSpawnRanged:
+                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.TarSpawnRanged, AudioManager.EnemyAttackType.NormalAttack, transform.position);
+                    break;
+                case Actor.ActorType.Dog:
+                    AudioManager.Instance.PlayEnemyAttack(AudioManager.EnemyType.Dog, AudioManager.EnemyAttackType.NormalAttack, transform.position);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

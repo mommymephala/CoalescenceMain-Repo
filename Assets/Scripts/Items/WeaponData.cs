@@ -33,6 +33,5 @@ namespace Items
         public EventReference shotSound;
         public EventReference reloadSound;
         public EventReference noAmmoSound;
-        public EventReference weaponSwitch;
     }
 }
