@@ -127,11 +127,11 @@ MonoBehaviour:
       Path: 
     death:
       Guid:
-        Data1: 539353403
-        Data2: 1245661390
-        Data3: 2144278687
-        Data4: 1133579728
-      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Alert
+        Data1: 1210827514
+        Data2: 1337369996
+        Data3: -282045798
+        Data4: 180044456
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
   experimentalManSounds:
     idle:
       Guid:
@@ -142,11 +142,11 @@ MonoBehaviour:
       Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Idle/Chip_Enemy_Idle
     alert:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1785072142
+        Data2: 1122969484
+        Data3: 584266670
+        Data4: -460434288
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Enemy_Chip_Alert/Enemy_Chip_Alert
     footstep:
       Guid:
         Data1: 1990342618

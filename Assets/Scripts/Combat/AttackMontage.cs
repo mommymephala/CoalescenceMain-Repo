@@ -15,7 +15,6 @@ namespace Combat
         public AnimatorStateHandle Animation;
         public float AnimationBlendTime = 0.2f;
         public float Duration;
-        public float MontageDelay; // Can be used later if needed
         public float AttackActivationDelay;
 
         // --------------------------------------------------------------------
