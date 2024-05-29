@@ -1,4 +1,4 @@
-using System;
+using Systems;
 using UnityEngine;
 
 namespace Weapon
@@ -38,7 +38,7 @@ namespace Weapon
         
         private void ProcessAimingInput()
         {
-            if (_controller.playerController.IsGrounded && !_controller.playerController.run)
+            if (GameManager.Instance.IsPlaying && _controller.playerController.IsGrounded && !_controller.playerController.run)
             {
                 if (toggleAim && _controller.Input.IsAimingDown())
                 {

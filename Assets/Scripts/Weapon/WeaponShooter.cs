@@ -72,7 +72,7 @@ namespace Weapon
         {
             var hasAmmo = _controller.CurrentWeaponEntry is { SecondaryCount: > 0 };
             var canShootTiming = _timeSinceLastShot >= 1f / (_controller.weaponData.fireRate / 60f);
-            var playerStateAllowed = !_controller.playerController.run && _controller.playerController.IsGrounded;
+            var playerStateAllowed = GameManager.Instance.IsPlaying && !_controller.playerController.run && _controller.playerController.IsGrounded;
 
             return hasAmmo && canShootTiming && playerStateAllowed && !_controller.IsReloading;
         }

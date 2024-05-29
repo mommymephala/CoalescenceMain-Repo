@@ -20,16 +20,8 @@ namespace UI_Codebase
         [SerializeField] private Image m_GameOverText;
         [SerializeField] private float m_ShowDelay = 3;
 
-        private IUIInput m_Input;
         private Material m_GameOverTextMaterial;
         private bool m_SaveSlotAvailable;
-
-        // --------------------------------------------------------------------
-
-        private void Awake()
-        {
-            m_Input = GetComponentInParent<IUIInput>();    
-        }
 
         // --------------------------------------------------------------------
 
@@ -50,14 +42,14 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void OnGameOver(GameOverMessage msg)
+        private void OnGameOver(GameOverMessage msg)
         {
             GameManager.Instance.StartCoroutine(ShowRoutine()); // running on manager cause this is disabled
         }
 
         // --------------------------------------------------------------------
 
-        IEnumerator ShowRoutine()
+        private IEnumerator ShowRoutine()
         {
             yield return Yielders.Time(m_ShowDelay);
 
@@ -87,7 +79,7 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void Show()
+        private void Show()
         {
             m_GameOverTextMaterial.SetFloat(k_ActivationTimeID, Time.timeSinceLevelLoad);
             gameObject.SetActive(true);
@@ -97,7 +89,7 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void Hide()
+        private void Hide()
         {
             gameObject.SetActive(false);
             CursorController.Instance.SetInUI(false);

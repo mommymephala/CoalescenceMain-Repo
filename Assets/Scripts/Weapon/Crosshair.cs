@@ -1,3 +1,5 @@
+using System;
+using Systems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +12,10 @@ namespace Weapon
         [SerializeField] private Vector2 maxSize = new Vector2(300, 300);
         private GameObject _targetedObject;
         private float _sizeChangeDuration;
-        
-        public void Update() 
+
+        private void Update()
         {
-            if (_sizeChangeDuration > 0) 
+            if (_sizeChangeDuration > 0)
             {
                 _sizeChangeDuration -= Time.deltaTime;
             }

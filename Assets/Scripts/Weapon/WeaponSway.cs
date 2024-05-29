@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Systems;
+using UnityEngine;
 
 namespace Weapon
 {
@@ -22,6 +23,9 @@ namespace Weapon
 
         private void Update()
         {
+            if (!GameManager.Instance.IsPlaying)
+                return;
+            
             CalculateSway();
             TiltSway();
         }

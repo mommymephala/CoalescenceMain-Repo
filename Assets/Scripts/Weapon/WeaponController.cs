@@ -33,7 +33,7 @@ namespace Weapon
 
         public InventoryEntry CurrentWeaponEntry { get; private set; }
 
-        private TextMeshProUGUI ammoText;
+        private TextMeshProUGUI _ammoText;
 
         private void Awake()
         {
@@ -43,7 +43,7 @@ namespace Weapon
             playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
             weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
             crosshair = GameObject.Find("Crosshair")?.GetComponent<Crosshair>();
-            ammoText = GameObject.Find("AmmoText")?.GetComponent<TextMeshProUGUI>();
+            _ammoText = GameObject.Find("AmmoText")?.GetComponent<TextMeshProUGUI>();
         }
 
         private void OnEnable()
@@ -62,15 +62,10 @@ namespace Weapon
         {
             CurrentWeaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
 
-            if (CurrentWeaponEntry is { Item: WeaponData reloadableWeaponData })
-            {
-                weaponData = reloadableWeaponData;
-                UpdateAmmoUI();
-            }
-            else
-            {
-                Debug.LogWarning("No equipped weapon found or the equipped item is not a reloadable weapon.");
-            }
+            if (CurrentWeaponEntry is not { Item: WeaponData reloadableWeaponData }) return;
+            
+            weaponData = reloadableWeaponData;
+            UpdateAmmoUI();
         }
 
         private void Update()
@@ -115,13 +110,11 @@ namespace Weapon
                 CurrentWeaponEntry.SecondaryCount--;
                 RuntimeManager.PlayOneShot(weaponData.shotSound, transform.position);
                 crosshair.MultiplySize(100f, 1f, 0.1f);
-                Debug.Log($"Shot fired. Remaining ammo: {CurrentWeaponEntry.SecondaryCount}");
                 UpdateAmmoUI();
             }
             
             if (IsReloading)
             {
-                Debug.Log("Cannot shoot: Currently reloading.");
                 return;
             }
 
@@ -129,12 +122,10 @@ namespace Weapon
             
             if (GameManager.Instance.Inventory.Contains(weaponData.ammoItem))
             {
-                Debug.Log("Out of ammo, attempting to reload...");
                 StartReloadProcess(CurrentWeaponEntry);
             }
             else
             {
-                Debug.Log("Cannot shoot: Out of ammo and no ammo available in inventory.");
                 RuntimeManager.PlayOneShot(weaponData.noAmmoSound, transform.position);
             }
         }
@@ -166,17 +157,8 @@ namespace Weapon
                 {
                     weaponEntry.SecondaryCount += ammoAvailable;
                     inventory.Remove(ammoEntry.Item, ammoAvailable);
-                    Debug.Log($"Reload complete. Ammo loaded: {ammoAvailable}");
                     UpdateAmmoUI();
                 }
-                else
-                {
-                    Debug.Log("No ammo available to reload.");
-                }
-            }
-            else
-            {
-                Debug.Log("No ammo available to reload.");
             }
 
             IsReloading = false;
@@ -186,12 +168,11 @@ namespace Weapon
 
         private void UpdateAmmoUI()
         {
-            if (ammoText != null && CurrentWeaponEntry != null)
-            {
-                int currentAmmo = CurrentWeaponEntry.SecondaryCount;
-                int maxAmmo = weaponData.maxAmmo;
-                ammoText.text = $"{currentAmmo} / {maxAmmo}";
-            }
+            if (_ammoText == null || CurrentWeaponEntry == null) return;
+            
+            var currentAmmo = CurrentWeaponEntry.SecondaryCount;
+            var maxAmmo = weaponData.maxAmmo;
+            _ammoText.text = $"{currentAmmo} / {maxAmmo}";
         }
 
         private void OnDisable()

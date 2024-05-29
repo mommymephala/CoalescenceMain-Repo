@@ -1,4 +1,5 @@
 ﻿using Character_Movement.Components;
+using Systems;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -859,6 +860,9 @@ namespace Character_Movement.Controllers
 
         public virtual void FixedUpdate()
         {
+            if (!GameManager.Instance.IsPlaying)
+                return;
+            
             // Pause / resume character
 
             // Pause();
@@ -887,6 +891,9 @@ namespace Character_Movement.Controllers
 
             // if (isPaused)
             //     return;
+            
+            if (!GameManager.Instance.IsPlaying)
+                return;
 
             // Update character rotation (if not paused)
 

@@ -1,4 +1,5 @@
 using Character_Movement.Controllers;
+using Systems;
 using UnityEngine;
 
 namespace Weapon
@@ -26,6 +27,9 @@ namespace Weapon
 
         private void Update()
         {
+            if (!GameManager.Instance.IsPlaying)
+                return;
+            
             ApplyBobbing();
         }
 

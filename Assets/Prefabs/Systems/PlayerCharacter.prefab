@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 8122827582609486457}
   - component: {fileID: 4953823772626052266}
   - component: {fileID: 4101167343805430719}
+  - component: {fileID: 9082515529379642420}
   m_Layer: 6
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -758,10 +759,38 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9082515529379642420}
+        m_TargetAssemblyTypeName: Combat.PlayerFallOnDeath, Assembly-CSharp
+        m_MethodName: ApplyDeathEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLoadedDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9082515529379642420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855049204320965907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad291119b0947d2bad85c984853616c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropDuration: 1.5
+  rotationDuration: 1
+  dropDistance: 1.5
+  rotationAngle: 60
 --- !u!1 &6997541139336552359
 GameObject:
   m_ObjectHideFlags: 0

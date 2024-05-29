@@ -16,14 +16,14 @@ namespace Systems
 
     public class PauseController : SingletonBehaviourDontDestroy<PauseController>
     {
-        private int _mPauseCount;
+        private int _pauseCount;
 
-        public bool IsPaused => _mPauseCount > 0;
+        public bool IsPaused => _pauseCount > 0;
 
         public void Pause()
         {
-            ++_mPauseCount;
-            if (_mPauseCount == 1)
+            ++_pauseCount;
+            if (_pauseCount == 1)
                 MessageBuffer<GamePausedMessage>.Dispatch(GamePausedMessage.Default);
             
             Time.timeScale = 0f;
@@ -33,15 +33,15 @@ namespace Systems
 
         public void Resume()
         {
-            --_mPauseCount;
+            --_pauseCount;
 
-            if (_mPauseCount <= 0)
+            if (_pauseCount <= 0)
             {
                 MessageBuffer<GameUnpausedMessage>.Dispatch(GameUnpausedMessage.Default);
                 Time.timeScale = 1f;
             }
 
-            Debug.Assert(_mPauseCount >= 0, "PauseController:  PauseCount went below 0");
+            Debug.Assert(_pauseCount >= 0, "PauseController:  PauseCount went below 0");
         }
 
 #if UNITY_EDITOR

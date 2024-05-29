@@ -18,7 +18,7 @@ namespace Combat
         {
             if (_isDisabled) return;
 
-            if (sensesController.IsPlayerInSight)
+            if (sensesController.IsPlayerInSight && sensesController.IsPlayerAlive)
             {
                 Vector3 direction = (sensesController.PlayerTransform.position - turretPivot.position).normalized;
                 Quaternion lookRotation = Quaternion.LookRotation(direction);

@@ -1,5 +1,6 @@
 ﻿using Audio;
 using Player;
+using Systems;
 using UnityEngine;
 
 namespace Character_Movement.Controllers
@@ -97,6 +98,9 @@ namespace Character_Movement.Controllers
 
         protected override void HandleInput()
         {
+            if (!GameManager.Instance.IsPlaying)
+                return;
+            
             // Use GetPrimaryAxis for movement direction
             Vector2 inputAxis = _input.GetPrimaryAxis();
             MoveDirection = new Vector3
