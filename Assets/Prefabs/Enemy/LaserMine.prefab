@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8386911931510261660}
   - component: {fileID: 5821036383725799035}
   - component: {fileID: 2482627901830948953}
+  - component: {fileID: 3463545017251684240}
   m_Layer: 9
   m_Name: Damageable
   m_TagString: Untagged
@@ -73,6 +74,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.45521152, y: 0.15687853, z: 0.36602455}
   m_Center: {x: -0.009759963, y: 0.018434316, z: -0.018125623}
+--- !u!114 &3463545017251684240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987054298056996877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eafa02a1ebd7df43824c652e40d3a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpactVFX: {fileID: 1067536016464596, guid: 9edbc7f50a9ff9e4789ba2cb196f5b51, type: 3}
+  m_ImpactVFXPosition: 0
+  OnlyOnDeath: 0
 --- !u!1 &1371022550498511282
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +104,7 @@ GameObject:
   - component: {fileID: 5143308503909051659}
   - component: {fileID: 8614024475794201872}
   m_Layer: 0
-  m_Name: Laser
+  m_Name: LaserMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

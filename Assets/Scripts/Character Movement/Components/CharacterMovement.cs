@@ -524,7 +524,7 @@ namespace Character_Movement.Components
 
         #region METHODS
 
-        /*/// <summary>
+        /// <summary>
         /// Pause Rigidbody interaction, will save / restore current velocities (linear, angular) if desired.
         /// While paused, will turn the Rigidbody into kinematic, preventing any physical interaction.
         /// </summary>
@@ -565,7 +565,7 @@ namespace Character_Movement.Components
 
                 cachedRigidbody.WakeUp();
             }
-        }*/
+        }
 
         /// <summary>
         /// Set CapsuleCollider dimensions. Center is automatically configured.

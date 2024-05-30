@@ -132,7 +132,7 @@ namespace Character_Movement.Controllers
 
         private bool _allowVerticalMovement;
         
-        // private bool _restoreVelocityOnResume = true;
+        private bool _restoreVelocityOnResume = true;
 
         #endregion
 
@@ -452,23 +452,45 @@ namespace Character_Movement.Controllers
             get => _moveDirection;
             set => _moveDirection = Vector3.ClampMagnitude(value, 1.0f);
         }
-        
+
         /// <summary>
         /// Indicates whether the character is currently moving based on the movement input.
         /// </summary>
-        
+
         public bool IsMoving => _moveDirection.sqrMagnitude >= 0.0001f;
+
+        /// <summary>
+        /// Toggle pause / resume.
+        /// </summary>
+
+        public bool pause { get; set; }
+
+        /// <summary>
+        /// Is the character paused?
+        /// </summary>
+
+        public bool isPaused { get; private set; }
+        
+        /// <summary>
+        /// Should saved velocity (when pause == true) be restored on resume (when pause == false)?
+        /// If true, the saved rigidbody velocity will be restored on resume, if false, the rigidbody will be reset (zero).
+        /// </summary>
+
+        public bool restoreVelocityOnResume
+        {
+            get { return _restoreVelocityOnResume; }
+            set { _restoreVelocityOnResume = value; }
+        }
 
         #endregion
 
         #region METHODS
 
-        /*/// <summary>
+        /// <summary>
         /// Pause Rigidbody physical interaction, will restore current velocities (linear, angular) if desired (restoreVelocityOnResume == true).
         /// While paused, will turn the Rigidbody into kinematic, preventing any physical interaction.
         /// </summary>
-
-        private void Pause()
+        public void Pause()
         {
             if (pause && !isPaused)
             {
@@ -477,6 +499,7 @@ namespace Character_Movement.Controllers
                 movement.Pause(true);
                 isPaused = true;
             }
+            
             else if (!pause && isPaused)
             {
                 // Resume
@@ -484,7 +507,7 @@ namespace Character_Movement.Controllers
                 movement.Pause(false, restoreVelocityOnResume);
                 isPaused = false;
             }
-        }*/
+        }
 
         /// <summary>
         /// Rotate the character towards a given direction vector.
@@ -860,17 +883,11 @@ namespace Character_Movement.Controllers
 
         public virtual void FixedUpdate()
         {
-            if (!GameManager.Instance.IsPlaying)
-                return;
-            
             // Pause / resume character
 
-            // Pause();
+            Pause();
 
             // If paused, return
-
-            // if (isPaused)
-            //     return;
 
             // Perform character movement
 
@@ -883,17 +900,15 @@ namespace Character_Movement.Controllers
 
         public virtual void Update()
         {
+            if (!GameManager.Instance.IsPlaying)
+                return;
+            
+            if (isPaused)
+                return;
+            
             // Handle input
 
             HandleInput();
-
-            // If paused, return
-
-            // if (isPaused)
-            //     return;
-            
-            if (!GameManager.Instance.IsPlaying)
-                return;
 
             // Update character rotation (if not paused)
 

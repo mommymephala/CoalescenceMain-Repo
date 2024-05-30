@@ -58,7 +58,7 @@ namespace Systems
 
         // --------------------------------------------------------------------
 
-        public bool IsPlaying 
+        public bool IsPlaying
         { 
             get => !PauseController.Instance.IsPaused && m_IsPlaying;
             set => m_IsPlaying = value;

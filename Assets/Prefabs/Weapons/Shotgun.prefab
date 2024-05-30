@@ -187,7 +187,7 @@ MonoBehaviour:
   shellTransform: {fileID: 2376879147751833644}
   gunshotVFXPrefab: {fileID: 1792092052645256, guid: 9d7ecf0be86accd428ee79b0d93d8c01, type: 3}
   shellVFXPrefab: {fileID: 1559231698673136, guid: d549624c880a76748ad05456efbce0a1, type: 3}
-  impactVFXPrefab: {fileID: 1067536016464596, guid: 9edbc7f50a9ff9e4789ba2cb196f5b51, type: 3}
+  impactVFXPrefab: {fileID: 1180248314969840, guid: cd5b978365288d04cb516bb61159bb35, type: 3}
 --- !u!114 &5525547177265907086
 MonoBehaviour:
   m_ObjectHideFlags: 0

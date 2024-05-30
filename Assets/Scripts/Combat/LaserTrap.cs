@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 
 namespace Combat
@@ -76,6 +77,7 @@ namespace Combat
         public void Explode()
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlayMineExplosion(transform.position);
 
             var numColliders = Physics.OverlapSphereNonAlloc(transform.position, explosionRadius, _colliders);
             for (var i = 0; i < numColliders; i++)

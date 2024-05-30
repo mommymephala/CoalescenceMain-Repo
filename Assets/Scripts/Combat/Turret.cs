@@ -1,3 +1,4 @@
+using Audio;
 using Enemy;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Combat
         [SerializeField] private float fireRate = 1f;
         [SerializeField] private RangedAttack rangedAttack;
         [SerializeField] private EnemySensesController sensesController;
+        [SerializeField] private GameObject explosionPrefab;
 
         private float _fireTimer;
         private bool _isDisabled;
@@ -40,7 +42,15 @@ namespace Combat
                 GameObject projectileInstance = Instantiate(rangedAttack.projectilePrefab, rangedAttack.firePoint.position, rangedAttack.firePoint.rotation);
                 var projectile = projectileInstance.GetComponent<Projectile>();
                 projectile.Initialize(rangedAttack);
+                AudioManager.Instance.PlayTurretShot(transform.position);
             }
+        }
+
+        public void Explode()
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlayMineExplosion(transform.position);
+            gameObject.SetActive(false);
         }
 
         public void DisableTurret()

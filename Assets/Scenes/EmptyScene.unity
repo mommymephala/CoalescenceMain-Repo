@@ -194,7 +194,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3772103242538898809, guid: 455a0d83e7921ab4e9335a2fe24b143f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.379
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 3772103242538898809, guid: 455a0d83e7921ab4e9335a2fe24b143f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -500,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 370437340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.492, y: 0.549, z: 0.459}
+  m_LocalPosition: {x: 4.45, y: 0.549, z: 0.459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1805,12 +1805,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8203255208461063177, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
       propertyPath: DestroyInScenes.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8203255208461063177, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
       propertyPath: DestroyInScenes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4e6e78dff42f3124a84bfd4b2dff770e, type: 2}
+      objectReference: {fileID: 11400000, guid: 821ce6b4086896344a0686d3f3971eb5, type: 2}
     - target: {fileID: 8203255208461063178, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
       propertyPath: m_Name
       value: GameCore
@@ -3332,7 +3332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188388233022377062, guid: 275cf81e72059e544be22bb10e99d898, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4012026604646124151, guid: 275cf81e72059e544be22bb10e99d898, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3546,7 +3546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2897000411470255767, guid: e8158dd432785ad49b9712b755774186, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621158226323379478, guid: e8158dd432785ad49b9712b755774186, type: 3}
       propertyPath: MainAnimator

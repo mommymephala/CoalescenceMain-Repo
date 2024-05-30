@@ -58,7 +58,7 @@ namespace Combat
 
         // --------------------------------------------------------------------
         
-        private void Update()
+        protected virtual void Update()
         {
             if (Time.time > lastDamageTime + damageAccumulationTime && damageQueue.Count > 0)
             {
@@ -117,7 +117,7 @@ namespace Combat
 
         // --------------------------------------------------------------------
         
-        private void SetHealth(float value)
+        protected virtual void SetHealth(float value)
         {
             var prev = Value;
             Value = Mathf.Clamp(value, Min, Max);

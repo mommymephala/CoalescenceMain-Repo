@@ -352,3 +352,24 @@ MonoBehaviour:
       Data3: -678901322
       Data4: -241383821
     Path: event:/OBJ&INT/Power_Core/Power_Core_On
+  mineExplosion:
+    Guid:
+      Data1: -75240721
+      Data2: 1220433491
+      Data3: 1174655676
+      Data4: -1306437738
+    Path: event:/SFX/Enemy/Mine/Mine
+  turretShot:
+    Guid:
+      Data1: 431507288
+      Data2: 1258403347
+      Data3: -1772171086
+      Data4: -1688759136
+    Path: event:/SFX/Enemy/Turret/Turret_Attack
+  turretShotImpact:
+    Guid:
+      Data1: -1746557906
+      Data2: 1307815009
+      Data3: 86291330
+      Data4: 1294271516
+    Path: event:/SFX/Enemy/Turret/Turret_Projectile

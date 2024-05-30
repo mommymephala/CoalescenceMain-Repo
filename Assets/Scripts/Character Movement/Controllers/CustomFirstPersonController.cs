@@ -49,6 +49,16 @@ namespace Character_Movement.Controllers
             cameraAnimator.SetFloat(_verticalParamId, MoveDirection.z, dampTime, Time.deltaTime);
             cameraAnimator.SetFloat(_horizontalParamId, MoveDirection.x, dampTime, Time.deltaTime);
         }
+        
+        private void ResetCameraAnimator()
+        {
+            if (cameraAnimator != null)
+            {
+                cameraAnimator.SetFloat(_verticalParamId, 0);
+                cameraAnimator.SetFloat(_horizontalParamId, 0);
+                cameraAnimator.speed = 0;
+            }
+        }
 
         /// <summary>
         /// Override BaseFirstPersonController Animate method.
@@ -133,8 +143,17 @@ namespace Character_Movement.Controllers
 
         public override void Update()
         {
+            if (!GameManager.Instance.IsPlaying)
+            {
+                ResetCameraAnimator();
+                return;
+            }
+
+            if (isPaused)
+                return;
+
             base.Update();
-            
+
             HandleFootsteps();
         }
 

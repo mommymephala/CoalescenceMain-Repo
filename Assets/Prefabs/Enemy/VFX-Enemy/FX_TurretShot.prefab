@@ -14403,7 +14403,7 @@ GameObject:
   - component: {fileID: 199399342436014006}
   - component: {fileID: 655061026370794987}
   - component: {fileID: 2373411730765247107}
-  - component: {fileID: 8217663815934985876}
+  - component: {fileID: 1294328601690613479}
   m_Layer: 7
   m_Name: FX_TurretShot
   m_TagString: Untagged
@@ -19290,7 +19290,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8217663815934985876
+--- !u!114 &1294328601690613479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19299,7 +19299,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1833268098726028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c79a7fd345340399be589a266fdac4c, type: 3}
+  m_Script: {fileID: 11500000, guid: eb31585910ac477ca8c9bca64d6a076a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10

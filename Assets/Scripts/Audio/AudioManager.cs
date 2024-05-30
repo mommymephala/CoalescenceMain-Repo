@@ -73,6 +73,9 @@ namespace Audio
         public EventReference powerCoreElevatorSound;
         public Dictionary<ElevatorType, EventReference> elevatorSoundsMap;
         public EventReference dysonActivation;
+        public EventReference mineExplosion;
+        public EventReference turretShot;
+        public EventReference turretShotImpact;
 
         private Dictionary<EventInstance, Coroutine> _fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
         private float _crossfadeDuration;
@@ -205,6 +208,21 @@ namespace Audio
         public void PlayDysonActivation(Vector3 position)
         {
             PlayOneShot(dysonActivation, position, "Dyson activation");
+        }
+
+        public void PlayMineExplosion(Vector3 position)
+        {
+            PlayOneShot(mineExplosion, position, "Mine explosion");
+        }
+        
+        public void PlayTurretShot(Vector3 position)
+        {
+            PlayOneShot(turretShot, position, "Turret shot");
+        }
+        
+        public void PlayTurretShotImpact(Vector3 position)
+        {
+            PlayOneShot(turretShotImpact, position, "Turret shot impact");
         }
 
         public void PlayEnemyFootstep(EnemyType enemyType, Vector3 position)

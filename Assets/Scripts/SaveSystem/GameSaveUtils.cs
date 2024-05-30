@@ -63,7 +63,7 @@ namespace SaveSystem
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            Behaviour.InvokeActionNextFrame(() => // Give time to HECore to initialize everything
+            Behaviour.InvokeActionNextFrame(() =>
             {
                 GameManager.Instance.SetFromSavedData(m_LoadedData);
                 

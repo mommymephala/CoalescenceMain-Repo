@@ -9,7 +9,7 @@ namespace Combat
         public LayerMask hitLayers;
 
         private Rigidbody _rb;
-        private RangedAttack _rangedAttack;
+        protected RangedAttack _rangedAttack;
 
         public void Initialize(RangedAttack rangedAttack)
         {
@@ -25,7 +25,7 @@ namespace Combat
             Destroy(gameObject, lifetime);
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (IsInLayerMask(other.gameObject, hitLayers))
             {
@@ -43,7 +43,7 @@ namespace Combat
             }
         }
 
-        private static bool IsInLayerMask(GameObject obj, LayerMask layerMask)
+        protected static bool IsInLayerMask(GameObject obj, LayerMask layerMask)
         {
             return (layerMask.value & (1 << obj.layer)) != 0;
         }

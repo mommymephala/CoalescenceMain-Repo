@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 4984403089189100}
   - component: {fileID: 198011925041146442}
   - component: {fileID: 199328309698011688}
+  - component: {fileID: 5349989275271045324}
+  - component: {fileID: 9089479207782510236}
   m_Layer: 0
-  m_Name: FX_Impact_Wall
+  m_Name: FX_Impact_Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,8 +290,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.03
-      minScalar: 0.01
+      scalar: 0.1
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -603,7 +605,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    randomizeRotationDirection: 0
+    randomizeRotationDirection: 0.5
     gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
@@ -4910,6 +4912,34 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5349989275271045324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067536016464596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8a6691b95d84043afe41e6a949be5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsInPool: 0
+  Owner: {fileID: 0}
+--- !u!114 &9089479207782510236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067536016464596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695d2d7f01e16ac478694eaf0ad36dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+  CheckInterval: 0.5
 --- !u!1 &1386031318878658
 GameObject:
   m_ObjectHideFlags: 0

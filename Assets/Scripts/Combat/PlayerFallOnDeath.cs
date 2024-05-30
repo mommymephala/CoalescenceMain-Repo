@@ -13,8 +13,6 @@ namespace Combat
         private Transform _cameraTransform;
         private Vector3 _initialPosition;
         private Quaternion _initialRotation;
-        private bool _isDropping;
-        private bool _isRotating;
 
         private void Awake()
         {
@@ -25,7 +23,6 @@ namespace Combat
         {
             _initialPosition = _cameraTransform.localPosition;
             _initialRotation = _cameraTransform.localRotation;
-            _isDropping = true;
             StartCoroutine(DropCamera());
         }
 
@@ -43,8 +40,6 @@ namespace Combat
             }
 
             _cameraTransform.localPosition = targetPosition;
-            _isDropping = false;
-            _isRotating = true;
             
             StartCoroutine(RotateCamera());
         }
@@ -63,7 +58,6 @@ namespace Combat
             }
 
             _cameraTransform.localRotation = targetRotation;
-            _isRotating = false;
         }
     }
 }
