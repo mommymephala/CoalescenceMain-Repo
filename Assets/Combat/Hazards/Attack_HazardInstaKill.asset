@@ -10,19 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63821b6625ea2c94fa0511177cb2ebfc, type: 3}
-  m_Name: Attack_PlayerShotgun
+  m_Name: Attack_HazardInstaKill
   m_EditorClassIdentifier: 
   Impacts:
-  - Damage: 9
+  - Damage: 200
     Damageable:
-    - {fileID: 11400000, guid: fdbbcf8df8fab944dac4cedfe107cc9f, type: 2}
-    - {fileID: 11400000, guid: 90872621620408642a53542a877e0e5e, type: 2}
-    Filters: []
-    PreDamageEffects: []
-    PostDamageEffects: []
-  - Damage: 18
-    Damageable:
-    - {fileID: 11400000, guid: e4177163a99ab4847a091e592739c85b, type: 2}
+    - {fileID: 11400000, guid: a0bcdcbbe4e64be4a8972bfe99195813, type: 2}
     Filters: []
     PreDamageEffects: []
     PostDamageEffects: []

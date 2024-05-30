@@ -177,9 +177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Infinite: 0
   Invulnerable: 0
-  Max: 50
+  Max: 105
   Min: 0
-  Value: 50
+  Value: 105
   InitialValue: 0
   significantDamagePercentage: 0
   OnHealthAltered:

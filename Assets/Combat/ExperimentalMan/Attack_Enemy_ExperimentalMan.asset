@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63821b6625ea2c94fa0511177cb2ebfc, type: 3}
-  m_Name: Attack_HazardInstaKill
+  m_Name: Attack_Enemy_ExperimentalMan
   m_EditorClassIdentifier: 
   Impacts:
-  - Damage: 100
+  - Damage: 40
     Damageable:
     - {fileID: 11400000, guid: a0bcdcbbe4e64be4a8972bfe99195813, type: 2}
     Filters: []

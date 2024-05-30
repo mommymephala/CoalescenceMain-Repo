@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Attack: {fileID: 11400000, guid: 058e2a2c1a006964cac0eeb73d81f872, type: 2}
-  projectilePrefab: {fileID: 1722081097931586, guid: 51514cb216c1d74419c89383ab57986e, type: 3}
+  projectilePrefab: {fileID: 1157088314812518, guid: 557242bfefb41514684bb38d1a98eddb, type: 3}
   firePoint: {fileID: 568741470936294957}
   numberOfProjectiles: 3
   spreadAngle: 30
