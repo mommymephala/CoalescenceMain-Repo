@@ -25,22 +25,22 @@ MonoBehaviour:
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1
   allowAutoFire: 0
-  maxDistance: 100
+  maxDistance: 75
   fireRate: 150
-  spread: 0.1
+  spread: 0.25
   bulletsPerShot: 6
   ammoItem: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
-  maxAmmo: 8
+  maxAmmo: 6
   reloadDuration: 3
-  recoilRotationHipfire: {x: 450, y: 40, z: 0}
-  recoilRotationAiming: {x: 350, y: 30, z: 0}
+  recoilRotationHipfire: {x: 450, y: 90, z: 0}
+  recoilRotationAiming: {x: 225, y: 45, z: 0}
   rotationSpeed: 2
   smoothingFactor: 0.5
-  returnSpeed: 45
-  kickbackForce: 0.4
-  kickbackDuration: 0.2
-  resetDuration: 0.2
-  walkingRecoilMultiplier: 1.5
+  returnSpeed: 50
+  kickbackForce: 0.75
+  kickbackDuration: 0.25
+  resetDuration: 0.25
+  walkingRecoilMultiplier: 2
   shotSound:
     Guid:
       Data1: 1844504655

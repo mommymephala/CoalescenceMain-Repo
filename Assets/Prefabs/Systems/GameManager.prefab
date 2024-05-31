@@ -94,7 +94,7 @@ MonoBehaviour:
             Data3: 0
             Data4: 0
           Path: 
-    WeaponSlot: 1
+    weaponSlot: 1
     Expanded: 0
     PreExpansionSize: 0
   StorageBox:
@@ -111,10 +111,10 @@ MonoBehaviour:
     Status: 0
   - Item: {fileID: 11400000, guid: 086d3635b49f6214e9c71a42b02bb04c, type: 2}
     Count: 1
-    SecondaryCount: 8
+    SecondaryCount: 6
     Status: 0
   - Item: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
-    Count: 20
+    Count: 99
     SecondaryCount: 0
     Status: 0
   InitialDocuments:

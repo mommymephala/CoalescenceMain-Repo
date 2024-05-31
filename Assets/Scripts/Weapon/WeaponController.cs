@@ -16,6 +16,7 @@ namespace Weapon
     public class WeaponController : MonoBehaviour
     {
         public event Action OnStartReload;
+        public event Action OnWeaponChanged;
 
         public WeaponData weaponData;
 
@@ -34,6 +35,7 @@ namespace Weapon
         public InventoryEntry CurrentWeaponEntry { get; private set; }
 
         private TextMeshProUGUI _ammoText;
+        private static readonly int ReloadTrigger = Animator.StringToHash("ReloadTrigger");
 
         private void Awake()
         {
@@ -46,7 +48,6 @@ namespace Weapon
             {
                 playerCamera = playerCameraObject.GetComponent<Camera>();
             }
-            
 
             GameObject weaponCameraObject = GameObject.Find("WeaponCamera");
             if (weaponCameraObject != null)
@@ -84,9 +85,10 @@ namespace Weapon
             CurrentWeaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
 
             if (CurrentWeaponEntry is not { Item: WeaponData reloadableWeaponData }) return;
-            
+
             weaponData = reloadableWeaponData;
             UpdateAmmoUI();
+            OnWeaponChanged?.Invoke();
         }
 
         private void Update()
@@ -160,22 +162,24 @@ namespace Weapon
 
         private void StartReloadProcess(InventoryEntry weaponEntry)
         {
-            if (IsReloading || weaponEntry.SecondaryCount >= weaponData.maxAmmo) return;
-
-            OnStartReload?.Invoke();
-            weaponAnimator.SetTrigger("ReloadTrigger");
-            RuntimeManager.PlayOneShot(weaponData.reloadSound, transform.position);
-            _reloadCoroutine = StartCoroutine(ReloadSequence(weaponEntry));
+            if (!IsReloading && weaponEntry.SecondaryCount < weaponData.maxAmmo)
+            {
+                OnStartReload?.Invoke();
+                _reloadCoroutine = StartCoroutine(ReloadSequence(weaponEntry));
+            }
         }
 
         private IEnumerator ReloadSequence(InventoryEntry weaponEntry)
         {
-            IsReloading = true;
-            UIManager.Get<UIInputListener>().AddBlockingContext(this);
-            
             Inventory.Inventory inventory = GameManager.Instance.Inventory;
             if (weaponData.ammoItem != null && inventory.TryGet(weaponData.ammoItem, out InventoryEntry ammoEntry))
             {
+                IsReloading = true;
+                UIManager.Get<UIInputListener>().AddBlockingContext(this);
+                
+                weaponAnimator.SetTrigger(ReloadTrigger);
+                RuntimeManager.PlayOneShot(weaponData.reloadSound, transform.position);
+                
                 var ammoNeeded = weaponData.maxAmmo - weaponEntry.SecondaryCount;
                 var ammoAvailable = Mathf.Min(ammoEntry.Count, ammoNeeded);
 

@@ -24,7 +24,7 @@ MonoBehaviour:
   Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 1
-  allowAutoFire: 0
+  allowAutoFire: 1
   maxDistance: 150
   fireRate: 600
   spread: 0
@@ -32,15 +32,15 @@ MonoBehaviour:
   ammoItem: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
   maxAmmo: 12
   reloadDuration: 1.5
-  recoilRotationHipfire: {x: 450, y: 40, z: 0}
-  recoilRotationAiming: {x: 350, y: 30, z: 0}
+  recoilRotationHipfire: {x: 150, y: 30, z: 0}
+  recoilRotationAiming: {x: 50, y: 10, z: 0}
   rotationSpeed: 2
   smoothingFactor: 0.5
-  returnSpeed: 45
-  kickbackForce: 0.4
-  kickbackDuration: 0.2
-  resetDuration: 0.2
-  walkingRecoilMultiplier: 1.5
+  returnSpeed: 50
+  kickbackForce: 0.5
+  kickbackDuration: 0.1
+  resetDuration: 0.1
+  walkingRecoilMultiplier: 2
   shotSound:
     Guid:
       Data1: 2103223952

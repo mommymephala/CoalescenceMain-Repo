@@ -9,12 +9,12 @@ namespace Weapon
 
         [SerializeField] private Transform adsTransform;
         [SerializeField] private float aimDownSightSpeed = 5f;
+        [SerializeField] private float originalFOV = 60f;
         [SerializeField] private float aimFOV = 40f;
         [SerializeField] private bool toggleAim = true;
-
-        private float _originalFOV;
-        private Vector3 _originalAdsPosition;
         
+        private Vector3 _originalAdsPosition;
+
         public static bool IsAiming { get; private set; }
 
         private void Awake()
@@ -24,9 +24,9 @@ namespace Weapon
             if (_controller != null)
             {
                 _controller.OnStartReload += ExitAimDownSight;
+                _controller.OnWeaponChanged += ExitAimDownSight;
             }
             
-            _originalFOV = _controller.playerCamera.fieldOfView;
             _originalAdsPosition = adsTransform.localPosition;
         }
 
@@ -74,16 +74,16 @@ namespace Weapon
             Vector3 targetWorldPosition = _controller.playerCamera.ScreenToWorldPoint(new Vector3(targetScreenPosition.x, targetScreenPosition.y, distanceFromCamera));
             Vector3 targetLocalPosition = adsTransform.parent.InverseTransformPoint(targetWorldPosition);
 
+            _controller.mouseLook.SetAimingDownSight(true);
             adsTransform.localPosition = Vector3.Lerp(adsTransform.localPosition, targetLocalPosition, Time.deltaTime * aimDownSightSpeed);
             AdjustFOV(aimFOV);
-            _controller.mouseLook.SetAimingDownSight(true);
         }
 
         private void ResetAiming()
         {
-            adsTransform.localPosition = Vector3.Lerp(adsTransform.localPosition, _originalAdsPosition, Time.deltaTime * aimDownSightSpeed);
-            AdjustFOV(_originalFOV);
             _controller.mouseLook.SetAimingDownSight(false);
+            adsTransform.localPosition = Vector3.Lerp(adsTransform.localPosition, _originalAdsPosition, Time.deltaTime * aimDownSightSpeed);
+            AdjustFOV(originalFOV);
         }
         
         private void AdjustFOV(float targetFOV)
@@ -95,7 +95,6 @@ namespace Weapon
         private void ExitAimDownSight()
         {
             IsAiming = false;
-            ResetAiming();
         }
 
         private void OnDisable()
@@ -103,6 +102,7 @@ namespace Weapon
             if (_controller != null)
             {
                 _controller.OnStartReload -= ExitAimDownSight;
+                _controller.OnWeaponChanged -= ExitAimDownSight;
             }
         }
     }
