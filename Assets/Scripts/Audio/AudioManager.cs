@@ -147,7 +147,7 @@ namespace Audio
             }
         }
 
-        private void StartAmbientSound()
+        public void StartAmbientSound()
         {
             _ambientInstance = RuntimeManager.CreateInstance(ambient);
             _ambientInstance.start();
@@ -256,7 +256,7 @@ namespace Audio
                     enemyType = EnemyType.ExperimentalMan;
                     break;
                 default:
-                    Debug.LogWarning($"Unknown weakpoint tag: {weakpointTag}");
+                    Debug.Log($"Unknown weakpoint tag: {weakpointTag}");
                     return;
             }
 

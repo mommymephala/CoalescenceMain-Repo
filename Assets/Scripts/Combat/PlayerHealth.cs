@@ -47,6 +47,13 @@ namespace Combat
             }
         }
 
+        public override void OnReset()
+        {
+            base.OnReset();
+            
+            _controller.Pause(false);
+        }
+
         private void UpdateHealthUI(float previousHealth, float currentHealth)
         {
             if (_healthSlider != null)
@@ -82,7 +89,7 @@ namespace Combat
                 {
                     GameManager.Instance.IsPlaying = false;
                     OnDeath?.Invoke(this);
-                    _controller.Pause(true, false);
+                    _controller.Pause(true);
                     AudioManager.Instance.StopAmbientSound();
                     AudioManager.Instance.PlayPlayerDeath(transform.position);
                 }

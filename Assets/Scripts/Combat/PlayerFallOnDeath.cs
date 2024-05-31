@@ -1,9 +1,10 @@
 using System.Collections;
+using Pooling;
 using UnityEngine;
 
 namespace Combat
 {
-    public class PlayerFallOnDeath : MonoBehaviour
+    public class PlayerFallOnDeath : MonoBehaviour, IResetable
     {
         public float dropDuration = 1.0f;
         public float rotationDuration = 1.0f;
@@ -16,13 +17,15 @@ namespace Combat
 
         private void Awake()
         {
+            if (Camera.main == null) return;
+            
             _cameraTransform = Camera.main.transform;
+            _initialPosition = _cameraTransform.localPosition;
+            _initialRotation = _cameraTransform.localRotation;
         }
 
         public void ApplyDeathEffect()
         {
-            _initialPosition = _cameraTransform.localPosition;
-            _initialRotation = _cameraTransform.localRotation;
             StartCoroutine(DropCamera());
         }
 
@@ -58,6 +61,15 @@ namespace Combat
             }
 
             _cameraTransform.localRotation = targetRotation;
+        }
+
+        public void OnReset()
+        {
+            if (_cameraTransform != null)
+            {
+                _cameraTransform.localPosition = _initialPosition;
+                _cameraTransform.localRotation = _initialRotation;
+            }
         }
     }
 }

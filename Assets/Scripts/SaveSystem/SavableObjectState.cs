@@ -5,7 +5,6 @@ namespace SaveSystem
 {
     public interface ISavableObjectStateExtra : ISavable<string> { }
 
-
     [Serializable]
     public struct ObjectStateSaveDataEntry
     {

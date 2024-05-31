@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d492877a7e9504fb03860b0a0754a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickFrequency: 0.5
+  TickFrequency: 999
   m_Target: {fileID: 4137814339939992228}
 --- !u!1 &464608322491593267
 GameObject:
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4869e7b2ac4b474d96f82bbe0f9b7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickFrequency: 0
+  TickFrequency: 999
   m_Target: {fileID: 4137814339939992228}
 --- !u!1 &1049307431297940281
 GameObject:
@@ -414,7 +414,7 @@ Transform:
   m_GameObject: {fileID: 3343287036164689002}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0.2}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -552,10 +552,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1676872b202be240b7779f3b6309834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickFrequency: 0.5
+  TickFrequency: 999
   m_Target: {fileID: 4137814339939992228}
-  m_DetectionRadius: 3
-  m_UndetectionRadius: 6
+  m_DetectionRadius: 0
+  m_UndetectionRadius: 0
 --- !u!1 &3990842120939231347
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f63645f846f4c46911731f1410cdfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickFrequency: 0.5
+  TickFrequency: 999
   m_Target: {fileID: 4137814339939992228}
 --- !u!1 &6207287829960729304
 GameObject:
@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 8789199403888486522}
   - component: {fileID: 3745085102089151429}
   m_Layer: 0
-  m_Name: TarSpawnNoWander
+  m_Name: TarSpawnNoWanderPassive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1323,9 +1323,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Infinite: 0
   Invulnerable: 0
-  Max: 100
+  Max: 999
   Min: 0
-  Value: 100
+  Value: 999
   InitialValue: 0
   significantDamagePercentage: 0.35
   OnHealthAltered:
@@ -1468,7 +1468,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16385
   m_SightPoint: {fileID: 3829038963506775264}
-  m_MaxDistance: 20
+  m_MaxDistance: 0
   m_Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &3568127479674915995
 MonoBehaviour:

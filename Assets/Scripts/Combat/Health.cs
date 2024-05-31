@@ -51,7 +51,7 @@ namespace Combat
 
         // --------------------------------------------------------------------
 
-        public void OnReset()
+        public virtual void OnReset()
         {
             Value = InitialValue > 0 ? InitialValue : Max;
         }

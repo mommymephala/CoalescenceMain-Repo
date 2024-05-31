@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14947ebda2ae13c4f9220ba7dedb616b, type: 3}
   m_Name: TMP_Health
   m_EditorClassIdentifier: 
-  uniqueId: 9d5de3d8-1beb-43e4-99d8-205fc939d5a3
+  uniqueId: d4df65a5-2ce9-4466-8a06-c9fe7e9eeeb7
   image: {fileID: 21300000, guid: 9029bd39cf8155d4bbf8c12acc596aa9, type: 3}
   examineModel: {fileID: 0}
   Name: Demo Health

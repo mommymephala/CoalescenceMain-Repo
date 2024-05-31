@@ -40,10 +40,31 @@ namespace Weapon
             Input = GetComponentInParent<IPlayerInput>();
             playerController = GetComponentInParent<CustomFirstPersonController>();
             mouseLook = GetComponentInParent<MouseLook>();
-            playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
-            weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
-            crosshair = GameObject.Find("Crosshair")?.GetComponent<Crosshair>();
-            _ammoText = GameObject.Find("AmmoText")?.GetComponent<TextMeshProUGUI>();
+
+            GameObject playerCameraObject = GameObject.Find("Camera");
+            if (playerCameraObject != null)
+            {
+                playerCamera = playerCameraObject.GetComponent<Camera>();
+            }
+            
+
+            GameObject weaponCameraObject = GameObject.Find("WeaponCamera");
+            if (weaponCameraObject != null)
+            {
+                weaponCamera = weaponCameraObject.GetComponent<Camera>();
+            }
+            
+            GameObject crosshairObject = GameObject.Find("Crosshair");
+            if (crosshairObject != null)
+            {
+                crosshair = crosshairObject.GetComponent<Crosshair>();
+            }
+
+            GameObject ammoTextObject = GameObject.Find("AmmoText");
+            if (ammoTextObject != null)
+            {
+                _ammoText = ammoTextObject.GetComponent<TextMeshProUGUI>();
+            }
         }
 
         private void OnEnable()
@@ -70,20 +91,22 @@ namespace Weapon
 
         private void Update()
         {
-            if (GameManager.Instance.IsPlaying && Input.IsReloadDown() && !IsReloading && CurrentWeaponEntry != null)
+            if (!GameManager.Instance.IsPlaying || crosshair == null)
+                return;
+
+            if (Input.IsReloadDown() && !IsReloading && CurrentWeaponEntry != null)
             {
                 StartReloadProcess(CurrentWeaponEntry);
             }
 
             // Update crosshair for aiming
-            if (!crosshair.IsSizeChangeActive()) 
+            if (crosshair != null && !crosshair.IsSizeChangeActive()) 
             {
                 // Only update crosshair size if no size change is active
                 if (WeaponAiming.IsAiming) 
                 {
                     crosshair.SetSize(new Vector2(20, 20), 0.25f);
                 } 
-                
                 else
                 {
                     crosshair.SetSize(new Vector2(40, 40), 0.25f);
@@ -91,11 +114,11 @@ namespace Weapon
             }
 
             // Update crosshair color based on ammo
-            if (CurrentWeaponEntry is { SecondaryCount: <= 0 })
+            if (crosshair != null && CurrentWeaponEntry is { SecondaryCount: <= 0 })
             {
                 crosshair.SetColor(Color.red, 0.1f);
             }
-            else
+            else if (crosshair != null)
             {
                 crosshair.SetColor(Color.white, 0.1f);
             }
@@ -109,7 +132,12 @@ namespace Weapon
             {
                 CurrentWeaponEntry.SecondaryCount--;
                 RuntimeManager.PlayOneShot(weaponData.shotSound, transform.position);
-                crosshair.MultiplySize(100f, 1f, 0.1f);
+                
+                if (crosshair != null)
+                {
+                    crosshair.MultiplySize(100f, 1f, 0.1f);
+                }
+                
                 UpdateAmmoUI();
             }
             

@@ -398,12 +398,12 @@ GameObject:
   - component: {fileID: 2391127537528902819}
   - component: {fileID: 2389852632885820915}
   - component: {fileID: 8275030541342130034}
-  - component: {fileID: 2347954214150103441}
   - component: {fileID: 2660057998604986446}
   - component: {fileID: 8122827582609486457}
   - component: {fileID: 4953823772626052266}
   - component: {fileID: 4101167343805430719}
   - component: {fileID: 9082515529379642420}
+  - component: {fileID: 2347954214150103441}
   m_Layer: 6
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -674,22 +674,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ApplySavedTransform: 1
---- !u!114 &2347954214150103441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6855049204320965907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fc15ddf559fcac478f4209b170f7bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResetOnEnable: 1
-  OnReset:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2660057998604986446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +775,22 @@ MonoBehaviour:
   rotationDuration: 1
   dropDistance: 1.5
   rotationAngle: 60
+--- !u!114 &2347954214150103441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855049204320965907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc15ddf559fcac478f4209b170f7bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetOnEnable: 1
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6997541139336552359
 GameObject:
   m_ObjectHideFlags: 0

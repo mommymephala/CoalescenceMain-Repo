@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Combat;
 using Container;
 using Documents;
@@ -189,6 +190,7 @@ namespace Systems
             PlayerName = savedData.PlayerName;
             Inventory.SetFromSavedData(savedData.Inventory);
             StorageBox.SetFromSavedData(savedData.StorageBox);
+            AudioManager.Instance.StartAmbientSound();
         }
     }
 }
