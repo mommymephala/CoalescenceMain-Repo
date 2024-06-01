@@ -93,7 +93,7 @@ namespace Audio
 
         private void Start()
         {
-            StartAmbientSound();
+          //  StartAmbientSound();
         }
 
         private void InitializeSoundsMap()
