@@ -12,7 +12,6 @@ namespace Physical
         
         [SerializeField] private float moveTime = 3.0f;
         [SerializeField] private Vector3 moveDirection = Vector3.up;
-        [SerializeField] private Vector3 newMoveDirection;
         [SerializeField] private float moveDistance = 5.0f;
         [SerializeField] private float initialDelay = 2.0f;
 
@@ -30,7 +29,7 @@ namespace Physical
         {
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.isKinematic = true;
-            InitializePositions();
+            // InitializePositions();
         }
 
         private void Start()
@@ -83,15 +82,23 @@ namespace Physical
             _isActive = true;
         }
 
-        public void ApplyNewDirection()
-        {
-            moveDirection = newMoveDirection.normalized;
-            InitializePositions();
-        }
-
         public void SetAvailability(bool available)
         {
             _isAvailable = available;
+        }
+
+        public void CallElevator()
+        {
+            Debug.Log("called");
+            if (!_isActive && _isAvailable)
+            {
+                _isActive = true;
+                AudioManager.Instance.PlayElevatorActivation(elevatorType, transform.position);
+                var perc = _currentLerpTime / moveTime;
+                Vector3 newPos = Vector3.Lerp(_startPosition, _targetPosition, perc);
+                _rigidbody.MovePosition(newPos);
+                // Debug.Log("called correctly");
+            }
         }
     }
 }

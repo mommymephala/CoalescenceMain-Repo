@@ -14,7 +14,7 @@ namespace Level_Events
             {
                 if (!doorOpening.isOpen)
                 {
-                    doorOpening.Open(other.transform.position);
+                    doorOpening.Open();
                 }
             }
         }

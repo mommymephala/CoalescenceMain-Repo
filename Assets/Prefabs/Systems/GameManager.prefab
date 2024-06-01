@@ -117,6 +117,10 @@ MonoBehaviour:
     Count: 99
     SecondaryCount: 0
     Status: 0
+  - Item: {fileID: 11400000, guid: ae0b53bd804cfbe42840ed3dbde74f37, type: 2}
+    Count: 1
+    SecondaryCount: 0
+    Status: 0
   InitialDocuments:
   - {fileID: 11400000, guid: 9575a2abd13cb394fa9d2b0b004301ca, type: 2}
   - {fileID: 11400000, guid: bdac9cb0d3d185843ab0ff3a36b43c6a, type: 2}

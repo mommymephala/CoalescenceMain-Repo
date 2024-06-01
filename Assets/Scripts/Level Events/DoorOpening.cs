@@ -7,31 +7,22 @@ namespace Level_Events
     public class DoorOpening : MonoBehaviour
     {
         public bool isOpen;
-        [SerializeField] private bool isRotatingDoor = false;
         [SerializeField] private float speed = 1f;
-    
-        [Header("Rotation Configs")]
-        [SerializeField] private float rotationAmount = 90f;
-        [SerializeField] private float forwardDirection;
     
         [Header("Sliding Configs")] 
         [SerializeField] private Vector3 slideDirection = Vector3.right;
         [SerializeField] private float slideAmount = 3f;
 
-        private Vector3 _startRotation;
         private Vector3 _startPosition;
-        private Vector3 _forward;
 
         private Coroutine _animationCoroutine;
 
         private void Awake()
         {
-            _startRotation = transform.rotation.eulerAngles;
-            _forward = transform.right;
             _startPosition = transform.position;
         }
 
-        public void Open(Vector3 userPosition)
+        public void Open()
         {
             if (isOpen) return;
         
@@ -39,35 +30,10 @@ namespace Level_Events
             {
                 StopCoroutine(_animationCoroutine);
             }
-
-            if (isRotatingDoor)
-            {
-                var dot = Vector3.Dot(_forward, (userPosition - transform.position).normalized);
-                _animationCoroutine = StartCoroutine(DoRotationOpen(dot));
-            }
-        
             else
             {
                 _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
                 AudioManager.Instance.PlayDoorOpen(transform.position);
-            }
-        }
-
-        private IEnumerator DoRotationOpen(float forwardAmount)
-        {
-            Quaternion startRotation = transform.rotation;
-            Quaternion endRotation = Quaternion.Euler
-                (forwardAmount >= forwardDirection ? new Vector3(0, _startRotation.y + rotationAmount, 0) : new Vector3(0, _startRotation.y - rotationAmount, 0));
-
-            isOpen = true;
-
-            float time = 0;
-        
-            while (time < 1)
-            {
-                transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
-                yield return null;
-                time += Time.deltaTime * speed;
             }
         }
 
@@ -94,24 +60,8 @@ namespace Level_Events
                 StopCoroutine(_animationCoroutine);
             }
 
-            _animationCoroutine = StartCoroutine(isRotatingDoor ? DoRotationClose() : DoSlidingClose());
+            _animationCoroutine = StartCoroutine(DoSlidingClose());
             AudioManager.Instance.PlayDoorClosed(transform.position);
-        }
-
-        private IEnumerator DoRotationClose()
-        {
-            Quaternion startRotation = transform.rotation;
-            Quaternion endRotation = Quaternion.Euler(_startRotation);
-
-            isOpen = false;
-
-            float time = 0;
-            while (time < 1)
-            {
-                transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
-                yield return null;
-                time += Time.deltaTime * speed;
-            }
         }
 
         private IEnumerator DoSlidingClose()

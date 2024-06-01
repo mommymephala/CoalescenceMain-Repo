@@ -1,36 +1,21 @@
-using System.Collections;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
-using Utils;
 
 namespace Doors
 {
     public abstract class DoorBase : MonoBehaviour
     {
-        public DoorAnimation Animation;
-        public Transform ExitPoint;
         public UnityEvent OnLocked;
         public UnityEvent OnOpened;
 
         public abstract void Use(IInteractor interactor);
 
         public abstract bool IsLocked();
-
-        protected virtual void OnDrawGizmosSelected()
-        {
-            if (ExitPoint)
-            {
-                Gizmos.DrawWireCube(ExitPoint.position, new Vector3(0.5f, 0f, 0.5f));
-                GizmoUtils.DrawArrow(ExitPoint.position, ExitPoint.forward, 1f);
-            }
-        }
     }
 
     public class SceneDoor : DoorBase
     {
-        public SceneDoor Exit;
-
         private DoorLock m_Lock;
         private Transform m_Interactor;
 
@@ -45,7 +30,7 @@ namespace Doors
 
         public override bool IsLocked()
         {
-            return (m_Lock && m_Lock.IsLocked) || (Exit && Exit.m_Lock && Exit.m_Lock.IsLocked);
+            return (m_Lock && m_Lock.IsLocked);
         }
 
         // --------------------------------------------------------------------
@@ -62,45 +47,8 @@ namespace Doors
                     return;
                 }
             }
-
-            if (Exit && Exit.m_Lock && Exit.m_Lock.IsLocked)
-            {
-                Exit.m_Lock.OnTryToUnlockFromExit(out var open);
-                if (!open)
-                {
-                    if (IsLocked())
-                        OnLocked?.Invoke();
-                    return;
-                }
-            }
-
+            
             OnOpened?.Invoke();
-            MonoBehaviour interactorMb = (MonoBehaviour)interactor;
-            m_Interactor = interactorMb.transform;
-            DoorTransitionController.Instance.Trigger(this, interactorMb.gameObject, TransitionRoutine);
-        }
-        
-        // --------------------------------------------------------------------
-
-        private IEnumerator TransitionRoutine()
-        {
-            // Player teleportation
-            m_Interactor.rotation = Exit.ExitPoint.rotation;
-            m_Interactor.position = Exit.ExitPoint.position;
-            yield return null;
-        }
-        
-        // --------------------------------------------------------------------
-
-        protected override void OnDrawGizmosSelected()
-        {
-            base.OnDrawGizmosSelected();
-
-            if (Exit)
-            {
-                Gizmos.color = Exit.Exit == this ? Color.green : Color.red;
-                Gizmos.DrawLine(transform.position, Exit.transform.position);
-            }
         }
     }
 }

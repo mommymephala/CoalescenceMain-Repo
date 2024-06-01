@@ -76,16 +76,6 @@ namespace Systems
             Inventory.Init();
 
             StorageBox.FillCapacityWithEmptyEntries();
-
-            MessageBuffer<DoorCrossSceneTransitionBeforeSpawnMessage>.Subscribe(OnDoorCrossSceneTransitionBeforeSpawn);
-            MessageBuffer<DoorTransitionMidWayMessage>.Subscribe(OnDoorTransitionMidway);
-        }
-        // --------------------------------------------------------------------
-
-        private void OnDestroy()
-        {
-            MessageBuffer<DoorCrossSceneTransitionBeforeSpawnMessage>.Unsubscribe(OnDoorCrossSceneTransitionBeforeSpawn);
-            MessageBuffer<DoorTransitionMidWayMessage>.Unsubscribe(OnDoorTransitionMidway);
         }
 
         // --------------------------------------------------------------------
@@ -143,21 +133,6 @@ namespace Systems
         {
             ItemDatabase.HashRegisters();
             DocumentDatabase.HashRegisters();
-        }
-
-        // --------------------------------------------------------------------
-
-        private void OnDoorTransitionMidway(DoorTransitionMidWayMessage msg)
-        {
-            ObjectStateManager.Instance.CaptureStates();
-        }
-
-        // --------------------------------------------------------------------
-
-        private void OnDoorCrossSceneTransitionBeforeSpawn(DoorCrossSceneTransitionBeforeSpawnMessage msg)
-        {
-            ObjectStateManager.Instance.InstantiateSpawned(SceneManager.GetActiveScene(), SpawnableDatabase);
-            ObjectStateManager.Instance.ApplyStates();
         }
 
         // --------------------------------------------------------------------
