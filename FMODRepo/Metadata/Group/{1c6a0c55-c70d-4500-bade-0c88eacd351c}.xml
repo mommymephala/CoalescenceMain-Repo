@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerGroup" id="{1c6a0c55-c70d-4500-bade-0c88eacd351c}">
 		<property name="volume">
-			<value>-7</value>
+			<value>-5.5</value>
 		</property>
 		<property name="name">
 			<value>Chip_Footsteps_</value>

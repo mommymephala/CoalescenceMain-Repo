@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerGroup" id="{9ea793b5-91ad-4569-9cb8-a6a66e987e70}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Chip_Weakpoint</value>
 		</property>

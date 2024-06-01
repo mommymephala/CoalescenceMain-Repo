@@ -62,10 +62,7 @@ namespace Audio
                     }
                 }
 
-                if (destroyAfterUse)
-                {
-                    Destroy(gameObject);
-                }
+               
             }
         }
 

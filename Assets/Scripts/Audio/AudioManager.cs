@@ -93,7 +93,7 @@ namespace Audio
 
         private void Start()
         {
-            StartAmbientSound();
+          //  StartAmbientSound();
         }
 
         private void InitializeSoundsMap()
@@ -147,7 +147,7 @@ namespace Audio
             }
         }
 
-        private void StartAmbientSound()
+        public void StartAmbientSound()
         {
             _ambientInstance = RuntimeManager.CreateInstance(ambient);
             _ambientInstance.start();
