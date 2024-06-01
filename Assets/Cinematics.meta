@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Cinematics.meta
 guid: 25907d4c141f3cf42a7b254da81c3ed6
+========
+guid: b26a746508e12c64da820246aa39bdbc
+>>>>>>>> github/emre-01-06-level:Assets/3DObjects/Materials/Core_Mats.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

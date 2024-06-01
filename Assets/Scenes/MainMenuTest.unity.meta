@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/MainMenuTest.unity.meta
 guid: 29862ff0f4f248d4cab52294ec9ce70e
+========
+guid: 43b8ed3444e5b8d42876735716ee6b72
+folderAsset: yes
+>>>>>>>> github/emre-01-06-level:Assets/3DObjects/Materials/Bridge.fbm.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Combat/Dog.meta
 guid: edff72d0188d60149b12e9922647478a
+========
+guid: 89fbe1fa82101f047b94b0c0208be4d0
+>>>>>>>> github/emre-01-06-level:Assets/3DObjects/Materials/FinalRoom.fbm.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
