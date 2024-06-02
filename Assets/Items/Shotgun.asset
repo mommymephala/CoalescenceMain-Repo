@@ -29,7 +29,7 @@ MonoBehaviour:
   fireRate: 150
   spread: 0.25
   bulletsPerShot: 6
-  ammoItem: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
+  ammoItem: {fileID: 11400000, guid: 290be906639473244bc27924788de9ee, type: 2}
   maxAmmo: 6
   reloadDuration: 3
   recoilRotationHipfire: {x: 450, y: 90, z: 0}

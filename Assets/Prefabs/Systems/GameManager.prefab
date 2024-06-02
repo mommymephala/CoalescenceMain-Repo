@@ -110,6 +110,10 @@ MonoBehaviour:
     SecondaryCount: 12
     Status: 0
   - Item: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
+    Count: 90
+    SecondaryCount: 0
+    Status: 0
+  - Item: {fileID: 11400000, guid: 290be906639473244bc27924788de9ee, type: 2}
     Count: 60
     SecondaryCount: 0
     Status: 0

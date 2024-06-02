@@ -272,7 +272,6 @@ namespace Audio
 
         public void PlayEnemyDeath(EnemyType enemyType, Vector3 position)
         {
-            Debug.Log($"Playing death sound for enemy type: {enemyType} at position {position}");
             PlayOneShot(enemySoundsMap[enemyType].death, position, "Enemy death");
         }
 

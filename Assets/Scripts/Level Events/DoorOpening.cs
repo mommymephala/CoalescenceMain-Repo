@@ -55,6 +55,7 @@ namespace Level_Events
         public void Close()
         {
             if (!isOpen) return;
+            
             if (_animationCoroutine != null)
             {
                 StopCoroutine(_animationCoroutine);
