@@ -294,11 +294,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Infinite: 0
   Invulnerable: 0
-  Max: 100
+  Max: 80
   Min: 0
-  Value: 100
+  Value: 80
   InitialValue: 0
-  significantDamagePercentage: 0.35
+  significantDamagePercentage: 0.45
   OnHealthAltered:
     m_PersistentCalls:
       m_Calls: []
@@ -1565,7 +1565,7 @@ MonoBehaviour:
   m_AlertedState: {fileID: 1868372873648984923}
   m_FacingSpeed: 3
   m_RotateTowardsTarget: 1
-  AttackDistance: 7
+  AttackDistance: 10
   Cooldown: 1
 --- !u!1 &8892912308945189392
 GameObject:

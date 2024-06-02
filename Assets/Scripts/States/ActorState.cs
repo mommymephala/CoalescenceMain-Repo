@@ -135,7 +135,7 @@ namespace States
 
         protected void SetState(IActorState state, bool immediate = false)
         {
-            Debug.Assert(state != null, "State can't be null");
+            // Debug.Assert(state != null, "State can't be null");
             Actor.StateController.SetState(state, immediate);
         }
 
