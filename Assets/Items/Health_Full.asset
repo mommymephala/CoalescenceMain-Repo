@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14947ebda2ae13c4f9220ba7dedb616b, type: 3}
-  m_Name: TMP_Health
+  m_Name: Health_Full
   m_EditorClassIdentifier: 
-  uniqueId: d4df65a5-2ce9-4466-8a06-c9fe7e9eeeb7
-  image: {fileID: 21300000, guid: 9029bd39cf8155d4bbf8c12acc596aa9, type: 3}
+  uniqueId: 823caa9e-9e14-4d88-b982-d1e185101d99
+  image: {fileID: 0}
   examineModel: {fileID: 0}
-  Name: Demo Health
-  description: This will provide some health.
+  Name: Demo Health Full
+  description: This will provide more health.
   inventoryAction: 1
-  flags: 566
+  flags: 558
   dropPrefab: {fileID: 0}
-  m_Regeneration: 25
+  m_Regeneration: 100
   m_CompleteRegeneration: 0

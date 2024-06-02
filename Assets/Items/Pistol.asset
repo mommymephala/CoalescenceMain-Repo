@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee00d1d7585610499dba305665f4c4c, type: 3}
-  m_Name: TMP_Pistol
+  m_Name: Pistol
   m_EditorClassIdentifier: 
   uniqueId: 6246b309-4e92-49d9-b5b6-58077be4ae0e
   image: {fileID: 21300000, guid: b1286659a6e7c074983ab42e1a533fda, type: 3}
-  examineModel: {fileID: 1347901682671290, guid: b017a00e018b1bc4f9ef2a84e5644a92, type: 3}
+  examineModel: {fileID: 0}
   Name: Demo Pistol
   description: This is a demo pistol.
   inventoryAction: 2
