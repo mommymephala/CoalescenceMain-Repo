@@ -4723,8 +4723,9 @@ GameObject:
   - component: {fileID: 191852772}
   - component: {fileID: 191852774}
   - component: {fileID: 191852773}
+  - component: {fileID: 191852775}
   m_Layer: 0
-  m_Name: SilenceSoundAftertpw
+  m_Name: SilenceSoundAftertp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4759,7 +4760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAfterUse: 0
   audioTriggerSettings:
-  - emitter: {fileID: 563470416}
+  - emitter: {fileID: 191852775}
     action: 1
     parameter: 
     targetValue: 1
@@ -4792,6 +4793,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &191852775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191852771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 308131939
+      Data2: 1094316503
+      Data3: 1282326666
+      Data4: -1213017437
+    Path: event:/Music/6_Cut/6_Cut
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &192021300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20359,7 +20391,7 @@ Transform:
   m_GameObject: {fileID: 905059025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -295.96082, y: -9.48, z: 48.23}
+  m_LocalPosition: {x: -295.96082, y: -9.48, z: 51.86}
   m_LocalScale: {x: 15.137744, y: 3.3138, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20414,6 +20446,12 @@ MonoBehaviour:
     action: 1
     parameter: 
     targetValue: 1
+    fadeInDuration: 0
+    fadeOutDuration: 0
+  - emitter: {fileID: 1374201321}
+    action: 3
+    parameter: 
+    targetValue: 0
     fadeInDuration: 0
     fadeOutDuration: 0
 --- !u!65 &905059029
@@ -32633,7 +32671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAfterUse: 0
   audioTriggerSettings:
-  - emitter: {fileID: 563470416}
+  - emitter: {fileID: 191852775}
     action: 3
     parameter: 
     targetValue: 0
