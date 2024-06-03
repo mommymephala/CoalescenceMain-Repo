@@ -21,14 +21,14 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        void Start()
+        private void Start()
         {
             m_Content.SetActive(false);
         }
 
         // --------------------------------------------------------------------
 
-        void Update()
+        private void Update()
         {
             bool isPlaying = GameManager.Instance.IsPlaying;
 
@@ -57,11 +57,16 @@ namespace UI_Codebase
 
         // --------------------------------------------------------------------
 
-        private void Hide()
+        public void Hide()
         {
             PauseController.Instance.Resume();
             CursorController.Instance.SetInUI(false);
             m_Content.SetActive(false);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }

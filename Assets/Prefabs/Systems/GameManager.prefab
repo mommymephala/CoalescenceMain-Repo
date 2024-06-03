@@ -109,12 +109,20 @@ MonoBehaviour:
     Count: 1
     SecondaryCount: 12
     Status: 0
+  - Item: {fileID: 11400000, guid: 086d3635b49f6214e9c71a42b02bb04c, type: 2}
+    Count: 1
+    SecondaryCount: 6
+    Status: 0
   - Item: {fileID: 11400000, guid: 3ad9a8af502b40c4297dbc07430bee30, type: 2}
     Count: 90
     SecondaryCount: 0
     Status: 0
   - Item: {fileID: 11400000, guid: 290be906639473244bc27924788de9ee, type: 2}
     Count: 60
+    SecondaryCount: 0
+    Status: 0
+  - Item: {fileID: 11400000, guid: ae0b53bd804cfbe42840ed3dbde74f37, type: 2}
+    Count: 1
     SecondaryCount: 0
     Status: 0
   InitialDocuments:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Health_Full
   m_EditorClassIdentifier: 
   uniqueId: 823caa9e-9e14-4d88-b982-d1e185101d99
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: cf822ec21657d2b4e8db137a0354a0c3, type: 3}
   examineModel: {fileID: 0}
   Name: Demo Health Full
   description: This will provide more health.

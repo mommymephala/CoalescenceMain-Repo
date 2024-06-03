@@ -8,77 +8,65 @@ namespace Level_Events
     {
         public bool isOpen;
         [SerializeField] private float speed = 1f;
-    
-        [Header("Sliding Configs")] 
+
+        [Header("Sliding Configs")]
         [SerializeField] private Vector3 slideDirection = Vector3.right;
         [SerializeField] private float slideAmount = 3f;
 
         private Vector3 _startPosition;
+        private Vector3 _endPosition;
 
         private Coroutine _animationCoroutine;
 
         private void Awake()
         {
             _startPosition = transform.position;
+            _endPosition = _startPosition + slideAmount * slideDirection;
         }
 
         public void Open()
         {
             if (isOpen) return;
-        
+
             if (_animationCoroutine != null)
             {
                 StopCoroutine(_animationCoroutine);
             }
-            else
-            {
-                _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
-                AudioManager.Instance.PlayDoorOpen(transform.position);
-            }
-        }
 
-        private IEnumerator DoSlidingOpen()
-        {
-            Vector3 endPosition = _startPosition + slideAmount * slideDirection;
-            Vector3 startPosition = transform.position;
-
-            float time = 0;
-            isOpen = true;
-            while (time < 1)
-            {
-                transform.position = Vector3.Lerp(startPosition, endPosition, time);
-                yield return null;
-                time += Time.deltaTime * speed;
-            }
+            _animationCoroutine = StartCoroutine(SlideDoor(_endPosition));
+            AudioManager.Instance.PlayDoorOpen(transform.position);
         }
 
         public void Close()
         {
             if (!isOpen) return;
-            
+
             if (_animationCoroutine != null)
             {
                 StopCoroutine(_animationCoroutine);
             }
 
-            _animationCoroutine = StartCoroutine(DoSlidingClose());
+            _animationCoroutine = StartCoroutine(SlideDoor(_startPosition));
             AudioManager.Instance.PlayDoorClosed(transform.position);
         }
 
-        private IEnumerator DoSlidingClose()
+        private IEnumerator SlideDoor(Vector3 targetPosition)
         {
-            Vector3 endPosition = _startPosition;
             Vector3 startPosition = transform.position;
-            float time = 0;
+            float distance = Vector3.Distance(startPosition, targetPosition);
+            float duration = distance / speed;
+            float elapsedTime = 0f;
+            isOpen = targetPosition == _endPosition;
 
-            isOpen = false;
-
-            while (time < 1)
+            while (elapsedTime < duration)
             {
-                transform.position = Vector3.Lerp(startPosition, endPosition, time);
+                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
                 yield return null;
-                time += Time.deltaTime * speed;
             }
+
+            transform.position = targetPosition;
+            _animationCoroutine = null;
         }
     }
 }

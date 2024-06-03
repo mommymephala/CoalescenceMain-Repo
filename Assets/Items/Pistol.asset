@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   uniqueId: 6246b309-4e92-49d9-b5b6-58077be4ae0e
-  image: {fileID: 21300000, guid: b1286659a6e7c074983ab42e1a533fda, type: 3}
+  image: {fileID: 21300000, guid: 4f981682443c9674691319d047a5f87f, type: 3}
   examineModel: {fileID: 0}
   Name: Demo Pistol
   description: This is a demo pistol.

@@ -562,9 +562,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
-  m_Height: 1.8
+  m_Height: 2.1539981
   m_Direction: 1
-  m_Center: {x: 0, y: 0.16, z: -0.05}
+  m_Center: {x: 0, y: 0.33699673, z: -0.049999993}
 --- !u!114 &3146707086027790500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,8 +891,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7638208731100589801}
   - {fileID: 6406340781638337712}
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   collidersToDisable:
   - {fileID: 468959857660752580}
   - {fileID: 3480402836077216216}
-  - {fileID: 5369623305134498980}
+  - {fileID: 0}
   - {fileID: 7841338020795321452}
 --- !u!1 &7646507139384961102
 GameObject:
@@ -1284,9 +1284,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1198144819465187261}
-  - component: {fileID: 5369623305134498980}
   - component: {fileID: 1686046967922485296}
   - component: {fileID: 6744750222630287295}
+  - component: {fileID: 8028724318476419529}
   m_Layer: 9
   m_Name: DamageableWeak
   m_TagString: ExperimentalManWeakpoint
@@ -1303,35 +1303,12 @@ Transform:
   m_GameObject: {fileID: 7646507139384961102}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.033, z: 0.087}
+  m_LocalPosition: {x: 0.031, y: 2.0154, z: 0.2639}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8792640955201496408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5369623305134498980
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7646507139384961102}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.16
-  m_Height: 0.32
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &1686046967922485296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1366,6 +1343,27 @@ MonoBehaviour:
   m_ImpactVFX: {fileID: 1277154925287174, guid: 22ae11e9f62335044970eb4a6e4ac0ba, type: 3}
   m_ImpactVFXPosition: 0
   OnlyOnDeath: 0
+--- !u!135 &8028724318476419529
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646507139384961102}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07922917
+  m_Center: {x: 0, y: -0.020770838, z: 0}
 --- !u!1 &8032743676161380927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1710,7 @@ Transform:
   m_GameObject: {fileID: 9080423316807889028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.739, z: -0.18}
+  m_LocalPosition: {x: 0, y: 1.739, z: -0.259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -18,7 +18,6 @@ namespace Doors
         protected override void Awake()
         {
             base.Awake();
-
             Debug.Assert(m_Key, "DoorLockKeyItem requires an item to work", gameObject);
         }
 
@@ -27,7 +26,9 @@ namespace Doors
             if (!TryUnlock())
             {
                 if (m_OnLockedDialog.IsValid())
+                {
                     UIManager.Get<UIDialog>().Show(m_OnLockedDialog);
+                }
             }
 
             openImmediately = false;
@@ -46,18 +47,18 @@ namespace Doors
                     if (m_ConsumesItem)
                     {
                         GameManager.Instance.Inventory.Remove(m_Key);
-                        IsLocked = false;
-                        OnUnlock?.Invoke();
                     }
+                    IsLocked = false;
+                    OnUnlock?.Invoke();
+                    
+                    if (m_OnUnlockedDialog.IsValid())
+                    {
+                        UIManager.Get<UIDialog>().Show(m_OnUnlockedDialog);
+                    }
+                    return true;
                 }
-
-                if (m_OnUnlockedDialog.IsValid())
-                    UIManager.Get<UIDialog>().Show(m_OnUnlockedDialog);
-
-
-                return true;
             }
-            
+
             return false;
         }
     }

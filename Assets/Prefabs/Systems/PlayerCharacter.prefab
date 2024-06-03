@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 5627072537232425120}
   - component: {fileID: 8413344623380889437}
   - component: {fileID: 317596014545211017}
+  - component: {fileID: 3640651016489640849}
   - component: {fileID: 1732071248205605972}
   - component: {fileID: 6073098178123718362}
   - component: {fileID: 2095254735721765934}
@@ -404,7 +405,6 @@ GameObject:
   - component: {fileID: 4101167343805430719}
   - component: {fileID: 9082515529379642420}
   - component: {fileID: 2347954214150103441}
-  - component: {fileID: 3640651016489640849}
   m_Layer: 6
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -481,6 +481,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!220 &3640651016489640849
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855049204320965907}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: 1.2438884, y: 2.7137341, z: 1}
+  - {x: 1.2438884, y: 2.7137341, z: -1}
+  - {x: 1.2438884, y: 0.37999868, z: 1}
+  - {x: 1.2438884, y: 0.37999868, z: -1}
+  - {x: -0.7561116, y: 2.7137341, z: 1}
+  - {x: -0.7561116, y: 2.7137341, z: -1}
+  - {x: -0.7561116, y: 0.37999868, z: 1}
+  - {x: -0.7561116, y: 0.37999868, z: -1}
+  m_Dering: 1
 --- !u!114 &1732071248205605972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,24 +810,6 @@ MonoBehaviour:
   OnReset:
     m_PersistentCalls:
       m_Calls: []
---- !u!220 &3640651016489640849
-LightProbeGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6855049204320965907}
-  m_Enabled: 1
-  m_SourcePositions:
-  - {x: 1.2438884, y: 2.7137341, z: 1}
-  - {x: 1.2438884, y: 2.7137341, z: -1}
-  - {x: 1.2438884, y: 0.37999868, z: 1}
-  - {x: 1.2438884, y: 0.37999868, z: -1}
-  - {x: -0.7561116, y: 2.7137341, z: 1}
-  - {x: -0.7561116, y: 2.7137341, z: -1}
-  - {x: -0.7561116, y: 0.37999868, z: 1}
-  - {x: -0.7561116, y: 0.37999868, z: -1}
-  m_Dering: 1
 --- !u!1 &6997541139336552359
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +892,7 @@ Transform:
   m_GameObject: {fileID: 7004585543333824017}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

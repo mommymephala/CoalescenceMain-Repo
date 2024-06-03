@@ -256,7 +256,6 @@ namespace Audio
                     enemyType = EnemyType.ExperimentalMan;
                     break;
                 default:
-                    Debug.Log($"Unknown weakpoint tag: {weakpointTag}");
                     return;
             }
 
