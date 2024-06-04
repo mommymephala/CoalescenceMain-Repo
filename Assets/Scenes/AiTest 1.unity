@@ -4364,7 +4364,7 @@ GameObject:
   - component: {fileID: 191852773}
   - component: {fileID: 191852775}
   m_Layer: 0
-  m_Name: SilenceSoundAftertp2
+  m_Name: PianoSoundAftertp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4456,7 +4456,7 @@ MonoBehaviour:
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
-  TriggerOnce: 1
+  TriggerOnce: 0
   Preload: 0
   AllowNonRigidbodyDoppler: 0
   Params: []
@@ -14952,6 +14952,145 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &516460533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516460534}
+  - component: {fileID: 516460538}
+  - component: {fileID: 516460537}
+  - component: {fileID: 516460536}
+  - component: {fileID: 516460535}
+  m_Layer: 0
+  m_Name: ControlSave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516460534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516460533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -326.001, y: 14.441, z: 31.081}
+  m_LocalScale: {x: 9.68301, y: 2.8619838, z: 7.187223}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1016616117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &516460535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516460533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74becd2c3b0c999479f0c59ec0d34336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterUse: 0
+  audioTriggerSettings:
+  - emitter: {fileID: 516460537}
+    action: 3
+    parameter: 
+    targetValue: 0
+    fadeInDuration: 0
+    fadeOutDuration: 0
+  - emitter: {fileID: 1374201321}
+    action: 4
+    parameter: 
+    targetValue: 1
+    fadeInDuration: 0
+    fadeOutDuration: 0
+--- !u!114 &516460536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516460533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8da27e06ff38343962df0878c79f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterUse: 0
+  audioTriggerSettings:
+  - emitter: {fileID: 516460537}
+    action: 1
+    parameter: 
+    targetValue: 1
+    fadeInDuration: 0
+    fadeOutDuration: 0
+  - emitter: {fileID: 1374201321}
+    action: 3
+    parameter: 
+    targetValue: 0
+    fadeInDuration: 0
+    fadeOutDuration: 0
+--- !u!114 &516460537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516460533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 392605725
+      Data2: 1106725003
+      Data3: -535480906
+      Data4: -244931761
+    Path: event:/Music/SaveRoom/SaveRoom
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!65 &516460538
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516460533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &520811838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6914085737828186285, guid: 4b83ebfad9ac7834b88fdd7571dee030, type: 3}
@@ -18284,7 +18423,7 @@ MonoBehaviour:
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
-  TriggerOnce: 1
+  TriggerOnce: 0
   Preload: 0
   AllowNonRigidbodyDoppler: 0
   Params: []
@@ -26537,9 +26676,11 @@ Transform:
   - {fileID: 1374201319}
   - {fileID: 695353203}
   - {fileID: 563470419}
+  - {fileID: 1284729361}
   - {fileID: 779012046}
   - {fileID: 191852772}
   - {fileID: 1504429589}
+  - {fileID: 516460534}
   - {fileID: 905059026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31867,6 +32008,122 @@ PrefabInstance:
       addedObject: {fileID: 1863546055}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
+--- !u!1 &1284729360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1284729361}
+  - component: {fileID: 1284729365}
+  - component: {fileID: 1284729364}
+  - component: {fileID: 1284729363}
+  - component: {fileID: 1284729362}
+  m_Layer: 0
+  m_Name: CoreSave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1284729361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284729360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -103.473, y: 4.1247463, z: -30.811}
+  m_LocalScale: {x: 40.554733, y: 12.061412, z: 63.9392}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1016616117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1284729362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284729360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74becd2c3b0c999479f0c59ec0d34336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterUse: 0
+  audioTriggerSettings:
+  - emitter: {fileID: 516460537}
+    action: 3
+    parameter: 
+    targetValue: 0
+    fadeInDuration: 0
+    fadeOutDuration: 0
+  - emitter: {fileID: 563470416}
+    action: 4
+    parameter: 
+    targetValue: 1
+    fadeInDuration: 0
+    fadeOutDuration: 0
+--- !u!114 &1284729363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284729360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8da27e06ff38343962df0878c79f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterUse: 0
+  audioTriggerSettings:
+  - emitter: {fileID: 516460537}
+    action: 1
+    parameter: 
+    targetValue: 1
+    fadeInDuration: 0
+    fadeOutDuration: 0
+  - emitter: {fileID: 563470416}
+    action: 3
+    parameter: 
+    targetValue: 0
+    fadeInDuration: 0
+    fadeOutDuration: 0
+--- !u!65 &1284729364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284729360}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1284729365
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284729360}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1292813859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33481,7 +33738,7 @@ MonoBehaviour:
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
-  TriggerOnce: 1
+  TriggerOnce: 0
   Preload: 0
   AllowNonRigidbodyDoppler: 0
   Params: []
