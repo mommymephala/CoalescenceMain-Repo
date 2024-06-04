@@ -15,10 +15,10 @@ MonoBehaviour:
   uniqueId: 6246b309-4e92-49d9-b5b6-58077be4ae0e
   image: {fileID: 21300000, guid: 4f981682443c9674691319d047a5f87f, type: 3}
   examineModel: {fileID: 0}
-  Name: Demo Pistol
-  description: This is a demo pistol.
+  Name: Pistol
+  description: This is a pistol.
   inventoryAction: 2
-  flags: 520
+  flags: 512
   dropPrefab: {fileID: 0}
   EquipPrefab: {fileID: 9117134561805105503, guid: 95a119e34e92f16468760de1fe3530d7, type: 3}
   Slot: 1

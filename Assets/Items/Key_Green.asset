@@ -15,7 +15,7 @@ MonoBehaviour:
   uniqueId: 9aae0ef0-db1c-4f70-ada2-3b14a48ac931
   image: {fileID: 21300000, guid: 8aaf49d65e8524448b434d358f1c90c9, type: 3}
   examineModel: {fileID: 0}
-  Name: Demo Key
+  Name: Green Key
   description: 
   inventoryAction: 0
   flags: 640

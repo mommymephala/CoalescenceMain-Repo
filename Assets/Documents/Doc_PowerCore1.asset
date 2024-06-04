@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: Doc_PowerCore1
+  m_EditorClassIdentifier: 
+  uniqueId: f9a61863-76c1-42ff-9b99-45a878765e42
+  Name: Mini-Dyson Core Information
+  Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  Pages:
+  - Text: "Entry by: Chief Engineer [TRANSCRIBE ERROR]\r\nDate: [Data Corrupted]\r\nSubject:
+      Dyson-Sphere Miniaturization and Fusion Reactor Principles\r\n\nOverview:\r\nWelcome
+      to the heart of our facility's power source \u2013 the miniaturized Dyson-sphere
+      and its accompanying nuclear fusion reactor. This document outlines the fundamental
+      design and operational principles of our most ambitious project to date.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Design Philosophy:\r\nThe mini-Dyson-sphere represents a leap in energy
+      harnessing technology. Inspired by the ancestral work in the Sol system, our
+      goal was to create a sustainable, high-yield power source by encapsulating
+      a miniature sun. This fusion reactor mimics the energy production of a star,
+      providing near-limitless power.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Operational Mechanics:\r\nThe reactor core generates energy through nuclear
+      fusion, mirroring the processes found at the heart of stars. Under immense
+      pressure and temperature, hydrogen atoms fuse to form helium, releasing enormous
+      energy. This power is then captured by the Dyson-sphere's array of photovoltaic
+      cells, lining its inner surface.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Safety Protocols:\r\nGiven the reactor's immense power, numerous safety
+      protocols are in place. Magnetic containment fields stabilize the fusion reaction,
+      while automated shutdown systems respond to structural failure. Radiation shielding
+      protects facility personnel.\r \nIn the unlikely event of a total system failure,
+      the reactor is designed to collapse inward, containing the reaction and preventing
+      widespread damage.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Access and Control:\r\nControlled via biometric access ports, the reactor
+      ensures operational security by recognizing registered scientists' unique biometric
+      signatures. Unregistered access is strictly prohibited.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Final Notes:\r\nThis reactor symbolizes more than just a power source;
+      it embodies our will to survive and human ingenuity. It stands as a testament
+      to our civilization's advanced technological capabilities and our commitment
+      to a future powered by clean, limitless energy. Its functionality is made possible
+      by a newly acquired source of power, thanks to the efforts of our military
+      engineers\u2019 space exploration missions.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  PageClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  CloseClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: Doc_ControlRoom1
+  m_EditorClassIdentifier: 
+  uniqueId: 1b03abb2-fcee-4249-b1b2-dfa5cdcda42e
+  Name: Control Room Journal Entry
+  Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  Pages:
+  - Text: "Log Entry 1:\r\n\"Initial experiments with dark energy manipulation have
+      yielded promising results. The quintessence model suggests unprecedented control
+      over space-time. However, minor but unusual spatial fluctuations within the
+      facility have been observed post-experimentation. Need to monitor closely.\"\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Log Entry 2:\r\n\"The potential of dark energy to revolutionize communication
+      and travel is becoming more apparent. But there's an unsettling aspect to our
+      recent findings. The energy's dynamic nature is less predictable than our models
+      anticipated. It's as if the building is resonating with the experiments.\"\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Log Entry 3:\r\n\u201CToday, is a dark day for us. Master [Name Redacted]
+      had been murdered by a crazed colleague of him, witnesses say they looked like
+      smeared in a black tar. Despite using everything we have; we couldn\u2019t
+      save him.\u201D\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  PageClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  CloseClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

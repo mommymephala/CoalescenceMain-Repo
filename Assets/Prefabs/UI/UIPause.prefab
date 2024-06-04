@@ -1272,11 +1272,11 @@ MonoBehaviour:
   m_PauseHint: {fileID: 0}
   m_ShowClip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1854739223
+      Data2: 1258625511
+      Data3: 1382192016
+      Data4: -608468932
+    Path: event:/SFX/UI/Inventory
 --- !u!1 &8716330285482199570
 GameObject:
   m_ObjectHideFlags: 0

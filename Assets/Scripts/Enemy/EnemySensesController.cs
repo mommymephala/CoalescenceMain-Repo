@@ -15,7 +15,7 @@ namespace Enemy
         [Tooltip("This event will be triggered if the enemy is no longer reachable")]
         public UnityEvent OnPlayerUnreachable;
         
-        [SerializeField] bool m_ShowDebug;
+        // [SerializeField] bool m_ShowDebug;
         
         public Transform PlayerTransform { get; private set; }
         public bool IsPlayerDetected { get; private set; }
@@ -27,7 +27,7 @@ namespace Enemy
 
         // --------------------------------------------------------------------
 
-        private void OnGUI()
+        /*private void OnGUI()
         {
             if (m_ShowDebug)
             {
@@ -47,7 +47,7 @@ namespace Enemy
                 GUILayout.EndVertical();
                 GUILayout.EndArea();
             }
-        }
+        }*/
 
         // --------------------------------------------------------------------
 

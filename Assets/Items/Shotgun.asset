@@ -15,10 +15,10 @@ MonoBehaviour:
   uniqueId: 575b2d5b-af0c-4890-b8b6-4ccf60f763f7
   image: {fileID: 21300000, guid: 4322dda9a7188f24c831746fc13a03f7, type: 3}
   examineModel: {fileID: 0}
-  Name: Demo Shotgun
-  description: This is a demo shotgun.
+  Name: Shotgun
+  description: This is a shotgun.
   inventoryAction: 2
-  flags: 520
+  flags: 512
   dropPrefab: {fileID: 0}
   EquipPrefab: {fileID: 9117134561805105503, guid: a698714a79d19d542a10fb0416749f14, type: 3}
   Slot: 1

@@ -10,21 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
-  m_Name: Doc_Entrance
+  m_Name: Doc_MainHallway1
   m_EditorClassIdentifier: 
-  uniqueId: b97ab0b4-5481-43d3-a8c3-750ad45e0fa7
-  Name: Containment Unit Worker Diary
+  uniqueId: efc62ce1-1d14-4f5b-8ace-83840f1c818c
+  Name: The Legacy of the Mediums
   Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
   ShowImageOnRead: 0
   ShowPageCount: 1
   Pages:
-  - Text: "Document ID: HD-001\r\nEntry by: Service Worker [TRANSCRIBE ERROR]\r\nDate:
-      [Unknown]\r\n\nTranscript:\r\nWhether it is caused by an operation running
-      in the labs or it\u2019s a disease from outside, I don\u2019t understand it,
-      but something is turning people to these tar-ridden creatures. I am already
-      harmed and prepared a suicide trap. I don\u2019t want to become one of them.
-      Whoever stumbles upon this, heed my warning and leave, because this place would
-      eat you alive.\r"
+  - Text: "Introduction:\r\nThis document aims to provide a concise historical overview
+      of the 'mediums,' a significant subgroup that existed within our civilization,
+      based on surviving records and scholarly interpretations.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Origin and Nature:\r\nThe birth of the mediums within our society is deeply
+      entwined with the exploration of the Second Men's neuro-hive system. These
+      mediums, distinguished by their extraordinary mental capabilities, seemed to
+      echo aspects of the Second Men's neuro-hive, yet with a unique twist.\r"
     Image: {fileID: 0}
     ImageCaption: 
     ChangeColor: 0

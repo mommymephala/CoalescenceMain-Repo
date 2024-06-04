@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa333615ea8c9464a8e5fe13bc4b7c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DefaultDropPrefab: {fileID: 0}
+  m_DefaultDropPrefab: {fileID: 3622962468599326528, guid: d29ffad6c66924f7794e2898abc6e8e8, type: 3}
   m_Entry:
     Item: {fileID: 0}
     Count: 0

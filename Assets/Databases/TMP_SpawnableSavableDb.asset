@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba749fd02f86e24caa2a9813d462ffe, type: 3}
   m_Name: TMP_SpawnableSavableDb
   m_EditorClassIdentifier: 
-  Entries: []
+  Entries:
+  - {fileID: 6418182225936306434, guid: d29ffad6c66924f7794e2898abc6e8e8, type: 3}

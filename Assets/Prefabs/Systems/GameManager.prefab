@@ -119,7 +119,6 @@ MonoBehaviour:
     Status: 0
   InitialDocuments:
   - {fileID: 11400000, guid: 9575a2abd13cb394fa9d2b0b004301ca, type: 2}
-  - {fileID: 11400000, guid: bdac9cb0d3d185843ab0ff3a36b43c6a, type: 2}
   InitialEquipment: []
   OnPlayerRegistered:
     m_PersistentCalls:

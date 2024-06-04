@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
-  m_Name: Doc_Entrance
+  m_Name: Doc_PowerCore3
   m_EditorClassIdentifier: 
-  uniqueId: b97ab0b4-5481-43d3-a8c3-750ad45e0fa7
-  Name: Containment Unit Worker Diary
+  uniqueId: d9c0c18d-6820-4346-a475-47f4d4e481ed
+  Name: An Ancient Tome
   Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
   ShowImageOnRead: 0
   ShowPageCount: 1
   Pages:
-  - Text: "Document ID: HD-001\r\nEntry by: Service Worker [TRANSCRIBE ERROR]\r\nDate:
-      [Unknown]\r\n\nTranscript:\r\nWhether it is caused by an operation running
-      in the labs or it\u2019s a disease from outside, I don\u2019t understand it,
-      but something is turning people to these tar-ridden creatures. I am already
-      harmed and prepared a suicide trap. I don\u2019t want to become one of them.
-      Whoever stumbles upon this, heed my warning and leave, because this place would
-      eat you alive.\r"
+  - Text: "A quote from an ancient tome:\r\n\n\u201CGreat are the stars, and man
+      is of no account to them. But man is a fair spirit, whom a star conceived,
+      and a star kills. He is greater than those bright blind companies. For though
+      in them there is incalculable potentiality, in him there is achievement, small,
+      but actual. Too soon, seemingly, he comes to his end. But when he is done he
+      will not be nothing, not as though he had never been; for he is eternally a
+      beauty in the eternal form of things.\u201D\r"
     Image: {fileID: 0}
     ImageCaption: 
     ChangeColor: 0

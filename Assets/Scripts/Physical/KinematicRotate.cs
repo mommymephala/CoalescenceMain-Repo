@@ -5,17 +5,17 @@ namespace Physical
     [RequireComponent(typeof(Rigidbody))]
     public class KinematicRotate : MonoBehaviour
     {
-        [SerializeField]
-        private float rotationSpeed = 30.0f;
+        [SerializeField] private float rotationSpeed;
+        [SerializeField] private float maxRotationSpeed;
+        [SerializeField] private float accelerationRate;
 
         private Rigidbody _rigidbody;
-
         private float _angle;
 
         public float RotationSpeed
         {
             get => rotationSpeed;
-            set => rotationSpeed = Mathf.Clamp(value, -360.0f, 360.0f);
+            set => rotationSpeed = Mathf.Clamp(value, -maxRotationSpeed, maxRotationSpeed);
         }
 
         public float Angle
@@ -37,6 +37,10 @@ namespace Physical
 
         public void FixedUpdate()
         {
+            // Increase rotation speed gradually
+            RotationSpeed += accelerationRate * Time.deltaTime;
+            RotationSpeed = Mathf.Clamp(RotationSpeed, -maxRotationSpeed, maxRotationSpeed);
+
             Angle += RotationSpeed * Time.deltaTime;
             
             Quaternion rotation = Quaternion.Euler(0.0f, Angle, 0.0f);

@@ -15,8 +15,8 @@ MonoBehaviour:
   uniqueId: eedbd508-16f6-45e6-9626-ce32325f771b
   image: {fileID: 21300000, guid: 3e601598ca6cded4d9fdf5fcd2f1f58d, type: 3}
   examineModel: {fileID: 0}
-  Name: Demo Ammo
+  Name: Pistol Shells
   description: 
   inventoryAction: 0
-  flags: 618
+  flags: 610
   dropPrefab: {fileID: 0}

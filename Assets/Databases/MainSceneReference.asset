@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f32ab99d98bdba4789ae3e8594a68c7, type: 3}
   m_Name: MainSceneReference
   m_EditorClassIdentifier: 
-  Name: EmptyScene
+  Name: AiTest 1

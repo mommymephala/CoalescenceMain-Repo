@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: Doc_Lab
+  m_EditorClassIdentifier: 
+  uniqueId: e747112b-1629-431a-9833-35a404659e92
+  Name: Prototype Body
+  Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  Pages:
+  - Text: "Overview:\r\nThis document delves into the innovative capabilities of
+      the prototype body developed within the confines of [NAME REDACTED] facility,
+      focusing primarily on its standout feature: stasis field generation.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Stasis Field Generation - Technical Explanation:\r\nThe prototype body
+      incorporates an intricate biotechnological mechanism engineered to manipulate
+      gravitons, the elementary particles responsible for gravitational force. This
+      manipulation results in the creation of a localized stasis field, altering
+      the conventional properties of time and space within its confines.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Mechanism of Action:\r\nThe neural network of the prototype integrates
+      nano-scale biotechnological implants, meticulously designed to initiate and
+      regulate graviton flux. Through the emission of precise graviton oscillations,
+      the prototype induces a distortion in the spacetime continuum, thus generating
+      a stasis field. This field acts as a temporal inhibitor, decelerating temporal
+      progression within its defined parameters.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Application and Control:\r\nActivation of the stasis field demands a concerted
+      mental effort from the prototype, necessitating focused concentration and cognitive
+      command. The field's influence is strictly localized, affecting solely the
+      immediate vicinity of the prototype. Its utility lies in its capacity to impose
+      temporary halts or deceleration upon the activities and responses of entities
+      within its sphere, providing strategic advantages across diverse scenarios.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  PageClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  CloseClip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

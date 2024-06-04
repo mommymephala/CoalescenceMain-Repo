@@ -10,7 +10,7 @@ namespace States
     public class ActorStateController : MonoBehaviour, IResetable, IDeactivateWithActor
     {
         [SerializeField] ActorState m_InitialState;
-        [SerializeField] bool m_ShowDebug;
+        // [SerializeField] bool m_ShowDebug;
 
         public IActorState CurrentState { get; private set; }
 
