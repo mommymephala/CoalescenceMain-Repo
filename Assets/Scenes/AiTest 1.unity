@@ -15028,7 +15028,7 @@ MonoBehaviour:
   destroyAfterUse: 0
   audioTriggerSettings:
   - emitter: {fileID: 516460537}
-    action: 1
+    action: 4
     parameter: 
     targetValue: 1
     fadeInDuration: 1
@@ -23956,11 +23956,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 2021554388
-      Data2: 1172279329
-      Data3: 2088064130
-      Data4: 1331501508
-    Path: event:/Music/Amenra/Amenra
+      Data1: 646157
+      Data2: 1328230110
+      Data3: 50934956
+      Data4: -217075277
+    Path: event:/Music/Amenra/AmenraNew
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -32084,7 +32084,7 @@ MonoBehaviour:
   destroyAfterUse: 0
   audioTriggerSettings:
   - emitter: {fileID: 516460537}
-    action: 1
+    action: 4
     parameter: 
     targetValue: 1
     fadeInDuration: 2
@@ -35940,7 +35940,7 @@ MonoBehaviour:
     fadeInDuration: 0
     fadeOutDuration: 1
   - emitter: {fileID: 1374201321}
-    action: 1
+    action: 4
     parameter: 
     targetValue: 1
     fadeInDuration: 0
