@@ -4378,13 +4378,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191852771}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.173, y: -11.852388, z: 8.79}
+  m_LocalRotation: {x: -0, y: 0.0010260456, z: -0, w: 0.99999946}
+  m_LocalPosition: {x: 10.95, y: 5.7613773, z: 3.92}
   m_LocalScale: {x: 6.0378838, y: 2.9488, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1016616117}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.118, z: 0}
 --- !u!114 &191852773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15006,8 +15006,8 @@ MonoBehaviour:
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
-  - emitter: {fileID: 1374201321}
+    fadeOutDuration: 1
+  - emitter: {fileID: 191852775}
     action: 4
     parameter: 
     targetValue: 1
@@ -15031,14 +15031,14 @@ MonoBehaviour:
     action: 1
     parameter: 
     targetValue: 1
-    fadeInDuration: 0
+    fadeInDuration: 1
     fadeOutDuration: 0
-  - emitter: {fileID: 1374201321}
+  - emitter: {fileID: 191852775}
     action: 3
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 1
 --- !u!114 &516460537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15838,14 +15838,14 @@ MonoBehaviour:
     action: 1
     parameter: 
     targetValue: 1
-    fadeInDuration: 0
+    fadeInDuration: 1
     fadeOutDuration: 0
   - emitter: {fileID: 1374201321}
     action: 3
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 3
 --- !u!65 &563470418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20068,7 +20068,7 @@ MonoBehaviour:
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 1
 --- !u!65 &779012048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23990,14 +23990,14 @@ MonoBehaviour:
     action: 1
     parameter: 
     targetValue: 1
-    fadeInDuration: 0
+    fadeInDuration: 1
     fadeOutDuration: 0
   - emitter: {fileID: 1374201321}
     action: 3
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 1
 --- !u!65 &905059029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26674,13 +26674,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1374201319}
-  - {fileID: 695353203}
   - {fileID: 563470419}
+  - {fileID: 695353203}
   - {fileID: 1284729361}
   - {fileID: 779012046}
   - {fileID: 191852772}
-  - {fileID: 1504429589}
   - {fileID: 516460534}
+  - {fileID: 1504429589}
   - {fileID: 905059026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32062,12 +32062,12 @@ MonoBehaviour:
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 2
   - emitter: {fileID: 563470416}
     action: 4
     parameter: 
     targetValue: 1
-    fadeInDuration: 0
+    fadeInDuration: 2
     fadeOutDuration: 0
 --- !u!114 &1284729363
 MonoBehaviour:
@@ -32087,14 +32087,14 @@ MonoBehaviour:
     action: 1
     parameter: 
     targetValue: 1
-    fadeInDuration: 0
+    fadeInDuration: 2
     fadeOutDuration: 0
   - emitter: {fileID: 563470416}
     action: 3
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 2
 --- !u!65 &1284729364
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35912,13 +35912,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504429588}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -231.41, y: 17.145466, z: 20.82}
-  m_LocalScale: {x: 1, y: 1.8235, z: 5.7218}
+  m_LocalRotation: {x: -0, y: 0.70889163, z: -0, w: 0.7053175}
+  m_LocalPosition: {x: -295.701, y: -10.261, z: -10.53}
+  m_LocalScale: {x: 1, y: 1.8235, z: 10.8969345}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1016616117}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.29, z: 0}
 --- !u!114 &1504429590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35938,7 +35938,7 @@ MonoBehaviour:
     parameter: 
     targetValue: 0
     fadeInDuration: 0
-    fadeOutDuration: 0
+    fadeOutDuration: 1
   - emitter: {fileID: 1374201321}
     action: 1
     parameter: 
