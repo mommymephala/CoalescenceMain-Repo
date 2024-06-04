@@ -90,7 +90,7 @@ namespace Combat
                     GameManager.Instance.IsPlaying = false;
                     OnDeath?.Invoke(this);
                     _controller.Pause(true);
-                    AudioManager.Instance.StopAmbientSound();
+                    // AudioManager.Instance.StopAmbientSound();
                     AudioManager.Instance.PlayPlayerDeath(transform.position);
                 }
             }

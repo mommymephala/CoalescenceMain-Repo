@@ -4,6 +4,7 @@ using FMOD.Studio;
 using FMODUnity;
 using Singleton;
 using States;
+using Systems;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -65,8 +66,8 @@ namespace Audio
         public Dictionary<EnemyType, EnemySounds> enemySoundsMap;
 
         [Header("Environment")]
-        public EventReference ambient;
-        public EventReference safeRoom;
+        // public EventReference ambient;
+        // public EventReference safeRoom;
         public EventReference door;
         public EventReference doorClosed;
         public EventReference mainElevatorSound;
@@ -77,12 +78,12 @@ namespace Audio
         public EventReference turretShot;
         public EventReference turretShotImpact;
 
-        private Dictionary<EventInstance, Coroutine> _fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
-        private float _crossfadeDuration;
+        // private Dictionary<EventInstance, Coroutine> _fadeCoroutines = new Dictionary<EventInstance, Coroutine>();
+        // private float _crossfadeDuration;
 
-        private bool _isInsideSafeRoom;
+        // private bool _isInsideSafeRoom;
         
-        private EventInstance _ambientInstance;
+        // private EventInstance _ambientInstance;
 
         protected override void Awake()
         {
@@ -147,7 +148,7 @@ namespace Audio
             }
         }
 
-        public void StartAmbientSound()
+        /*public void StartAmbientSound()
         {
             _ambientInstance = RuntimeManager.CreateInstance(ambient);
             _ambientInstance.start();
@@ -161,7 +162,7 @@ namespace Audio
                 _ambientInstance.stop(STOP_MODE.IMMEDIATE);
                 _ambientInstance.release();
             }
-        }
+        }*/
 
         public void PlayFootstep(Vector3 position)
         {
@@ -205,9 +206,15 @@ namespace Audio
             }
         }
 
-        public void PlayDysonActivation(Vector3 position)
+        private void PlayDysonActivation(Vector3 position)
         {
             PlayOneShot(dysonActivation, position, "Dyson activation");
+        }
+        
+        public void PlayDysonActivationDefault()
+        {
+            Vector3 defaultPosition = GameManager.Instance.Player.transform.position;
+            PlayDysonActivation(defaultPosition);
         }
 
         public void PlayMineExplosion(Vector3 position)

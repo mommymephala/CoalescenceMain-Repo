@@ -81,7 +81,7 @@ namespace Systems
 
             if (shouldDestroy)
             {
-                AudioManager.Instance.StopAmbientSound();
+                // AudioManager.Instance.StopAmbientSound();
                 SceneManager.activeSceneChanged -= OnSceneChange;
                 Destroy(gameObject);
 

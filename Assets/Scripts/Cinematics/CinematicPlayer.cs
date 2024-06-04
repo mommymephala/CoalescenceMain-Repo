@@ -10,7 +10,7 @@ namespace Cinematics
         public void Play(VideoClip clip)
         {
             UIManager.Get<UICinematicPlayer>().Show(clip);
-            AudioManager.Instance.StopAmbientSound();
+            // AudioManager.Instance.StopAmbientSound();
         }
     }
 }

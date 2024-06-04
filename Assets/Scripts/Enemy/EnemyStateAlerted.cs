@@ -15,7 +15,7 @@ namespace Enemy
         [SerializeField] private float m_InitialDelay = 1f;
         [SerializeField] private float m_MinTimeBetweenAttacks = 1f;
         [SerializeField] private float m_FacingSpeedBetweenAttacks = 1f;
-        [SerializeField] private bool m_ShowDebug;
+        // [SerializeField] private bool m_ShowDebug;
         
         private UnityAction m_OnPlayerUnreachable;
         
@@ -89,9 +89,9 @@ namespace Enemy
                 return;
             }
 
-            if (m_ShowDebug)
-                DebugUtils.DrawBox(m_EnemySenses.LastKnownPosition, Quaternion.identity, Vector3.one * 0.25f,
-                    Color.white, 1f);
+            // if (m_ShowDebug)
+            //     DebugUtils.DrawBox(m_EnemySenses.LastKnownPosition, Quaternion.identity, Vector3.one * 0.25f,
+            //         Color.white, 1f);
 
             // Footstep sound logic
             _footstepTimer += Time.deltaTime;
@@ -122,8 +122,8 @@ namespace Enemy
                     {
                         m_Agent.updateRotation = false;
 
-                        if (m_ShowDebug)
-                            Debug.DrawLine(Actor.transform.position, m_EnemySenses.LastKnownPosition, Color.magenta, 5);
+                        // if (m_ShowDebug)
+                        //     Debug.DrawLine(Actor.transform.position, m_EnemySenses.LastKnownPosition, Color.magenta, 5);
 
                         FaceTarget();
                     }

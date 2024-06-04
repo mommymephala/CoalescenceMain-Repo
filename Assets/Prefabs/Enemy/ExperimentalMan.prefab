@@ -158,7 +158,6 @@ MonoBehaviour:
   m_InitialDelay: 1
   m_MinTimeBetweenAttacks: 1
   m_FacingSpeedBetweenAttacks: 1
-  m_ShowDebug: 1
   footstepInterval: 0.5
 --- !u!1 &1256592688707845899
 GameObject:
@@ -750,7 +749,7 @@ MonoBehaviour:
       m_Calls: []
   Tags: []
   m_AlertedState: {fileID: 3416583239326226275}
-  m_WanderState: {fileID: 2495149615754177392}
+  m_WanderState: {fileID: 0}
   TimeBetweenWander: 3
 --- !u!1 &5495913349094729045
 GameObject:
@@ -845,7 +844,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4083857935137751647}
-  - {fileID: 463598907405749161}
   - {fileID: 4765709385706313806}
   - {fileID: 9218822190806181163}
   - {fileID: 639337233375873310}
@@ -1455,69 +1453,6 @@ Transform:
   - {fileID: 7885987740948851308}
   m_Father: {fileID: 8792640955201496408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8298313214345378185
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 463598907405749161}
-  - component: {fileID: 2495149615754177392}
-  m_Layer: 0
-  m_Name: Wander
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &463598907405749161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8298313214345378185}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6303927467742110913}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2495149615754177392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8298313214345378185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2cb2e06854154429464e53ecd170d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AnimationState: {fileID: 11400000, guid: cc48124fab29cf74fb7f21f65398d20e, type: 2}
-  m_AnimationBlendTime: 0.25
-  m_StateTransitions: []
-  m_ExitAnimationState: {fileID: 0}
-  m_ExitAnimationBlendTime: 0.25
-  m_ExitAnimationDuration: 0
-  SkipPreviousExitAnimation: 0
-  OnStateEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStateExit:
-    m_PersistentCalls:
-      m_Calls: []
-  Tags: []
-  m_Duration: 3
-  m_GoToStateAfterDuration: {fileID: 8410736365416673727}
-  m_AlertedState: {fileID: 3416583239326226275}
-  m_Radius: 5
-  footstepInterval: 0.5
 --- !u!1 &8790361473324610803
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ namespace States
                 SetState_Internal(m_NewState);
         }
 
-        private void OnGUI()
+        /*private void OnGUI()
         {
             if (m_ShowDebug)
             {
@@ -71,7 +71,7 @@ namespace States
                 GUILayout.Label(name + ": " + CurrentState.GetType().Name, style);
                 GUILayout.EndArea();
             }
-        }
+        }*/
 
         // --------------------------------------------------------------------
 
