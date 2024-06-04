@@ -1668,6 +1668,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3524554650107190662, guid: e178a576d0a08a34c85cf8e33f06e532, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3524554650107190662, guid: e178a576d0a08a34c85cf8e33f06e532, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e178a576d0a08a34c85cf8e33f06e532, type: 3}
       propertyPath: m_Name
       value: Sea_Hound_Rigged

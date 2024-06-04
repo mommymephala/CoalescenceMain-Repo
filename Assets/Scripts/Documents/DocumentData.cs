@@ -8,7 +8,7 @@ namespace Documents
     [Serializable]
     public class DocumentPage
     {
-        [TextArea]
+        [TextArea(25,150)]
         public string Text;
         public Sprite Image;
         public string ImageCaption;
@@ -23,10 +23,6 @@ namespace Documents
         public Sprite Image;
         public bool ShowImageOnRead = true;
         public bool ShowPageCount = true;
-        
-        [TextArea]
-        [HideInInspector]
-        public string[] PagesText_DEPRECATED;
 
         public DocumentPage[] Pages;
 
