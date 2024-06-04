@@ -19028,9 +19028,8 @@ GameObject:
   - component: {fileID: 695353203}
   - component: {fileID: 695353206}
   - component: {fileID: 695353205}
-  - component: {fileID: 695353204}
   m_Layer: 0
-  m_Name: ChangeEffectBridge
+  m_Name: ChangeEffectBeforeLastTp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19045,32 +19044,12 @@ Transform:
   m_GameObject: {fileID: 695353202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -66.18, y: -13.48, z: 49.81}
-  m_LocalScale: {x: 6.2794995, y: 3.19, z: 1}
+  m_LocalPosition: {x: -269.665, y: -9.634, z: -79.151}
+  m_LocalScale: {x: 10.564349, y: 3.19, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1016616117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &695353204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695353202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8da27e06ff38343962df0878c79f80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyAfterUse: 0
-  audioTriggerSettings:
-  - emitter: {fileID: 695353205}
-    action: 1
-    parameter: 
-    targetValue: 1
-    fadeInDuration: 0
-    fadeOutDuration: 0
 --- !u!114 &695353205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24671,7 +24650,7 @@ Transform:
   m_GameObject: {fileID: 905059025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -295.96082, y: -9.48, z: 51.86}
+  m_LocalPosition: {x: -295.96082, y: -9.48, z: 55.141}
   m_LocalScale: {x: 15.137744, y: 3.3138, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27411,12 +27390,12 @@ Transform:
   m_Children:
   - {fileID: 1374201319}
   - {fileID: 563470419}
-  - {fileID: 695353203}
   - {fileID: 1284729361}
   - {fileID: 779012046}
   - {fileID: 191852772}
   - {fileID: 516460534}
   - {fileID: 1504429589}
+  - {fileID: 695353203}
   - {fileID: 905059026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
