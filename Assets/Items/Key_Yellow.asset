@@ -16,7 +16,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 0c3ec5f22e5bbf746adcaed9e62be6c3, type: 3}
   examineModel: {fileID: 0}
   Name: Yellow Key
-  description: 
+  description: It needs a yellow keycard reader.
   inventoryAction: 0
   flags: 640
   dropPrefab: {fileID: 0}

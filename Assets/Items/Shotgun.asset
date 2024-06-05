@@ -16,7 +16,8 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 4322dda9a7188f24c831746fc13a03f7, type: 3}
   examineModel: {fileID: 0}
   Name: Shotgun
-  description: This is a shotgun.
+  description: Serious damage output. Fires six pellets, ineffective at distance
+    shots.
   inventoryAction: 2
   flags: 512
   dropPrefab: {fileID: 0}

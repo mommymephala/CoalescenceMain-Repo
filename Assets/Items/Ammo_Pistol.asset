@@ -16,7 +16,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 3e601598ca6cded4d9fdf5fcd2f1f58d, type: 3}
   examineModel: {fileID: 0}
   Name: Pistol Shells
-  description: 
+  description: Traditional bullets, but in an unusual shell case.
   inventoryAction: 0
   flags: 610
   dropPrefab: {fileID: 0}

@@ -16,7 +16,8 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 4f981682443c9674691319d047a5f87f, type: 3}
   examineModel: {fileID: 0}
   Name: Pistol
-  description: This is a pistol.
+  description: Relic from the Second Men. It is very agile and fires in semi-auto
+    mode.
   inventoryAction: 2
   flags: 512
   dropPrefab: {fileID: 0}

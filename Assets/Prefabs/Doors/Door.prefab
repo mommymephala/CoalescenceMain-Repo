@@ -119,6 +119,15 @@ MonoBehaviour:
           Data3: 0
           Data4: 0
         Path: 
+    - Delay: 0
+      Text: Press again to activate.
+      Clip:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
   m_Key: {fileID: 11400000, guid: ae0b53bd804cfbe42840ed3dbde74f37, type: 2}
   m_ConsumesItem: 1
   m_UseObjectAutomatically: 1
