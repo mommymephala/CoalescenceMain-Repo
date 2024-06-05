@@ -29,7 +29,6 @@ namespace Physical
         {
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.isKinematic = true;
-            // InitializePositions();
         }
 
         private void Start()

@@ -420,6 +420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3116343227410836029, guid: 79ddbba9770bfca47bf24b679271b503, type: 3}
+      propertyPath: m_StartScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e6e78dff42f3124a84bfd4b2dff770e, type: 2}
     - target: {fileID: 4968965969440289717, guid: 79ddbba9770bfca47bf24b679271b503, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

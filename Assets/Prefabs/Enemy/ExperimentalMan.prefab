@@ -1050,7 +1050,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InitialState: {fileID: 8410736365416673727}
-  m_ShowDebug: 1
 --- !u!114 &101954823189262862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1079,6 @@ MonoBehaviour:
   OnPlayerUnreachable:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowDebug: 1
 --- !u!114 &1677399049798888804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,7 +1844,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 997dc29a3838e6440aecf212075c623a, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

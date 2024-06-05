@@ -1,6 +1,7 @@
 using Extensions;
 using Systems;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 namespace UI_Codebase
@@ -12,6 +13,7 @@ namespace UI_Codebase
         private void Awake()
         {
             m_Player = GetComponentInChildren<VideoPlayer>();
+            m_Player.loopPointReached += OnVideoFinished;
         }
 
         private void Start()
@@ -30,14 +32,17 @@ namespace UI_Codebase
             this.InvokeActionUnscaled(Hide, (float)clip.length);
         }
 
-
-        private void Hide()
+        public void Hide()
         {
             PauseController.Instance.Resume();
             gameObject.SetActive(false);
             UIManager.PopAction();
         }
 
-
+        private void OnVideoFinished(VideoPlayer vp)
+        {
+            // Transition to the main menu scene
+            SceneManager.LoadScene("MainMenuTest");
+        }
     }
 }

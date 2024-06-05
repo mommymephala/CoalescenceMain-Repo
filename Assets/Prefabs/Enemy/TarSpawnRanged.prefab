@@ -389,7 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InitialState: {fileID: 6040020857962946237}
-  m_ShowDebug: 1
 --- !u!114 &2311973892221465610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +418,6 @@ MonoBehaviour:
   OnPlayerUnreachable:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowDebug: 1
 --- !u!114 &4814103889960021418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1699,7 +1697,6 @@ MonoBehaviour:
   m_InitialDelay: 1
   m_MinTimeBetweenAttacks: 1
   m_FacingSpeedBetweenAttacks: 1
-  m_ShowDebug: 1
   footstepInterval: 0.5
 --- !u!1 &9041909879436580817
 GameObject:
@@ -1877,7 +1874,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 924d846333c1649428b878e606b5ad6a, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
