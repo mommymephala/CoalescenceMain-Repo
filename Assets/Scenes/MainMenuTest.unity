@@ -539,8 +539,47 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3116343227410836027, guid: 79ddbba9770bfca47bf24b679271b503, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 770211719}
   m_SourcePrefab: {fileID: 100100000, guid: 79ddbba9770bfca47bf24b679271b503, type: 3}
+--- !u!1 &770211718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3116343227410836027, guid: 79ddbba9770bfca47bf24b679271b503, type: 3}
+  m_PrefabInstance: {fileID: 770211717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &770211719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770211718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1500241074
+      Data2: 1167876243
+      Data3: -554170712
+      Data4: 1069243637
+    Path: event:/Music/MainMenu/MainMenuMusic
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1342278408
 GameObject:
   m_ObjectHideFlags: 0

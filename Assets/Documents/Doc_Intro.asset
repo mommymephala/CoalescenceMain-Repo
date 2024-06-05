@@ -12,18 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
   m_Name: Doc_Intro
   m_EditorClassIdentifier: 
-  uniqueId: 0fd17397-1b7b-496c-b8e3-3d1f52c8beaf
+  uniqueId: 8edb489d-f1aa-4ad6-af27-d410c62b7b30
   Name: Mission Briefing
   Image: {fileID: 21300000, guid: be4b569e7f0e8ba49bfe20c6ee44d0f5, type: 3}
   ShowImageOnRead: 0
   ShowPageCount: 1
   Pages:
-  - Text: 
+  - Text: 'Mission Overview:
+
+
+      This mission entails investigating a distress
+      signal from a lost spacecraft near Hycean planet KOI-563.01. Objectives include
+      assessing the situation, determining the cause of communications disruption,
+      establishing contact if feasible, gathering intelligence on environmental conditions,
+      and ensuring a safe return route.'
     Image: {fileID: 0}
     ImageCaption: 
     ChangeColor: 0
     ImageColor: {r: 0, g: 0, b: 0, a: 0}
-  - Text: 
+  - Text: 'Mission Parameters:
+
+
+      The mission duration is set at [REDACTED]
+      hours. Stealth operations are vital to avoid detection, and secure communication
+      protocols must be followed. Protective environmental suits, communication devices,
+      data collection tools, and limited defensive measures are provided.'
     Image: {fileID: 0}
     ImageCaption: 
     ChangeColor: 0

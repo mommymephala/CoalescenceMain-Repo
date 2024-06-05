@@ -33,8 +33,6 @@ namespace Combat
                 {
                     _rangedAttack.ProcessCollision(other);
                 }
-        
-                Debug.Log(other.gameObject.name);
             }
     
             if (other.gameObject.layer == LayerMask.NameToLayer("Default"))

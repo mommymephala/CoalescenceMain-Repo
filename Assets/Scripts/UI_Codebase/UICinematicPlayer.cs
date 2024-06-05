@@ -41,7 +41,6 @@ namespace UI_Codebase
 
         private void OnVideoFinished(VideoPlayer vp)
         {
-            // Transition to the main menu scene
             SceneManager.LoadScene("MainMenuTest");
         }
     }
