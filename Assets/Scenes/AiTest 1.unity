@@ -34941,6 +34941,12 @@ MonoBehaviour:
     targetValue: 0
     fadeInDuration: 0
     fadeOutDuration: 2
+  - emitter: {fileID: 1374201321}
+    action: 3
+    parameter: 
+    targetValue: 0
+    fadeInDuration: 0
+    fadeOutDuration: 2
 --- !u!65 &1284729364
 BoxCollider:
   m_ObjectHideFlags: 0
